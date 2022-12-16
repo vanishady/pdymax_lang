@@ -1,0 +1,36 @@
+include mylib
+patch mycanva
+
+#this block is a stepseq
+
+block stepseq1 {
+
+	m = message()
+	o = object(1,2,'caramella')
+	m :: o
+	l2 = array()
+	m.texture = 'fine'
+	<l2, m> :: o
+	m :x o
+	message(6,7,8)
+
+}
+
+block bpm {
+
+	t = object('bang')
+
+	subblock technobpm {
+		a = array()
+		if 1==2: 
+			pass
+		else: 
+			continue
+		end
+	}
+}
+
+
+
+
+
