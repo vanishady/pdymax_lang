@@ -5,24 +5,28 @@ patch mycanva
 
 block stepseq1 {
 
-m = message()
-o = object(1,2,'caramella')
-m :: o
-m.texture = 'fine'
-<l2, m> :: o
+	m = message()
+	o = object(1,2,'caramella', $1=msg('helo'))
+	m :: o
+	l2 = text()
+	<l2, m> :: o
+	<l2 = symbolatom(), m, o> :: heythere=array() :: text()
+	object(666).$-1 = coords()
+	
 
 }
 
 block bpm {
 
-t = object('bang')
+	t = object('bang')
 
-subblock technobpm {
-a = array()
-if 1==2:
-	pass
-else:
-continue
-end
-}
+	subblock technobpm {
+		a = array()
+		if 1==2:
+    			pass
+		else:
+    			continue
+		end
+		numbernode = 8*othernode
+	}
 }
