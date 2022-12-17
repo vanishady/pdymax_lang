@@ -4,11 +4,19 @@ grammar Simple;
 * parser rules
 */
 
-prog: (INCLUDE ID NL)* PATCH ID NL stmt+ ;
+prog: (INCLUDE ID NL)* PATCH ID NL (blockstmt|stmt)+ ;
+
+blockstmt
+ : BLOCK ID '{' NL (stmt | subblockstmt)* '}' NL
+ ;
+
+subblockstmt
+ : SUBBLOCK ID '{' NL stmt* '}' NL
+ ;
 
 stmt
- : BLOCK ID '{' NL (stmt | subblockstmt)* '}' //block declaration
- | declarationstmt NL
+ : declarationstmt NL
+ | ioletdeclstmt NL
  | connectionstmt NL
  | ifstmt NL
  | forstmt NL
@@ -19,13 +27,17 @@ stmt
  ;
 
 declarationstmt
- : SINGLE_PARAM '=' (STRING | NUMBER | expr) //parameter setting
- | ID '=' NODETYPE PARAMETERS
- | NODETYPE PARAMETERS //implicit var assignment (autoincrement)
+ : ID '=' (NODETYPE PARAMETERS | expr)			//declare node
+ | NODETYPE PARAMETERS 						//implicit node declaration (autoincrement)	
+ ;
+
+ioletdeclstmt
+ : ID '.' IOLET '=' (NODETYPE PARAMETERS | expr)	//assign inlets/outlets
+ | NODETYPE PARAMETERS '.' IOLET '=' (NODETYPE PARAMETERS | expr)
  ;
 
 connectionstmt
- : ('<' ID (',' ID)* '>' | ID) (CONNECT ('<' ID (',' ID)* '>' | ID))+
+ : ('<' (ID | declarationstmt) (',' (ID | declarationstmt))* '>' | (ID | declarationstmt)) (CONNECT ('<' (ID | declarationstmt) (',' (ID | declarationstmt))* '>' | (ID | declarationstmt)))+
  | ('<' ID (',' ID)* '>' | ID) (DISCONNECT ('<' ID (',' ID)* '>' | ID))+
  ;
 
@@ -38,12 +50,9 @@ forstmt
  : FOR INTEGER 'rounds do' ':' NL stmt+ END
  ;
 
-subblockstmt
- : SUBBLOCK ID '{' NL stmt* '}' NL
- ;
 
 suite
- : NL stmt+ //stmt | NL INDENT stmt+ DEDENT
+ : NL stmt+ 
  ;
 
 expr
@@ -58,6 +67,7 @@ expr
  | ID
  | L_PAREN expr R_PAREN
  ;
+
 
 /*
 * lexer rules
@@ -80,6 +90,7 @@ BREAK : 'break' ;
 CONTINUE : 'continue' ;
 PASS : 'pass' ;
 END : 'end' ;
+
 
 //punctuation
 
@@ -113,15 +124,22 @@ NODETYPE
  | 'object'
  ;
 
-PARAMETERS : L_PAREN LIST? R_PAREN ;
-SINGLE_PARAM : ID '.' ID ;
+PARAMETERS 
+ : L_PAREN (ARGLIST ',' IOLIST) R_PAREN
+ | L_PAREN IOLIST? R_PAREN
+ | L_PAREN ARGLIST? R_PAREN
+ ;
+
 
 ID : ID_START ID_CONTINUE* ;
 STRING : '\'' LETTER* '\'' ;
 NUMBER : INTEGER | FLOAT ;
+IOLET : '$' '-'? INTEGER ; 
 INTEGER : NON_ZERO_DIGIT DIGIT* | '0'+ ;
 FLOAT : INTEGER? '.' INTEGER ;
-LIST : (STRING | NUMBER) (',' (STRING | NUMBER))* ; 
+ARGLIST : (STRING | NUMBER ) (',' (STRING | NUMBER ))* ; 
+IOLIST : IOLET '=' (NODETYPE PARAMETERS | STRING | NUMBER) (',' IOLET '=' (NODETYPE PARAMETERS | STRING | NUMBER))* ;
+
 
 fragment LETTER : [a-zA-Z] ;
 fragment DIGIT : [0-9] ;
