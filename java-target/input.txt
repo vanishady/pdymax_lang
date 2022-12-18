@@ -6,7 +6,7 @@ patch mycanva
 block stepseq1 {
 
 	m = message(1)
-	o = object(1,2,$1=message('helo'))
+	o = object(1,2,'caramella')
 	m :: o
 	l2 = text()
 	<l2, m> :: o
@@ -27,6 +27,7 @@ block bpm {
 		else:
     			continue
 		end
-		numbernode = 8*othernode
-	}
+numbernode = 8*7	
+
+}
 }
