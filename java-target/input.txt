@@ -12,6 +12,7 @@ block stepseq1 {
 	<l2, m> :: o
 	<l2 = symbolatom(), m, o> :: heythere=array() :: text()
 	object(666).$-1 = coords()
+	rospo = array(0,0,0,$1 = 30, $2= coords())
 	
 
 }

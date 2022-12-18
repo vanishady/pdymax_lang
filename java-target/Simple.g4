@@ -27,14 +27,31 @@ stmt
  ;
 
 declarationstmt
- : ID '=' (NODETYPE PARAMETERS | expr)			//declare node
- | NODETYPE PARAMETERS 						//implicit node declaration (autoincrement)	
+ : ID '=' (NODETYPE parameters) 
+ | ID '=' expr
+ | NODETYPE parameters		
+ ;
+
+
+parameters
+ : '(' (typedargslist)? ')'
+ ;
+
+typedargslist
+ : arg (',' arg)* (',' INOUTID '=' (NODETYPE parameters | expr) )*
+ ;
+
+arg
+ : INOUTID
+ | SYMBOL
+ | NUMBER
  ;
 
 ioletdeclstmt
- : ID '.' IOLET '=' (NODETYPE PARAMETERS | expr)	//assign inlets/outlets
- | NODETYPE PARAMETERS '.' IOLET '=' (NODETYPE PARAMETERS | expr)
+ : ID '.' INOUTID '=' (NODETYPE parameters | expr)
+ | NODETYPE parameters '.' INOUTID '=' (NODETYPE parameters | expr)
  ;
+
 
 connectionstmt
  : ('<' (ID | declarationstmt) (',' (ID | declarationstmt))* '>' | (ID | declarationstmt)) (CONNECT ('<' (ID | declarationstmt) (',' (ID | declarationstmt))* '>' | (ID | declarationstmt)))+
@@ -55,6 +72,7 @@ suite
  : NL stmt+ 
  ;
 
+
 expr
  : expr ('*'|'/') expr
  | expr ('+'|'-') expr
@@ -63,11 +81,10 @@ expr
  | expr (EQ | NOT_EQ | '>' | '>=' | '<' | '<=' ) expr
  | expr (AND | OR) expr
  | NUMBER
- | STRING
+ | SYMBOL
  | ID
  | L_PAREN expr R_PAREN
  ;
-
 
 /*
 * lexer rules
@@ -91,7 +108,6 @@ CONTINUE : 'continue' ;
 PASS : 'pass' ;
 END : 'end' ;
 
-
 //punctuation
 
 L_PAREN : '(' ;
@@ -112,7 +128,10 @@ DIV : '/' ;
 MOD : '%' ;
 OR : '||' ;
 AND : '&&' ;
-
+SIGMINUS : '-~' ;
+SIGPLUS : '+~' ;
+SIGDIV : '/~' ;
+SIGSTAR : '*~' ;
 
 NODETYPE
  : 'array'
@@ -124,21 +143,13 @@ NODETYPE
  | 'object'
  ;
 
-PARAMETERS 
- : L_PAREN (ARGLIST ',' IOLIST) R_PAREN
- | L_PAREN IOLIST? R_PAREN
- | L_PAREN ARGLIST? R_PAREN
- ;
 
-
+INOUTID : '$' '-'? DIGIT ;
 ID : ID_START ID_CONTINUE* ;
-IOLET : '$' '-'? INTEGER ; 
-STRING : '\'' LETTER* '\'' ;
+SYMBOL : '\'' LETTER* '\'' ;
 NUMBER : INTEGER | FLOAT ;
 INTEGER : NON_ZERO_DIGIT DIGIT* | '0'+ ;
 FLOAT : INTEGER? '.' INTEGER ;
-ARGLIST : (STRING | NUMBER ) (',' (STRING | NUMBER ))* ; 
-IOLIST : IOLET '=' (NODETYPE PARAMETERS | STRING | NUMBER) (',' IOLET '=' (NODETYPE PARAMETERS | STRING | NUMBER))* ;
 
 
 fragment LETTER : [a-zA-Z] ;
