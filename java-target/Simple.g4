@@ -18,6 +18,7 @@ stmt
  : declarationstmt NL
  | ioletdeclstmt NL
  | connectionstmt NL
+ | recallstmt NL
  | ifstmt NL
  | forstmt NL
  | BREAK NL
@@ -42,8 +43,7 @@ typedargslist
  ;
 
 arg
- : INOUTID
- | SYMBOL
+ : SYMBOL
  | NUMBER
  ;
 
@@ -58,13 +58,17 @@ connectionstmt
  | ('<' ID (',' ID)* '>' | ID) (DISCONNECT ('<' ID (',' ID)* '>' | ID))+
  ;
 
+recallstmt
+ : RECALL ID TO ID '{' NL (stmt | subblockstmt)* '}' 
+ ;
+
 
 ifstmt
  : IF expr ':' suite (ELIF expr ':' suite)* (ELSE ':' suite)? END
  ;
 
 forstmt
- : FOR INTEGER 'rounds do' ':' NL stmt+ END
+ : FOR INTEGER 'rounds do' ':' suite END
  ;
 
 
@@ -83,6 +87,7 @@ expr
  | NUMBER
  | SYMBOL
  | ID
+ | NODETYPE parameters
  | L_PAREN expr R_PAREN
  ;
 
@@ -107,6 +112,8 @@ BREAK : 'break' ;
 CONTINUE : 'continue' ;
 PASS : 'pass' ;
 END : 'end' ;
+RECALL : 'recall' ;
+TO : 'to' ;
 
 //punctuation
 
