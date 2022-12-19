@@ -1,24 +1,39 @@
 grammar Simple;
 
+tokens { INDENT, DEDENT }
+
+@lexer::header{
+from antlr_denter.DenterHelper import DenterHelper
+from SimpleParser import SimpleParser
+}
+@lexer::members {
+class SimpleDenter(DenterHelper):
+    def __init__(self, lexer, nl_token, indent_token, dedent_token, ignore_eof):
+        super().__init__(nl_token, indent_token, dedent_token, ignore_eof)
+        self.lexer: SimpleLexer = lexer
+
+    def pull_token(self):
+        return super(SimpleLexer, self.lexer).nextToken()
+
+denter = None
+
+def nextToken(self):
+    if not self.denter:
+        self.denter = self.SimpleDenter(self, self.NL, SimpleParser.INDENT, SimpleParser.DEDENT, True)
+    return self.denter.next_token()
+
+}
+
 /*
 * parser rules
 */
 
-prog: (INCLUDE ID NL)* PATCH ID NL (blockstmt|stmt)+ ;
-
-blockstmt
- : BLOCK ID '{' NL (stmt | subblockstmt)* '}' NL
- ;
-
-subblockstmt
- : SUBBLOCK ID '{' NL stmt* '}' NL
- ;
+prog: (INCLUDE ID NL)* PATCH ID NL stmt+ ;
 
 stmt
- : declarationstmt NL
- | ioletdeclstmt NL
+ : BLOCK ID '{' NL (stmt | subblockstmt)* '}' //block declaration
+ | declarationstmt NL
  | connectionstmt NL
- | recallstmt NL
  | ifstmt NL
  | forstmt NL
  | BREAK NL
@@ -28,38 +43,14 @@ stmt
  ;
 
 declarationstmt
- : ID '=' (NODETYPE parameters) 
- | ID '=' expr
- | NODETYPE parameters		
+ : SINGLE_PARAM '=' (STRING | NUMBER | expr) //parameter setting
+ | ID '=' NODETYPE PARAMETERS
+ | NODETYPE PARAMETERS //implicit var assignment (autoincrement)
  ;
-
-
-parameters
- : '(' (typedargslist)? ')'
- ;
-
-typedargslist
- : arg (',' arg)* (',' INOUTID '=' (NODETYPE parameters | expr) )*
- ;
-
-arg
- : SYMBOL
- | NUMBER
- ;
-
-ioletdeclstmt
- : ID '.' INOUTID '=' (NODETYPE parameters | expr)
- | NODETYPE parameters '.' INOUTID '=' (NODETYPE parameters | expr)
- ;
-
 
 connectionstmt
- : ('<' (ID | declarationstmt) (',' (ID | declarationstmt))* '>' | (ID | declarationstmt)) (CONNECT ('<' (ID | declarationstmt) (',' (ID | declarationstmt))* '>' | (ID | declarationstmt)))+
+ : ('<' ID (',' ID)* '>' | ID) (CONNECT ('<' ID (',' ID)* '>' | ID))+
  | ('<' ID (',' ID)* '>' | ID) (DISCONNECT ('<' ID (',' ID)* '>' | ID))+
- ;
-
-recallstmt
- : RECALL ID TO ID '{' NL (stmt | subblockstmt)* '}' 
  ;
 
 
@@ -68,14 +59,16 @@ ifstmt
  ;
 
 forstmt
- : FOR INTEGER 'rounds do' ':' suite END
+ : FOR INTEGER 'rounds do' ':' NL stmt+ END
  ;
 
+subblockstmt
+ : SUBBLOCK ID '{' NL stmt* '}' NL
+ ;
 
 suite
- : NL stmt+ 
+ : INDENT stmt+ DEDENT
  ;
-
 
 expr
  : expr ('*'|'/') expr
@@ -85,15 +78,15 @@ expr
  | expr (EQ | NOT_EQ | '>' | '>=' | '<' | '<=' ) expr
  | expr (AND | OR) expr
  | NUMBER
- | SYMBOL
+ | STRING
  | ID
- | NODETYPE parameters
  | L_PAREN expr R_PAREN
  ;
 
 /*
 * lexer rules
 */
+
 
 //keywords
 
@@ -112,8 +105,6 @@ BREAK : 'break' ;
 CONTINUE : 'continue' ;
 PASS : 'pass' ;
 END : 'end' ;
-RECALL : 'recall' ;
-TO : 'to' ;
 
 //punctuation
 
@@ -135,10 +126,7 @@ DIV : '/' ;
 MOD : '%' ;
 OR : '||' ;
 AND : '&&' ;
-SIGMINUS : '-~' ;
-SIGPLUS : '+~' ;
-SIGDIV : '/~' ;
-SIGSTAR : '*~' ;
+
 
 NODETYPE
  : 'array'
@@ -150,14 +138,15 @@ NODETYPE
  | 'object'
  ;
 
+PARAMETERS : L_PAREN LIST? R_PAREN ;
+SINGLE_PARAM : ID '.' ID ;
 
-INOUTID : '$' '-'? DIGIT ;
 ID : ID_START ID_CONTINUE* ;
-SYMBOL : '\'' LETTER* '\'' ;
+STRING : '\'' LETTER* '\'' ;
 NUMBER : INTEGER | FLOAT ;
 INTEGER : NON_ZERO_DIGIT DIGIT* | '0'+ ;
 FLOAT : INTEGER? '.' INTEGER ;
-
+LIST : (STRING | NUMBER) (',' (STRING | NUMBER))* ;
 
 fragment LETTER : [a-zA-Z] ;
 fragment DIGIT : [0-9] ;
@@ -165,6 +154,6 @@ fragment NON_ZERO_DIGIT : [1-9] ;
 fragment ID_START : '_' | LETTER ;
 fragment ID_CONTINUE : LETTER | DIGIT ;
 
-NL : '\r'? '\n';
+NL: ('\r'? '\n' ' '*);
 WS : [ \t]+ -> skip ;
 COMMENT : '#' ~[\r\n]* -> skip ;
