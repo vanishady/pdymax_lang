@@ -7,7 +7,6 @@ else:
 
 # This class defines a complete generic visitor for a parse tree produced by SimpleParser.
 
-
 class SimpleVisitor(ParseTreeVisitor):
 
     def __init__(self):
@@ -18,8 +17,12 @@ class SimpleVisitor(ParseTreeVisitor):
         output.write(initline+'\r\n')
         #initialize memory as a dict
         self.memory = {}
+        self.args=[]
         self.posx=0
         self.posy=0
+
+    def printmemo(self):
+        return self.memory
 
     def switchnodetype(self, nodetype, x_pos=None, y_pos=None):
         #based on nodetype, return line to write to pd, including
@@ -86,6 +89,8 @@ class SimpleVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by SimpleParser#arg.
     def visitArg(self, ctx:SimpleParser.ArgContext):
+        self.args.append(ctx.NUMBER().getText())
+        self.memory['args']=(self.args)
         return self.visitChildren(ctx)
 
 

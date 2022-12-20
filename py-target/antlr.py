@@ -9,10 +9,18 @@ from antlr4.tree.Tree import ParseTreeWalker
 from antlr4.error.ErrorListener import ErrorListener
 from SimpleVisitor import SimpleVisitor
 
+
+
 class PrintListener(SimpleListener):
     def exitEveryRule(self, ctx):
         print(ctx.start, ctx.stop, SimpleParser.ruleNames[ctx.getRuleIndex()])
 
+    def exitDeclarationstmt(self, ctx):
+        print('DIOHHAHAAAA')
+        print(visitor.printmemo())
+
+
+    
 class PrintLexerErrorListener(ErrorListener):
     def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
         print(f'Lexer error: {line=}, {column=}, {msg=}, exception={e}')
@@ -25,14 +33,14 @@ class PrintParserErrorListener(ErrorListener):
 ### LEXER AND PARSER WORK###
 
 lexer = SimpleLexer(FileStream('input2.txt'))
-lexer.removeErrorListeners()
-lexer.addErrorListener(PrintLexerErrorListener())
+#lexer.removeErrorListeners()
+#lexer.addErrorListener(PrintLexerErrorListener())
 
 stream = CommonTokenStream(lexer)
 
 parser = SimpleParser(stream)
-parser.removeErrorListeners()
-parser.addErrorListener(PrintParserErrorListener())
+#parser.removeErrorListeners()
+#parser.addErrorListener(PrintParserErrorListener())
 
 tree = None
 tree = parser.prog()
@@ -42,6 +50,9 @@ visitor = SimpleVisitor()
 visitor.visit(tree)
 
 listener = PrintListener()
-ParseTreeWalker.DEFAULT.walk(listener, tree)
+walker = ParseTreeWalker()
+walker.walk(listener, tree)
+
+
 
 
