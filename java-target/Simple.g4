@@ -4,7 +4,7 @@ grammar Simple;
 * parser rules
 */
 
-prog: (INCLUDE ID NL)* PATCH ID NL (blockstmt|stmt)+ ;
+prog: (INCLUDE ID NL)* PATCH ID NL (blockstmt|stmt)+ ';';
 
 blockstmt
  : BLOCK ID '{' NL (stmt | subblockstmt)* '}' NL
@@ -39,7 +39,7 @@ parameters
  ;
 
 typedargslist
- : arg (',' arg)* (',' INOUTID '=' (NODETYPE parameters | expr) )*
+ : arg (',' arg)* (',' INOUTID '=' (NODETYPE parameters | expr)  )*
  ;
 
 arg

@@ -23,7 +23,13 @@ block bpm {
 	subblock technobpm {
 		a = array()
 		if 1==2:
-    			pass
+    			if 2==2:
+				pass
+			elif 2==3:
+				continue
+			else:
+				message()
+			end
 		else:
     			continue
 		end
@@ -35,3 +41,4 @@ block bpm {
 		numbernode = 9*array(10)
 	}
 }
+;
