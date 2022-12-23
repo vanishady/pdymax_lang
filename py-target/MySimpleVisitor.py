@@ -32,7 +32,7 @@ class MySimpleVisitor(SimpleVisitor):
 
     def writetofile(self, line):
         output = open('output.pd', 'a')
-        output.write('#' + str(line) +'\r\n;')
+        output.write('#' + str(line) +';\r\n')
 
     def positionalg(self):
         self.posx+= 40

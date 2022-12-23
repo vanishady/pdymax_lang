@@ -1,5 +1,4 @@
-#X msg 40 40 heregoargs
-;#X obj 80 80 heregoargs
-;#X obj 120 120 heregoargs
-;#X msg 160 160 ancora da implementare!!!
-;
+#X msg 40 40 heregoargs;
+#X obj 80 80 heregoargs;
+#X obj 120 120 heregoargs;
+#X msg 160 160 ancora da implementare!!!;
