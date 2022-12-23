@@ -2,12 +2,43 @@
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .SimpleParser import SimpleParser
+    from .SimpleVisitor import SimpleVisitor
 else:
     from SimpleParser import SimpleParser
+    from SimpleVisitor import SimpleVisitor
+
 
 # This class defines a complete generic visitor for a parse tree produced by SimpleParser.
 
-class SimpleVisitor(ParseTreeVisitor):
+class MySimpleVisitor(SimpleVisitor):
+
+    def __init__(self):
+        output = open('output.pd', 'w')
+        self.memory = {}
+        self.varcount = 0
+        self.posx = 0
+        self.posy = 0
+
+    def printmemo(self, count):
+        return self.memory[count]
+
+    def composestring(self, nt, xpos, ypos):
+        if nt == 'message':
+            return f'X msg {xpos} {ypos} heregoargs'
+        elif nt == 'object':
+            return f'X obj {xpos} {ypos} heregoargs'
+        else:
+            return f'X msg {xpos} {ypos} ancora da implementare!!!'
+
+    def writetofile(self, line):
+        output = open('output.pd', 'a')
+        output.write('#' + str(line) +'\r\n;')
+
+    def positionalg(self):
+        self.posx+= 40
+        self.posy+= 40
+        self.memory[self.varcount]. append((self.posx, self.posy))
+        return self.posx, self.posy
 
     # Visit a parse tree produced by SimpleParser#prog.
     def visitProg(self, ctx:SimpleParser.ProgContext):
@@ -31,6 +62,27 @@ class SimpleVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by SimpleParser#declarationstmt.
     def visitDeclarationstmt(self, ctx:SimpleParser.DeclarationstmtContext):
+        self.varcount+=1
+        if ctx.ID():
+            name = ctx.ID().getText()
+            #ID = NODETYPE parameters
+            if ctx.NODETYPE():
+                nt = ctx.NODETYPE().getText()
+            else:
+                # ID = expr
+                nt = None
+        else:
+            #NODETYPE parameters
+            name = str(self.varcount)
+            nt = ctx.NODETYPE().getText()
+        self.memory[self.varcount]=[name,nt]
+
+        #positional algorithm > spostare nel Listener - exitStmt??
+        x,y = self.positionalg()
+
+        #write node to file > spostare nel Listener??
+        self.writetofile(self.composestring(nt,x,y))
+        
         return self.visitChildren(ctx)
 
 
@@ -46,6 +98,12 @@ class SimpleVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by SimpleParser#arg.
     def visitArg(self, ctx:SimpleParser.ArgContext):
+        if ctx.NUMBER():
+            self.memory[self.varcount].append(ctx.NUMBER().getText())
+        elif ctx.SYMBOL():
+            self.memory[self.varcount].append(ctx.SYMBOL().getText())
+        else:
+            print('unexpecter type: args are only number or symbol')
         return self.visitChildren(ctx)
 
 

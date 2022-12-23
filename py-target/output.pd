@@ -1,3 +1,5 @@
-#N canvas 676 0 1366 725 12;
-#X msg 40 40 tryharda;
-#X obj 80 80  *1;
+#X msg 40 40 heregoargs
+;#X obj 80 80 heregoargs
+;#X obj 120 120 heregoargs
+;#X msg 160 160 ancora da implementare!!!
+;

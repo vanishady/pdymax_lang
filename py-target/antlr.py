@@ -7,7 +7,7 @@ from SimpleParser import SimpleParser
 from SimpleListener import SimpleListener
 from antlr4.tree.Tree import ParseTreeWalker
 from antlr4.error.ErrorListener import ErrorListener
-from SimpleVisitor import SimpleVisitor
+from MySimpleVisitor import MySimpleVisitor
 
 
 
@@ -16,9 +16,7 @@ class PrintListener(SimpleListener):
         print(ctx.start, ctx.stop, SimpleParser.ruleNames[ctx.getRuleIndex()])
 
     def exitDeclarationstmt(self, ctx):
-        print('DIOHHAHAAAA')
-        print(visitor.printmemo())
-
+        print('wow i see light')
 
     
 class PrintLexerErrorListener(ErrorListener):
@@ -46,12 +44,15 @@ tree = None
 tree = parser.prog()
 #print(tree.toStringTree(recog = parser))
 
-visitor = SimpleVisitor()
+visitor = MySimpleVisitor()
 visitor.visit(tree)
 
-listener = PrintListener()
-walker = ParseTreeWalker()
-walker.walk(listener, tree)
+for c in visitor.memory:
+            print(visitor.printmemo(c))
+
+#listener = PrintListener()
+#walker = ParseTreeWalker()
+#walker.walk(listener, tree)
 
 
 

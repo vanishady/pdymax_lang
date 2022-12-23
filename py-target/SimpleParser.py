@@ -10,7 +10,7 @@ else:
 
 def serializedATN():
     return [
-        4,1,57,331,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,57,325,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
         2,14,7,14,1,0,1,0,1,0,5,0,34,8,0,10,0,12,0,37,9,0,1,0,1,0,1,0,1,
         0,1,0,4,0,44,8,0,11,0,12,0,45,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,5,
@@ -34,103 +34,101 @@ def serializedATN():
         11,1,11,1,11,3,11,279,8,11,1,11,1,11,1,12,1,12,1,12,1,12,1,12,1,
         12,1,12,1,13,1,13,4,13,292,8,13,11,13,12,13,293,1,14,1,14,1,14,1,
         14,1,14,1,14,1,14,1,14,1,14,1,14,3,14,306,8,14,1,14,1,14,1,14,1,
-        14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,
-        14,1,14,5,14,326,8,14,10,14,12,14,329,9,14,1,14,0,1,28,15,0,2,4,
-        6,8,10,12,14,16,18,20,22,24,26,28,0,5,1,0,51,52,1,0,39,40,1,0,36,
-        37,2,0,7,8,32,35,1,0,42,43,371,0,35,1,0,0,0,2,49,1,0,0,0,4,63,1,
-        0,0,0,6,101,1,0,0,0,8,112,1,0,0,0,10,114,1,0,0,0,12,120,1,0,0,0,
-        14,141,1,0,0,0,16,162,1,0,0,0,18,244,1,0,0,0,20,246,1,0,0,0,22,261,
-        1,0,0,0,24,282,1,0,0,0,26,289,1,0,0,0,28,305,1,0,0,0,30,31,5,10,
-        0,0,31,32,5,50,0,0,32,34,5,55,0,0,33,30,1,0,0,0,34,37,1,0,0,0,35,
-        33,1,0,0,0,35,36,1,0,0,0,36,38,1,0,0,0,37,35,1,0,0,0,38,39,5,9,0,
-        0,39,40,5,50,0,0,40,43,5,55,0,0,41,44,3,2,1,0,42,44,3,6,3,0,43,41,
-        1,0,0,0,43,42,1,0,0,0,44,45,1,0,0,0,45,43,1,0,0,0,45,46,1,0,0,0,
-        46,47,1,0,0,0,47,48,5,1,0,0,48,1,1,0,0,0,49,50,5,11,0,0,50,51,5,
-        50,0,0,51,52,5,28,0,0,52,57,5,55,0,0,53,56,3,6,3,0,54,56,3,4,2,0,
-        55,53,1,0,0,0,55,54,1,0,0,0,56,59,1,0,0,0,57,55,1,0,0,0,57,58,1,
-        0,0,0,58,60,1,0,0,0,59,57,1,0,0,0,60,61,5,29,0,0,61,62,5,55,0,0,
-        62,3,1,0,0,0,63,64,5,12,0,0,64,65,5,50,0,0,65,66,5,28,0,0,66,70,
-        5,55,0,0,67,69,3,6,3,0,68,67,1,0,0,0,69,72,1,0,0,0,70,68,1,0,0,0,
-        70,71,1,0,0,0,71,73,1,0,0,0,72,70,1,0,0,0,73,74,5,29,0,0,74,75,5,
-        55,0,0,75,5,1,0,0,0,76,77,3,8,4,0,77,78,5,55,0,0,78,102,1,0,0,0,
-        79,80,3,16,8,0,80,81,5,55,0,0,81,102,1,0,0,0,82,83,3,18,9,0,83,84,
-        5,55,0,0,84,102,1,0,0,0,85,86,3,20,10,0,86,87,5,55,0,0,87,102,1,
-        0,0,0,88,89,3,22,11,0,89,90,5,55,0,0,90,102,1,0,0,0,91,92,3,24,12,
-        0,92,93,5,55,0,0,93,102,1,0,0,0,94,95,5,20,0,0,95,102,5,55,0,0,96,
-        97,5,21,0,0,97,102,5,55,0,0,98,99,5,22,0,0,99,102,5,55,0,0,100,102,
-        5,55,0,0,101,76,1,0,0,0,101,79,1,0,0,0,101,82,1,0,0,0,101,85,1,0,
-        0,0,101,88,1,0,0,0,101,91,1,0,0,0,101,94,1,0,0,0,101,96,1,0,0,0,
-        101,98,1,0,0,0,101,100,1,0,0,0,102,7,1,0,0,0,103,104,5,50,0,0,104,
-        105,5,2,0,0,105,106,5,48,0,0,106,113,3,10,5,0,107,108,5,50,0,0,108,
-        109,5,2,0,0,109,113,3,28,14,0,110,111,5,48,0,0,111,113,3,10,5,0,
-        112,103,1,0,0,0,112,107,1,0,0,0,112,110,1,0,0,0,113,9,1,0,0,0,114,
-        116,5,26,0,0,115,117,3,12,6,0,116,115,1,0,0,0,116,117,1,0,0,0,117,
-        118,1,0,0,0,118,119,5,27,0,0,119,11,1,0,0,0,120,125,3,14,7,0,121,
-        122,5,3,0,0,122,124,3,14,7,0,123,121,1,0,0,0,124,127,1,0,0,0,125,
-        123,1,0,0,0,125,126,1,0,0,0,126,138,1,0,0,0,127,125,1,0,0,0,128,
-        129,5,3,0,0,129,130,5,49,0,0,130,134,5,2,0,0,131,132,5,48,0,0,132,
-        135,3,10,5,0,133,135,3,28,14,0,134,131,1,0,0,0,134,133,1,0,0,0,135,
-        137,1,0,0,0,136,128,1,0,0,0,137,140,1,0,0,0,138,136,1,0,0,0,138,
-        139,1,0,0,0,139,13,1,0,0,0,140,138,1,0,0,0,141,142,7,0,0,0,142,15,
-        1,0,0,0,143,144,5,50,0,0,144,145,5,4,0,0,145,146,5,49,0,0,146,150,
-        5,2,0,0,147,148,5,48,0,0,148,151,3,10,5,0,149,151,3,28,14,0,150,
-        147,1,0,0,0,150,149,1,0,0,0,151,163,1,0,0,0,152,153,5,48,0,0,153,
-        154,3,10,5,0,154,155,5,4,0,0,155,156,5,49,0,0,156,160,5,2,0,0,157,
-        158,5,48,0,0,158,161,3,10,5,0,159,161,3,28,14,0,160,157,1,0,0,0,
-        160,159,1,0,0,0,161,163,1,0,0,0,162,143,1,0,0,0,162,152,1,0,0,0,
-        163,17,1,0,0,0,164,167,5,32,0,0,165,168,5,50,0,0,166,168,3,8,4,0,
-        167,165,1,0,0,0,167,166,1,0,0,0,168,176,1,0,0,0,169,172,5,3,0,0,
-        170,173,5,50,0,0,171,173,3,8,4,0,172,170,1,0,0,0,172,171,1,0,0,0,
-        173,175,1,0,0,0,174,169,1,0,0,0,175,178,1,0,0,0,176,174,1,0,0,0,
-        176,177,1,0,0,0,177,179,1,0,0,0,178,176,1,0,0,0,179,185,5,33,0,0,
-        180,183,5,50,0,0,181,183,3,8,4,0,182,180,1,0,0,0,182,181,1,0,0,0,
-        183,185,1,0,0,0,184,164,1,0,0,0,184,182,1,0,0,0,185,209,1,0,0,0,
-        186,207,5,13,0,0,187,190,5,32,0,0,188,191,5,50,0,0,189,191,3,8,4,
-        0,190,188,1,0,0,0,190,189,1,0,0,0,191,199,1,0,0,0,192,195,5,3,0,
-        0,193,196,5,50,0,0,194,196,3,8,4,0,195,193,1,0,0,0,195,194,1,0,0,
-        0,196,198,1,0,0,0,197,192,1,0,0,0,198,201,1,0,0,0,199,197,1,0,0,
-        0,199,200,1,0,0,0,200,202,1,0,0,0,201,199,1,0,0,0,202,208,5,33,0,
-        0,203,206,5,50,0,0,204,206,3,8,4,0,205,203,1,0,0,0,205,204,1,0,0,
-        0,206,208,1,0,0,0,207,187,1,0,0,0,207,205,1,0,0,0,208,210,1,0,0,
-        0,209,186,1,0,0,0,210,211,1,0,0,0,211,209,1,0,0,0,211,212,1,0,0,
-        0,212,245,1,0,0,0,213,214,5,32,0,0,214,219,5,50,0,0,215,216,5,3,
-        0,0,216,218,5,50,0,0,217,215,1,0,0,0,218,221,1,0,0,0,219,217,1,0,
-        0,0,219,220,1,0,0,0,220,222,1,0,0,0,221,219,1,0,0,0,222,225,5,33,
-        0,0,223,225,5,50,0,0,224,213,1,0,0,0,224,223,1,0,0,0,225,240,1,0,
-        0,0,226,238,5,14,0,0,227,228,5,32,0,0,228,233,5,50,0,0,229,230,5,
-        3,0,0,230,232,5,50,0,0,231,229,1,0,0,0,232,235,1,0,0,0,233,231,1,
-        0,0,0,233,234,1,0,0,0,234,236,1,0,0,0,235,233,1,0,0,0,236,239,5,
-        33,0,0,237,239,5,50,0,0,238,227,1,0,0,0,238,237,1,0,0,0,239,241,
-        1,0,0,0,240,226,1,0,0,0,241,242,1,0,0,0,242,240,1,0,0,0,242,243,
-        1,0,0,0,243,245,1,0,0,0,244,184,1,0,0,0,244,224,1,0,0,0,245,19,1,
-        0,0,0,246,247,5,24,0,0,247,248,5,50,0,0,248,249,5,25,0,0,249,250,
-        5,50,0,0,250,251,5,28,0,0,251,256,5,55,0,0,252,255,3,6,3,0,253,255,
-        3,4,2,0,254,252,1,0,0,0,254,253,1,0,0,0,255,258,1,0,0,0,256,254,
-        1,0,0,0,256,257,1,0,0,0,257,259,1,0,0,0,258,256,1,0,0,0,259,260,
-        5,29,0,0,260,21,1,0,0,0,261,262,5,15,0,0,262,263,3,28,14,0,263,264,
-        5,5,0,0,264,272,3,26,13,0,265,266,5,16,0,0,266,267,3,28,14,0,267,
-        268,5,5,0,0,268,269,3,26,13,0,269,271,1,0,0,0,270,265,1,0,0,0,271,
-        274,1,0,0,0,272,270,1,0,0,0,272,273,1,0,0,0,273,278,1,0,0,0,274,
-        272,1,0,0,0,275,276,5,17,0,0,276,277,5,5,0,0,277,279,3,26,13,0,278,
-        275,1,0,0,0,278,279,1,0,0,0,279,280,1,0,0,0,280,281,5,23,0,0,281,
-        23,1,0,0,0,282,283,5,18,0,0,283,284,5,53,0,0,284,285,5,6,0,0,285,
-        286,5,5,0,0,286,287,3,26,13,0,287,288,5,23,0,0,288,25,1,0,0,0,289,
-        291,5,55,0,0,290,292,3,6,3,0,291,290,1,0,0,0,292,293,1,0,0,0,293,
-        291,1,0,0,0,293,294,1,0,0,0,294,27,1,0,0,0,295,296,6,14,-1,0,296,
-        306,5,52,0,0,297,306,5,51,0,0,298,306,5,50,0,0,299,300,5,48,0,0,
-        300,306,3,10,5,0,301,302,5,26,0,0,302,303,3,28,14,0,303,304,5,27,
-        0,0,304,306,1,0,0,0,305,295,1,0,0,0,305,297,1,0,0,0,305,298,1,0,
-        0,0,305,299,1,0,0,0,305,301,1,0,0,0,306,327,1,0,0,0,307,308,10,11,
-        0,0,308,309,7,1,0,0,309,326,3,28,14,12,310,311,10,10,0,0,311,312,
-        7,2,0,0,312,326,3,28,14,11,313,314,10,9,0,0,314,315,5,38,0,0,315,
-        326,3,28,14,10,316,317,10,8,0,0,317,318,5,41,0,0,318,326,3,28,14,
-        9,319,320,10,7,0,0,320,321,7,3,0,0,321,326,3,28,14,8,322,323,10,
-        6,0,0,323,324,7,4,0,0,324,326,3,28,14,7,325,307,1,0,0,0,325,310,
-        1,0,0,0,325,313,1,0,0,0,325,316,1,0,0,0,325,319,1,0,0,0,325,322,
-        1,0,0,0,326,329,1,0,0,0,327,325,1,0,0,0,327,328,1,0,0,0,328,29,1,
-        0,0,0,329,327,1,0,0,0,40,35,43,45,55,57,70,101,112,116,125,134,138,
-        150,160,162,167,172,176,182,184,190,195,199,205,207,211,219,224,
-        233,238,242,244,254,256,272,278,293,305,325,327
+        14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,5,14,320,8,14,10,14,12,
+        14,323,9,14,1,14,0,1,28,15,0,2,4,6,8,10,12,14,16,18,20,22,24,26,
+        28,0,5,1,0,51,52,1,0,39,40,1,0,36,37,2,0,7,8,32,35,1,0,42,43,363,
+        0,35,1,0,0,0,2,49,1,0,0,0,4,63,1,0,0,0,6,101,1,0,0,0,8,112,1,0,0,
+        0,10,114,1,0,0,0,12,120,1,0,0,0,14,141,1,0,0,0,16,162,1,0,0,0,18,
+        244,1,0,0,0,20,246,1,0,0,0,22,261,1,0,0,0,24,282,1,0,0,0,26,289,
+        1,0,0,0,28,305,1,0,0,0,30,31,5,10,0,0,31,32,5,50,0,0,32,34,5,55,
+        0,0,33,30,1,0,0,0,34,37,1,0,0,0,35,33,1,0,0,0,35,36,1,0,0,0,36,38,
+        1,0,0,0,37,35,1,0,0,0,38,39,5,9,0,0,39,40,5,50,0,0,40,43,5,55,0,
+        0,41,44,3,2,1,0,42,44,3,6,3,0,43,41,1,0,0,0,43,42,1,0,0,0,44,45,
+        1,0,0,0,45,43,1,0,0,0,45,46,1,0,0,0,46,47,1,0,0,0,47,48,5,1,0,0,
+        48,1,1,0,0,0,49,50,5,11,0,0,50,51,5,50,0,0,51,52,5,28,0,0,52,57,
+        5,55,0,0,53,56,3,6,3,0,54,56,3,4,2,0,55,53,1,0,0,0,55,54,1,0,0,0,
+        56,59,1,0,0,0,57,55,1,0,0,0,57,58,1,0,0,0,58,60,1,0,0,0,59,57,1,
+        0,0,0,60,61,5,29,0,0,61,62,5,55,0,0,62,3,1,0,0,0,63,64,5,12,0,0,
+        64,65,5,50,0,0,65,66,5,28,0,0,66,70,5,55,0,0,67,69,3,6,3,0,68,67,
+        1,0,0,0,69,72,1,0,0,0,70,68,1,0,0,0,70,71,1,0,0,0,71,73,1,0,0,0,
+        72,70,1,0,0,0,73,74,5,29,0,0,74,75,5,55,0,0,75,5,1,0,0,0,76,77,3,
+        8,4,0,77,78,5,55,0,0,78,102,1,0,0,0,79,80,3,16,8,0,80,81,5,55,0,
+        0,81,102,1,0,0,0,82,83,3,18,9,0,83,84,5,55,0,0,84,102,1,0,0,0,85,
+        86,3,20,10,0,86,87,5,55,0,0,87,102,1,0,0,0,88,89,3,22,11,0,89,90,
+        5,55,0,0,90,102,1,0,0,0,91,92,3,24,12,0,92,93,5,55,0,0,93,102,1,
+        0,0,0,94,95,5,20,0,0,95,102,5,55,0,0,96,97,5,21,0,0,97,102,5,55,
+        0,0,98,99,5,22,0,0,99,102,5,55,0,0,100,102,5,55,0,0,101,76,1,0,0,
+        0,101,79,1,0,0,0,101,82,1,0,0,0,101,85,1,0,0,0,101,88,1,0,0,0,101,
+        91,1,0,0,0,101,94,1,0,0,0,101,96,1,0,0,0,101,98,1,0,0,0,101,100,
+        1,0,0,0,102,7,1,0,0,0,103,104,5,50,0,0,104,105,5,2,0,0,105,106,5,
+        48,0,0,106,113,3,10,5,0,107,108,5,50,0,0,108,109,5,2,0,0,109,113,
+        3,28,14,0,110,111,5,48,0,0,111,113,3,10,5,0,112,103,1,0,0,0,112,
+        107,1,0,0,0,112,110,1,0,0,0,113,9,1,0,0,0,114,116,5,26,0,0,115,117,
+        3,12,6,0,116,115,1,0,0,0,116,117,1,0,0,0,117,118,1,0,0,0,118,119,
+        5,27,0,0,119,11,1,0,0,0,120,125,3,14,7,0,121,122,5,3,0,0,122,124,
+        3,14,7,0,123,121,1,0,0,0,124,127,1,0,0,0,125,123,1,0,0,0,125,126,
+        1,0,0,0,126,138,1,0,0,0,127,125,1,0,0,0,128,129,5,3,0,0,129,130,
+        5,49,0,0,130,134,5,2,0,0,131,132,5,48,0,0,132,135,3,10,5,0,133,135,
+        3,28,14,0,134,131,1,0,0,0,134,133,1,0,0,0,135,137,1,0,0,0,136,128,
+        1,0,0,0,137,140,1,0,0,0,138,136,1,0,0,0,138,139,1,0,0,0,139,13,1,
+        0,0,0,140,138,1,0,0,0,141,142,7,0,0,0,142,15,1,0,0,0,143,144,5,50,
+        0,0,144,145,5,4,0,0,145,146,5,49,0,0,146,150,5,2,0,0,147,148,5,48,
+        0,0,148,151,3,10,5,0,149,151,3,28,14,0,150,147,1,0,0,0,150,149,1,
+        0,0,0,151,163,1,0,0,0,152,153,5,48,0,0,153,154,3,10,5,0,154,155,
+        5,4,0,0,155,156,5,49,0,0,156,160,5,2,0,0,157,158,5,48,0,0,158,161,
+        3,10,5,0,159,161,3,28,14,0,160,157,1,0,0,0,160,159,1,0,0,0,161,163,
+        1,0,0,0,162,143,1,0,0,0,162,152,1,0,0,0,163,17,1,0,0,0,164,167,5,
+        32,0,0,165,168,5,50,0,0,166,168,3,8,4,0,167,165,1,0,0,0,167,166,
+        1,0,0,0,168,176,1,0,0,0,169,172,5,3,0,0,170,173,5,50,0,0,171,173,
+        3,8,4,0,172,170,1,0,0,0,172,171,1,0,0,0,173,175,1,0,0,0,174,169,
+        1,0,0,0,175,178,1,0,0,0,176,174,1,0,0,0,176,177,1,0,0,0,177,179,
+        1,0,0,0,178,176,1,0,0,0,179,185,5,33,0,0,180,183,5,50,0,0,181,183,
+        3,8,4,0,182,180,1,0,0,0,182,181,1,0,0,0,183,185,1,0,0,0,184,164,
+        1,0,0,0,184,182,1,0,0,0,185,209,1,0,0,0,186,207,5,13,0,0,187,190,
+        5,32,0,0,188,191,5,50,0,0,189,191,3,8,4,0,190,188,1,0,0,0,190,189,
+        1,0,0,0,191,199,1,0,0,0,192,195,5,3,0,0,193,196,5,50,0,0,194,196,
+        3,8,4,0,195,193,1,0,0,0,195,194,1,0,0,0,196,198,1,0,0,0,197,192,
+        1,0,0,0,198,201,1,0,0,0,199,197,1,0,0,0,199,200,1,0,0,0,200,202,
+        1,0,0,0,201,199,1,0,0,0,202,208,5,33,0,0,203,206,5,50,0,0,204,206,
+        3,8,4,0,205,203,1,0,0,0,205,204,1,0,0,0,206,208,1,0,0,0,207,187,
+        1,0,0,0,207,205,1,0,0,0,208,210,1,0,0,0,209,186,1,0,0,0,210,211,
+        1,0,0,0,211,209,1,0,0,0,211,212,1,0,0,0,212,245,1,0,0,0,213,214,
+        5,32,0,0,214,219,5,50,0,0,215,216,5,3,0,0,216,218,5,50,0,0,217,215,
+        1,0,0,0,218,221,1,0,0,0,219,217,1,0,0,0,219,220,1,0,0,0,220,222,
+        1,0,0,0,221,219,1,0,0,0,222,225,5,33,0,0,223,225,5,50,0,0,224,213,
+        1,0,0,0,224,223,1,0,0,0,225,240,1,0,0,0,226,238,5,14,0,0,227,228,
+        5,32,0,0,228,233,5,50,0,0,229,230,5,3,0,0,230,232,5,50,0,0,231,229,
+        1,0,0,0,232,235,1,0,0,0,233,231,1,0,0,0,233,234,1,0,0,0,234,236,
+        1,0,0,0,235,233,1,0,0,0,236,239,5,33,0,0,237,239,5,50,0,0,238,227,
+        1,0,0,0,238,237,1,0,0,0,239,241,1,0,0,0,240,226,1,0,0,0,241,242,
+        1,0,0,0,242,240,1,0,0,0,242,243,1,0,0,0,243,245,1,0,0,0,244,184,
+        1,0,0,0,244,224,1,0,0,0,245,19,1,0,0,0,246,247,5,24,0,0,247,248,
+        5,50,0,0,248,249,5,25,0,0,249,250,5,50,0,0,250,251,5,28,0,0,251,
+        256,5,55,0,0,252,255,3,6,3,0,253,255,3,4,2,0,254,252,1,0,0,0,254,
+        253,1,0,0,0,255,258,1,0,0,0,256,254,1,0,0,0,256,257,1,0,0,0,257,
+        259,1,0,0,0,258,256,1,0,0,0,259,260,5,29,0,0,260,21,1,0,0,0,261,
+        262,5,15,0,0,262,263,3,28,14,0,263,264,5,5,0,0,264,272,3,26,13,0,
+        265,266,5,16,0,0,266,267,3,28,14,0,267,268,5,5,0,0,268,269,3,26,
+        13,0,269,271,1,0,0,0,270,265,1,0,0,0,271,274,1,0,0,0,272,270,1,0,
+        0,0,272,273,1,0,0,0,273,278,1,0,0,0,274,272,1,0,0,0,275,276,5,17,
+        0,0,276,277,5,5,0,0,277,279,3,26,13,0,278,275,1,0,0,0,278,279,1,
+        0,0,0,279,280,1,0,0,0,280,281,5,23,0,0,281,23,1,0,0,0,282,283,5,
+        18,0,0,283,284,5,53,0,0,284,285,5,6,0,0,285,286,5,5,0,0,286,287,
+        3,26,13,0,287,288,5,23,0,0,288,25,1,0,0,0,289,291,5,55,0,0,290,292,
+        3,6,3,0,291,290,1,0,0,0,292,293,1,0,0,0,293,291,1,0,0,0,293,294,
+        1,0,0,0,294,27,1,0,0,0,295,296,6,14,-1,0,296,306,5,52,0,0,297,306,
+        5,51,0,0,298,306,5,50,0,0,299,300,5,48,0,0,300,306,3,10,5,0,301,
+        302,5,26,0,0,302,303,3,28,14,0,303,304,5,27,0,0,304,306,1,0,0,0,
+        305,295,1,0,0,0,305,297,1,0,0,0,305,298,1,0,0,0,305,299,1,0,0,0,
+        305,301,1,0,0,0,306,321,1,0,0,0,307,308,10,9,0,0,308,309,7,1,0,0,
+        309,320,3,28,14,10,310,311,10,8,0,0,311,312,7,2,0,0,312,320,3,28,
+        14,9,313,314,10,7,0,0,314,315,7,3,0,0,315,320,3,28,14,8,316,317,
+        10,6,0,0,317,318,7,4,0,0,318,320,3,28,14,7,319,307,1,0,0,0,319,310,
+        1,0,0,0,319,313,1,0,0,0,319,316,1,0,0,0,320,323,1,0,0,0,321,319,
+        1,0,0,0,321,322,1,0,0,0,322,29,1,0,0,0,323,321,1,0,0,0,40,35,43,
+        45,55,57,70,101,112,116,125,134,138,150,160,162,167,172,176,182,
+        184,190,195,199,205,207,211,219,224,233,238,242,244,254,256,272,
+        278,293,305,319,321
     ]
 
 class SimpleParser ( Parser ):
@@ -1865,24 +1863,96 @@ class SimpleParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+
+        def getRuleIndex(self):
+            return SimpleParser.RULE_expr
+
+     
+        def copyFrom(self, ctx:ParserRuleContext):
+            super().copyFrom(ctx)
+
+
+    class NumberContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
         def NUMBER(self):
             return self.getToken(SimpleParser.NUMBER, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNumber" ):
+                listener.enterNumber(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNumber" ):
+                listener.exitNumber(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitNumber" ):
+                return visitor.visitNumber(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class SymbolContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
 
         def SYMBOL(self):
             return self.getToken(SimpleParser.SYMBOL, 0)
 
-        def ID(self):
-            return self.getToken(SimpleParser.ID, 0)
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSymbol" ):
+                listener.enterSymbol(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSymbol" ):
+                listener.exitSymbol(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSymbol" ):
+                return visitor.visitSymbol(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class DynamicAssignContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
 
         def NODETYPE(self):
             return self.getToken(SimpleParser.NODETYPE, 0)
-
         def parameters(self):
             return self.getTypedRuleContext(SimpleParser.ParametersContext,0)
 
 
-        def L_PAREN(self):
-            return self.getToken(SimpleParser.L_PAREN, 0)
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDynamicAssign" ):
+                listener.enterDynamicAssign(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDynamicAssign" ):
+                listener.exitDynamicAssign(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitDynamicAssign" ):
+                return visitor.visitDynamicAssign(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class MulDivContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.ExprContext
+            super().__init__(parser)
+            self.op = None # Token
+            self.copyFrom(ctx)
 
         def expr(self, i:int=None):
             if i is None:
@@ -1890,60 +1960,176 @@ class SimpleParser ( Parser ):
             else:
                 return self.getTypedRuleContext(SimpleParser.ExprContext,i)
 
+        def STAR(self):
+            return self.getToken(SimpleParser.STAR, 0)
+        def DIV(self):
+            return self.getToken(SimpleParser.DIV, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMulDiv" ):
+                listener.enterMulDiv(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMulDiv" ):
+                listener.exitMulDiv(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitMulDiv" ):
+                return visitor.visitMulDiv(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class AddSubContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.ExprContext
+            super().__init__(parser)
+            self.op = None # Token
+            self.copyFrom(ctx)
+
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(SimpleParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(SimpleParser.ExprContext,i)
+
+        def PLUS(self):
+            return self.getToken(SimpleParser.PLUS, 0)
+        def MINUS(self):
+            return self.getToken(SimpleParser.MINUS, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAddSub" ):
+                listener.enterAddSub(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAddSub" ):
+                listener.exitAddSub(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAddSub" ):
+                return visitor.visitAddSub(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class TestContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(SimpleParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(SimpleParser.ExprContext,i)
+
+        def EQ(self):
+            return self.getToken(SimpleParser.EQ, 0)
+        def NOT_EQ(self):
+            return self.getToken(SimpleParser.NOT_EQ, 0)
+        def R_ANGLE(self):
+            return self.getToken(SimpleParser.R_ANGLE, 0)
+        def L_ANGLE(self):
+            return self.getToken(SimpleParser.L_ANGLE, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTest" ):
+                listener.enterTest(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTest" ):
+                listener.exitTest(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTest" ):
+                return visitor.visitTest(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class ParensContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def L_PAREN(self):
+            return self.getToken(SimpleParser.L_PAREN, 0)
+        def expr(self):
+            return self.getTypedRuleContext(SimpleParser.ExprContext,0)
 
         def R_PAREN(self):
             return self.getToken(SimpleParser.R_PAREN, 0)
 
-        def STAR(self):
-            return self.getToken(SimpleParser.STAR, 0)
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParens" ):
+                listener.enterParens(self)
 
-        def DIV(self):
-            return self.getToken(SimpleParser.DIV, 0)
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParens" ):
+                listener.exitParens(self)
 
-        def PLUS(self):
-            return self.getToken(SimpleParser.PLUS, 0)
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitParens" ):
+                return visitor.visitParens(self)
+            else:
+                return visitor.visitChildren(self)
 
-        def MINUS(self):
-            return self.getToken(SimpleParser.MINUS, 0)
 
-        def POW(self):
-            return self.getToken(SimpleParser.POW, 0)
+    class LogicalContext(ExprContext):
 
-        def MOD(self):
-            return self.getToken(SimpleParser.MOD, 0)
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
 
-        def EQ(self):
-            return self.getToken(SimpleParser.EQ, 0)
-
-        def NOT_EQ(self):
-            return self.getToken(SimpleParser.NOT_EQ, 0)
-
-        def R_ANGLE(self):
-            return self.getToken(SimpleParser.R_ANGLE, 0)
-
-        def L_ANGLE(self):
-            return self.getToken(SimpleParser.L_ANGLE, 0)
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(SimpleParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(SimpleParser.ExprContext,i)
 
         def AND(self):
             return self.getToken(SimpleParser.AND, 0)
-
         def OR(self):
             return self.getToken(SimpleParser.OR, 0)
 
-        def getRuleIndex(self):
-            return SimpleParser.RULE_expr
-
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterExpr" ):
-                listener.enterExpr(self)
+            if hasattr( listener, "enterLogical" ):
+                listener.enterLogical(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitExpr" ):
-                listener.exitExpr(self)
+            if hasattr( listener, "exitLogical" ):
+                listener.exitLogical(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitExpr" ):
-                return visitor.visitExpr(self)
+            if hasattr( visitor, "visitLogical" ):
+                return visitor.visitLogical(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class IdContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def ID(self):
+            return self.getToken(SimpleParser.ID, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterId" ):
+                listener.enterId(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitId" ):
+                listener.exitId(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitId" ):
+                return visitor.visitId(self)
             else:
                 return visitor.visitChildren(self)
 
@@ -1963,24 +2149,40 @@ class SimpleParser ( Parser ):
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [52]:
+                localctx = SimpleParser.NumberContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+
                 self.state = 296
                 self.match(SimpleParser.NUMBER)
                 pass
             elif token in [51]:
+                localctx = SimpleParser.SymbolContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
                 self.state = 297
                 self.match(SimpleParser.SYMBOL)
                 pass
             elif token in [50]:
+                localctx = SimpleParser.IdContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
                 self.state = 298
                 self.match(SimpleParser.ID)
                 pass
             elif token in [48]:
+                localctx = SimpleParser.DynamicAssignContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
                 self.state = 299
                 self.match(SimpleParser.NODETYPE)
                 self.state = 300
                 self.parameters()
                 pass
             elif token in [26]:
+                localctx = SimpleParser.ParensContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
                 self.state = 301
                 self.match(SimpleParser.L_PAREN)
                 self.state = 302
@@ -1992,7 +2194,7 @@ class SimpleParser ( Parser ):
                 raise NoViableAltException(self)
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 327
+            self.state = 321
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,39,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
@@ -2000,111 +2202,85 @@ class SimpleParser ( Parser ):
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 325
+                    self.state = 319
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,38,self._ctx)
                     if la_ == 1:
-                        localctx = SimpleParser.ExprContext(self, _parentctx, _parentState)
+                        localctx = SimpleParser.MulDivContext(self, SimpleParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 307
-                        if not self.precpred(self._ctx, 11):
+                        if not self.precpred(self._ctx, 9):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 11)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 9)")
                         self.state = 308
+                        localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la==39 or _la==40):
-                            self._errHandler.recoverInline(self)
+                            localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
                         self.state = 309
-                        self.expr(12)
+                        self.expr(10)
                         pass
 
                     elif la_ == 2:
-                        localctx = SimpleParser.ExprContext(self, _parentctx, _parentState)
+                        localctx = SimpleParser.AddSubContext(self, SimpleParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 310
-                        if not self.precpred(self._ctx, 10):
+                        if not self.precpred(self._ctx, 8):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 10)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 8)")
                         self.state = 311
+                        localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la==36 or _la==37):
-                            self._errHandler.recoverInline(self)
+                            localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
                         self.state = 312
-                        self.expr(11)
-                        pass
-
-                    elif la_ == 3:
-                        localctx = SimpleParser.ExprContext(self, _parentctx, _parentState)
-                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 313
-                        if not self.precpred(self._ctx, 9):
-                            from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 9)")
-
-                        self.state = 314
-                        self.match(SimpleParser.POW)
-                        self.state = 315
-                        self.expr(10)
-                        pass
-
-                    elif la_ == 4:
-                        localctx = SimpleParser.ExprContext(self, _parentctx, _parentState)
-                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 316
-                        if not self.precpred(self._ctx, 8):
-                            from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 8)")
-
-                        self.state = 317
-                        self.match(SimpleParser.MOD)
-                        self.state = 318
                         self.expr(9)
                         pass
 
-                    elif la_ == 5:
-                        localctx = SimpleParser.ExprContext(self, _parentctx, _parentState)
+                    elif la_ == 3:
+                        localctx = SimpleParser.TestContext(self, SimpleParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 319
+                        self.state = 313
                         if not self.precpred(self._ctx, 7):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 7)")
-                        self.state = 320
+                        self.state = 314
                         _la = self._input.LA(1)
                         if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 64424509824) != 0):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 321
+                        self.state = 315
                         self.expr(8)
                         pass
 
-                    elif la_ == 6:
-                        localctx = SimpleParser.ExprContext(self, _parentctx, _parentState)
+                    elif la_ == 4:
+                        localctx = SimpleParser.LogicalContext(self, SimpleParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 322
+                        self.state = 316
                         if not self.precpred(self._ctx, 6):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
-                        self.state = 323
+                        self.state = 317
                         _la = self._input.LA(1)
                         if not(_la==42 or _la==43):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 324
+                        self.state = 318
                         self.expr(7)
                         pass
 
              
-                self.state = 329
+                self.state = 323
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,39,self._ctx)
 
@@ -2130,26 +2306,18 @@ class SimpleParser ( Parser ):
 
     def expr_sempred(self, localctx:ExprContext, predIndex:int):
             if predIndex == 0:
-                return self.precpred(self._ctx, 11)
-         
-
-            if predIndex == 1:
-                return self.precpred(self._ctx, 10)
-         
-
-            if predIndex == 2:
                 return self.precpred(self._ctx, 9)
          
 
-            if predIndex == 3:
+            if predIndex == 1:
                 return self.precpred(self._ctx, 8)
          
 
-            if predIndex == 4:
+            if predIndex == 2:
                 return self.precpred(self._ctx, 7)
          
 
-            if predIndex == 5:
+            if predIndex == 3:
                 return self.precpred(self._ctx, 6)
          
 
