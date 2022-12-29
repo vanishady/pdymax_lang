@@ -143,15 +143,6 @@ class SimpleListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by SimpleParser#symbol.
-    def enterSymbol(self, ctx:SimpleParser.SymbolContext):
-        pass
-
-    # Exit a parse tree produced by SimpleParser#symbol.
-    def exitSymbol(self, ctx:SimpleParser.SymbolContext):
-        pass
-
-
     # Enter a parse tree produced by SimpleParser#DynamicAssign.
     def enterDynamicAssign(self, ctx:SimpleParser.DynamicAssignContext):
         pass

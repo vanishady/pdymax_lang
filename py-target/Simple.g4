@@ -78,12 +78,11 @@ suite
 
 
 expr
- : expr op=('*'|'/') expr	#MulDiv	
- | expr op=('+'|'-') expr	#AddSub
- | expr (EQ | NOT_EQ | '>' | '>=' | '<' | '<=' ) expr	#Test
+ : expr op=('*'|'/'|'*~'|'/~') expr	#MulDiv	
+ | expr op=('+'|'-'|'+~'|'-~') expr	#AddSub
+ | expr (EQ | NOT_EQ | '>' | '>=' | '<' | '<=' | '%' ) expr	#Test
  | expr (AND | OR) expr	#Logical
  | NUMBER	#number
- | SYMBOL	#symbol
  | ID		#id
  | NODETYPE parameters	#DynamicAssign
  | L_PAREN expr R_PAREN #Parens

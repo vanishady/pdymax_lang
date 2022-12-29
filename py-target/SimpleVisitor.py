@@ -84,11 +84,6 @@ class SimpleVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#symbol.
-    def visitSymbol(self, ctx:SimpleParser.SymbolContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by SimpleParser#DynamicAssign.
     def visitDynamicAssign(self, ctx:SimpleParser.DynamicAssignContext):
         return self.visitChildren(ctx)

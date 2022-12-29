@@ -2,3 +2,5 @@
 #X msg 40 40 3 2 1 ;
 #X obj 80 80 1 ;
 #X obj 120 120 4 4 4 'givenstring' ;
+#X msg 160 160 5 ;
+#X msg 200 200 5 6 5 6 ;

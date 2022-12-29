@@ -133,16 +133,13 @@ class MySimpleVisitor(SimpleVisitor):
 
     # Visit a parse tree produced by SimpleParser#number.
     def visitNumber(self, ctx:SimpleParser.NumberContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by SimpleParser#symbol.
-    def visitSymbol(self, ctx:SimpleParser.SymbolContext):
+        self.memory[self.varcount].append(ctx.NUMBER().getText())
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by SimpleParser#DynamicAssign.
     def visitDynamicAssign(self, ctx:SimpleParser.DynamicAssignContext):
+        #self.visitDeclarationstmt(SimpleParser.DynamicAssignContext)
         return self.visitChildren(ctx)
 
 
@@ -153,6 +150,12 @@ class MySimpleVisitor(SimpleVisitor):
 
     # Visit a parse tree produced by SimpleParser#AddSub.
     def visitAddSub(self, ctx:SimpleParser.AddSubContext):
+        left = self.visit(ctx.expr(0))
+        right = self.visit(ctx.expr(1))
+        print(left)
+        #operator = ctx.op().getText()
+        #if ctx.op.type == SimpleParser.ADD:
+         #   print('+')
         return self.visitChildren(ctx)
 
 

@@ -41,3 +41,4 @@ block bpm {
 		numbernode = 9*array(10)
 	}
 }
+;

@@ -61,7 +61,8 @@ for counter in visitor.memory:
             output = open('output.pd', 'a')
             output.write('#' + str(line) +';\r\n')
             print(line)
-            
+
+output.close()
 
 #listener = PrintListener()
 #walker = ParseTreeWalker()
