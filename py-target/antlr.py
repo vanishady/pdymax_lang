@@ -47,8 +47,21 @@ tree = parser.prog()
 visitor = MySimpleVisitor()
 visitor.visit(tree)
 
-for c in visitor.memory:
-            print(visitor.printmemo(c))
+output = open('output.pd', 'w')
+output.write('#N canvas 676 207 681 509 12 ;\r\n')
+
+for counter in visitor.memory:
+            cmd = visitor.printmemo(counter)
+            line = ''
+            for elem in cmd[1:]:
+                if type(elem) is tuple:
+                    for x in elem:
+                        line+= str(x)+' '
+                else: line+= str(elem)+' '
+            output = open('output.pd', 'a')
+            output.write('#' + str(line) +';\r\n')
+            print(line)
+            
 
 #listener = PrintListener()
 #walker = ParseTreeWalker()

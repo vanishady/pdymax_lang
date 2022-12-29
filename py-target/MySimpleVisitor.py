@@ -13,7 +13,6 @@ else:
 class MySimpleVisitor(SimpleVisitor):
 
     def __init__(self):
-        output = open('output.pd', 'w')
         self.memory = {}
         self.varcount = 0
         self.posx = 0
@@ -22,17 +21,14 @@ class MySimpleVisitor(SimpleVisitor):
     def printmemo(self, count):
         return self.memory[count]
 
-    def composestring(self, nt, xpos, ypos):
+    def switchnodetype (self, nt):
         if nt == 'message':
-            return f'X msg {xpos} {ypos} heregoargs'
+            nt = 'X msg'
         elif nt == 'object':
-            return f'X obj {xpos} {ypos} heregoargs'
+            nt = 'X obj'
         else:
-            return f'X msg {xpos} {ypos} ancora da implementare!!!'
-
-    def writetofile(self, line):
-        output = open('output.pd', 'a')
-        output.write('#' + str(line) +';\r\n')
+            nt = 'X msg'
+        return nt
 
     def positionalg(self):
         self.posx+= 40
@@ -75,13 +71,11 @@ class MySimpleVisitor(SimpleVisitor):
             #NODETYPE parameters
             name = str(self.varcount)
             nt = ctx.NODETYPE().getText()
-        self.memory[self.varcount]=[name,nt]
 
-        #positional algorithm > spostare nel Listener - exitStmt??
+        newnt = self.switchnodetype(nt)
+        self.memory[self.varcount]=[name,newnt]
+
         x,y = self.positionalg()
-
-        #write node to file > spostare nel Listener??
-        self.writetofile(self.composestring(nt,x,y))
         
         return self.visitChildren(ctx)
 
@@ -103,7 +97,7 @@ class MySimpleVisitor(SimpleVisitor):
         elif ctx.SYMBOL():
             self.memory[self.varcount].append(ctx.SYMBOL().getText())
         else:
-            print('unexpecter type: args are only number or symbol')
+            print('unexpected type: args are only number or symbol')
         return self.visitChildren(ctx)
 
 

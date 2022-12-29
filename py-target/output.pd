@@ -1,4 +1,4 @@
-#X msg 40 40 heregoargs;
-#X obj 80 80 heregoargs;
-#X obj 120 120 heregoargs;
-#X msg 160 160 ancora da implementare!!!;
+#N canvas 676 207 681 509 12 ;
+#X msg 40 40 3 2 1 ;
+#X obj 80 80 1 ;
+#X obj 120 120 4 4 4 'givenstring' ;
