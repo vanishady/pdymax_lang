@@ -9,7 +9,14 @@
 #X obj 320 320 555 ;
 #X msg 360 360 'bye' ;
 #X msg 400 400 6 6 6 ;
-#X obj 440 440 + ;
-#X connect 6 0 7 0;
-#X connect 8 0 9 0;
-#X connect 8 0 10 0;
+#X msg 440 440 'byeee' ;
+#X obj 480 480 888 ;
+#X msg 520 520 'imconnected' ;
+#X msg 560 560 'newnode' ;
+#X obj 600 600 * 5 ;
+#X connect 7 0 6 0;
+#X connect 9 0 8 0;
+#X connect 10 0 8 0;
+#X connect 8 0 11 0;
+#X connect 12 0 3 0;
+#X connect 14 0 13 0;

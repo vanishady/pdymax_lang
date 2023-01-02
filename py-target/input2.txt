@@ -9,5 +9,10 @@ o = 5
 other = *8
 other2 = *
 ioletinsidep = message('hi', $1 = 555)
-ioletinside2 = message('bye', $1 = message(6,6,6), $2=+)
+ioletinside2 = message('bye', $1 = message(6,6,6), $1=message('byeee'), $-1=888)
+
+#test ioletdeclstmt
+o.$1 = message('imconnected')
+message('newnode').$1 = *5
+
 ;

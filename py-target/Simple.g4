@@ -57,8 +57,8 @@ ioletinsideparens
  ;
 
 ioletdeclstmt
- : ID '.' INOUTID '=' (NODETYPE parameters | operation)
- | NODETYPE parameters '.' INOUTID '=' (NODETYPE parameters | operation)
+ : ID '.' ioletinsideparens
+ | NODETYPE parameters '.' ioletinsideparens
  ;
 
 

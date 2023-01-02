@@ -18,6 +18,7 @@ class PrintListener(SimpleListener):
     def exitDeclarationstmt(self, ctx):
         print('wow i see light')
 
+
     
 class PrintLexerErrorListener(ErrorListener):
     def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
@@ -49,6 +50,7 @@ visitor.visit(tree)
 
 output = open('output.pd', 'w')
 output.write('#N canvas 676 207 681 509 12 ;\r\n')
+
 
 for counter in visitor.memory:
             cmd = visitor.printmemo(counter)

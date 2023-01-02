@@ -18,6 +18,7 @@ class MySimpleVisitor(SimpleVisitor):
         self.posx = 0
         self.posy = 0
         self.connections = ''
+        self.parent = None
 
     def printmemo(self, count):
         return self.memory[count]
@@ -37,6 +38,25 @@ class MySimpleVisitor(SimpleVisitor):
         self.posy+= 40
         self.memory[self.varcount]. append((self.posx, self.posy))
         return
+
+    def setParent(self, var):
+        self.parent = var
+        return
+
+    def getParent(self):
+        return self.parent
+
+    def getVarcount(self, identifier):
+        for counter in self.memory:
+            if self.memory[counter][0] == identifier:
+                return counter
+        return -1
+
+    def checkVarname(self, identifier):
+        for i in self.memory:
+            if self.memory[i][0] == identifier:
+                return 'bad'
+        return 'ok'
 
     # Visit a parse tree produced by SimpleParser#prog.
     def visitProg(self, ctx:SimpleParser.ProgContext):
@@ -61,8 +81,11 @@ class MySimpleVisitor(SimpleVisitor):
     # Visit a parse tree produced by SimpleParser#declarationstmt.
     def visitDeclarationstmt(self, ctx:SimpleParser.DeclarationstmtContext):
         self.varcount+=1
+        self.setParent(self.varcount)
         if ctx.ID():
             name = ctx.ID().getText()
+            if self.checkVarname(name) == 'bad':
+                raise Exception('cannot reassign variable! var name already used')
             #ID = NODETYPE parameters
             if ctx.NODETYPE():
                 nt = ctx.NODETYPE().getText()
@@ -78,7 +101,6 @@ class MySimpleVisitor(SimpleVisitor):
         self.memory[self.varcount]=[name,newnt]
 
         self.positionalg()
-        
         return self.visitChildren(ctx)
 
 
@@ -122,27 +144,48 @@ class MySimpleVisitor(SimpleVisitor):
     # Visit a parse tree produced by SimpleParser#ioletinsideparens.
     def visitIoletinsideparens(self, ctx:SimpleParser.IoletinsideparensContext):
         self.varcount+=1
+        
         if ctx.NODETYPE():
             #IONOUTID = NODETYPE parameters
             nt = ctx.NODETYPE().getText()
         else:
             #INOUTID = operation
             nt = 'object'
+            
         name = str(self.varcount)
         newnt = self.switchnodetype(nt)
         self.memory[self.varcount]=[name,newnt]
         self.positionalg()
 
-        temp = str(ctx.INOUTID())
-        temp = int(temp[-1])
-        
-        self.connections+=f'#X connect {self.varcount-temp} 0 {self.varcount} 0;\r\n'
-        
+        iolet = str(ctx.INOUTID())
+        if '-' in iolet:
+            iolet = int(iolet[-1])-1
+            self.connections+=f'#X connect {self.getParent()} {iolet} {self.varcount} 0;\r\n'
+        else:
+            iolet = int(iolet[-1])-1
+            self.connections+=f'#X connect {self.varcount} 0 {self.getParent()} {iolet};\r\n'
+          
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by SimpleParser#ioletdeclstmt.
     def visitIoletdeclstmt(self, ctx:SimpleParser.IoletdeclstmtContext):
+        #ID '.' INOUTID '=' (NODETYPE parameters | operation)
+        if ctx.ID():
+            identifier = ctx.ID().getText()
+            identifiercount = self.getVarcount(identifier)
+            if identifiercount == -1:
+                raise Exception('cannot link inlet/outlet to unexisting node!')
+            self.setParent(identifiercount)
+        else:
+            self.varcount+=1
+            name = str(self.varcount)
+            nt = ctx.NODETYPE().getText()
+            newnt = self.switchnodetype(nt)
+            self.memory[self.varcount]=[name,newnt]
+            self.positionalg()
+            self.setParent(self.varcount)
+
         return self.visitChildren(ctx)
 
 
