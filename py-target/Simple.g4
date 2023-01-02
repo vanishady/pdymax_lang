@@ -39,7 +39,7 @@ parameters
  ;
 
 typedargslist
- : arg (',' arg)* (',' INOUTID '=' (NODETYPE parameters | operation) )* //MODIFICA EXPR CON ID
+ : arg (',' arg)* (',' ioletinsideparens )* //MODIFICA EXPR CON ID
  ;
 
 arg
@@ -50,6 +50,10 @@ arg
 operation
  : NUMBER
  | op=('*'|'/'|'*~'|'/~'|'+'|'-'|'+~'|'-~') NUMBER?
+ ;
+
+ioletinsideparens
+ : INOUTID '=' (NODETYPE parameters | operation)	//aggiungere |ID
  ;
 
 ioletdeclstmt

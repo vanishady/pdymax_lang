@@ -1,11 +1,13 @@
 include nothing
 patch something
 
-m = message('a', $1 = array(1,2,3))
-m = message(3, 2, 1)
-o = object(1)
+#test declaration statements
+mymsgnode = message(3, 2, 1)
+myobjnode = object(1)
 object(4,4,4,'givenstring')
 o = 5
 other = *8
-
+other2 = *
+ioletinsidep = message('hi', $1 = 555)
+ioletinside2 = message('bye', $1 = message(6,6,6), $2=+)
 ;

@@ -17,12 +17,13 @@ class MySimpleVisitor(SimpleVisitor):
         self.varcount = -1
         self.posx = 0
         self.posy = 0
-        self.connect = ''
+        self.connections = ''
 
     def printmemo(self, count):
         return self.memory[count]
 
     def switchnodetype (self, nt):
+        #STILL TO IMPLEMENT OTHER NODE TYPES
         if nt == 'message':
             nt = 'X msg'
         elif nt == 'object':
@@ -35,7 +36,7 @@ class MySimpleVisitor(SimpleVisitor):
         self.posx+= 40
         self.posy+= 40
         self.memory[self.varcount]. append((self.posx, self.posy))
-        return self.posx, self.posy
+        return
 
     # Visit a parse tree produced by SimpleParser#prog.
     def visitProg(self, ctx:SimpleParser.ProgContext):
@@ -76,7 +77,7 @@ class MySimpleVisitor(SimpleVisitor):
         newnt = self.switchnodetype(nt)
         self.memory[self.varcount]=[name,newnt]
 
-        x,y = self.positionalg()
+        self.positionalg()
         
         return self.visitChildren(ctx)
 
@@ -116,6 +117,27 @@ class MySimpleVisitor(SimpleVisitor):
         if op:
             self.memory[self.varcount].append(op)
         if ctx.NUMBER(): self.memory[self.varcount].append(ctx.NUMBER().getText())
+        return self.visitChildren(ctx)
+
+    # Visit a parse tree produced by SimpleParser#ioletinsideparens.
+    def visitIoletinsideparens(self, ctx:SimpleParser.IoletinsideparensContext):
+        self.varcount+=1
+        if ctx.NODETYPE():
+            #IONOUTID = NODETYPE parameters
+            nt = ctx.NODETYPE().getText()
+        else:
+            #INOUTID = operation
+            nt = 'object'
+        name = str(self.varcount)
+        newnt = self.switchnodetype(nt)
+        self.memory[self.varcount]=[name,newnt]
+        self.positionalg()
+
+        temp = str(ctx.INOUTID())
+        temp = int(temp[-1])
+        
+        self.connections+=f'#X connect {self.varcount-temp} 0 {self.varcount} 0;\r\n'
+        
         return self.visitChildren(ctx)
 
 
@@ -168,9 +190,9 @@ class MySimpleVisitor(SimpleVisitor):
 
     # Visit a parse tree produced by SimpleParser#AddSub.
     def visitAddSub(self, ctx:SimpleParser.AddSubContext):
-        left = self.visit(ctx.expr(0))
-        right = self.visit(ctx.expr(1))
-        print(left)
+        #left = self.visit(ctx.expr(0))
+        #right = self.visit(ctx.expr(1))
+        #print(left)
         #operator = ctx.op().getText()
         #if ctx.op.type == SimpleParser.ADD:
          #   print('+')

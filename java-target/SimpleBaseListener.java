@@ -124,6 +124,18 @@ public class SimpleBaseListener implements SimpleListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterIoletinsideparens(SimpleParser.IoletinsideparensContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIoletinsideparens(SimpleParser.IoletinsideparensContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterIoletdeclstmt(SimpleParser.IoletdeclstmtContext ctx) { }
 	/**
 	 * {@inheritDoc}

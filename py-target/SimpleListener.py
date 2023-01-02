@@ -89,6 +89,15 @@ class SimpleListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by SimpleParser#ioletinsideparens.
+    def enterIoletinsideparens(self, ctx:SimpleParser.IoletinsideparensContext):
+        pass
+
+    # Exit a parse tree produced by SimpleParser#ioletinsideparens.
+    def exitIoletinsideparens(self, ctx:SimpleParser.IoletinsideparensContext):
+        pass
+
+
     # Enter a parse tree produced by SimpleParser#ioletdeclstmt.
     def enterIoletdeclstmt(self, ctx:SimpleParser.IoletdeclstmtContext):
         pass

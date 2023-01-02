@@ -52,7 +52,7 @@ output.write('#N canvas 676 207 681 509 12 ;\r\n')
 
 for counter in visitor.memory:
             cmd = visitor.printmemo(counter)
-            print(cmd)
+            #print(cmd)
             line = ''
             for elem in cmd[1:]:
                 if type(elem) is tuple:
@@ -63,7 +63,7 @@ for counter in visitor.memory:
             output.write('#' + str(line) +';\r\n')
             print(line)
 
-for line in visitor.connect:
+for line in visitor.connections:
     output = open('output.pd', 'a')
     output.write(line)
 
