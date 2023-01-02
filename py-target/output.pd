@@ -3,5 +3,5 @@
 #X msg 80 80 3 2 1 ;
 #X obj 120 120 1 ;
 #X obj 160 160 4 4 4 'givenstring' ;
-#X msg 200 200 ;
-#X msg 240 240 ;
+#X obj 200 200 5 ;
+#X obj 240 240 * 8 ;

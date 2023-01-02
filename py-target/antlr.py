@@ -52,6 +52,7 @@ output.write('#N canvas 676 207 681 509 12 ;\r\n')
 
 for counter in visitor.memory:
             cmd = visitor.printmemo(counter)
+            print(cmd)
             line = ''
             for elem in cmd[1:]:
                 if type(elem) is tuple:

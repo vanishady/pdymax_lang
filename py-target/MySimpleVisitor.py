@@ -28,7 +28,7 @@ class MySimpleVisitor(SimpleVisitor):
         elif nt == 'object':
             nt = 'X obj'
         else:
-            nt = 'X msg'
+            nt = None
         return nt
 
     def positionalg(self):
@@ -66,8 +66,8 @@ class MySimpleVisitor(SimpleVisitor):
             if ctx.NODETYPE():
                 nt = ctx.NODETYPE().getText()
             else:
-                # ID = expr
-                nt = None
+                # ID = operation
+                nt = 'object'
         else:
             #NODETYPE parameters
             name = str(self.varcount)
@@ -99,6 +99,23 @@ class MySimpleVisitor(SimpleVisitor):
             self.memory[self.varcount].append(ctx.SYMBOL().getText())
         else:
             print('unexpected arg type: expected number or symbol')
+        return self.visitChildren(ctx)
+
+    # Visit a parse tree produced by SimpleParser#operation.
+    def visitOperation(self, ctx:SimpleParser.OperationContext):
+        op = None
+        if ctx.STAR(): op = '*'
+        elif ctx.SIGSTAR(): '*~'
+        elif ctx.DIV(): op = '/'
+        elif ctx.SIGDIV(): op = '/~'
+        elif ctx.PLUS(): op = '+'
+        elif ctx.SIGPLUS(): op = '+~'
+        elif ctx.MINUS(): op = '-'
+        elif ctx.SIGMINUS(): op = '-~'
+
+        if op:
+            self.memory[self.varcount].append(op)
+        if ctx.NUMBER(): self.memory[self.varcount].append(ctx.NUMBER().getText())
         return self.visitChildren(ctx)
 
 
