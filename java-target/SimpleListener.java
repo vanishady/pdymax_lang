@@ -87,6 +87,16 @@ public interface SimpleListener extends ParseTreeListener {
 	 */
 	void exitArg(SimpleParser.ArgContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SimpleParser#operation}.
+	 * @param ctx the parse tree
+	 */
+	void enterOperation(SimpleParser.OperationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SimpleParser#operation}.
+	 * @param ctx the parse tree
+	 */
+	void exitOperation(SimpleParser.OperationContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SimpleParser#ioletdeclstmt}.
 	 * @param ctx the parse tree
 	 */

@@ -14,9 +14,10 @@ class MySimpleVisitor(SimpleVisitor):
 
     def __init__(self):
         self.memory = {}
-        self.varcount = 0
+        self.varcount = -1
         self.posx = 0
         self.posy = 0
+        self.connect = ''
 
     def printmemo(self, count):
         return self.memory[count]
@@ -97,7 +98,7 @@ class MySimpleVisitor(SimpleVisitor):
         elif ctx.SYMBOL():
             self.memory[self.varcount].append(ctx.SYMBOL().getText())
         else:
-            print('unexpected type: args are only number or symbol')
+            print('unexpected arg type: expected number or symbol')
         return self.visitChildren(ctx)
 
 

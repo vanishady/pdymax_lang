@@ -49,6 +49,11 @@ class SimpleVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by SimpleParser#operation.
+    def visitOperation(self, ctx:SimpleParser.OperationContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by SimpleParser#ioletdeclstmt.
     def visitIoletdeclstmt(self, ctx:SimpleParser.IoletdeclstmtContext):
         return self.visitChildren(ctx)

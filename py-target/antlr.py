@@ -62,6 +62,10 @@ for counter in visitor.memory:
             output.write('#' + str(line) +';\r\n')
             print(line)
 
+for line in visitor.connect:
+    output = open('output.pd', 'a')
+    output.write(line)
+
 output.close()
 
 #listener = PrintListener()

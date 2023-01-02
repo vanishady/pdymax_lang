@@ -29,8 +29,8 @@ stmt
 
 declarationstmt
  : ID '=' (NODETYPE parameters) 
- | ID '=' expr
- | NODETYPE parameters		
+ | NODETYPE parameters	
+ | ID '=' operation	
  ;
 
 
@@ -39,7 +39,7 @@ parameters
  ;
 
 typedargslist
- : arg (',' arg)* (',' INOUTID '=' (NODETYPE parameters | expr) )*
+ : arg (',' arg)* (',' INOUTID '=' (NODETYPE parameters | operation) )* //MODIFICA EXPR CON ID
  ;
 
 arg
@@ -47,9 +47,14 @@ arg
  | NUMBER
  ;
 
+operation
+ : NUMBER
+ | op=('*'|'/'|'*~'|'/~'|'+'|'-'|'+~'|'-~') NUMBER?
+ ;
+
 ioletdeclstmt
- : ID '.' INOUTID '=' (NODETYPE parameters | expr)
- | NODETYPE parameters '.' INOUTID '=' (NODETYPE parameters | expr)
+ : ID '.' INOUTID '=' (NODETYPE parameters | operation)
+ | NODETYPE parameters '.' INOUTID '=' (NODETYPE parameters | operation)
  ;
 
 

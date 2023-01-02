@@ -7,5 +7,6 @@ m = message(3, 2, 1)
 o = object(1)
 object(4,4,4,'givenstring')
 o = 5
-another = 5+6
+other = *6
+pooo = *~
 ;

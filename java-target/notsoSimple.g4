@@ -29,8 +29,8 @@ stmt
 
 declarationstmt
  : ID '=' (NODETYPE parameters) 
- | NODETYPE parameters	
- | ID '=' operation	
+ | SCHEME '=' expr 
+ | NODETYPE parameters		
  ;
 
 
@@ -39,7 +39,7 @@ parameters
  ;
 
 typedargslist
- : arg (',' arg)* (',' INOUTID '=' (NODETYPE parameters | operation) )* //MODIFICA EXPR CON ID
+ : arg (',' arg)* (',' INOUTID '=' (NODETYPE parameters | ID) )* 
  ;
 
 arg
@@ -47,14 +47,9 @@ arg
  | NUMBER
  ;
 
-operation
- : NUMBER
- | op=('*'|'/'|'*~'|'/~'|'+'|'-'|'+~'|'-~') NUMBER?
- ;
-
 ioletdeclstmt
- : ID '.' INOUTID '=' (NODETYPE parameters | operation)
- | NODETYPE parameters '.' INOUTID '=' (NODETYPE parameters | operation)
+ : ID '.' INOUTID '=' (NODETYPE parameters | ID)
+ | NODETYPE parameters '.' INOUTID '=' (NODETYPE parameters | ID)
  ;
 
 
@@ -116,6 +111,7 @@ PASS : 'pass' ;
 END : 'end' ;
 RECALL : 'recall' ;
 TO : 'to' ;
+SCHEME : 'scheme' ;
 
 //punctuation
 
@@ -129,18 +125,29 @@ L_ANGLE : '<' ;
 R_ANGLE : '>';
 EQ : '==' ;
 NOT_EQ : '!=' ;
-PLUS : '+' ;
-MINUS : '-' ;
 POW : '**' ;
-STAR: '*' ;
-DIV : '/' ;
 MOD : '%' ;
 OR : '||' ;
 AND : '&&' ;
-SIGMINUS : '-~' ;
+SIGMINUS : '-~' ; 
 SIGPLUS : '+~' ;
-SIGDIV : '/~' ;
+SIGDIV : '/~' ; 
 SIGSTAR : '*~' ;
+PLUS : '+' ;
+MINUS : '-' ;
+STAR: '*' ;
+DIV : '/' ;
+
+OPERATOR
+ : SIGMINUS
+ | SIGPLUS
+ | SIGDIV
+ | SIGSTAR
+ | PLUS
+ | MINUS
+ | STAR
+ | DIV
+ ;
 
 NODETYPE
  : 'array'
@@ -150,6 +157,8 @@ NODETYPE
  | 'text'
  | 'message'
  | 'object'
+ | NUMBER 
+ | OPERATOR
  ;
 
 

@@ -80,6 +80,15 @@ class SimpleListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by SimpleParser#operation.
+    def enterOperation(self, ctx:SimpleParser.OperationContext):
+        pass
+
+    # Exit a parse tree produced by SimpleParser#operation.
+    def exitOperation(self, ctx:SimpleParser.OperationContext):
+        pass
+
+
     # Enter a parse tree produced by SimpleParser#ioletdeclstmt.
     def enterIoletdeclstmt(self, ctx:SimpleParser.IoletdeclstmtContext):
         pass
