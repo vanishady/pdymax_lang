@@ -2,13 +2,60 @@
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .SimpleParser import SimpleParser
+    from .SimpleVisitor import SimpleVisitor
 else:
     from SimpleParser import SimpleParser
+    from SimpleVisitor import SimpleVisitor
 
 # This class defines a complete generic visitor for a parse tree produced by SimpleParser.
 
-class SimpleVisitor(ParseTreeVisitor):
+class Node():
 
+    def __init__(self):
+        self.name = None
+        self.nodetype = None
+        self.args = []
+
+    def setName(self, name):
+        self.name = name
+
+    def setNodeType(self, nt):
+        if nt == 'object':
+            nt = 'obj'
+        elif nt == 'message':
+            nt = 'msg'
+        self.nodetype = nt
+
+    def setArg(self, arg):
+        self.args.append(arg)
+
+    def getName(self):
+        return self.name
+
+    def getNodeString(self):
+        return f'#X {self.nodetype} 40 40 {[x for x in self.args]}'
+
+class MyVisitorz(SimpleVisitor):
+
+    def __init__(self):
+        self.declcount = -1
+        self.memory = []
+        self.connections = ''
+
+    def getImplicitId (self, nodeName):
+        counter = -1
+        for node in self.memory:
+            counter += 1
+            if node.getName() == nodeName:
+                return counter
+        raise Exception (f'node <{nodeName}> does not exist')
+
+    def setParent(self, nodeId):
+        self.parent = nodeId
+
+    def getParent(self):
+        return self.parent
+            
     # Visit a parse tree produced by SimpleParser#prog.
     def visitProg(self, ctx:SimpleParser.ProgContext):
         return self.visitChildren(ctx)
@@ -31,16 +78,38 @@ class SimpleVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by SimpleParser#FullDeclStmt.
     def visitFullDeclStmt(self, ctx:SimpleParser.FullDeclStmtContext):
+        self.declcount += 1
+        self.memory.append(Node())
+        
+        name = ctx.ID().getText()
+        nt = ctx.NODETYPE().getText()
+        self.memory[self.declcount].setName(name)
+        self.memory[self.declcount].setNodeType(nt)
+        
+        self.setParent(self.declcount)
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by SimpleParser#FastDeclStmt.
     def visitFastDeclStmt(self, ctx:SimpleParser.FastDeclStmtContext):
+        self.declcount += 1
+        self.memory.append(Node())
+
+        nt = ctx.NODETYPE().getText()
+        self.memory[self.declcount].setNodeType(nt)
+        
+        self.setParent(self.declcount)
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by SimpleParser#OpDeclStmt.
     def visitOpDeclStmt(self, ctx:SimpleParser.OpDeclStmtContext):
+        self.declcount += 1
+        self.memory.append(Node())
+        
+        name = ctx.ID().getText()
+        self.memory[self.declcount].setName(name)
+        self.memory[self.declcount].setNodeType('object')
         return self.visitChildren(ctx)
 
 
@@ -56,21 +125,97 @@ class SimpleVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by SimpleParser#arg.
     def visitArg(self, ctx:SimpleParser.ArgContext):
+        arg = None
+        if ctx.NUMBER():
+            arg = ctx.NUMBER().getText()
+        elif ctx.SYMBOL():
+            arg = ctx.SYMBOL().getText()
+        self.memory[self.declcount].setArg(arg)
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by SimpleParser#operation.
     def visitOperation(self, ctx:SimpleParser.OperationContext):
+        op = None
+        if ctx.STAR(): op = '*'
+        elif ctx.SIGSTAR(): op = '*~'
+        elif ctx.DIV(): op = '/'
+        elif ctx.SIGDIV(): op = '/~'
+        elif ctx.PLUS(): op = '+'
+        elif ctx.SIGPLUS(): op = '+~'
+        elif ctx.MINUS(): op = '-'
+        elif ctx.SIGMINUS(): op = '-~'
+
+        if op:
+            self.memory[self.declcount].setArg(op)
+        if ctx.NUMBER():
+            self.memory[self.declcount].setArg(ctx.NUMBER().getText())
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by SimpleParser#ioletdeclasarg.
     def visitIoletdeclasarg(self, ctx:SimpleParser.IoletdeclasargContext):
+
+        outlet = False
+        iolet = str(ctx.INOUTID())
+        if '-' in iolet:
+            outlet = True
+        iolet = int(iolet[-1])-1
+
+        #case 1: new node declaration
+        # INOUTID = NODETYPE parameters | operation
+        if not ctx.ID():
+            self.declcount += 1
+            self.memory.append(Node())
+            if ctx.NODETYPE():
+                nt = ctx.NODETYPE().getText()
+                self.memory[self.declcount].setNodeType(nt)
+            elif ctx.operation():
+                self.memory[self.declcount].setNodeType('object')
+
+            if outlet is False:
+                source = self.declcount
+                sink = self.getParent()
+                self.connections += f'#X connect {source} 0 {sink} {iolet};\r\n'
+            else:
+                source = self.getParent()
+                sink = self.declcount
+                self.connections += f'#X connect {source} {iolet} {sink} 0;\r\n'
+            
+
+        #case 2: connecting to an existing node
+        # INOUTID = ID 
+        if ctx.ID():
+            name = ctx.ID().getText()
+            if outlet is False:
+                source = self.getImplicitId(name) #ottieni il numero del nodo ID
+                sink = self.getParent()
+                self.connections += f'#X connect {source} 0 {sink} {iolet};\r\n'
+            else:
+                source = self.getParent()
+                sink = self.getImplicitId(name)
+                self.connections += f'#X connect {source} {iolet} {sink} 0;\r\n'
+    
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by SimpleParser#ioletdeclstmt.
     def visitIoletdeclstmt(self, ctx:SimpleParser.IoletdeclstmtContext):
+        #case 1: ID.ioletasarg
+        if ctx.ID():
+            name = ctx.ID().getText()
+            parent = self.getImplicitId(name)
+            self.setParent(parent)
+        #case 2: NODETYPE parameters . ioletasarg
+        else:
+            self.declcount += 1
+            self.memory.append(Node())
+
+            nt = ctx.NODETYPE().getText()
+            self.memory[self.declcount].setNodeType(nt)
+        
+            self.setParent(self.declcount)
+            
         return self.visitChildren(ctx)
 
 

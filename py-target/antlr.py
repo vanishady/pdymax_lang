@@ -7,7 +7,7 @@ from SimpleParser import SimpleParser
 from SimpleListener import SimpleListener
 from antlr4.tree.Tree import ParseTreeWalker
 from antlr4.error.ErrorListener import ErrorListener
-from MySimpleVisitor import MySimpleVisitor
+from MyVisitorz import MyVisitorz
 
 
 
@@ -20,60 +20,46 @@ class PrintListener(SimpleListener):
 
 
     
-class PrintLexerErrorListener(ErrorListener):
-    def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
-        print(f'Lexer error: {line=}, {column=}, {msg=}, exception={e}')
 
-class PrintParserErrorListener(ErrorListener):
-    def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
-        print(f'Parser error: {line=}, {column=}, {msg=}, exception={e}, rules={recognizer.getRuleInvocationStack()}') 
-
-
-### LEXER AND PARSER WORK###
+### LEXER AND PARSER WORK ###
 
 lexer = SimpleLexer(FileStream('input2.txt'))
-#lexer.removeErrorListeners()
-#lexer.addErrorListener(PrintLexerErrorListener())
-
 stream = CommonTokenStream(lexer)
-
 parser = SimpleParser(stream)
-#parser.removeErrorListeners()
-#parser.addErrorListener(PrintParserErrorListener())
 
 tree = None
 tree = parser.prog()
-#print(tree.toStringTree(recog = parser))
 
-visitor = MySimpleVisitor()
+visitor = MyVisitorz()
 visitor.visit(tree)
+
+### INTERPRETER WORK ###
 
 output = open('output.pd', 'w')
 output.write('#N canvas 676 207 681 509 12 ;\r\n')
 
-
-for counter in visitor.memory:
-            cmd = visitor.printmemo(counter)
-            #print(cmd)
-            line = ''
-            for elem in cmd[1:]:
-                if type(elem) is tuple:
-                    for x in elem:
-                        line+= str(x)+' '
-                else: line+= str(elem)+' '
+for elem in visitor.memory:
+    newline = ''
+    line = elem.getNodeString()
+    for char in line:
+        if char not in ',"[]\'':
             output = open('output.pd', 'a')
-            output.write('#' + str(line) +';\r\n')
-            print(line)
+            output.write(char)
+            #newline+=char
+    output.write(';\r\n')
+    #print(newline, ';\r\n')
 
-for line in visitor.connections:
-    output = open('output.pd', 'a')
-    output.write(line)
-
+#print(visitor.connections)
+output = open('output.pd', 'a')
+output.write(visitor.connections)
 output.close()
 
-#listener = PrintListener()
-#walker = ParseTreeWalker()
-#walker.walk(listener, tree)
+
+
+#output.close()
+
+
+
 
 
 

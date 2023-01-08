@@ -28,9 +28,9 @@ stmt
  ;
 
 declarationstmt
- : ID '=' (NODETYPE parameters) 
- | NODETYPE parameters	
- | ID '=' operation	
+ : ID '=' (NODETYPE parameters) #FullDeclStmt
+ | NODETYPE parameters #FastDeclStmt
+ | ID '=' operation #OpDeclStmt	
  ;
 
 
@@ -39,7 +39,7 @@ parameters
  ;
 
 typedargslist
- : arg (',' arg)* (',' ioletinsideparens )* //MODIFICA EXPR CON ID
+ : arg (',' arg)* (',' ioletdeclasarg )* 
  ;
 
 arg
@@ -52,19 +52,31 @@ operation
  | op=('*'|'/'|'*~'|'/~'|'+'|'-'|'+~'|'-~') NUMBER?
  ;
 
-ioletinsideparens
- : INOUTID '=' (NODETYPE parameters | operation)
+ioletdeclasarg
+ : INOUTID '=' (NODETYPE parameters | operation | ID)	
  ;
 
 ioletdeclstmt
- : ID '.' INOUTID '=' (NODETYPE parameters | operation)
- | NODETYPE parameters '.' INOUTID '=' (NODETYPE parameters | operation)
+ : ID '.' ioletdeclasarg
+ | NODETYPE parameters '.' ioletdeclasarg
  ;
 
 
 connectionstmt
- : ('<' (ID | declarationstmt) (',' (ID | declarationstmt))* '>' | (ID | declarationstmt)) (CONNECT ('<' (ID | declarationstmt) (',' (ID | declarationstmt))* '>' | (ID | declarationstmt)))+
- | ('<' ID (',' ID)* '>' | ID) (DISCONNECT ('<' ID (',' ID)* '>' | ID))+
+ : connectionelem (CONNECT connectionelem)+
+ |
+ ;
+
+connectionelem
+ : '<' (ID | declarationstmt) (',' (ID | declarationstmt))* '>' | (ID | declarationstmt)
+ ;
+
+disconnectionstmt
+ : disconnectionelem (DISCONNECT disconnectionelem)+
+ ;
+
+disconnectionelem
+ : '<' ID (',' ID)* '>' | ID
  ;
 
 recallstmt
@@ -92,8 +104,6 @@ expr
  | expr (EQ | NOT_EQ | '>' | '>=' | '<' | '<=' | '%' ) expr	#Test
  | expr (AND | OR) expr	#Logical
  | NUMBER	#number
- | ID		#id
- | NODETYPE parameters	#DynamicAssign
  | L_PAREN expr R_PAREN #Parens
  ;
 

@@ -44,12 +44,30 @@ class SimpleListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by SimpleParser#declarationstmt.
-    def enterDeclarationstmt(self, ctx:SimpleParser.DeclarationstmtContext):
+    # Enter a parse tree produced by SimpleParser#FullDeclStmt.
+    def enterFullDeclStmt(self, ctx:SimpleParser.FullDeclStmtContext):
         pass
 
-    # Exit a parse tree produced by SimpleParser#declarationstmt.
-    def exitDeclarationstmt(self, ctx:SimpleParser.DeclarationstmtContext):
+    # Exit a parse tree produced by SimpleParser#FullDeclStmt.
+    def exitFullDeclStmt(self, ctx:SimpleParser.FullDeclStmtContext):
+        pass
+
+
+    # Enter a parse tree produced by SimpleParser#FastDeclStmt.
+    def enterFastDeclStmt(self, ctx:SimpleParser.FastDeclStmtContext):
+        pass
+
+    # Exit a parse tree produced by SimpleParser#FastDeclStmt.
+    def exitFastDeclStmt(self, ctx:SimpleParser.FastDeclStmtContext):
+        pass
+
+
+    # Enter a parse tree produced by SimpleParser#OpDeclStmt.
+    def enterOpDeclStmt(self, ctx:SimpleParser.OpDeclStmtContext):
+        pass
+
+    # Exit a parse tree produced by SimpleParser#OpDeclStmt.
+    def exitOpDeclStmt(self, ctx:SimpleParser.OpDeclStmtContext):
         pass
 
 
@@ -89,12 +107,12 @@ class SimpleListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by SimpleParser#ioletinsideparens.
-    def enterIoletinsideparens(self, ctx:SimpleParser.IoletinsideparensContext):
+    # Enter a parse tree produced by SimpleParser#ioletdeclasarg.
+    def enterIoletdeclasarg(self, ctx:SimpleParser.IoletdeclasargContext):
         pass
 
-    # Exit a parse tree produced by SimpleParser#ioletinsideparens.
-    def exitIoletinsideparens(self, ctx:SimpleParser.IoletinsideparensContext):
+    # Exit a parse tree produced by SimpleParser#ioletdeclasarg.
+    def exitIoletdeclasarg(self, ctx:SimpleParser.IoletdeclasargContext):
         pass
 
 
@@ -113,6 +131,33 @@ class SimpleListener(ParseTreeListener):
 
     # Exit a parse tree produced by SimpleParser#connectionstmt.
     def exitConnectionstmt(self, ctx:SimpleParser.ConnectionstmtContext):
+        pass
+
+
+    # Enter a parse tree produced by SimpleParser#connectionelem.
+    def enterConnectionelem(self, ctx:SimpleParser.ConnectionelemContext):
+        pass
+
+    # Exit a parse tree produced by SimpleParser#connectionelem.
+    def exitConnectionelem(self, ctx:SimpleParser.ConnectionelemContext):
+        pass
+
+
+    # Enter a parse tree produced by SimpleParser#disconnectionstmt.
+    def enterDisconnectionstmt(self, ctx:SimpleParser.DisconnectionstmtContext):
+        pass
+
+    # Exit a parse tree produced by SimpleParser#disconnectionstmt.
+    def exitDisconnectionstmt(self, ctx:SimpleParser.DisconnectionstmtContext):
+        pass
+
+
+    # Enter a parse tree produced by SimpleParser#disconnectionelem.
+    def enterDisconnectionelem(self, ctx:SimpleParser.DisconnectionelemContext):
+        pass
+
+    # Exit a parse tree produced by SimpleParser#disconnectionelem.
+    def exitDisconnectionelem(self, ctx:SimpleParser.DisconnectionelemContext):
         pass
 
 
@@ -161,15 +206,6 @@ class SimpleListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by SimpleParser#DynamicAssign.
-    def enterDynamicAssign(self, ctx:SimpleParser.DynamicAssignContext):
-        pass
-
-    # Exit a parse tree produced by SimpleParser#DynamicAssign.
-    def exitDynamicAssign(self, ctx:SimpleParser.DynamicAssignContext):
-        pass
-
-
     # Enter a parse tree produced by SimpleParser#MulDiv.
     def enterMulDiv(self, ctx:SimpleParser.MulDivContext):
         pass
@@ -212,15 +248,6 @@ class SimpleListener(ParseTreeListener):
 
     # Exit a parse tree produced by SimpleParser#Logical.
     def exitLogical(self, ctx:SimpleParser.LogicalContext):
-        pass
-
-
-    # Enter a parse tree produced by SimpleParser#id.
-    def enterId(self, ctx:SimpleParser.IdContext):
-        pass
-
-    # Exit a parse tree produced by SimpleParser#id.
-    def exitId(self, ctx:SimpleParser.IdContext):
         pass
 
 

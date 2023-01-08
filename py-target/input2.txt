@@ -6,13 +6,16 @@ mymsgnode = message(3, 2, 1)
 myobjnode = object(1)
 object(4,4,4,'givenstring')
 o = 5
-other = *8
-other2 = *
+ooo = *~420
+
 ioletinsidep = message('hi', $1 = 555)
 ioletinside2 = message('bye', $1 = message(6,6,6), $1=message('byeee'), $-1=888)
 
 #test ioletdeclstmt
 o.$1 = message('imconnected')
 message('newnode').$1 = *5
+
+#test connectionstmt
+#<a = object(2), e, f>::message(4)::<g>
 
 ;

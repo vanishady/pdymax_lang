@@ -8,4 +8,6 @@ object(4,4,4,'givenstring')
 o = 5
 other = *6
 pooo = *~
+o.$1 = message('aaaa')
+<a = message(360), b>::m = message('ahiahi')::<a,b>
 ;

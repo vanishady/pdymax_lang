@@ -33,12 +33,12 @@ block bpm {
 		else:
     			continue
 		end
-		numbernode = 8*7	
+		numbernode = 8
 
 	}
 	
 	recall technobpm to housebpm {
-		numbernode = 9*array(10)
+		numbernode = *~9
 	}
 }
 ;

@@ -47,15 +47,41 @@ public interface SimpleListener extends ParseTreeListener {
 	 */
 	void exitStmt(SimpleParser.StmtContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SimpleParser#declarationstmt}.
+	 * Enter a parse tree produced by the {@code FullDeclStmt}
+	 * labeled alternative in {@link SimpleParser#declarationstmt}.
 	 * @param ctx the parse tree
 	 */
-	void enterDeclarationstmt(SimpleParser.DeclarationstmtContext ctx);
+	void enterFullDeclStmt(SimpleParser.FullDeclStmtContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SimpleParser#declarationstmt}.
+	 * Exit a parse tree produced by the {@code FullDeclStmt}
+	 * labeled alternative in {@link SimpleParser#declarationstmt}.
 	 * @param ctx the parse tree
 	 */
-	void exitDeclarationstmt(SimpleParser.DeclarationstmtContext ctx);
+	void exitFullDeclStmt(SimpleParser.FullDeclStmtContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code FastDeclStmt}
+	 * labeled alternative in {@link SimpleParser#declarationstmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterFastDeclStmt(SimpleParser.FastDeclStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code FastDeclStmt}
+	 * labeled alternative in {@link SimpleParser#declarationstmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitFastDeclStmt(SimpleParser.FastDeclStmtContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code OpDeclStmt}
+	 * labeled alternative in {@link SimpleParser#declarationstmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterOpDeclStmt(SimpleParser.OpDeclStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code OpDeclStmt}
+	 * labeled alternative in {@link SimpleParser#declarationstmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitOpDeclStmt(SimpleParser.OpDeclStmtContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SimpleParser#parameters}.
 	 * @param ctx the parse tree
@@ -97,15 +123,15 @@ public interface SimpleListener extends ParseTreeListener {
 	 */
 	void exitOperation(SimpleParser.OperationContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SimpleParser#ioletinsideparens}.
+	 * Enter a parse tree produced by {@link SimpleParser#ioletdeclasarg}.
 	 * @param ctx the parse tree
 	 */
-	void enterIoletinsideparens(SimpleParser.IoletinsideparensContext ctx);
+	void enterIoletdeclasarg(SimpleParser.IoletdeclasargContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SimpleParser#ioletinsideparens}.
+	 * Exit a parse tree produced by {@link SimpleParser#ioletdeclasarg}.
 	 * @param ctx the parse tree
 	 */
-	void exitIoletinsideparens(SimpleParser.IoletinsideparensContext ctx);
+	void exitIoletdeclasarg(SimpleParser.IoletdeclasargContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SimpleParser#ioletdeclstmt}.
 	 * @param ctx the parse tree
@@ -126,6 +152,36 @@ public interface SimpleListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitConnectionstmt(SimpleParser.ConnectionstmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SimpleParser#connectionelem}.
+	 * @param ctx the parse tree
+	 */
+	void enterConnectionelem(SimpleParser.ConnectionelemContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SimpleParser#connectionelem}.
+	 * @param ctx the parse tree
+	 */
+	void exitConnectionelem(SimpleParser.ConnectionelemContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SimpleParser#disconnectionstmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterDisconnectionstmt(SimpleParser.DisconnectionstmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SimpleParser#disconnectionstmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitDisconnectionstmt(SimpleParser.DisconnectionstmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SimpleParser#disconnectionelem}.
+	 * @param ctx the parse tree
+	 */
+	void enterDisconnectionelem(SimpleParser.DisconnectionelemContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SimpleParser#disconnectionelem}.
+	 * @param ctx the parse tree
+	 */
+	void exitDisconnectionelem(SimpleParser.DisconnectionelemContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SimpleParser#recallstmt}.
 	 * @param ctx the parse tree
@@ -178,18 +234,6 @@ public interface SimpleListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitNumber(SimpleParser.NumberContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code DynamicAssign}
-	 * labeled alternative in {@link SimpleParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterDynamicAssign(SimpleParser.DynamicAssignContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code DynamicAssign}
-	 * labeled alternative in {@link SimpleParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitDynamicAssign(SimpleParser.DynamicAssignContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code MulDiv}
 	 * labeled alternative in {@link SimpleParser#expr}.
@@ -250,16 +294,4 @@ public interface SimpleListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitLogical(SimpleParser.LogicalContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code id}
-	 * labeled alternative in {@link SimpleParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterId(SimpleParser.IdContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code id}
-	 * labeled alternative in {@link SimpleParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitId(SimpleParser.IdContext ctx);
 }

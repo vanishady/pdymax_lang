@@ -7,10 +7,62 @@ else:
     from SimpleParser import SimpleParser
     from SimpleVisitor import SimpleVisitor
 
+class Node():
+
+    implicitList = []
+
+    def __init__(self, implicitId:int):
+        self.implicitId = implicitId
+        self.implicitList.append(implicitId)
+        self.id = None
+        self.type = None
+        self.connections = []
+        self.posx = 0
+        self.posy = 0
+        self.inlets = []
+        self.outlets = []
+        self.args = []
+        
+        self.line = { 'ntype' : '' , 'name' : ''}
+
+    def getImplicitId(self):
+        return self.implicitId
+
+    def setType(self, nodeType):
+        self.type = nodeType
+        if self.type == 'message':
+            self.line['ntype'] = 'X msg'
+        elif self.type == 'object':
+            self.line['ntype'] = 'X obj'
+
+    def setName(self, nodeName):
+        self.id = nodeName
+
+    def getName(self):
+        return self.id
+
+    def setPos(self, x, y):
+        pass
+
+    def setArgs(self, arg):
+        pass
+
+     
+
+class Memory():
+
+    def __init__(self):
+        self.nodelist = {}
+
+    def add(self, node):
+        pass
+
+    def access(self, nodeId):
+        pass 
 
 # This class defines a complete generic visitor for a parse tree produced by SimpleParser.
 
-class MySimpleVisitor(SimpleVisitor):
+class MyVisitor(SimpleVisitor):
 
     def __init__(self):
         self.memory = {}
@@ -19,6 +71,7 @@ class MySimpleVisitor(SimpleVisitor):
         self.posy = 0
         self.connections = ''
         self.parent = None
+        self.currNode = None
 
     def printmemo(self, count):
         return self.memory[count]
@@ -33,10 +86,11 @@ class MySimpleVisitor(SimpleVisitor):
             nt = None
         return nt
 
-    def positionalg(self):
+    def positionalg(self, node):
         self.posx+= 40
         self.posy+= 40
         self.memory[self.varcount]. append((self.posx, self.posy))
+        node.setPos(self.posx,self.posy)
         return
 
     def setParent(self, var):
@@ -55,8 +109,15 @@ class MySimpleVisitor(SimpleVisitor):
     def checkVarname(self, identifier):
         for i in self.memory:
             if self.memory[i][0] == identifier:
-                return 'bad'
-        return 'ok'
+                return 'bad', identifier
+        return 'ok', identifier
+
+    def passNode(self, node):
+        self.currNode = node
+        return
+
+    def getNode():
+        return self.currNode
 
     # Visit a parse tree produced by SimpleParser#prog.
     def visitProg(self, ctx:SimpleParser.ProgContext):
@@ -81,11 +142,13 @@ class MySimpleVisitor(SimpleVisitor):
     # Visit a parse tree produced by SimpleParser#declarationstmt.
     def visitDeclarationstmt(self, ctx:SimpleParser.DeclarationstmtContext):
         self.varcount+=1
+        n = Node(self.varcount) ##
         self.setParent(self.varcount)
         if ctx.ID():
             name = ctx.ID().getText()
-            if self.checkVarname(name) == 'bad':
-                raise Exception('cannot reassign variable! var name already used')
+            a,b = self.checkVarname(name)
+            if  a == 'bad':
+                raise Exception('cannot reassign variable! var name already used', b)
             #ID = NODETYPE parameters
             if ctx.NODETYPE():
                 nt = ctx.NODETYPE().getText()
@@ -99,8 +162,12 @@ class MySimpleVisitor(SimpleVisitor):
 
         newnt = self.switchnodetype(nt)
         self.memory[self.varcount]=[name,newnt]
+        
+        n.setType(nt)#
+        n.setName(name)#
 
-        self.positionalg()
+        self.positionalg(n)
+        self.passNode(n)
         return self.visitChildren(ctx)
 
 
@@ -116,10 +183,13 @@ class MySimpleVisitor(SimpleVisitor):
 
     # Visit a parse tree produced by SimpleParser#arg.
     def visitArg(self, ctx:SimpleParser.ArgContext):
+        n = self.getNode()
         if ctx.NUMBER():
             self.memory[self.varcount].append(ctx.NUMBER().getText())
+            n.setArgs(ctx.NUMBER().getText())
         elif ctx.SYMBOL():
             self.memory[self.varcount].append(ctx.SYMBOL().getText())
+            n.setArgs(ctx.SYMBOL().getText())
         else:
             print('unexpected arg type: expected number or symbol')
         return self.visitChildren(ctx)
@@ -144,6 +214,7 @@ class MySimpleVisitor(SimpleVisitor):
     # Visit a parse tree produced by SimpleParser#ioletinsideparens.
     def visitIoletinsideparens(self, ctx:SimpleParser.IoletinsideparensContext):
         self.varcount+=1
+        n = Node(self.varcount)
         
         if ctx.NODETYPE():
             #IONOUTID = NODETYPE parameters
@@ -155,7 +226,7 @@ class MySimpleVisitor(SimpleVisitor):
         name = str(self.varcount)
         newnt = self.switchnodetype(nt)
         self.memory[self.varcount]=[name,newnt]
-        self.positionalg()
+        self.positionalg(n)
 
         iolet = str(ctx.INOUTID())
         if '-' in iolet:
@@ -178,12 +249,14 @@ class MySimpleVisitor(SimpleVisitor):
                 raise Exception('cannot link inlet/outlet to unexisting node!')
             self.setParent(identifiercount)
         else:
+            #NODETYPE parameters '.' ioletinsideparens
             self.varcount+=1
+            n=Node(self.varcount)
             name = str(self.varcount)
             nt = ctx.NODETYPE().getText()
             newnt = self.switchnodetype(nt)
             self.memory[self.varcount]=[name,newnt]
-            self.positionalg()
+            self.positionalg(n)
             self.setParent(self.varcount)
 
         return self.visitChildren(ctx)

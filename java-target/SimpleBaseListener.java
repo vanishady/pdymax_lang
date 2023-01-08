@@ -64,13 +64,37 @@ public class SimpleBaseListener implements SimpleListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDeclarationstmt(SimpleParser.DeclarationstmtContext ctx) { }
+	@Override public void enterFullDeclStmt(SimpleParser.FullDeclStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDeclarationstmt(SimpleParser.DeclarationstmtContext ctx) { }
+	@Override public void exitFullDeclStmt(SimpleParser.FullDeclStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFastDeclStmt(SimpleParser.FastDeclStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFastDeclStmt(SimpleParser.FastDeclStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOpDeclStmt(SimpleParser.OpDeclStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOpDeclStmt(SimpleParser.OpDeclStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -124,13 +148,13 @@ public class SimpleBaseListener implements SimpleListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIoletinsideparens(SimpleParser.IoletinsideparensContext ctx) { }
+	@Override public void enterIoletdeclasarg(SimpleParser.IoletdeclasargContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIoletinsideparens(SimpleParser.IoletinsideparensContext ctx) { }
+	@Override public void exitIoletdeclasarg(SimpleParser.IoletdeclasargContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -155,6 +179,42 @@ public class SimpleBaseListener implements SimpleListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitConnectionstmt(SimpleParser.ConnectionstmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterConnectionelem(SimpleParser.ConnectionelemContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitConnectionelem(SimpleParser.ConnectionelemContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDisconnectionstmt(SimpleParser.DisconnectionstmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDisconnectionstmt(SimpleParser.DisconnectionstmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDisconnectionelem(SimpleParser.DisconnectionelemContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDisconnectionelem(SimpleParser.DisconnectionelemContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -220,18 +280,6 @@ public class SimpleBaseListener implements SimpleListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDynamicAssign(SimpleParser.DynamicAssignContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitDynamicAssign(SimpleParser.DynamicAssignContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterMulDiv(SimpleParser.MulDivContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -287,18 +335,6 @@ public class SimpleBaseListener implements SimpleListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitLogical(SimpleParser.LogicalContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterId(SimpleParser.IdContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitId(SimpleParser.IdContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
