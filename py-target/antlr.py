@@ -54,8 +54,6 @@ output = open('output.pd', 'a')
 output.write(visitor.connections)
 output.close()
 
-
-
 #output.close()
 
 

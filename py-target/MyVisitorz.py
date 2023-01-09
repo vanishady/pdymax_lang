@@ -41,7 +41,9 @@ class MyVisitorz(SimpleVisitor):
         self.declcount = -1
         self.memory = []
         self.connections = ''
-
+        self.parentlist = []
+        self.n = 0
+   
     def getImplicitId (self, nodeName):
         counter = -1
         for node in self.memory:
@@ -52,10 +54,13 @@ class MyVisitorz(SimpleVisitor):
 
     def setParent(self, nodeId):
         self.parent = nodeId
+        self.parentlist.append(nodeId)
+        
 
     def getParent(self):
         return self.parent
-            
+
+        
     # Visit a parse tree produced by SimpleParser#prog.
     def visitProg(self, ctx:SimpleParser.ProgContext):
         return self.visitChildren(ctx)
@@ -87,6 +92,7 @@ class MyVisitorz(SimpleVisitor):
         self.memory[self.declcount].setNodeType(nt)
         
         self.setParent(self.declcount)
+        
         return self.visitChildren(ctx)
 
 
@@ -99,6 +105,7 @@ class MyVisitorz(SimpleVisitor):
         self.memory[self.declcount].setNodeType(nt)
         
         self.setParent(self.declcount)
+        
         return self.visitChildren(ctx)
 
 
@@ -110,6 +117,9 @@ class MyVisitorz(SimpleVisitor):
         name = ctx.ID().getText()
         self.memory[self.declcount].setName(name)
         self.memory[self.declcount].setNodeType('object')
+
+        self.setParent(self.declcount)
+            
         return self.visitChildren(ctx)
 
 
@@ -221,11 +231,25 @@ class MyVisitorz(SimpleVisitor):
 
     # Visit a parse tree produced by SimpleParser#connectionstmt.
     def visitConnectionstmt(self, ctx:SimpleParser.ConnectionstmtContext):
+        self.parentlist = []
+        line = ctx.getText()
+        if line:
+            self.n = (len(ctx.CONNECT())) #count how many connections there are
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by SimpleParser#connectionelem.
     def visitConnectionelem(self, ctx:SimpleParser.ConnectionelemContext):
+        self.parentlist.append('ELEM')
+        for node in ctx.ID():
+            name = node.getText()
+            parent = self.getImplicitId(name)
+            self.parentlist.append(parent)
+
+        if self.parentlist.count('ELEM') == self.n+1:
+            print(self.parentlist) #PROBLEMA CON L'APPEND DELL'ULTIMO ELEMENTO AGGIUNTO
+                                    #QUESTA PRINT SAREBBE DA FARE A 'EXITCONNECTIONSTMT'
+        
         return self.visitChildren(ctx)
 
 
