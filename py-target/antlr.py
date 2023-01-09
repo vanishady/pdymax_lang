@@ -10,17 +10,6 @@ from antlr4.error.ErrorListener import ErrorListener
 from MyVisitorz import MyVisitorz
 
 
-
-class PrintListener(SimpleListener):
-    def exitEveryRule(self, ctx):
-        print(ctx.start, ctx.stop, SimpleParser.ruleNames[ctx.getRuleIndex()])
-
-    def exitDeclarationstmt(self, ctx):
-        print('wow i see light')
-
-
-    
-
 ### LEXER AND PARSER WORK ###
 
 lexer = SimpleLexer(FileStream('input2.txt'))
@@ -37,27 +26,27 @@ visitor.visit(tree)
 
 output = open('output.pd', 'w')
 output.write('#N canvas 676 207 681 509 12 ;\r\n')
+output.close()
+
+output = open('output.pd', 'a')
 
 for elem in visitor.memory:
     newline = ''
     line = elem.getNodeString()
     for char in line:
         if char not in ',"[]\'':
-            output = open('output.pd', 'a')
+            #output = open('output.pd', 'a')
             output.write(char)
-            #newline+=char
     output.write(';\r\n')
-    #print(newline, ';\r\n')
 
-#print(visitor.connections)
-output = open('output.pd', 'a')
+
+#output = open('output.pd', 'a')
 output.write(visitor.connections)
-output.close()
 
 for elem in visitor.connectionstmts:
-    elem.printConnections()
+    output.write(elem.getConnectionString())
 
-#output.close()
+output.close()
 
 
 

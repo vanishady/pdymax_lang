@@ -6,9 +6,10 @@ PY-TARGET: cartella principale
 Regole implementate:
 - node declaration (declaration statement)
 - inlet/outlet declaration (una sorta di connessione in cui specificare anche gli inlet/outlet)
-- connessione (connection statement) [[WORK IN PROGRESS]]
+- connessione (connection statement) 
 
 Da fare:
+- algoritmo di posizionamento
 - implementare i restanti costrutti (if, for, block ...)
 - scoping per blocco 
 - aggiungere nodetypes

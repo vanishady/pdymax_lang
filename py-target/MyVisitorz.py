@@ -1,5 +1,6 @@
 # Generated from Simple.g4 by ANTLR 4.11.1
 from antlr4 import *
+import itertools
 if __name__ is not None and "." in __name__:
     from .SimpleParser import SimpleParser
     from .SimpleVisitor import SimpleVisitor
@@ -50,7 +51,23 @@ class Connection():
     def printConnections(self):
         print(self.connectednodes)
 
-    
+    def splitlist(self, nodelist):
+        sep = '|'
+        parts = [list(y) for x,y in itertools.groupby(nodelist, lambda z: z == sep) if not x]
+        return parts
+
+    def getConnectionString(self):
+        self.connectednodes = self.connectednodes[1:] #toglie il primo separatore
+        parts = self.splitlist(self.connectednodes)
+        line = ''
+
+        for c in range(len(parts)-1):
+            p1, p2 = parts[c], parts[c+1]
+            for source in p1:
+                for sink in p2:
+                    line += f'#X connect {source} 0 {sink} 0 ;\r\n'
+        return line
+        
 
 class MyVisitorz(SimpleVisitor):
 
