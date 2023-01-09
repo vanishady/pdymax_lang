@@ -162,19 +162,25 @@ SIGPLUS : '+~' ;
 SIGDIV : '/~' ;
 SIGSTAR : '*~' ;
 
-NODETYPE
+NODETYPE: GENERALTYPE | OBJTYPE;
+
+GENERALTYPE
  : 'array'
  | 'coords'
  | 'floatatom'
  | 'symbolatom'
  | 'text'
- | 'message'
- | 'object'
+ | 'msg'
+ | 'obj'
  ;
 
+OBJTYPE
+ : '\\' LETTER+ '~'?
+ ;
 
 INOUTID : '$' '-'? DIGIT ;
 ID : ID_START ID_CONTINUE* ;
+
 SYMBOL : '\'' LETTER* '\'' ;
 NUMBER : INTEGER | FLOAT ;
 INTEGER : NON_ZERO_DIGIT DIGIT* | '0'+ ;

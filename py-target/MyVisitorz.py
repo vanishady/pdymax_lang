@@ -16,16 +16,23 @@ class Node():
         self.name = None
         self.nodetype = None
         self.args = []
+        self.objtype = ''
 
     def setName(self, name):
         self.name = name
 
+    def setObjType(self, objtype):
+        types = open('basicnodes.txt', 'r') 
+        if objtype not in types.read():
+            raise Exception(f'This object type <{objtype}> does not esist')
+        self.objtype = objtype
+
     def setNodeType(self, nt):
-        if nt == 'object':
-            nt = 'obj'
-        elif nt == 'message':
-            nt = 'msg'
-        self.nodetype = nt
+        if nt.startswith('\\'):
+            self.nodetype = 'obj'
+            self.setObjType(nt[1:])
+        else:
+            self.nodetype = nt
 
     def setArg(self, arg):
         self.args.append(arg)
@@ -34,7 +41,7 @@ class Node():
         return self.name
 
     def getNodeString(self):
-        return f'#X {self.nodetype} 40 40 {[x for x in self.args]}'
+        return f'#X {self.nodetype} 40 40 {self.objtype} {[x for x in self.args]}'
 
 
 class Connection():
@@ -156,7 +163,7 @@ class MyVisitorz(SimpleVisitor):
         
         name = ctx.ID().getText()
         self.memory[self.declcount].setName(name)
-        self.memory[self.declcount].setNodeType('object')
+        self.memory[self.declcount].setNodeType('obj')
 
         self.setParent(self.declcount)
             
@@ -221,7 +228,7 @@ class MyVisitorz(SimpleVisitor):
                 nt = ctx.NODETYPE().getText()
                 self.memory[self.declcount].setNodeType(nt)
             elif ctx.operation():
-                self.memory[self.declcount].setNodeType('object')
+                self.memory[self.declcount].setNodeType('obj')
 
             if outlet is False:
                 source = self.declcount
@@ -312,7 +319,7 @@ class MyVisitorz(SimpleVisitor):
         
         name = ctx.ID().getText()
         self.memory[self.declcount].setName(name)
-        self.memory[self.declcount].setNodeType('object')
+        self.memory[self.declcount].setNodeType('obj')
 
         self.addToParentList(self.declcount)
         return self.visitChildren(ctx)

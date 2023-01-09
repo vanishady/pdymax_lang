@@ -12,7 +12,10 @@ Da fare:
 - algoritmo di posizionamento
 - implementare i restanti costrutti (if, for, block ...)
 - scoping per blocco 
-- aggiungere nodetypes
+
+Plus:
+- supporto per nodetypes (generaltypes e objtypes)
+- shell personalizzata con documentazione di supporto pure
 
 ********************* DOMANDE ***********************
 

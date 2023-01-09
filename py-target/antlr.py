@@ -31,16 +31,13 @@ output.close()
 output = open('output.pd', 'a')
 
 for elem in visitor.memory:
-    newline = ''
     line = elem.getNodeString()
     for char in line:
         if char not in ',"[]\'':
-            #output = open('output.pd', 'a')
             output.write(char)
     output.write(';\r\n')
 
 
-#output = open('output.pd', 'a')
 output.write(visitor.connections)
 
 for elem in visitor.connectionstmts:

@@ -20,5 +20,8 @@ ooo = 0
 o = 5
 <a = obj(2), ooo, o, b=obj('sayaseit')>::msg(4)::<a, b, g=7> 
 frodo = msg('baggins', $1 = obj(44, 'gatti'))
-a = \bang()
+
+#test specific object type
+a = \dac(1)
+osc = \osc~(440)
 ;

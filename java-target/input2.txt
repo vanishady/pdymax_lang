@@ -1,13 +1,15 @@
-include nothing
-patch something
+include _nothing
+patch _something
 
-mtest = message(3, $1 = array(1,2,3))
-m = message(3, 2, 1)
-o = object(1)
-object(4,4,4,'givenstring')
+mtest = msg(3, $1 = array(1,2,3))
+m = msg(3, 2, 1)
+o = obj(1)
+obj(4,4,4,'givenstring')
 o = 5
 other = *6
 pooo = *~
-o.$1 = message('aaaa')
-<a = message(360), b>::m = message('ahiahi')::<a,b>
+o.$1 = msg('aaaa')
+<a = msg(360), b>::m = msg('ahiahi')::<a,b>
+a = \bang(1,1, $1 = *6)
+i= msg
 ;
