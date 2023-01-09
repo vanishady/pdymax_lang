@@ -67,8 +67,14 @@ connectionstmt
  |
  ;
 
+declinside
+ : ID '=' (NODETYPE parameters) #FullDeclStmtInside
+ | NODETYPE parameters #FastDeclStmtInside
+ | ID '=' operation #OpDeclStmtInside
+ ;
+
 connectionelem
- : '<' (ID | declarationstmt) (',' (ID | declarationstmt))* '>' | (ID | declarationstmt)
+ : '<' (ID | declinside) (',' (ID | declinside))* '>' | (ID | declinside)
  ;
 
 disconnectionstmt

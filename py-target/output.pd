@@ -5,3 +5,9 @@
 #X obj 40 40 sayaseit;
 #X msg 40 40 4;
 #X obj 40 40 7;
+#X msg 40 40 baggins;
+#X obj 40 40 44 gatti;
+#X obj 40 40 2;
+#X obj 40 40 sayaseit;
+#X msg 40 40 4;
+#X connect 7 0 6 0;

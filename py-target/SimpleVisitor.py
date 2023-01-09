@@ -79,6 +79,21 @@ class SimpleVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by SimpleParser#FullDeclStmtInside.
+    def visitFullDeclStmtInside(self, ctx:SimpleParser.FullDeclStmtInsideContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimpleParser#FastDeclStmtInside.
+    def visitFastDeclStmtInside(self, ctx:SimpleParser.FastDeclStmtInsideContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimpleParser#OpDeclStmtInside.
+    def visitOpDeclStmtInside(self, ctx:SimpleParser.OpDeclStmtInsideContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by SimpleParser#connectionelem.
     def visitConnectionelem(self, ctx:SimpleParser.ConnectionelemContext):
         return self.visitChildren(ctx)

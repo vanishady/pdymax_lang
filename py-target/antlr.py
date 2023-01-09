@@ -54,6 +54,9 @@ output = open('output.pd', 'a')
 output.write(visitor.connections)
 output.close()
 
+for elem in visitor.connectionstmts:
+    elem.printConnections()
+
 #output.close()
 
 

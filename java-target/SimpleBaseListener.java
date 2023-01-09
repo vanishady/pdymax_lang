@@ -184,6 +184,42 @@ public class SimpleBaseListener implements SimpleListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterFullDeclStmtInside(SimpleParser.FullDeclStmtInsideContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFullDeclStmtInside(SimpleParser.FullDeclStmtInsideContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFastDeclStmtInside(SimpleParser.FastDeclStmtInsideContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFastDeclStmtInside(SimpleParser.FastDeclStmtInsideContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOpDeclStmtInside(SimpleParser.OpDeclStmtInsideContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOpDeclStmtInside(SimpleParser.OpDeclStmtInsideContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterConnectionelem(SimpleParser.ConnectionelemContext ctx) { }
 	/**
 	 * {@inheritDoc}

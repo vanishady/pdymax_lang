@@ -153,6 +153,42 @@ public interface SimpleListener extends ParseTreeListener {
 	 */
 	void exitConnectionstmt(SimpleParser.ConnectionstmtContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code FullDeclStmtInside}
+	 * labeled alternative in {@link SimpleParser#declinside}.
+	 * @param ctx the parse tree
+	 */
+	void enterFullDeclStmtInside(SimpleParser.FullDeclStmtInsideContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code FullDeclStmtInside}
+	 * labeled alternative in {@link SimpleParser#declinside}.
+	 * @param ctx the parse tree
+	 */
+	void exitFullDeclStmtInside(SimpleParser.FullDeclStmtInsideContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code FastDeclStmtInside}
+	 * labeled alternative in {@link SimpleParser#declinside}.
+	 * @param ctx the parse tree
+	 */
+	void enterFastDeclStmtInside(SimpleParser.FastDeclStmtInsideContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code FastDeclStmtInside}
+	 * labeled alternative in {@link SimpleParser#declinside}.
+	 * @param ctx the parse tree
+	 */
+	void exitFastDeclStmtInside(SimpleParser.FastDeclStmtInsideContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code OpDeclStmtInside}
+	 * labeled alternative in {@link SimpleParser#declinside}.
+	 * @param ctx the parse tree
+	 */
+	void enterOpDeclStmtInside(SimpleParser.OpDeclStmtInsideContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code OpDeclStmtInside}
+	 * labeled alternative in {@link SimpleParser#declinside}.
+	 * @param ctx the parse tree
+	 */
+	void exitOpDeclStmtInside(SimpleParser.OpDeclStmtInsideContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SimpleParser#connectionelem}.
 	 * @param ctx the parse tree
 	 */

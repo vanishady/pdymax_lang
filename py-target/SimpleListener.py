@@ -134,6 +134,33 @@ class SimpleListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by SimpleParser#FullDeclStmtInside.
+    def enterFullDeclStmtInside(self, ctx:SimpleParser.FullDeclStmtInsideContext):
+        pass
+
+    # Exit a parse tree produced by SimpleParser#FullDeclStmtInside.
+    def exitFullDeclStmtInside(self, ctx:SimpleParser.FullDeclStmtInsideContext):
+        pass
+
+
+    # Enter a parse tree produced by SimpleParser#FastDeclStmtInside.
+    def enterFastDeclStmtInside(self, ctx:SimpleParser.FastDeclStmtInsideContext):
+        pass
+
+    # Exit a parse tree produced by SimpleParser#FastDeclStmtInside.
+    def exitFastDeclStmtInside(self, ctx:SimpleParser.FastDeclStmtInsideContext):
+        pass
+
+
+    # Enter a parse tree produced by SimpleParser#OpDeclStmtInside.
+    def enterOpDeclStmtInside(self, ctx:SimpleParser.OpDeclStmtInsideContext):
+        pass
+
+    # Exit a parse tree produced by SimpleParser#OpDeclStmtInside.
+    def exitOpDeclStmtInside(self, ctx:SimpleParser.OpDeclStmtInsideContext):
+        pass
+
+
     # Enter a parse tree produced by SimpleParser#connectionelem.
     def enterConnectionelem(self, ctx:SimpleParser.ConnectionelemContext):
         pass

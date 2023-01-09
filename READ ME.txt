@@ -1,0 +1,26 @@
+JAVA-TARGET: cartella per il testing della grammatica, utile per visualizzare il parse tree 
+PY-TARGET: cartella principale 
+
+- * - * - LANGUAGE SPECS - * - * - 
+
+Regole implementate:
+- node declaration (declaration statement)
+- inlet/outlet declaration (una sorta di connessione in cui specificare anche gli inlet/outlet)
+- connessione (connection statement) [[WORK IN PROGRESS]]
+
+Da fare:
+- implementare i restanti costrutti (if, for, block ...)
+- scoping per blocco 
+- aggiungere nodetypes
+
+********************* DOMANDE ***********************
+
+- declarationstmt interno al connectionstmt: ho dovuto cambiare nome nella grammatica al declarationstmt nestato
+nel connectionstmt, chiamandolo 'declinside', perché nel visitor se no non avevo modo di distinguere se il 
+declarationstmt fosse appunto "autonomo" oppure all'interno di un connectionstmt. Mi serviva saperlo per 
+aggiungere il nodo dichiarato alla classe Connection(), quindi a una lista di tutti i nodi appartenenti a quel
+connectionstmt. 
+Il problema era che:
+
+<a, b = 'libro', c> :: message(000) #i nodi che vanno nell'istanza di Connection() sono: a,b,c,message(000)
+f = message('farina') #questo nodo f non deve andare nell'istanza di Connection(), ma dal mio codice ci andava :( 
