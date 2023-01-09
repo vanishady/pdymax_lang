@@ -21,6 +21,7 @@
 #X obj 40 40 7;
 #X msg 40 40 baggins;
 #X obj 40 40 44 gatti;
+#X \bang 40 40 ;
 #X connect 6 0 5 0;
 #X connect 8 0 7 0;
 #X connect 9 0 7 0;

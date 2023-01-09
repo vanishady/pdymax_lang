@@ -2,23 +2,23 @@ include nothing
 patch something
 
 #test declaration statements
-mymsgnode = message(3, 2, 1)
-myobjnode = object(1)
-object(4,4,4,'givenstring')
+mymsgnode = msg(3, 2, 1)
+myobjnode = obj(1)
+obj(4,4,4,'givenstring')
 o = 5
 ooo = *~420
 
-ioletinsidep = message('hi', $1 = 555)
-ioletinside2 = message('bye', $1 = message(6,6,6), $1=message('byeee'), $-1=888)
+ioletinsidep = msg('hi', $1 = 555)
+ioletinside2 = msg('bye', $1 = msg(6,6,6), $1=msg('byeee'), $-1=888)
 
 #test ioletdeclstmt
-o.$1 = message('imconnected')
-message('newnode').$1 = *5
+o.$1 = msg('imconnected')
+msg('newnode').$1 = *5
 
 #test connectionstmt
 ooo = 0
 o = 5
-<a = object(2), ooo, o, b=object('sayaseit')>::message(4)::<a, b, g=7> 
-frodo = message('baggins', $1 = object(44, 'gatti'))
-
+<a = obj(2), ooo, o, b=obj('sayaseit')>::msg(4)::<a, b, g=7> 
+frodo = msg('baggins', $1 = obj(44, 'gatti'))
+a = \bang()
 ;
