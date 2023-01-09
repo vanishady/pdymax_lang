@@ -17,6 +17,8 @@ class Node():
         self.nodetype = None
         self.args = []
         self.objtype = ''
+        self.posx = None
+        self.posy = None
 
     def setName(self, name):
         self.name = name
@@ -40,14 +42,25 @@ class Node():
     def getName(self):
         return self.name
 
+    def getPos(self):
+        if (self.posx and self.posy) != None:
+            return self.posx, self.posy
+        return None
+
+    def setPos(self, x, y):
+        self.posx = x
+        self.posy = y
+
     def getNodeString(self):
-        return f'#X {self.nodetype} 40 40 {self.objtype} {[x for x in self.args]}'
+        return f'#X {self.nodetype} {self.posx} {self.posy} {self.objtype} {[x for x in self.args]}'
 
 
 class Connection():
 
     def __init__(self):
         self.connectednodes = []
+        self.xindex = 0
+        self.yindex = 0
 
     def addNode(self, nodeId):
         self.connectednodes.append(nodeId)
@@ -55,8 +68,9 @@ class Connection():
     def addSeparator(self):
         self.connectednodes.append('|')
 
-    def printConnections(self):
-        print(self.connectednodes)
+    def getConnections(self):
+        #print(self.connectednodes)
+        return self.connectednodes
 
     def splitlist(self, nodelist):
         sep = '|'
@@ -72,18 +86,20 @@ class Connection():
             p1, p2 = parts[c], parts[c+1]
             for source in p1:
                 for sink in p2:
-                    line += f'#X connect {source} 0 {sink} 0 ;\r\n'
+                    line += f'#X connect {source} 0 {sink} 0;\r\n'
         return line
+
+    
         
 
 class MyVisitorz(SimpleVisitor):
 
     def __init__(self):
         self.declcount = -1
-        self.memory = []
+        self.memory = [] #list of Node()
         self.connections = '' #connections by inlets and outlets
         
-        self.connectionstmts = [] #connections from connectionstmt
+        self.connectionstmts = [] #connections from connectionstmt; list of Connection()
         self.conncount = -1
 
         #self.n = 0

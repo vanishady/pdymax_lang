@@ -9,7 +9,7 @@ Regole implementate:
 - connessione (connection statement) 
 
 Da fare:
-- algoritmo di posizionamento
+- algoritmo di posizionamento [[WORK IN PROGRESS]]
 - implementare i restanti costrutti (if, for, block ...)
 - scoping per blocco 
 

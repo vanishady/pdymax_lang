@@ -1,4 +1,6 @@
 import sys
+import random
+import itertools
 from antlr4 import*
 from antlr4.CommonTokenStream import CommonTokenStream
 from antlr4.InputStream import InputStream
@@ -24,26 +26,51 @@ visitor.visit(tree)
 
 ### INTERPRETER WORK ###
 
-output = open('output.pd', 'w')
-output.write('#N canvas 676 207 681 509 12 ;\r\n')
-output.close()
+result = '#N canvas 676 207 681 509 12 ;\r\n'
 
-output = open('output.pd', 'a')
+###ptrovaaaaa
+xindex = 0
+yindex = 0
+for elem in visitor.connectionstmts:
+    connectz = elem.getConnections()
+    connectz = connectz[1:]
+    sep = '|'
+    parts = [list(y) for x,y in itertools.groupby(connectz, lambda z: z == sep) if not x]
+    for c in range(len(parts)-1):
+            p1, p2 = parts[c], parts[c+1]
+            for nodeId in p1:
+                xindex += 40
+                node = visitor.memory[nodeId]
+                node.setPos(xindex, yindex)
+            yindex+=40
+            xindex = 0
+            for nodeId in p2:
+                xindex += 40
+                node = visitor.memory[nodeId]
+                node.setPos(xindex, yindex)
+#fine provaaaaa
 
 for elem in visitor.memory:
+    if elem.getPos() == None:
+        elem.setPos(random.randint(20, 500), random.randint(20, 500))
     line = elem.getNodeString()
     for char in line:
         if char not in ',"[]\'':
-            output.write(char)
-    output.write(';\r\n')
+            result+= char
+    result+= ';\r\n'
 
 
-output.write(visitor.connections)
+result+=visitor.connections
 
 for elem in visitor.connectionstmts:
-    output.write(elem.getConnectionString())
+    result+= elem.getConnectionString()
+    
 
+
+output = open('output.pd', 'w')
+output.write(result)
 output.close()
+print(result)
 
 
 
