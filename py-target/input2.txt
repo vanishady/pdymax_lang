@@ -16,12 +16,16 @@ o.$2 = msg('imconnected')
 msg('newnode').$1 = *5
 
 #test connectionstmt
-ooo = 0
-o = 5
+ieaou = 5
 <a = obj(2), ooo, o, b=obj('sayaseit')>::msg(4)::<g=7> 
 frodo = msg('baggins', $1 = obj(44, 'gatti'))
 
 #test specific object type
-a = \dac(1)
+crazy = \dac(1)
 osc = \osc~(440)
+
+block something {
+ babyk = array(4,4,4)
+ marracash = \mtof()
+}
 ;

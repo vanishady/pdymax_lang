@@ -11,7 +11,10 @@ Regole implementate:
 Da fare:
 - algoritmo di posizionamento [[WORK IN PROGRESS]]
 - implementare i restanti costrutti (if, for, block ...)
-- scoping per blocco 
+- scoping per blocco [[WORK IN PROGRESS]]
+
+Bug da fixare:
+- regola typedarglist nella grammatica (non devo essere obbligata a mettere arg prima di ioletdecl)
 
 Plus:
 - supporto per nodetypes (generaltypes e objtypes)

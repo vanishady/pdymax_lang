@@ -12,6 +12,8 @@ else:
 
 class Node():
 
+    variablenames = []
+
     def __init__(self):
         self.name = None
         self.nodetype = None
@@ -21,6 +23,9 @@ class Node():
         self.posy = None
 
     def setName(self, name):
+        if name in self.variablenames:
+            raise Exception(f'you cant use this name <{name}> again, use your imagination!')
+        self.variablenames.append(name)
         self.name = name
 
     def setObjType(self, objtype):
@@ -69,16 +74,17 @@ class Connection():
         self.connectednodes.append('|')
 
     def getConnections(self):
-        #print(self.connectednodes)
-        return self.connectednodes
+        parts = self.splitlist(self.connectednodes)
+        return parts
 
     def splitlist(self, nodelist):
+        if nodelist[0]=='|':
+            nodelist = nodelist[1:]
         sep = '|'
         parts = [list(y) for x,y in itertools.groupby(nodelist, lambda z: z == sep) if not x]
         return parts
 
     def getConnectionString(self):
-        self.connectednodes = self.connectednodes[1:] #toglie il primo separatore
         parts = self.splitlist(self.connectednodes)
         line = ''
 
@@ -131,6 +137,9 @@ class MyVisitorz(SimpleVisitor):
 
     # Visit a parse tree produced by SimpleParser#blockstmt.
     def visitBlockstmt(self, ctx:SimpleParser.BlockstmtContext):
+        blockId = ctx.ID().getText()
+        self.declcount += 1
+        self.memory.append(blockId)
         return self.visitChildren(ctx)
 
 
@@ -179,7 +188,6 @@ class MyVisitorz(SimpleVisitor):
         
         name = ctx.ID().getText()
         self.memory[self.declcount].setName(name)
-        self.memory[self.declcount].setNodeType('obj')
 
         self.setParent(self.declcount)
             
@@ -221,6 +229,10 @@ class MyVisitorz(SimpleVisitor):
 
         if op:
             self.memory[self.declcount].setArg(op)
+            self.memory[self.declcount].setNodeType('obj')
+        else:
+            self.memory[self.declcount].setNodeType('floatatom')
+            
         if ctx.NUMBER():
             self.memory[self.declcount].setArg(ctx.NUMBER().getText())
         return self.visitChildren(ctx)
