@@ -114,6 +114,8 @@ class MyVisitorz(SimpleVisitor):
         counter = -1
         for node in self.memory:
             counter += 1
+            if type(node) == str:
+                return 0
             if node.getName() == nodeName:
                 return counter
         raise Exception (f'node <{nodeName}> does not exist')
@@ -207,8 +209,8 @@ class MyVisitorz(SimpleVisitor):
     # Visit a parse tree produced by SimpleParser#arg.
     def visitArg(self, ctx:SimpleParser.ArgContext):
         arg = None
-        if ctx.NUMBER():
-            arg = ctx.NUMBER().getText()
+        if ctx.operation():
+            pass
         elif ctx.SYMBOL():
             arg = ctx.SYMBOL().getText()
         self.memory[self.declcount].setArg(arg)

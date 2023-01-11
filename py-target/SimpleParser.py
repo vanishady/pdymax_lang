@@ -10,7 +10,7 @@ else:
 
 def serializedATN():
     return [
-        4,1,59,312,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,59,314,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
         2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,
         7,20,1,0,1,0,1,0,5,0,46,8,0,10,0,12,0,49,9,0,1,0,1,0,1,0,1,0,1,0,
@@ -20,29 +20,29 @@ def serializedATN():
         3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,3,
         3,114,8,3,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,3,4,125,8,4,1,5,1,
         5,3,5,129,8,5,1,5,1,5,1,6,1,6,1,6,5,6,136,8,6,10,6,12,6,139,9,6,
-        1,6,1,6,5,6,143,8,6,10,6,12,6,146,9,6,1,7,1,7,1,8,1,8,1,8,3,8,153,
-        8,8,3,8,155,8,8,1,9,1,9,1,9,1,9,1,9,1,9,3,9,163,8,9,1,10,1,10,1,
-        10,1,10,1,10,1,10,1,10,1,10,3,10,173,8,10,1,11,1,11,1,11,4,11,178,
-        8,11,11,11,12,11,179,1,11,3,11,183,8,11,1,12,1,12,1,12,1,12,1,12,
-        1,12,1,12,1,12,1,12,3,12,194,8,12,1,13,1,13,1,13,3,13,199,8,13,1,
-        13,1,13,1,13,3,13,204,8,13,5,13,206,8,13,10,13,12,13,209,9,13,1,
-        13,1,13,1,13,3,13,214,8,13,3,13,216,8,13,1,14,1,14,1,14,4,14,221,
-        8,14,11,14,12,14,222,1,15,1,15,1,15,1,15,5,15,229,8,15,10,15,12,
-        15,232,9,15,1,15,1,15,3,15,236,8,15,1,16,1,16,1,16,1,16,1,16,1,16,
-        1,16,1,16,5,16,246,8,16,10,16,12,16,249,9,16,1,16,1,16,1,17,1,17,
-        1,17,1,17,1,17,1,17,1,17,1,17,1,17,5,17,262,8,17,10,17,12,17,265,
-        9,17,1,17,1,17,1,17,3,17,270,8,17,1,17,1,17,1,18,1,18,1,18,1,18,
-        1,18,1,18,1,18,1,19,1,19,4,19,283,8,19,11,19,12,19,284,1,20,1,20,
-        1,20,1,20,1,20,1,20,3,20,293,8,20,1,20,1,20,1,20,1,20,1,20,1,20,
-        1,20,1,20,1,20,1,20,1,20,1,20,5,20,307,8,20,10,20,12,20,310,9,20,
-        1,20,0,1,40,21,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,
-        36,38,40,0,6,1,0,53,54,3,0,36,37,39,40,44,47,2,0,39,40,46,47,2,0,
-        36,37,44,45,3,0,7,8,32,35,41,41,1,0,42,43,337,0,47,1,0,0,0,2,61,
+        1,6,1,6,5,6,143,8,6,10,6,12,6,146,9,6,1,7,1,7,3,7,150,8,7,1,8,1,
+        8,1,8,3,8,155,8,8,3,8,157,8,8,1,9,1,9,1,9,1,9,1,9,1,9,3,9,165,8,
+        9,1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,3,10,175,8,10,1,11,1,11,
+        1,11,4,11,180,8,11,11,11,12,11,181,1,11,3,11,185,8,11,1,12,1,12,
+        1,12,1,12,1,12,1,12,1,12,1,12,1,12,3,12,196,8,12,1,13,1,13,1,13,
+        3,13,201,8,13,1,13,1,13,1,13,3,13,206,8,13,5,13,208,8,13,10,13,12,
+        13,211,9,13,1,13,1,13,1,13,3,13,216,8,13,3,13,218,8,13,1,14,1,14,
+        1,14,4,14,223,8,14,11,14,12,14,224,1,15,1,15,1,15,1,15,5,15,231,
+        8,15,10,15,12,15,234,9,15,1,15,1,15,3,15,238,8,15,1,16,1,16,1,16,
+        1,16,1,16,1,16,1,16,1,16,5,16,248,8,16,10,16,12,16,251,9,16,1,16,
+        1,16,1,17,1,17,1,17,1,17,1,17,1,17,1,17,1,17,1,17,5,17,264,8,17,
+        10,17,12,17,267,9,17,1,17,1,17,1,17,3,17,272,8,17,1,17,1,17,1,18,
+        1,18,1,18,1,18,1,18,1,18,1,18,1,19,1,19,4,19,285,8,19,11,19,12,19,
+        286,1,20,1,20,1,20,1,20,1,20,1,20,3,20,295,8,20,1,20,1,20,1,20,1,
+        20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,5,20,309,8,20,10,20,12,
+        20,312,9,20,1,20,0,1,40,21,0,2,4,6,8,10,12,14,16,18,20,22,24,26,
+        28,30,32,34,36,38,40,0,5,3,0,36,37,39,40,44,47,2,0,39,40,46,47,2,
+        0,36,37,44,45,3,0,7,8,32,35,41,41,1,0,42,43,340,0,47,1,0,0,0,2,61,
         1,0,0,0,4,75,1,0,0,0,6,113,1,0,0,0,8,124,1,0,0,0,10,126,1,0,0,0,
-        12,132,1,0,0,0,14,147,1,0,0,0,16,154,1,0,0,0,18,156,1,0,0,0,20,172,
-        1,0,0,0,22,182,1,0,0,0,24,193,1,0,0,0,26,215,1,0,0,0,28,217,1,0,
-        0,0,30,235,1,0,0,0,32,237,1,0,0,0,34,252,1,0,0,0,36,273,1,0,0,0,
-        38,280,1,0,0,0,40,292,1,0,0,0,42,43,5,10,0,0,43,44,5,52,0,0,44,46,
+        12,132,1,0,0,0,14,149,1,0,0,0,16,156,1,0,0,0,18,158,1,0,0,0,20,174,
+        1,0,0,0,22,184,1,0,0,0,24,195,1,0,0,0,26,217,1,0,0,0,28,219,1,0,
+        0,0,30,237,1,0,0,0,32,239,1,0,0,0,34,254,1,0,0,0,36,275,1,0,0,0,
+        38,282,1,0,0,0,40,294,1,0,0,0,42,43,5,10,0,0,43,44,5,52,0,0,44,46,
         5,57,0,0,45,42,1,0,0,0,46,49,1,0,0,0,47,45,1,0,0,0,47,48,1,0,0,0,
         48,50,1,0,0,0,49,47,1,0,0,0,50,51,5,9,0,0,51,52,5,52,0,0,52,55,5,
         57,0,0,53,56,3,2,1,0,54,56,3,6,3,0,55,53,1,0,0,0,55,54,1,0,0,0,56,
@@ -71,58 +71,58 @@ def serializedATN():
         5,3,0,0,134,136,3,14,7,0,135,133,1,0,0,0,136,139,1,0,0,0,137,135,
         1,0,0,0,137,138,1,0,0,0,138,144,1,0,0,0,139,137,1,0,0,0,140,141,
         5,3,0,0,141,143,3,18,9,0,142,140,1,0,0,0,143,146,1,0,0,0,144,142,
-        1,0,0,0,144,145,1,0,0,0,145,13,1,0,0,0,146,144,1,0,0,0,147,148,7,
-        0,0,0,148,15,1,0,0,0,149,155,5,54,0,0,150,152,7,1,0,0,151,153,5,
-        54,0,0,152,151,1,0,0,0,152,153,1,0,0,0,153,155,1,0,0,0,154,149,1,
-        0,0,0,154,150,1,0,0,0,155,17,1,0,0,0,156,157,5,51,0,0,157,162,5,
-        2,0,0,158,159,5,48,0,0,159,163,3,10,5,0,160,163,3,16,8,0,161,163,
-        5,52,0,0,162,158,1,0,0,0,162,160,1,0,0,0,162,161,1,0,0,0,163,19,
-        1,0,0,0,164,165,5,52,0,0,165,166,5,4,0,0,166,173,3,18,9,0,167,168,
-        5,48,0,0,168,169,3,10,5,0,169,170,5,4,0,0,170,171,3,18,9,0,171,173,
-        1,0,0,0,172,164,1,0,0,0,172,167,1,0,0,0,173,21,1,0,0,0,174,177,3,
-        26,13,0,175,176,5,13,0,0,176,178,3,26,13,0,177,175,1,0,0,0,178,179,
-        1,0,0,0,179,177,1,0,0,0,179,180,1,0,0,0,180,183,1,0,0,0,181,183,
-        1,0,0,0,182,174,1,0,0,0,182,181,1,0,0,0,183,23,1,0,0,0,184,185,5,
-        52,0,0,185,186,5,2,0,0,186,187,5,48,0,0,187,194,3,10,5,0,188,189,
-        5,48,0,0,189,194,3,10,5,0,190,191,5,52,0,0,191,192,5,2,0,0,192,194,
-        3,16,8,0,193,184,1,0,0,0,193,188,1,0,0,0,193,190,1,0,0,0,194,25,
-        1,0,0,0,195,198,5,32,0,0,196,199,5,52,0,0,197,199,3,24,12,0,198,
-        196,1,0,0,0,198,197,1,0,0,0,199,207,1,0,0,0,200,203,5,3,0,0,201,
-        204,5,52,0,0,202,204,3,24,12,0,203,201,1,0,0,0,203,202,1,0,0,0,204,
-        206,1,0,0,0,205,200,1,0,0,0,206,209,1,0,0,0,207,205,1,0,0,0,207,
-        208,1,0,0,0,208,210,1,0,0,0,209,207,1,0,0,0,210,216,5,33,0,0,211,
-        214,5,52,0,0,212,214,3,24,12,0,213,211,1,0,0,0,213,212,1,0,0,0,214,
-        216,1,0,0,0,215,195,1,0,0,0,215,213,1,0,0,0,216,27,1,0,0,0,217,220,
-        3,30,15,0,218,219,5,14,0,0,219,221,3,30,15,0,220,218,1,0,0,0,221,
-        222,1,0,0,0,222,220,1,0,0,0,222,223,1,0,0,0,223,29,1,0,0,0,224,225,
-        5,32,0,0,225,230,5,52,0,0,226,227,5,3,0,0,227,229,5,52,0,0,228,226,
-        1,0,0,0,229,232,1,0,0,0,230,228,1,0,0,0,230,231,1,0,0,0,231,233,
-        1,0,0,0,232,230,1,0,0,0,233,236,5,33,0,0,234,236,5,52,0,0,235,224,
-        1,0,0,0,235,234,1,0,0,0,236,31,1,0,0,0,237,238,5,24,0,0,238,239,
-        5,52,0,0,239,240,5,25,0,0,240,241,5,52,0,0,241,242,5,28,0,0,242,
-        247,5,57,0,0,243,246,3,6,3,0,244,246,3,4,2,0,245,243,1,0,0,0,245,
-        244,1,0,0,0,246,249,1,0,0,0,247,245,1,0,0,0,247,248,1,0,0,0,248,
-        250,1,0,0,0,249,247,1,0,0,0,250,251,5,29,0,0,251,33,1,0,0,0,252,
-        253,5,15,0,0,253,254,3,40,20,0,254,255,5,5,0,0,255,263,3,38,19,0,
-        256,257,5,16,0,0,257,258,3,40,20,0,258,259,5,5,0,0,259,260,3,38,
-        19,0,260,262,1,0,0,0,261,256,1,0,0,0,262,265,1,0,0,0,263,261,1,0,
-        0,0,263,264,1,0,0,0,264,269,1,0,0,0,265,263,1,0,0,0,266,267,5,17,
-        0,0,267,268,5,5,0,0,268,270,3,38,19,0,269,266,1,0,0,0,269,270,1,
-        0,0,0,270,271,1,0,0,0,271,272,5,23,0,0,272,35,1,0,0,0,273,274,5,
-        18,0,0,274,275,5,55,0,0,275,276,5,6,0,0,276,277,5,5,0,0,277,278,
-        3,38,19,0,278,279,5,23,0,0,279,37,1,0,0,0,280,282,5,57,0,0,281,283,
-        3,6,3,0,282,281,1,0,0,0,283,284,1,0,0,0,284,282,1,0,0,0,284,285,
-        1,0,0,0,285,39,1,0,0,0,286,287,6,20,-1,0,287,293,5,54,0,0,288,289,
-        5,26,0,0,289,290,3,40,20,0,290,291,5,27,0,0,291,293,1,0,0,0,292,
-        286,1,0,0,0,292,288,1,0,0,0,293,308,1,0,0,0,294,295,10,6,0,0,295,
-        296,7,2,0,0,296,307,3,40,20,7,297,298,10,5,0,0,298,299,7,3,0,0,299,
-        307,3,40,20,6,300,301,10,4,0,0,301,302,7,4,0,0,302,307,3,40,20,5,
-        303,304,10,3,0,0,304,305,7,5,0,0,305,307,3,40,20,4,306,294,1,0,0,
-        0,306,297,1,0,0,0,306,300,1,0,0,0,306,303,1,0,0,0,307,310,1,0,0,
-        0,308,306,1,0,0,0,308,309,1,0,0,0,309,41,1,0,0,0,310,308,1,0,0,0,
-        34,47,55,57,67,69,82,113,124,128,137,144,152,154,162,172,179,182,
-        193,198,203,207,213,215,222,230,235,245,247,263,269,284,292,306,
-        308
+        1,0,0,0,144,145,1,0,0,0,145,13,1,0,0,0,146,144,1,0,0,0,147,150,5,
+        53,0,0,148,150,3,16,8,0,149,147,1,0,0,0,149,148,1,0,0,0,150,15,1,
+        0,0,0,151,157,5,54,0,0,152,154,7,0,0,0,153,155,5,54,0,0,154,153,
+        1,0,0,0,154,155,1,0,0,0,155,157,1,0,0,0,156,151,1,0,0,0,156,152,
+        1,0,0,0,157,17,1,0,0,0,158,159,5,51,0,0,159,164,5,2,0,0,160,161,
+        5,48,0,0,161,165,3,10,5,0,162,165,3,16,8,0,163,165,5,52,0,0,164,
+        160,1,0,0,0,164,162,1,0,0,0,164,163,1,0,0,0,165,19,1,0,0,0,166,167,
+        5,52,0,0,167,168,5,4,0,0,168,175,3,18,9,0,169,170,5,48,0,0,170,171,
+        3,10,5,0,171,172,5,4,0,0,172,173,3,18,9,0,173,175,1,0,0,0,174,166,
+        1,0,0,0,174,169,1,0,0,0,175,21,1,0,0,0,176,179,3,26,13,0,177,178,
+        5,13,0,0,178,180,3,26,13,0,179,177,1,0,0,0,180,181,1,0,0,0,181,179,
+        1,0,0,0,181,182,1,0,0,0,182,185,1,0,0,0,183,185,1,0,0,0,184,176,
+        1,0,0,0,184,183,1,0,0,0,185,23,1,0,0,0,186,187,5,52,0,0,187,188,
+        5,2,0,0,188,189,5,48,0,0,189,196,3,10,5,0,190,191,5,48,0,0,191,196,
+        3,10,5,0,192,193,5,52,0,0,193,194,5,2,0,0,194,196,3,16,8,0,195,186,
+        1,0,0,0,195,190,1,0,0,0,195,192,1,0,0,0,196,25,1,0,0,0,197,200,5,
+        32,0,0,198,201,5,52,0,0,199,201,3,24,12,0,200,198,1,0,0,0,200,199,
+        1,0,0,0,201,209,1,0,0,0,202,205,5,3,0,0,203,206,5,52,0,0,204,206,
+        3,24,12,0,205,203,1,0,0,0,205,204,1,0,0,0,206,208,1,0,0,0,207,202,
+        1,0,0,0,208,211,1,0,0,0,209,207,1,0,0,0,209,210,1,0,0,0,210,212,
+        1,0,0,0,211,209,1,0,0,0,212,218,5,33,0,0,213,216,5,52,0,0,214,216,
+        3,24,12,0,215,213,1,0,0,0,215,214,1,0,0,0,216,218,1,0,0,0,217,197,
+        1,0,0,0,217,215,1,0,0,0,218,27,1,0,0,0,219,222,3,30,15,0,220,221,
+        5,14,0,0,221,223,3,30,15,0,222,220,1,0,0,0,223,224,1,0,0,0,224,222,
+        1,0,0,0,224,225,1,0,0,0,225,29,1,0,0,0,226,227,5,32,0,0,227,232,
+        5,52,0,0,228,229,5,3,0,0,229,231,5,52,0,0,230,228,1,0,0,0,231,234,
+        1,0,0,0,232,230,1,0,0,0,232,233,1,0,0,0,233,235,1,0,0,0,234,232,
+        1,0,0,0,235,238,5,33,0,0,236,238,5,52,0,0,237,226,1,0,0,0,237,236,
+        1,0,0,0,238,31,1,0,0,0,239,240,5,24,0,0,240,241,5,52,0,0,241,242,
+        5,25,0,0,242,243,5,52,0,0,243,244,5,28,0,0,244,249,5,57,0,0,245,
+        248,3,6,3,0,246,248,3,4,2,0,247,245,1,0,0,0,247,246,1,0,0,0,248,
+        251,1,0,0,0,249,247,1,0,0,0,249,250,1,0,0,0,250,252,1,0,0,0,251,
+        249,1,0,0,0,252,253,5,29,0,0,253,33,1,0,0,0,254,255,5,15,0,0,255,
+        256,3,40,20,0,256,257,5,5,0,0,257,265,3,38,19,0,258,259,5,16,0,0,
+        259,260,3,40,20,0,260,261,5,5,0,0,261,262,3,38,19,0,262,264,1,0,
+        0,0,263,258,1,0,0,0,264,267,1,0,0,0,265,263,1,0,0,0,265,266,1,0,
+        0,0,266,271,1,0,0,0,267,265,1,0,0,0,268,269,5,17,0,0,269,270,5,5,
+        0,0,270,272,3,38,19,0,271,268,1,0,0,0,271,272,1,0,0,0,272,273,1,
+        0,0,0,273,274,5,23,0,0,274,35,1,0,0,0,275,276,5,18,0,0,276,277,5,
+        55,0,0,277,278,5,6,0,0,278,279,5,5,0,0,279,280,3,38,19,0,280,281,
+        5,23,0,0,281,37,1,0,0,0,282,284,5,57,0,0,283,285,3,6,3,0,284,283,
+        1,0,0,0,285,286,1,0,0,0,286,284,1,0,0,0,286,287,1,0,0,0,287,39,1,
+        0,0,0,288,289,6,20,-1,0,289,295,5,54,0,0,290,291,5,26,0,0,291,292,
+        3,40,20,0,292,293,5,27,0,0,293,295,1,0,0,0,294,288,1,0,0,0,294,290,
+        1,0,0,0,295,310,1,0,0,0,296,297,10,6,0,0,297,298,7,1,0,0,298,309,
+        3,40,20,7,299,300,10,5,0,0,300,301,7,2,0,0,301,309,3,40,20,6,302,
+        303,10,4,0,0,303,304,7,3,0,0,304,309,3,40,20,5,305,306,10,3,0,0,
+        306,307,7,4,0,0,307,309,3,40,20,4,308,296,1,0,0,0,308,299,1,0,0,
+        0,308,302,1,0,0,0,308,305,1,0,0,0,309,312,1,0,0,0,310,308,1,0,0,
+        0,310,311,1,0,0,0,311,41,1,0,0,0,312,310,1,0,0,0,35,47,55,57,67,
+        69,82,113,124,128,137,144,149,154,156,164,174,181,184,195,200,205,
+        209,215,217,224,232,237,247,249,265,271,286,294,308,310
     ]
 
 class SimpleParser ( Parser ):
@@ -939,7 +939,7 @@ class SimpleParser ( Parser ):
             self.state = 128
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==53 or _la==54:
+            if ((_la) & ~0x3f) == 0 and ((1 << _la) & 27287335980761088) != 0:
                 self.state = 127
                 self.typedargslist()
 
@@ -1049,8 +1049,9 @@ class SimpleParser ( Parser ):
         def SYMBOL(self):
             return self.getToken(SimpleParser.SYMBOL, 0)
 
-        def NUMBER(self):
-            return self.getToken(SimpleParser.NUMBER, 0)
+        def operation(self):
+            return self.getTypedRuleContext(SimpleParser.OperationContext,0)
+
 
         def getRuleIndex(self):
             return SimpleParser.RULE_arg
@@ -1076,16 +1077,23 @@ class SimpleParser ( Parser ):
 
         localctx = SimpleParser.ArgContext(self, self._ctx, self.state)
         self.enterRule(localctx, 14, self.RULE_arg)
-        self._la = 0 # Token type
         try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 147
-            _la = self._input.LA(1)
-            if not(_la==53 or _la==54):
-                self._errHandler.recoverInline(self)
+            self.state = 149
+            self._errHandler.sync(self)
+            token = self._input.LA(1)
+            if token in [53]:
+                self.enterOuterAlt(localctx, 1)
+                self.state = 147
+                self.match(SimpleParser.SYMBOL)
+                pass
+            elif token in [36, 37, 39, 40, 44, 45, 46, 47, 54]:
+                self.enterOuterAlt(localctx, 2)
+                self.state = 148
+                self.operation()
+                pass
             else:
-                self._errHandler.reportMatch(self)
-                self.consume()
+                raise NoViableAltException(self)
+
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1156,17 +1164,17 @@ class SimpleParser ( Parser ):
         self.enterRule(localctx, 16, self.RULE_operation)
         self._la = 0 # Token type
         try:
-            self.state = 154
+            self.state = 156
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [54]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 149
+                self.state = 151
                 self.match(SimpleParser.NUMBER)
                 pass
             elif token in [36, 37, 39, 40, 44, 45, 46, 47]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 150
+                self.state = 152
                 localctx.op = self._input.LT(1)
                 _la = self._input.LA(1)
                 if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 265738216538112) != 0):
@@ -1174,11 +1182,11 @@ class SimpleParser ( Parser ):
                 else:
                     self._errHandler.reportMatch(self)
                     self.consume()
-                self.state = 152
+                self.state = 154
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==54:
-                    self.state = 151
+                    self.state = 153
                     self.match(SimpleParser.NUMBER)
 
 
@@ -1245,25 +1253,25 @@ class SimpleParser ( Parser ):
         self.enterRule(localctx, 18, self.RULE_ioletdeclasarg)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 156
+            self.state = 158
             self.match(SimpleParser.INOUTID)
-            self.state = 157
+            self.state = 159
             self.match(SimpleParser.T__1)
-            self.state = 162
+            self.state = 164
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [48]:
-                self.state = 158
+                self.state = 160
                 self.match(SimpleParser.NODETYPE)
-                self.state = 159
+                self.state = 161
                 self.parameters()
                 pass
             elif token in [36, 37, 39, 40, 44, 45, 46, 47, 54]:
-                self.state = 160
+                self.state = 162
                 self.operation()
                 pass
             elif token in [52]:
-                self.state = 161
+                self.state = 163
                 self.match(SimpleParser.ID)
                 pass
             else:
@@ -1324,27 +1332,27 @@ class SimpleParser ( Parser ):
         localctx = SimpleParser.IoletdeclstmtContext(self, self._ctx, self.state)
         self.enterRule(localctx, 20, self.RULE_ioletdeclstmt)
         try:
-            self.state = 172
+            self.state = 174
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [52]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 164
-                self.match(SimpleParser.ID)
-                self.state = 165
-                self.match(SimpleParser.T__3)
                 self.state = 166
+                self.match(SimpleParser.ID)
+                self.state = 167
+                self.match(SimpleParser.T__3)
+                self.state = 168
                 self.ioletdeclasarg()
                 pass
             elif token in [48]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 167
-                self.match(SimpleParser.NODETYPE)
-                self.state = 168
-                self.parameters()
                 self.state = 169
-                self.match(SimpleParser.T__3)
+                self.match(SimpleParser.NODETYPE)
                 self.state = 170
+                self.parameters()
+                self.state = 171
+                self.match(SimpleParser.T__3)
+                self.state = 172
                 self.ioletdeclasarg()
                 pass
             else:
@@ -1405,22 +1413,22 @@ class SimpleParser ( Parser ):
         self.enterRule(localctx, 22, self.RULE_connectionstmt)
         self._la = 0 # Token type
         try:
-            self.state = 182
+            self.state = 184
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [32, 48, 52]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 174
+                self.state = 176
                 self.connectionelem()
-                self.state = 177 
+                self.state = 179 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while True:
-                    self.state = 175
+                    self.state = 177
                     self.match(SimpleParser.CONNECT)
-                    self.state = 176
+                    self.state = 178
                     self.connectionelem()
-                    self.state = 179 
+                    self.state = 181 
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if not (_la==13):
@@ -1549,40 +1557,40 @@ class SimpleParser ( Parser ):
         localctx = SimpleParser.DeclinsideContext(self, self._ctx, self.state)
         self.enterRule(localctx, 24, self.RULE_declinside)
         try:
-            self.state = 193
+            self.state = 195
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,17,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,18,self._ctx)
             if la_ == 1:
                 localctx = SimpleParser.FullDeclStmtInsideContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 184
+                self.state = 186
                 self.match(SimpleParser.ID)
-                self.state = 185
+                self.state = 187
                 self.match(SimpleParser.T__1)
 
-                self.state = 186
-                self.match(SimpleParser.NODETYPE)
-                self.state = 187
-                self.parameters()
-                pass
-
-            elif la_ == 2:
-                localctx = SimpleParser.FastDeclStmtInsideContext(self, localctx)
-                self.enterOuterAlt(localctx, 2)
                 self.state = 188
                 self.match(SimpleParser.NODETYPE)
                 self.state = 189
                 self.parameters()
                 pass
 
+            elif la_ == 2:
+                localctx = SimpleParser.FastDeclStmtInsideContext(self, localctx)
+                self.enterOuterAlt(localctx, 2)
+                self.state = 190
+                self.match(SimpleParser.NODETYPE)
+                self.state = 191
+                self.parameters()
+                pass
+
             elif la_ == 3:
                 localctx = SimpleParser.OpDeclStmtInsideContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 190
-                self.match(SimpleParser.ID)
-                self.state = 191
-                self.match(SimpleParser.T__1)
                 self.state = 192
+                self.match(SimpleParser.ID)
+                self.state = 193
+                self.match(SimpleParser.T__1)
+                self.state = 194
                 self.operation()
                 pass
 
@@ -1648,66 +1656,66 @@ class SimpleParser ( Parser ):
         self.enterRule(localctx, 26, self.RULE_connectionelem)
         self._la = 0 # Token type
         try:
-            self.state = 215
+            self.state = 217
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [32]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 195
+                self.state = 197
                 self.match(SimpleParser.L_ANGLE)
-                self.state = 198
+                self.state = 200
                 self._errHandler.sync(self)
-                la_ = self._interp.adaptivePredict(self._input,18,self._ctx)
+                la_ = self._interp.adaptivePredict(self._input,19,self._ctx)
                 if la_ == 1:
-                    self.state = 196
+                    self.state = 198
                     self.match(SimpleParser.ID)
                     pass
 
                 elif la_ == 2:
-                    self.state = 197
+                    self.state = 199
                     self.declinside()
                     pass
 
 
-                self.state = 207
+                self.state = 209
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==3:
-                    self.state = 200
+                    self.state = 202
                     self.match(SimpleParser.T__2)
-                    self.state = 203
+                    self.state = 205
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input,19,self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input,20,self._ctx)
                     if la_ == 1:
-                        self.state = 201
+                        self.state = 203
                         self.match(SimpleParser.ID)
                         pass
 
                     elif la_ == 2:
-                        self.state = 202
+                        self.state = 204
                         self.declinside()
                         pass
 
 
-                    self.state = 209
+                    self.state = 211
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                self.state = 210
+                self.state = 212
                 self.match(SimpleParser.R_ANGLE)
                 pass
             elif token in [48, 52]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 213
+                self.state = 215
                 self._errHandler.sync(self)
-                la_ = self._interp.adaptivePredict(self._input,21,self._ctx)
+                la_ = self._interp.adaptivePredict(self._input,22,self._ctx)
                 if la_ == 1:
-                    self.state = 211
+                    self.state = 213
                     self.match(SimpleParser.ID)
                     pass
 
                 elif la_ == 2:
-                    self.state = 212
+                    self.state = 214
                     self.declinside()
                     pass
 
@@ -1772,17 +1780,17 @@ class SimpleParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 217
+            self.state = 219
             self.disconnectionelem()
-            self.state = 220 
+            self.state = 222 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 218
+                self.state = 220
                 self.match(SimpleParser.DISCONNECT)
-                self.state = 219
+                self.state = 221
                 self.disconnectionelem()
-                self.state = 222 
+                self.state = 224 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not (_la==14):
@@ -1842,33 +1850,33 @@ class SimpleParser ( Parser ):
         self.enterRule(localctx, 30, self.RULE_disconnectionelem)
         self._la = 0 # Token type
         try:
-            self.state = 235
+            self.state = 237
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [32]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 224
+                self.state = 226
                 self.match(SimpleParser.L_ANGLE)
-                self.state = 225
+                self.state = 227
                 self.match(SimpleParser.ID)
-                self.state = 230
+                self.state = 232
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==3:
-                    self.state = 226
+                    self.state = 228
                     self.match(SimpleParser.T__2)
-                    self.state = 227
+                    self.state = 229
                     self.match(SimpleParser.ID)
-                    self.state = 232
+                    self.state = 234
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                self.state = 233
+                self.state = 235
                 self.match(SimpleParser.R_ANGLE)
                 pass
             elif token in [52]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 234
+                self.state = 236
                 self.match(SimpleParser.ID)
                 pass
             else:
@@ -1952,41 +1960,41 @@ class SimpleParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 237
-            self.match(SimpleParser.RECALL)
-            self.state = 238
-            self.match(SimpleParser.ID)
             self.state = 239
-            self.match(SimpleParser.TO)
+            self.match(SimpleParser.RECALL)
             self.state = 240
             self.match(SimpleParser.ID)
             self.state = 241
-            self.match(SimpleParser.L_CURLY)
+            self.match(SimpleParser.TO)
             self.state = 242
+            self.match(SimpleParser.ID)
+            self.state = 243
+            self.match(SimpleParser.L_CURLY)
+            self.state = 244
             self.match(SimpleParser.NL)
-            self.state = 247
+            self.state = 249
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while ((_la) & ~0x3f) == 0 and ((1 << _la) & 148900266999320576) != 0:
-                self.state = 245
+                self.state = 247
                 self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [15, 18, 20, 21, 22, 24, 32, 48, 52, 57]:
-                    self.state = 243
+                    self.state = 245
                     self.stmt()
                     pass
                 elif token in [12]:
-                    self.state = 244
+                    self.state = 246
                     self.subblockstmt()
                     pass
                 else:
                     raise NoViableAltException(self)
 
-                self.state = 249
+                self.state = 251
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 250
+            self.state = 252
             self.match(SimpleParser.R_CURLY)
         except RecognitionException as re:
             localctx.exception = re
@@ -2060,43 +2068,43 @@ class SimpleParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 252
-            self.match(SimpleParser.IF)
-            self.state = 253
-            self.expr(0)
             self.state = 254
-            self.match(SimpleParser.T__4)
+            self.match(SimpleParser.IF)
             self.state = 255
+            self.expr(0)
+            self.state = 256
+            self.match(SimpleParser.T__4)
+            self.state = 257
             self.suite()
-            self.state = 263
+            self.state = 265
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==16:
-                self.state = 256
-                self.match(SimpleParser.ELIF)
-                self.state = 257
-                self.expr(0)
                 self.state = 258
-                self.match(SimpleParser.T__4)
+                self.match(SimpleParser.ELIF)
                 self.state = 259
+                self.expr(0)
+                self.state = 260
+                self.match(SimpleParser.T__4)
+                self.state = 261
                 self.suite()
-                self.state = 265
+                self.state = 267
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 269
+            self.state = 271
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==17:
-                self.state = 266
-                self.match(SimpleParser.ELSE)
-                self.state = 267
-                self.match(SimpleParser.T__4)
                 self.state = 268
+                self.match(SimpleParser.ELSE)
+                self.state = 269
+                self.match(SimpleParser.T__4)
+                self.state = 270
                 self.suite()
 
 
-            self.state = 271
+            self.state = 273
             self.match(SimpleParser.END)
         except RecognitionException as re:
             localctx.exception = re
@@ -2153,17 +2161,17 @@ class SimpleParser ( Parser ):
         self.enterRule(localctx, 36, self.RULE_forstmt)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 273
-            self.match(SimpleParser.FOR)
-            self.state = 274
-            self.match(SimpleParser.INTEGER)
             self.state = 275
-            self.match(SimpleParser.T__5)
+            self.match(SimpleParser.FOR)
             self.state = 276
-            self.match(SimpleParser.T__4)
+            self.match(SimpleParser.INTEGER)
             self.state = 277
-            self.suite()
+            self.match(SimpleParser.T__5)
             self.state = 278
+            self.match(SimpleParser.T__4)
+            self.state = 279
+            self.suite()
+            self.state = 280
             self.match(SimpleParser.END)
         except RecognitionException as re:
             localctx.exception = re
@@ -2218,15 +2226,15 @@ class SimpleParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 280
+            self.state = 282
             self.match(SimpleParser.NL)
-            self.state = 282 
+            self.state = 284 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 281
+                self.state = 283
                 self.stmt()
-                self.state = 284 
+                self.state = 286 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not (((_la) & ~0x3f) == 0 and ((1 << _la) & 148900266999316480) != 0):
@@ -2465,7 +2473,7 @@ class SimpleParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 292
+            self.state = 294
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [54]:
@@ -2473,43 +2481,43 @@ class SimpleParser ( Parser ):
                 self._ctx = localctx
                 _prevctx = localctx
 
-                self.state = 287
+                self.state = 289
                 self.match(SimpleParser.NUMBER)
                 pass
             elif token in [26]:
                 localctx = SimpleParser.ParensContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 288
-                self.match(SimpleParser.L_PAREN)
-                self.state = 289
-                self.expr(0)
                 self.state = 290
+                self.match(SimpleParser.L_PAREN)
+                self.state = 291
+                self.expr(0)
+                self.state = 292
                 self.match(SimpleParser.R_PAREN)
                 pass
             else:
                 raise NoViableAltException(self)
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 308
+            self.state = 310
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,33,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,34,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 306
+                    self.state = 308
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input,32,self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input,33,self._ctx)
                     if la_ == 1:
                         localctx = SimpleParser.MulDivContext(self, SimpleParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 294
+                        self.state = 296
                         if not self.precpred(self._ctx, 6):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
-                        self.state = 295
+                        self.state = 297
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 212755499974656) != 0):
@@ -2517,18 +2525,18 @@ class SimpleParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 296
+                        self.state = 298
                         self.expr(7)
                         pass
 
                     elif la_ == 2:
                         localctx = SimpleParser.AddSubContext(self, SimpleParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 297
+                        self.state = 299
                         if not self.precpred(self._ctx, 5):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
-                        self.state = 298
+                        self.state = 300
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 52982716563456) != 0):
@@ -2536,50 +2544,50 @@ class SimpleParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 299
+                        self.state = 301
                         self.expr(6)
                         pass
 
                     elif la_ == 3:
                         localctx = SimpleParser.TestContext(self, SimpleParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 300
+                        self.state = 302
                         if not self.precpred(self._ctx, 4):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
-                        self.state = 301
+                        self.state = 303
                         _la = self._input.LA(1)
                         if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 2263447765376) != 0):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 302
+                        self.state = 304
                         self.expr(5)
                         pass
 
                     elif la_ == 4:
                         localctx = SimpleParser.LogicalContext(self, SimpleParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 303
+                        self.state = 305
                         if not self.precpred(self._ctx, 3):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 3)")
-                        self.state = 304
+                        self.state = 306
                         _la = self._input.LA(1)
                         if not(_la==42 or _la==43):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 305
+                        self.state = 307
                         self.expr(4)
                         pass
 
              
-                self.state = 310
+                self.state = 312
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,33,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,34,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re

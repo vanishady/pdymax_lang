@@ -1,31 +1,22 @@
 include nothing
 patch something
 
-#test declaration statements
-mymsgnode = msg(3, 2, 1)
-myobjnode = obj(1)
-obj(4,4,4,'givenstring')
-o = 5
-ooo = *~420
+#title = text('additive synth')
+obj(440)::<osc1=\osc~(), num1=*2, num2=*3, num3=*4, num4=*5>
+osc1 :: mul=*~ 0.1
 
-ioletinsidep = msg('hi', $1 = 555)
-ioletinside2 = msg('bye', $1 = msg(6,6,6), $1=msg('byeee'), $-1=888)
+num1::floatatom()::\osc~()::mul1=*~ 0.75
+num2::floatatom()::\osc~()::mul2=*~ 0.5
+num3::floatatom()::\osc~()::mul3=*~ 0.35
+num4::floatatom()::\osc~()::mul4=*~ 0.25
 
-#test ioletdeclstmt
-o.$2 = msg('imconnected')
-msg('newnode').$1 = *5
+mul.$1 = mul1
+mul.$1 = mul2
+mul.$1 = mul3
+mul.$1 = mul4
+output=\dac~()
 
-#test connectionstmt
-ieaou = 5
-<a = obj(2), ooo, o, b=obj('sayaseit')>::msg(4)::<g=7> 
-frodo = msg('baggins', $1 = obj(44, 'gatti'))
+mul.$-1 =output
+output.$2 = mul
 
-#test specific object type
-crazy = \dac(1)
-osc = \osc~(440)
-
-block something {
- babyk = array(4,4,4)
- marracash = \mtof()
-}
 ;

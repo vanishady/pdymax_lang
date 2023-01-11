@@ -4,14 +4,10 @@ grammar Simple;
 * parser rules
 */
 
-prog: (INCLUDE ID NL)* PATCH ID NL (blockstmt|stmt)+ ';';
+prog: PATCH ID NL (blockstmt|stmt)+ ';';
 
 blockstmt
- : BLOCK ID '{' NL (stmt | subblockstmt)* '}' NL
- ;
-
-subblockstmt
- : SUBBLOCK ID '{' NL stmt* '}' NL
+ : BLOCK ID '{' NL stmt* endofblock='}' NL
  ;
 
 stmt
@@ -27,24 +23,26 @@ stmt
  | NL
  ;
 
+
+
 declarationstmt
  : ID '=' (NODETYPE parameters) #FullDeclStmt
  | NODETYPE parameters #FastDeclStmt
  | ID '=' operation #OpDeclStmt	
  ;
 
-
 parameters
  : '(' (typedargslist)? ')'
  ;
 
 typedargslist
- : arg (',' arg)* (',' ioletdeclasarg )* 
+ : arg (',' arg)* (',' ioletbase )* 
+ | ioletbase (',' ioletbase )* 
  ;
 
 arg
  : SYMBOL
- | NUMBER
+ | operation
  ;
 
 operation
@@ -52,19 +50,21 @@ operation
  | op=('*'|'/'|'*~'|'/~'|'+'|'-'|'+~'|'-~') NUMBER?
  ;
 
-ioletdeclasarg
+
+
+ioletbase
  : INOUTID '=' (NODETYPE parameters | operation | ID)	
  ;
 
 ioletdeclstmt
- : ID '.' ioletdeclasarg
- | NODETYPE parameters '.' ioletdeclasarg
+ : ID '.' ioletbase
+ | NODETYPE parameters '.' ioletbase
  ;
+
 
 
 connectionstmt
  : connectionelem (CONNECT connectionelem)+
- |
  ;
 
 declinside
@@ -77,16 +77,10 @@ connectionelem
  : '<' (ID | declinside) (',' (ID | declinside))* '>' | (ID | declinside)
  ;
 
-disconnectionstmt
- : disconnectionelem (DISCONNECT disconnectionelem)+
- ;
 
-disconnectionelem
- : '<' ID (',' ID)* '>' | ID
- ;
 
 recallstmt
- : RECALL ID TO ID '{' NL (stmt | subblockstmt)* '}' 
+ : RECALL ID TO ID '{' NL stmt* '}' 
  ;
 
 
@@ -105,12 +99,11 @@ suite
 
 
 expr
- : expr op=('*'|'/'|'*~'|'/~') expr	#MulDiv	
- | expr op=('+'|'-'|'+~'|'-~') expr	#AddSub
- | expr (EQ | NOT_EQ | '>' | '>=' | '<' | '<=' | '%' ) expr	#Test
- | expr (AND | OR) expr	#Logical
+ : expr op=('*'|'/'|'+'|'-') expr	#MathExpr	
+ | expr (EQ | NOT_EQ | '>' | '>=' | '<' | '<=' | '%' ) expr	#TestExpr
+ | expr (AND | OR) expr	#LogicalExpr
  | NUMBER	#number
- | L_PAREN expr R_PAREN #Parens
+ | L_PAREN expr R_PAREN #ParensExpr
  ;
 
 /*
@@ -120,11 +113,8 @@ expr
 //keywords
 
 PATCH : 'patch' ;
-INCLUDE : 'include' ;
 BLOCK : 'block' ;
-SUBBLOCK : 'subblock' ;
 CONNECT : '::' ;
-DISCONNECT : 'disconnect' | ':x' ;
 IF : 'if' ;
 ELIF : 'elif' ;
 ELSE : 'else' ;

@@ -44,7 +44,7 @@ typedargslist
 
 arg
  : SYMBOL
- | NUMBER
+ | operation
  ;
 
 operation

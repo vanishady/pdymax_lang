@@ -14,7 +14,7 @@ Da fare:
 - scoping per blocco [[WORK IN PROGRESS]]
 
 Bug da fixare:
-- regola typedarglist nella grammatica (non devo essere obbligata a mettere arg prima di ioletdecl)
+- dentro alle stringhe non sono allowed i whitespace!!!
 
 Plus:
 - supporto per nodetypes (generaltypes e objtypes)
@@ -30,4 +30,5 @@ connectionstmt.
 Il problema era che:
 
 <a, b = 'libro', c> :: message(000) #i nodi che vanno nell'istanza di Connection() sono: a,b,c,message(000)
-f = message('farina') #questo nodo f non deve andare nell'istanza di Connection(), ma dal mio codice ci andava :( 
+f = message('farina') #questo nodo f non deve andare nell'istanza di Connection(), ma dal mio codice ci andava :(
+ 

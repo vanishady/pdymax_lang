@@ -1,0 +1,6 @@
+patch something
+
+id1 = msg('otherparameters')
+id2 = *8
+array(4,4,4)
+;

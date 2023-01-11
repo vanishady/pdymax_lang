@@ -82,13 +82,15 @@ for elem in visitor.connectionstmts:
             for nodeId in p1:
                 xindex += 40
                 node = visitor.memory[nodeId]
-                node.setPos(xindex, yindex)
+                if type(node)!=str:
+                    node.setPos(xindex, yindex)
             yindex+=40
             xindex = 0
             for nodeId in p2:
                 xindex += 40
                 node = visitor.memory[nodeId]
-                node.setPos(xindex, yindex)
+                if type(node)!=str:
+                    node.setPos(xindex, yindex)
 
 #print node string to result
 counter=-1
@@ -125,8 +127,6 @@ for elem in visitor.connectionstmts:
 output = open('output.pd', 'w')
 output.write(result)
 output.close()
-
-
 
 
 

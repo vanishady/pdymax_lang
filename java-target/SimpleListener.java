@@ -27,16 +27,6 @@ public interface SimpleListener extends ParseTreeListener {
 	 */
 	void exitBlockstmt(SimpleParser.BlockstmtContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SimpleParser#subblockstmt}.
-	 * @param ctx the parse tree
-	 */
-	void enterSubblockstmt(SimpleParser.SubblockstmtContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SimpleParser#subblockstmt}.
-	 * @param ctx the parse tree
-	 */
-	void exitSubblockstmt(SimpleParser.SubblockstmtContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link SimpleParser#stmt}.
 	 * @param ctx the parse tree
 	 */
@@ -123,15 +113,15 @@ public interface SimpleListener extends ParseTreeListener {
 	 */
 	void exitOperation(SimpleParser.OperationContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SimpleParser#ioletdeclasarg}.
+	 * Enter a parse tree produced by {@link SimpleParser#ioletbase}.
 	 * @param ctx the parse tree
 	 */
-	void enterIoletdeclasarg(SimpleParser.IoletdeclasargContext ctx);
+	void enterIoletbase(SimpleParser.IoletbaseContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SimpleParser#ioletdeclasarg}.
+	 * Exit a parse tree produced by {@link SimpleParser#ioletbase}.
 	 * @param ctx the parse tree
 	 */
-	void exitIoletdeclasarg(SimpleParser.IoletdeclasargContext ctx);
+	void exitIoletbase(SimpleParser.IoletbaseContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SimpleParser#ioletdeclstmt}.
 	 * @param ctx the parse tree
@@ -199,26 +189,6 @@ public interface SimpleListener extends ParseTreeListener {
 	 */
 	void exitConnectionelem(SimpleParser.ConnectionelemContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SimpleParser#disconnectionstmt}.
-	 * @param ctx the parse tree
-	 */
-	void enterDisconnectionstmt(SimpleParser.DisconnectionstmtContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SimpleParser#disconnectionstmt}.
-	 * @param ctx the parse tree
-	 */
-	void exitDisconnectionstmt(SimpleParser.DisconnectionstmtContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link SimpleParser#disconnectionelem}.
-	 * @param ctx the parse tree
-	 */
-	void enterDisconnectionelem(SimpleParser.DisconnectionelemContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SimpleParser#disconnectionelem}.
-	 * @param ctx the parse tree
-	 */
-	void exitDisconnectionelem(SimpleParser.DisconnectionelemContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link SimpleParser#recallstmt}.
 	 * @param ctx the parse tree
 	 */
@@ -271,63 +241,51 @@ public interface SimpleListener extends ParseTreeListener {
 	 */
 	void exitNumber(SimpleParser.NumberContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code MulDiv}
+	 * Enter a parse tree produced by the {@code ParensExpr}
 	 * labeled alternative in {@link SimpleParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterMulDiv(SimpleParser.MulDivContext ctx);
+	void enterParensExpr(SimpleParser.ParensExprContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code MulDiv}
+	 * Exit a parse tree produced by the {@code ParensExpr}
 	 * labeled alternative in {@link SimpleParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitMulDiv(SimpleParser.MulDivContext ctx);
+	void exitParensExpr(SimpleParser.ParensExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code AddSub}
+	 * Enter a parse tree produced by the {@code LogicalExpr}
 	 * labeled alternative in {@link SimpleParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterAddSub(SimpleParser.AddSubContext ctx);
+	void enterLogicalExpr(SimpleParser.LogicalExprContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code AddSub}
+	 * Exit a parse tree produced by the {@code LogicalExpr}
 	 * labeled alternative in {@link SimpleParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitAddSub(SimpleParser.AddSubContext ctx);
+	void exitLogicalExpr(SimpleParser.LogicalExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Test}
+	 * Enter a parse tree produced by the {@code MathExpr}
 	 * labeled alternative in {@link SimpleParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterTest(SimpleParser.TestContext ctx);
+	void enterMathExpr(SimpleParser.MathExprContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Test}
+	 * Exit a parse tree produced by the {@code MathExpr}
 	 * labeled alternative in {@link SimpleParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitTest(SimpleParser.TestContext ctx);
+	void exitMathExpr(SimpleParser.MathExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Parens}
+	 * Enter a parse tree produced by the {@code TestExpr}
 	 * labeled alternative in {@link SimpleParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterParens(SimpleParser.ParensContext ctx);
+	void enterTestExpr(SimpleParser.TestExprContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Parens}
+	 * Exit a parse tree produced by the {@code TestExpr}
 	 * labeled alternative in {@link SimpleParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitParens(SimpleParser.ParensContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Logical}
-	 * labeled alternative in {@link SimpleParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterLogical(SimpleParser.LogicalContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Logical}
-	 * labeled alternative in {@link SimpleParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitLogical(SimpleParser.LogicalContext ctx);
+	void exitTestExpr(SimpleParser.TestExprContext ctx);
 }
