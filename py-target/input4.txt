@@ -1,0 +1,21 @@
+patch something4
+
+text('firstofall')
+
+block guerra {
+ msg('dsp', 1).$-1=\s('pd')
+}
+
+m=msg('kanedaaaa')
+
+block war {
+ msg('dsp', 1)::\s('pd')
+ msg('dsp', 0)::\s('pd')
+}
+
+m2=msg('tetsuoooooo')
+m2.$1=m
+m3 = floatatom(400)
+
+
+;

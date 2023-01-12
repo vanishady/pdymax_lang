@@ -19,8 +19,8 @@ class SimpleVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#subblockstmt.
-    def visitSubblockstmt(self, ctx:SimpleParser.SubblockstmtContext):
+    # Visit a parse tree produced by SimpleParser#endofblock.
+    def visitEndofblock(self, ctx:SimpleParser.EndofblockContext):
         return self.visitChildren(ctx)
 
 
@@ -64,8 +64,8 @@ class SimpleVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#ioletdeclasarg.
-    def visitIoletdeclasarg(self, ctx:SimpleParser.IoletdeclasargContext):
+    # Visit a parse tree produced by SimpleParser#ioletbase.
+    def visitIoletbase(self, ctx:SimpleParser.IoletbaseContext):
         return self.visitChildren(ctx)
 
 
@@ -99,16 +99,6 @@ class SimpleVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#disconnectionstmt.
-    def visitDisconnectionstmt(self, ctx:SimpleParser.DisconnectionstmtContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by SimpleParser#disconnectionelem.
-    def visitDisconnectionelem(self, ctx:SimpleParser.DisconnectionelemContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by SimpleParser#recallstmt.
     def visitRecallstmt(self, ctx:SimpleParser.RecallstmtContext):
         return self.visitChildren(ctx)
@@ -134,28 +124,23 @@ class SimpleVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#MulDiv.
-    def visitMulDiv(self, ctx:SimpleParser.MulDivContext):
+    # Visit a parse tree produced by SimpleParser#ParensExpr.
+    def visitParensExpr(self, ctx:SimpleParser.ParensExprContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#AddSub.
-    def visitAddSub(self, ctx:SimpleParser.AddSubContext):
+    # Visit a parse tree produced by SimpleParser#LogicalExpr.
+    def visitLogicalExpr(self, ctx:SimpleParser.LogicalExprContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#Test.
-    def visitTest(self, ctx:SimpleParser.TestContext):
+    # Visit a parse tree produced by SimpleParser#MathExpr.
+    def visitMathExpr(self, ctx:SimpleParser.MathExprContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#Parens.
-    def visitParens(self, ctx:SimpleParser.ParensContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by SimpleParser#Logical.
-    def visitLogical(self, ctx:SimpleParser.LogicalContext):
+    # Visit a parse tree produced by SimpleParser#TestExpr.
+    def visitTestExpr(self, ctx:SimpleParser.TestExprContext):
         return self.visitChildren(ctx)
 
 

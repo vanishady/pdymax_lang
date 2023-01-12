@@ -26,12 +26,12 @@ class SimpleListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by SimpleParser#subblockstmt.
-    def enterSubblockstmt(self, ctx:SimpleParser.SubblockstmtContext):
+    # Enter a parse tree produced by SimpleParser#endofblock.
+    def enterEndofblock(self, ctx:SimpleParser.EndofblockContext):
         pass
 
-    # Exit a parse tree produced by SimpleParser#subblockstmt.
-    def exitSubblockstmt(self, ctx:SimpleParser.SubblockstmtContext):
+    # Exit a parse tree produced by SimpleParser#endofblock.
+    def exitEndofblock(self, ctx:SimpleParser.EndofblockContext):
         pass
 
 
@@ -107,12 +107,12 @@ class SimpleListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by SimpleParser#ioletdeclasarg.
-    def enterIoletdeclasarg(self, ctx:SimpleParser.IoletdeclasargContext):
+    # Enter a parse tree produced by SimpleParser#ioletbase.
+    def enterIoletbase(self, ctx:SimpleParser.IoletbaseContext):
         pass
 
-    # Exit a parse tree produced by SimpleParser#ioletdeclasarg.
-    def exitIoletdeclasarg(self, ctx:SimpleParser.IoletdeclasargContext):
+    # Exit a parse tree produced by SimpleParser#ioletbase.
+    def exitIoletbase(self, ctx:SimpleParser.IoletbaseContext):
         pass
 
 
@@ -170,24 +170,6 @@ class SimpleListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by SimpleParser#disconnectionstmt.
-    def enterDisconnectionstmt(self, ctx:SimpleParser.DisconnectionstmtContext):
-        pass
-
-    # Exit a parse tree produced by SimpleParser#disconnectionstmt.
-    def exitDisconnectionstmt(self, ctx:SimpleParser.DisconnectionstmtContext):
-        pass
-
-
-    # Enter a parse tree produced by SimpleParser#disconnectionelem.
-    def enterDisconnectionelem(self, ctx:SimpleParser.DisconnectionelemContext):
-        pass
-
-    # Exit a parse tree produced by SimpleParser#disconnectionelem.
-    def exitDisconnectionelem(self, ctx:SimpleParser.DisconnectionelemContext):
-        pass
-
-
     # Enter a parse tree produced by SimpleParser#recallstmt.
     def enterRecallstmt(self, ctx:SimpleParser.RecallstmtContext):
         pass
@@ -233,48 +215,39 @@ class SimpleListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by SimpleParser#MulDiv.
-    def enterMulDiv(self, ctx:SimpleParser.MulDivContext):
+    # Enter a parse tree produced by SimpleParser#ParensExpr.
+    def enterParensExpr(self, ctx:SimpleParser.ParensExprContext):
         pass
 
-    # Exit a parse tree produced by SimpleParser#MulDiv.
-    def exitMulDiv(self, ctx:SimpleParser.MulDivContext):
-        pass
-
-
-    # Enter a parse tree produced by SimpleParser#AddSub.
-    def enterAddSub(self, ctx:SimpleParser.AddSubContext):
-        pass
-
-    # Exit a parse tree produced by SimpleParser#AddSub.
-    def exitAddSub(self, ctx:SimpleParser.AddSubContext):
+    # Exit a parse tree produced by SimpleParser#ParensExpr.
+    def exitParensExpr(self, ctx:SimpleParser.ParensExprContext):
         pass
 
 
-    # Enter a parse tree produced by SimpleParser#Test.
-    def enterTest(self, ctx:SimpleParser.TestContext):
+    # Enter a parse tree produced by SimpleParser#LogicalExpr.
+    def enterLogicalExpr(self, ctx:SimpleParser.LogicalExprContext):
         pass
 
-    # Exit a parse tree produced by SimpleParser#Test.
-    def exitTest(self, ctx:SimpleParser.TestContext):
-        pass
-
-
-    # Enter a parse tree produced by SimpleParser#Parens.
-    def enterParens(self, ctx:SimpleParser.ParensContext):
-        pass
-
-    # Exit a parse tree produced by SimpleParser#Parens.
-    def exitParens(self, ctx:SimpleParser.ParensContext):
+    # Exit a parse tree produced by SimpleParser#LogicalExpr.
+    def exitLogicalExpr(self, ctx:SimpleParser.LogicalExprContext):
         pass
 
 
-    # Enter a parse tree produced by SimpleParser#Logical.
-    def enterLogical(self, ctx:SimpleParser.LogicalContext):
+    # Enter a parse tree produced by SimpleParser#MathExpr.
+    def enterMathExpr(self, ctx:SimpleParser.MathExprContext):
         pass
 
-    # Exit a parse tree produced by SimpleParser#Logical.
-    def exitLogical(self, ctx:SimpleParser.LogicalContext):
+    # Exit a parse tree produced by SimpleParser#MathExpr.
+    def exitMathExpr(self, ctx:SimpleParser.MathExprContext):
+        pass
+
+
+    # Enter a parse tree produced by SimpleParser#TestExpr.
+    def enterTestExpr(self, ctx:SimpleParser.TestExprContext):
+        pass
+
+    # Exit a parse tree produced by SimpleParser#TestExpr.
+    def exitTestExpr(self, ctx:SimpleParser.TestExprContext):
         pass
 
 

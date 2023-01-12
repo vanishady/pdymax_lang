@@ -10,119 +10,104 @@ else:
 
 def serializedATN():
     return [
-        4,1,59,314,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,56,273,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
-        2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,
-        7,20,1,0,1,0,1,0,5,0,46,8,0,10,0,12,0,49,9,0,1,0,1,0,1,0,1,0,1,0,
-        4,0,56,8,0,11,0,12,0,57,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,5,1,68,8,
-        1,10,1,12,1,71,9,1,1,1,1,1,1,1,1,2,1,2,1,2,1,2,1,2,5,2,81,8,2,10,
-        2,12,2,84,9,2,1,2,1,2,1,2,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,
-        3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,3,
-        3,114,8,3,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,3,4,125,8,4,1,5,1,
-        5,3,5,129,8,5,1,5,1,5,1,6,1,6,1,6,5,6,136,8,6,10,6,12,6,139,9,6,
-        1,6,1,6,5,6,143,8,6,10,6,12,6,146,9,6,1,7,1,7,3,7,150,8,7,1,8,1,
-        8,1,8,3,8,155,8,8,3,8,157,8,8,1,9,1,9,1,9,1,9,1,9,1,9,3,9,165,8,
-        9,1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,3,10,175,8,10,1,11,1,11,
-        1,11,4,11,180,8,11,11,11,12,11,181,1,11,3,11,185,8,11,1,12,1,12,
-        1,12,1,12,1,12,1,12,1,12,1,12,1,12,3,12,196,8,12,1,13,1,13,1,13,
-        3,13,201,8,13,1,13,1,13,1,13,3,13,206,8,13,5,13,208,8,13,10,13,12,
-        13,211,9,13,1,13,1,13,1,13,3,13,216,8,13,3,13,218,8,13,1,14,1,14,
-        1,14,4,14,223,8,14,11,14,12,14,224,1,15,1,15,1,15,1,15,5,15,231,
-        8,15,10,15,12,15,234,9,15,1,15,1,15,3,15,238,8,15,1,16,1,16,1,16,
-        1,16,1,16,1,16,1,16,1,16,5,16,248,8,16,10,16,12,16,251,9,16,1,16,
-        1,16,1,17,1,17,1,17,1,17,1,17,1,17,1,17,1,17,1,17,5,17,264,8,17,
-        10,17,12,17,267,9,17,1,17,1,17,1,17,3,17,272,8,17,1,17,1,17,1,18,
-        1,18,1,18,1,18,1,18,1,18,1,18,1,19,1,19,4,19,285,8,19,11,19,12,19,
-        286,1,20,1,20,1,20,1,20,1,20,1,20,3,20,295,8,20,1,20,1,20,1,20,1,
-        20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,1,20,5,20,309,8,20,10,20,12,
-        20,312,9,20,1,20,0,1,40,21,0,2,4,6,8,10,12,14,16,18,20,22,24,26,
-        28,30,32,34,36,38,40,0,5,3,0,36,37,39,40,44,47,2,0,39,40,46,47,2,
-        0,36,37,44,45,3,0,7,8,32,35,41,41,1,0,42,43,340,0,47,1,0,0,0,2,61,
-        1,0,0,0,4,75,1,0,0,0,6,113,1,0,0,0,8,124,1,0,0,0,10,126,1,0,0,0,
-        12,132,1,0,0,0,14,149,1,0,0,0,16,156,1,0,0,0,18,158,1,0,0,0,20,174,
-        1,0,0,0,22,184,1,0,0,0,24,195,1,0,0,0,26,217,1,0,0,0,28,219,1,0,
-        0,0,30,237,1,0,0,0,32,239,1,0,0,0,34,254,1,0,0,0,36,275,1,0,0,0,
-        38,282,1,0,0,0,40,294,1,0,0,0,42,43,5,10,0,0,43,44,5,52,0,0,44,46,
-        5,57,0,0,45,42,1,0,0,0,46,49,1,0,0,0,47,45,1,0,0,0,47,48,1,0,0,0,
-        48,50,1,0,0,0,49,47,1,0,0,0,50,51,5,9,0,0,51,52,5,52,0,0,52,55,5,
-        57,0,0,53,56,3,2,1,0,54,56,3,6,3,0,55,53,1,0,0,0,55,54,1,0,0,0,56,
-        57,1,0,0,0,57,55,1,0,0,0,57,58,1,0,0,0,58,59,1,0,0,0,59,60,5,1,0,
-        0,60,1,1,0,0,0,61,62,5,11,0,0,62,63,5,52,0,0,63,64,5,28,0,0,64,69,
-        5,57,0,0,65,68,3,6,3,0,66,68,3,4,2,0,67,65,1,0,0,0,67,66,1,0,0,0,
-        68,71,1,0,0,0,69,67,1,0,0,0,69,70,1,0,0,0,70,72,1,0,0,0,71,69,1,
-        0,0,0,72,73,5,29,0,0,73,74,5,57,0,0,74,3,1,0,0,0,75,76,5,12,0,0,
-        76,77,5,52,0,0,77,78,5,28,0,0,78,82,5,57,0,0,79,81,3,6,3,0,80,79,
-        1,0,0,0,81,84,1,0,0,0,82,80,1,0,0,0,82,83,1,0,0,0,83,85,1,0,0,0,
-        84,82,1,0,0,0,85,86,5,29,0,0,86,87,5,57,0,0,87,5,1,0,0,0,88,89,3,
-        8,4,0,89,90,5,57,0,0,90,114,1,0,0,0,91,92,3,20,10,0,92,93,5,57,0,
-        0,93,114,1,0,0,0,94,95,3,22,11,0,95,96,5,57,0,0,96,114,1,0,0,0,97,
-        98,3,32,16,0,98,99,5,57,0,0,99,114,1,0,0,0,100,101,3,34,17,0,101,
-        102,5,57,0,0,102,114,1,0,0,0,103,104,3,36,18,0,104,105,5,57,0,0,
-        105,114,1,0,0,0,106,107,5,20,0,0,107,114,5,57,0,0,108,109,5,21,0,
-        0,109,114,5,57,0,0,110,111,5,22,0,0,111,114,5,57,0,0,112,114,5,57,
-        0,0,113,88,1,0,0,0,113,91,1,0,0,0,113,94,1,0,0,0,113,97,1,0,0,0,
-        113,100,1,0,0,0,113,103,1,0,0,0,113,106,1,0,0,0,113,108,1,0,0,0,
-        113,110,1,0,0,0,113,112,1,0,0,0,114,7,1,0,0,0,115,116,5,52,0,0,116,
-        117,5,2,0,0,117,118,5,48,0,0,118,125,3,10,5,0,119,120,5,48,0,0,120,
-        125,3,10,5,0,121,122,5,52,0,0,122,123,5,2,0,0,123,125,3,16,8,0,124,
-        115,1,0,0,0,124,119,1,0,0,0,124,121,1,0,0,0,125,9,1,0,0,0,126,128,
-        5,26,0,0,127,129,3,12,6,0,128,127,1,0,0,0,128,129,1,0,0,0,129,130,
-        1,0,0,0,130,131,5,27,0,0,131,11,1,0,0,0,132,137,3,14,7,0,133,134,
-        5,3,0,0,134,136,3,14,7,0,135,133,1,0,0,0,136,139,1,0,0,0,137,135,
-        1,0,0,0,137,138,1,0,0,0,138,144,1,0,0,0,139,137,1,0,0,0,140,141,
-        5,3,0,0,141,143,3,18,9,0,142,140,1,0,0,0,143,146,1,0,0,0,144,142,
-        1,0,0,0,144,145,1,0,0,0,145,13,1,0,0,0,146,144,1,0,0,0,147,150,5,
-        53,0,0,148,150,3,16,8,0,149,147,1,0,0,0,149,148,1,0,0,0,150,15,1,
-        0,0,0,151,157,5,54,0,0,152,154,7,0,0,0,153,155,5,54,0,0,154,153,
-        1,0,0,0,154,155,1,0,0,0,155,157,1,0,0,0,156,151,1,0,0,0,156,152,
-        1,0,0,0,157,17,1,0,0,0,158,159,5,51,0,0,159,164,5,2,0,0,160,161,
-        5,48,0,0,161,165,3,10,5,0,162,165,3,16,8,0,163,165,5,52,0,0,164,
-        160,1,0,0,0,164,162,1,0,0,0,164,163,1,0,0,0,165,19,1,0,0,0,166,167,
-        5,52,0,0,167,168,5,4,0,0,168,175,3,18,9,0,169,170,5,48,0,0,170,171,
-        3,10,5,0,171,172,5,4,0,0,172,173,3,18,9,0,173,175,1,0,0,0,174,166,
-        1,0,0,0,174,169,1,0,0,0,175,21,1,0,0,0,176,179,3,26,13,0,177,178,
-        5,13,0,0,178,180,3,26,13,0,179,177,1,0,0,0,180,181,1,0,0,0,181,179,
-        1,0,0,0,181,182,1,0,0,0,182,185,1,0,0,0,183,185,1,0,0,0,184,176,
-        1,0,0,0,184,183,1,0,0,0,185,23,1,0,0,0,186,187,5,52,0,0,187,188,
-        5,2,0,0,188,189,5,48,0,0,189,196,3,10,5,0,190,191,5,48,0,0,191,196,
-        3,10,5,0,192,193,5,52,0,0,193,194,5,2,0,0,194,196,3,16,8,0,195,186,
-        1,0,0,0,195,190,1,0,0,0,195,192,1,0,0,0,196,25,1,0,0,0,197,200,5,
-        32,0,0,198,201,5,52,0,0,199,201,3,24,12,0,200,198,1,0,0,0,200,199,
-        1,0,0,0,201,209,1,0,0,0,202,205,5,3,0,0,203,206,5,52,0,0,204,206,
-        3,24,12,0,205,203,1,0,0,0,205,204,1,0,0,0,206,208,1,0,0,0,207,202,
-        1,0,0,0,208,211,1,0,0,0,209,207,1,0,0,0,209,210,1,0,0,0,210,212,
-        1,0,0,0,211,209,1,0,0,0,212,218,5,33,0,0,213,216,5,52,0,0,214,216,
-        3,24,12,0,215,213,1,0,0,0,215,214,1,0,0,0,216,218,1,0,0,0,217,197,
-        1,0,0,0,217,215,1,0,0,0,218,27,1,0,0,0,219,222,3,30,15,0,220,221,
-        5,14,0,0,221,223,3,30,15,0,222,220,1,0,0,0,223,224,1,0,0,0,224,222,
-        1,0,0,0,224,225,1,0,0,0,225,29,1,0,0,0,226,227,5,32,0,0,227,232,
-        5,52,0,0,228,229,5,3,0,0,229,231,5,52,0,0,230,228,1,0,0,0,231,234,
-        1,0,0,0,232,230,1,0,0,0,232,233,1,0,0,0,233,235,1,0,0,0,234,232,
-        1,0,0,0,235,238,5,33,0,0,236,238,5,52,0,0,237,226,1,0,0,0,237,236,
-        1,0,0,0,238,31,1,0,0,0,239,240,5,24,0,0,240,241,5,52,0,0,241,242,
-        5,25,0,0,242,243,5,52,0,0,243,244,5,28,0,0,244,249,5,57,0,0,245,
-        248,3,6,3,0,246,248,3,4,2,0,247,245,1,0,0,0,247,246,1,0,0,0,248,
-        251,1,0,0,0,249,247,1,0,0,0,249,250,1,0,0,0,250,252,1,0,0,0,251,
-        249,1,0,0,0,252,253,5,29,0,0,253,33,1,0,0,0,254,255,5,15,0,0,255,
-        256,3,40,20,0,256,257,5,5,0,0,257,265,3,38,19,0,258,259,5,16,0,0,
-        259,260,3,40,20,0,260,261,5,5,0,0,261,262,3,38,19,0,262,264,1,0,
-        0,0,263,258,1,0,0,0,264,267,1,0,0,0,265,263,1,0,0,0,265,266,1,0,
-        0,0,266,271,1,0,0,0,267,265,1,0,0,0,268,269,5,17,0,0,269,270,5,5,
-        0,0,270,272,3,38,19,0,271,268,1,0,0,0,271,272,1,0,0,0,272,273,1,
-        0,0,0,273,274,5,23,0,0,274,35,1,0,0,0,275,276,5,18,0,0,276,277,5,
-        55,0,0,277,278,5,6,0,0,278,279,5,5,0,0,279,280,3,38,19,0,280,281,
-        5,23,0,0,281,37,1,0,0,0,282,284,5,57,0,0,283,285,3,6,3,0,284,283,
-        1,0,0,0,285,286,1,0,0,0,286,284,1,0,0,0,286,287,1,0,0,0,287,39,1,
-        0,0,0,288,289,6,20,-1,0,289,295,5,54,0,0,290,291,5,26,0,0,291,292,
-        3,40,20,0,292,293,5,27,0,0,293,295,1,0,0,0,294,288,1,0,0,0,294,290,
-        1,0,0,0,295,310,1,0,0,0,296,297,10,6,0,0,297,298,7,1,0,0,298,309,
-        3,40,20,7,299,300,10,5,0,0,300,301,7,2,0,0,301,309,3,40,20,6,302,
-        303,10,4,0,0,303,304,7,3,0,0,304,309,3,40,20,5,305,306,10,3,0,0,
-        306,307,7,4,0,0,307,309,3,40,20,4,308,296,1,0,0,0,308,299,1,0,0,
-        0,308,302,1,0,0,0,308,305,1,0,0,0,309,312,1,0,0,0,310,308,1,0,0,
-        0,310,311,1,0,0,0,311,41,1,0,0,0,312,310,1,0,0,0,35,47,55,57,67,
-        69,82,113,124,128,137,144,149,154,156,164,174,181,184,195,200,205,
-        209,215,217,224,232,237,247,249,265,271,286,294,308,310
+        2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,1,0,1,0,1,0,1,
+        0,1,0,4,0,44,8,0,11,0,12,0,45,1,0,1,0,1,1,1,1,1,1,1,1,1,1,5,1,55,
+        8,1,10,1,12,1,58,9,1,1,1,1,1,1,1,1,2,1,2,1,3,1,3,1,3,1,3,1,3,1,3,
+        1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,
+        1,3,1,3,1,3,3,3,90,8,3,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,3,4,101,
+        8,4,1,5,1,5,3,5,105,8,5,1,5,1,5,1,6,1,6,1,6,5,6,112,8,6,10,6,12,
+        6,115,9,6,1,6,1,6,5,6,119,8,6,10,6,12,6,122,9,6,1,6,1,6,1,6,5,6,
+        127,8,6,10,6,12,6,130,9,6,3,6,132,8,6,1,7,1,7,3,7,136,8,7,1,8,1,
+        8,1,8,3,8,141,8,8,3,8,143,8,8,1,9,1,9,1,9,1,9,1,9,1,9,3,9,151,8,
+        9,1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,3,10,161,8,10,1,11,1,11,
+        1,11,4,11,166,8,11,11,11,12,11,167,1,12,1,12,1,12,1,12,1,12,1,12,
+        1,12,1,12,1,12,3,12,179,8,12,1,13,1,13,1,13,3,13,184,8,13,1,13,1,
+        13,1,13,3,13,189,8,13,5,13,191,8,13,10,13,12,13,194,9,13,1,13,1,
+        13,1,13,3,13,199,8,13,3,13,201,8,13,1,14,1,14,1,14,1,14,1,14,1,14,
+        1,14,5,14,210,8,14,10,14,12,14,213,9,14,1,14,1,14,1,15,1,15,1,15,
+        1,15,1,15,1,15,1,15,1,15,1,15,5,15,226,8,15,10,15,12,15,229,9,15,
+        1,15,1,15,1,15,3,15,234,8,15,1,15,1,15,1,16,1,16,1,16,1,16,1,16,
+        1,16,1,16,1,17,1,17,4,17,247,8,17,11,17,12,17,248,1,18,1,18,1,18,
+        1,18,1,18,1,18,3,18,257,8,18,1,18,1,18,1,18,1,18,1,18,1,18,1,18,
+        1,18,1,18,5,18,268,8,18,10,18,12,18,271,9,18,1,18,0,1,36,19,0,2,
+        4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,0,4,3,0,33,34,36,
+        37,41,44,2,0,33,34,36,37,3,0,7,8,29,32,38,38,1,0,39,40,294,0,38,
+        1,0,0,0,2,49,1,0,0,0,4,62,1,0,0,0,6,89,1,0,0,0,8,100,1,0,0,0,10,
+        102,1,0,0,0,12,131,1,0,0,0,14,135,1,0,0,0,16,142,1,0,0,0,18,144,
+        1,0,0,0,20,160,1,0,0,0,22,162,1,0,0,0,24,178,1,0,0,0,26,200,1,0,
+        0,0,28,202,1,0,0,0,30,216,1,0,0,0,32,237,1,0,0,0,34,244,1,0,0,0,
+        36,256,1,0,0,0,38,39,5,9,0,0,39,40,5,49,0,0,40,43,5,54,0,0,41,44,
+        3,2,1,0,42,44,3,6,3,0,43,41,1,0,0,0,43,42,1,0,0,0,44,45,1,0,0,0,
+        45,43,1,0,0,0,45,46,1,0,0,0,46,47,1,0,0,0,47,48,5,1,0,0,48,1,1,0,
+        0,0,49,50,5,10,0,0,50,51,5,49,0,0,51,52,5,25,0,0,52,56,5,54,0,0,
+        53,55,3,6,3,0,54,53,1,0,0,0,55,58,1,0,0,0,56,54,1,0,0,0,56,57,1,
+        0,0,0,57,59,1,0,0,0,58,56,1,0,0,0,59,60,3,4,2,0,60,61,5,54,0,0,61,
+        3,1,0,0,0,62,63,5,26,0,0,63,5,1,0,0,0,64,65,3,8,4,0,65,66,5,54,0,
+        0,66,90,1,0,0,0,67,68,3,20,10,0,68,69,5,54,0,0,69,90,1,0,0,0,70,
+        71,3,22,11,0,71,72,5,54,0,0,72,90,1,0,0,0,73,74,3,28,14,0,74,75,
+        5,54,0,0,75,90,1,0,0,0,76,77,3,30,15,0,77,78,5,54,0,0,78,90,1,0,
+        0,0,79,80,3,32,16,0,80,81,5,54,0,0,81,90,1,0,0,0,82,83,5,17,0,0,
+        83,90,5,54,0,0,84,85,5,18,0,0,85,90,5,54,0,0,86,87,5,19,0,0,87,90,
+        5,54,0,0,88,90,5,54,0,0,89,64,1,0,0,0,89,67,1,0,0,0,89,70,1,0,0,
+        0,89,73,1,0,0,0,89,76,1,0,0,0,89,79,1,0,0,0,89,82,1,0,0,0,89,84,
+        1,0,0,0,89,86,1,0,0,0,89,88,1,0,0,0,90,7,1,0,0,0,91,92,5,49,0,0,
+        92,93,5,2,0,0,93,94,5,45,0,0,94,101,3,10,5,0,95,96,5,45,0,0,96,101,
+        3,10,5,0,97,98,5,49,0,0,98,99,5,2,0,0,99,101,3,16,8,0,100,91,1,0,
+        0,0,100,95,1,0,0,0,100,97,1,0,0,0,101,9,1,0,0,0,102,104,5,23,0,0,
+        103,105,3,12,6,0,104,103,1,0,0,0,104,105,1,0,0,0,105,106,1,0,0,0,
+        106,107,5,24,0,0,107,11,1,0,0,0,108,113,3,14,7,0,109,110,5,3,0,0,
+        110,112,3,14,7,0,111,109,1,0,0,0,112,115,1,0,0,0,113,111,1,0,0,0,
+        113,114,1,0,0,0,114,120,1,0,0,0,115,113,1,0,0,0,116,117,5,3,0,0,
+        117,119,3,18,9,0,118,116,1,0,0,0,119,122,1,0,0,0,120,118,1,0,0,0,
+        120,121,1,0,0,0,121,132,1,0,0,0,122,120,1,0,0,0,123,128,3,18,9,0,
+        124,125,5,3,0,0,125,127,3,18,9,0,126,124,1,0,0,0,127,130,1,0,0,0,
+        128,126,1,0,0,0,128,129,1,0,0,0,129,132,1,0,0,0,130,128,1,0,0,0,
+        131,108,1,0,0,0,131,123,1,0,0,0,132,13,1,0,0,0,133,136,5,50,0,0,
+        134,136,3,16,8,0,135,133,1,0,0,0,135,134,1,0,0,0,136,15,1,0,0,0,
+        137,143,5,51,0,0,138,140,7,0,0,0,139,141,5,51,0,0,140,139,1,0,0,
+        0,140,141,1,0,0,0,141,143,1,0,0,0,142,137,1,0,0,0,142,138,1,0,0,
+        0,143,17,1,0,0,0,144,145,5,48,0,0,145,150,5,2,0,0,146,147,5,45,0,
+        0,147,151,3,10,5,0,148,151,3,16,8,0,149,151,5,49,0,0,150,146,1,0,
+        0,0,150,148,1,0,0,0,150,149,1,0,0,0,151,19,1,0,0,0,152,153,5,49,
+        0,0,153,154,5,4,0,0,154,161,3,18,9,0,155,156,5,45,0,0,156,157,3,
+        10,5,0,157,158,5,4,0,0,158,159,3,18,9,0,159,161,1,0,0,0,160,152,
+        1,0,0,0,160,155,1,0,0,0,161,21,1,0,0,0,162,165,3,26,13,0,163,164,
+        5,11,0,0,164,166,3,26,13,0,165,163,1,0,0,0,166,167,1,0,0,0,167,165,
+        1,0,0,0,167,168,1,0,0,0,168,23,1,0,0,0,169,170,5,49,0,0,170,171,
+        5,2,0,0,171,172,5,45,0,0,172,179,3,10,5,0,173,174,5,45,0,0,174,179,
+        3,10,5,0,175,176,5,49,0,0,176,177,5,2,0,0,177,179,3,16,8,0,178,169,
+        1,0,0,0,178,173,1,0,0,0,178,175,1,0,0,0,179,25,1,0,0,0,180,183,5,
+        29,0,0,181,184,5,49,0,0,182,184,3,24,12,0,183,181,1,0,0,0,183,182,
+        1,0,0,0,184,192,1,0,0,0,185,188,5,3,0,0,186,189,5,49,0,0,187,189,
+        3,24,12,0,188,186,1,0,0,0,188,187,1,0,0,0,189,191,1,0,0,0,190,185,
+        1,0,0,0,191,194,1,0,0,0,192,190,1,0,0,0,192,193,1,0,0,0,193,195,
+        1,0,0,0,194,192,1,0,0,0,195,201,5,30,0,0,196,199,5,49,0,0,197,199,
+        3,24,12,0,198,196,1,0,0,0,198,197,1,0,0,0,199,201,1,0,0,0,200,180,
+        1,0,0,0,200,198,1,0,0,0,201,27,1,0,0,0,202,203,5,21,0,0,203,204,
+        5,49,0,0,204,205,5,22,0,0,205,206,5,49,0,0,206,207,5,25,0,0,207,
+        211,5,54,0,0,208,210,3,6,3,0,209,208,1,0,0,0,210,213,1,0,0,0,211,
+        209,1,0,0,0,211,212,1,0,0,0,212,214,1,0,0,0,213,211,1,0,0,0,214,
+        215,5,26,0,0,215,29,1,0,0,0,216,217,5,12,0,0,217,218,3,36,18,0,218,
+        219,5,5,0,0,219,227,3,34,17,0,220,221,5,13,0,0,221,222,3,36,18,0,
+        222,223,5,5,0,0,223,224,3,34,17,0,224,226,1,0,0,0,225,220,1,0,0,
+        0,226,229,1,0,0,0,227,225,1,0,0,0,227,228,1,0,0,0,228,233,1,0,0,
+        0,229,227,1,0,0,0,230,231,5,14,0,0,231,232,5,5,0,0,232,234,3,34,
+        17,0,233,230,1,0,0,0,233,234,1,0,0,0,234,235,1,0,0,0,235,236,5,20,
+        0,0,236,31,1,0,0,0,237,238,5,15,0,0,238,239,5,52,0,0,239,240,5,6,
+        0,0,240,241,5,5,0,0,241,242,3,34,17,0,242,243,5,20,0,0,243,33,1,
+        0,0,0,244,246,5,54,0,0,245,247,3,6,3,0,246,245,1,0,0,0,247,248,1,
+        0,0,0,248,246,1,0,0,0,248,249,1,0,0,0,249,35,1,0,0,0,250,251,6,18,
+        -1,0,251,257,5,51,0,0,252,253,5,23,0,0,253,254,3,36,18,0,254,255,
+        5,24,0,0,255,257,1,0,0,0,256,250,1,0,0,0,256,252,1,0,0,0,257,269,
+        1,0,0,0,258,259,10,5,0,0,259,260,7,1,0,0,260,268,3,36,18,6,261,262,
+        10,4,0,0,262,263,7,2,0,0,263,268,3,36,18,5,264,265,10,3,0,0,265,
+        266,7,3,0,0,266,268,3,36,18,4,267,258,1,0,0,0,267,261,1,0,0,0,267,
+        264,1,0,0,0,268,271,1,0,0,0,269,267,1,0,0,0,269,270,1,0,0,0,270,
+        37,1,0,0,0,271,269,1,0,0,0,29,43,45,56,89,100,104,113,120,128,131,
+        135,140,142,150,160,167,178,183,188,192,198,200,211,227,233,248,
+        256,267,269
     ]
 
 class SimpleParser ( Parser ):
@@ -136,54 +121,49 @@ class SimpleParser ( Parser ):
     sharedContextCache = PredictionContextCache()
 
     literalNames = [ "<INVALID>", "';'", "'='", "','", "'.'", "':'", "'rounds do'", 
-                     "'>='", "'<='", "'patch'", "'include'", "'block'", 
-                     "'subblock'", "'::'", "<INVALID>", "'if'", "'elif'", 
-                     "'else'", "'for'", "'thisround'", "'break'", "'continue'", 
-                     "'pass'", "'end'", "'recall'", "'to'", "'('", "')'", 
-                     "'{'", "'}'", "'['", "']'", "'<'", "'>'", "'=='", "'!='", 
-                     "'+'", "'-'", "'**'", "'*'", "'/'", "'%'", "'||'", 
-                     "'&&'", "'-~'", "'+~'", "'/~'", "'*~'" ]
+                     "'>='", "'<='", "'patch'", "'block'", "'::'", "'if'", 
+                     "'elif'", "'else'", "'for'", "'thisround'", "'break'", 
+                     "'continue'", "'pass'", "'end'", "'recall'", "'to'", 
+                     "'('", "')'", "'{'", "'}'", "'['", "']'", "'<'", "'>'", 
+                     "'=='", "'!='", "'+'", "'-'", "'**'", "'*'", "'/'", 
+                     "'%'", "'||'", "'&&'", "'-~'", "'+~'", "'/~'", "'*~'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "PATCH", "INCLUDE", "BLOCK", "SUBBLOCK", 
-                      "CONNECT", "DISCONNECT", "IF", "ELIF", "ELSE", "FOR", 
-                      "THISROUND", "BREAK", "CONTINUE", "PASS", "END", "RECALL", 
-                      "TO", "L_PAREN", "R_PAREN", "L_CURLY", "R_CURLY", 
-                      "L_BRACKET", "R_BRACKET", "L_ANGLE", "R_ANGLE", "EQ", 
-                      "NOT_EQ", "PLUS", "MINUS", "POW", "STAR", "DIV", "MOD", 
-                      "OR", "AND", "SIGMINUS", "SIGPLUS", "SIGDIV", "SIGSTAR", 
-                      "NODETYPE", "GENERALTYPE", "OBJTYPE", "INOUTID", "ID", 
-                      "SYMBOL", "NUMBER", "INTEGER", "FLOAT", "NL", "WS", 
-                      "COMMENT" ]
+                      "<INVALID>", "PATCH", "BLOCK", "CONNECT", "IF", "ELIF", 
+                      "ELSE", "FOR", "THISROUND", "BREAK", "CONTINUE", "PASS", 
+                      "END", "RECALL", "TO", "L_PAREN", "R_PAREN", "L_CURLY", 
+                      "R_CURLY", "L_BRACKET", "R_BRACKET", "L_ANGLE", "R_ANGLE", 
+                      "EQ", "NOT_EQ", "PLUS", "MINUS", "POW", "STAR", "DIV", 
+                      "MOD", "OR", "AND", "SIGMINUS", "SIGPLUS", "SIGDIV", 
+                      "SIGSTAR", "NODETYPE", "GENERALTYPE", "OBJTYPE", "INOUTID", 
+                      "ID", "SYMBOL", "NUMBER", "INTEGER", "FLOAT", "NL", 
+                      "WS", "COMMENT" ]
 
     RULE_prog = 0
     RULE_blockstmt = 1
-    RULE_subblockstmt = 2
+    RULE_endofblock = 2
     RULE_stmt = 3
     RULE_declarationstmt = 4
     RULE_parameters = 5
     RULE_typedargslist = 6
     RULE_arg = 7
     RULE_operation = 8
-    RULE_ioletdeclasarg = 9
+    RULE_ioletbase = 9
     RULE_ioletdeclstmt = 10
     RULE_connectionstmt = 11
     RULE_declinside = 12
     RULE_connectionelem = 13
-    RULE_disconnectionstmt = 14
-    RULE_disconnectionelem = 15
-    RULE_recallstmt = 16
-    RULE_ifstmt = 17
-    RULE_forstmt = 18
-    RULE_suite = 19
-    RULE_expr = 20
+    RULE_recallstmt = 14
+    RULE_ifstmt = 15
+    RULE_forstmt = 16
+    RULE_suite = 17
+    RULE_expr = 18
 
-    ruleNames =  [ "prog", "blockstmt", "subblockstmt", "stmt", "declarationstmt", 
-                   "parameters", "typedargslist", "arg", "operation", "ioletdeclasarg", 
+    ruleNames =  [ "prog", "blockstmt", "endofblock", "stmt", "declarationstmt", 
+                   "parameters", "typedargslist", "arg", "operation", "ioletbase", 
                    "ioletdeclstmt", "connectionstmt", "declinside", "connectionelem", 
-                   "disconnectionstmt", "disconnectionelem", "recallstmt", 
-                   "ifstmt", "forstmt", "suite", "expr" ]
+                   "recallstmt", "ifstmt", "forstmt", "suite", "expr" ]
 
     EOF = Token.EOF
     T__0=1
@@ -195,56 +175,53 @@ class SimpleParser ( Parser ):
     T__6=7
     T__7=8
     PATCH=9
-    INCLUDE=10
-    BLOCK=11
-    SUBBLOCK=12
-    CONNECT=13
-    DISCONNECT=14
-    IF=15
-    ELIF=16
-    ELSE=17
-    FOR=18
-    THISROUND=19
-    BREAK=20
-    CONTINUE=21
-    PASS=22
-    END=23
-    RECALL=24
-    TO=25
-    L_PAREN=26
-    R_PAREN=27
-    L_CURLY=28
-    R_CURLY=29
-    L_BRACKET=30
-    R_BRACKET=31
-    L_ANGLE=32
-    R_ANGLE=33
-    EQ=34
-    NOT_EQ=35
-    PLUS=36
-    MINUS=37
-    POW=38
-    STAR=39
-    DIV=40
-    MOD=41
-    OR=42
-    AND=43
-    SIGMINUS=44
-    SIGPLUS=45
-    SIGDIV=46
-    SIGSTAR=47
-    NODETYPE=48
-    GENERALTYPE=49
-    OBJTYPE=50
-    INOUTID=51
-    ID=52
-    SYMBOL=53
-    NUMBER=54
-    INTEGER=55
-    FLOAT=56
-    NL=57
-    WS=58
-    COMMENT=59
+    BLOCK=10
+    CONNECT=11
+    IF=12
+    ELIF=13
+    ELSE=14
+    FOR=15
+    THISROUND=16
+    BREAK=17
+    CONTINUE=18
+    PASS=19
+    END=20
+    RECALL=21
+    TO=22
+    L_PAREN=23
+    R_PAREN=24
+    L_CURLY=25
+    R_CURLY=26
+    L_BRACKET=27
+    R_BRACKET=28
+    L_ANGLE=29
+    R_ANGLE=30
+    EQ=31
+    NOT_EQ=32
+    PLUS=33
+    MINUS=34
+    POW=35
+    STAR=36
+    DIV=37
+    MOD=38
+    OR=39
+    AND=40
+    SIGMINUS=41
+    SIGPLUS=42
+    SIGDIV=43
+    SIGSTAR=44
+    NODETYPE=45
+    GENERALTYPE=46
+    OBJTYPE=47
+    INOUTID=48
+    ID=49
+    SYMBOL=50
+    NUMBER=51
+    INTEGER=52
+    FLOAT=53
+    NL=54
+    WS=55
+    COMMENT=56
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -265,23 +242,11 @@ class SimpleParser ( Parser ):
         def PATCH(self):
             return self.getToken(SimpleParser.PATCH, 0)
 
-        def ID(self, i:int=None):
-            if i is None:
-                return self.getTokens(SimpleParser.ID)
-            else:
-                return self.getToken(SimpleParser.ID, i)
+        def ID(self):
+            return self.getToken(SimpleParser.ID, 0)
 
-        def NL(self, i:int=None):
-            if i is None:
-                return self.getTokens(SimpleParser.NL)
-            else:
-                return self.getToken(SimpleParser.NL, i)
-
-        def INCLUDE(self, i:int=None):
-            if i is None:
-                return self.getTokens(SimpleParser.INCLUDE)
-            else:
-                return self.getToken(SimpleParser.INCLUDE, i)
+        def NL(self):
+            return self.getToken(SimpleParser.NL, 0)
 
         def blockstmt(self, i:int=None):
             if i is None:
@@ -324,51 +289,37 @@ class SimpleParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 47
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            while _la==10:
-                self.state = 42
-                self.match(SimpleParser.INCLUDE)
-                self.state = 43
-                self.match(SimpleParser.ID)
-                self.state = 44
-                self.match(SimpleParser.NL)
-                self.state = 49
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-
-            self.state = 50
+            self.state = 38
             self.match(SimpleParser.PATCH)
-            self.state = 51
+            self.state = 39
             self.match(SimpleParser.ID)
-            self.state = 52
+            self.state = 40
             self.match(SimpleParser.NL)
-            self.state = 55 
+            self.state = 43 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 55
+                self.state = 43
                 self._errHandler.sync(self)
                 token = self._input.LA(1)
-                if token in [11]:
-                    self.state = 53
+                if token in [10]:
+                    self.state = 41
                     self.blockstmt()
                     pass
-                elif token in [15, 18, 20, 21, 22, 24, 32, 48, 52, 57]:
-                    self.state = 54
+                elif token in [12, 15, 17, 18, 19, 21, 29, 45, 49, 54]:
+                    self.state = 42
                     self.stmt()
                     pass
                 else:
                     raise NoViableAltException(self)
 
-                self.state = 57 
+                self.state = 45 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not (((_la) & ~0x3f) == 0 and ((1 << _la) & 148900266999318528) != 0):
+                if not (((_la) & ~0x3f) == 0 and ((1 << _la) & 18612533374915584) != 0):
                     break
 
-            self.state = 59
+            self.state = 47
             self.match(SimpleParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -401,21 +352,15 @@ class SimpleParser ( Parser ):
             else:
                 return self.getToken(SimpleParser.NL, i)
 
-        def R_CURLY(self):
-            return self.getToken(SimpleParser.R_CURLY, 0)
+        def endofblock(self):
+            return self.getTypedRuleContext(SimpleParser.EndofblockContext,0)
+
 
         def stmt(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(SimpleParser.StmtContext)
             else:
                 return self.getTypedRuleContext(SimpleParser.StmtContext,i)
-
-
-        def subblockstmt(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(SimpleParser.SubblockstmtContext)
-            else:
-                return self.getTypedRuleContext(SimpleParser.SubblockstmtContext,i)
 
 
         def getRuleIndex(self):
@@ -445,39 +390,27 @@ class SimpleParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 61
+            self.state = 49
             self.match(SimpleParser.BLOCK)
-            self.state = 62
+            self.state = 50
             self.match(SimpleParser.ID)
-            self.state = 63
+            self.state = 51
             self.match(SimpleParser.L_CURLY)
-            self.state = 64
+            self.state = 52
             self.match(SimpleParser.NL)
-            self.state = 69
+            self.state = 56
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while ((_la) & ~0x3f) == 0 and ((1 << _la) & 148900266999320576) != 0:
-                self.state = 67
-                self._errHandler.sync(self)
-                token = self._input.LA(1)
-                if token in [15, 18, 20, 21, 22, 24, 32, 48, 52, 57]:
-                    self.state = 65
-                    self.stmt()
-                    pass
-                elif token in [12]:
-                    self.state = 66
-                    self.subblockstmt()
-                    pass
-                else:
-                    raise NoViableAltException(self)
-
-                self.state = 71
+            while ((_la) & ~0x3f) == 0 and ((1 << _la) & 18612533374914560) != 0:
+                self.state = 53
+                self.stmt()
+                self.state = 58
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 72
-            self.match(SimpleParser.R_CURLY)
-            self.state = 73
+            self.state = 59
+            self.endofblock()
+            self.state = 60
             self.match(SimpleParser.NL)
         except RecognitionException as re:
             localctx.exception = re
@@ -488,87 +421,44 @@ class SimpleParser ( Parser ):
         return localctx
 
 
-    class SubblockstmtContext(ParserRuleContext):
+    class EndofblockContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def SUBBLOCK(self):
-            return self.getToken(SimpleParser.SUBBLOCK, 0)
-
-        def ID(self):
-            return self.getToken(SimpleParser.ID, 0)
-
-        def L_CURLY(self):
-            return self.getToken(SimpleParser.L_CURLY, 0)
-
-        def NL(self, i:int=None):
-            if i is None:
-                return self.getTokens(SimpleParser.NL)
-            else:
-                return self.getToken(SimpleParser.NL, i)
-
         def R_CURLY(self):
             return self.getToken(SimpleParser.R_CURLY, 0)
 
-        def stmt(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(SimpleParser.StmtContext)
-            else:
-                return self.getTypedRuleContext(SimpleParser.StmtContext,i)
-
-
         def getRuleIndex(self):
-            return SimpleParser.RULE_subblockstmt
+            return SimpleParser.RULE_endofblock
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSubblockstmt" ):
-                listener.enterSubblockstmt(self)
+            if hasattr( listener, "enterEndofblock" ):
+                listener.enterEndofblock(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSubblockstmt" ):
-                listener.exitSubblockstmt(self)
+            if hasattr( listener, "exitEndofblock" ):
+                listener.exitEndofblock(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitSubblockstmt" ):
-                return visitor.visitSubblockstmt(self)
+            if hasattr( visitor, "visitEndofblock" ):
+                return visitor.visitEndofblock(self)
             else:
                 return visitor.visitChildren(self)
 
 
 
 
-    def subblockstmt(self):
+    def endofblock(self):
 
-        localctx = SimpleParser.SubblockstmtContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 4, self.RULE_subblockstmt)
-        self._la = 0 # Token type
+        localctx = SimpleParser.EndofblockContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 4, self.RULE_endofblock)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 75
-            self.match(SimpleParser.SUBBLOCK)
-            self.state = 76
-            self.match(SimpleParser.ID)
-            self.state = 77
-            self.match(SimpleParser.L_CURLY)
-            self.state = 78
-            self.match(SimpleParser.NL)
-            self.state = 82
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            while ((_la) & ~0x3f) == 0 and ((1 << _la) & 148900266999316480) != 0:
-                self.state = 79
-                self.stmt()
-                self.state = 84
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-
-            self.state = 85
+            self.state = 62
             self.match(SimpleParser.R_CURLY)
-            self.state = 86
-            self.match(SimpleParser.NL)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -646,84 +536,84 @@ class SimpleParser ( Parser ):
         localctx = SimpleParser.StmtContext(self, self._ctx, self.state)
         self.enterRule(localctx, 6, self.RULE_stmt)
         try:
-            self.state = 113
+            self.state = 89
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,6,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,3,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 88
+                self.state = 64
                 self.declarationstmt()
-                self.state = 89
+                self.state = 65
                 self.match(SimpleParser.NL)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 91
+                self.state = 67
                 self.ioletdeclstmt()
-                self.state = 92
+                self.state = 68
                 self.match(SimpleParser.NL)
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 94
+                self.state = 70
                 self.connectionstmt()
-                self.state = 95
+                self.state = 71
                 self.match(SimpleParser.NL)
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 97
+                self.state = 73
                 self.recallstmt()
-                self.state = 98
+                self.state = 74
                 self.match(SimpleParser.NL)
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 100
+                self.state = 76
                 self.ifstmt()
-                self.state = 101
+                self.state = 77
                 self.match(SimpleParser.NL)
                 pass
 
             elif la_ == 6:
                 self.enterOuterAlt(localctx, 6)
-                self.state = 103
+                self.state = 79
                 self.forstmt()
-                self.state = 104
+                self.state = 80
                 self.match(SimpleParser.NL)
                 pass
 
             elif la_ == 7:
                 self.enterOuterAlt(localctx, 7)
-                self.state = 106
+                self.state = 82
                 self.match(SimpleParser.BREAK)
-                self.state = 107
+                self.state = 83
                 self.match(SimpleParser.NL)
                 pass
 
             elif la_ == 8:
                 self.enterOuterAlt(localctx, 8)
-                self.state = 108
+                self.state = 84
                 self.match(SimpleParser.CONTINUE)
-                self.state = 109
+                self.state = 85
                 self.match(SimpleParser.NL)
                 pass
 
             elif la_ == 9:
                 self.enterOuterAlt(localctx, 9)
-                self.state = 110
+                self.state = 86
                 self.match(SimpleParser.PASS)
-                self.state = 111
+                self.state = 87
                 self.match(SimpleParser.NL)
                 pass
 
             elif la_ == 10:
                 self.enterOuterAlt(localctx, 10)
-                self.state = 112
+                self.state = 88
                 self.match(SimpleParser.NL)
                 pass
 
@@ -843,40 +733,40 @@ class SimpleParser ( Parser ):
         localctx = SimpleParser.DeclarationstmtContext(self, self._ctx, self.state)
         self.enterRule(localctx, 8, self.RULE_declarationstmt)
         try:
-            self.state = 124
+            self.state = 100
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,7,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,4,self._ctx)
             if la_ == 1:
                 localctx = SimpleParser.FullDeclStmtContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 115
+                self.state = 91
                 self.match(SimpleParser.ID)
-                self.state = 116
+                self.state = 92
                 self.match(SimpleParser.T__1)
 
-                self.state = 117
+                self.state = 93
                 self.match(SimpleParser.NODETYPE)
-                self.state = 118
+                self.state = 94
                 self.parameters()
                 pass
 
             elif la_ == 2:
                 localctx = SimpleParser.FastDeclStmtContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 119
+                self.state = 95
                 self.match(SimpleParser.NODETYPE)
-                self.state = 120
+                self.state = 96
                 self.parameters()
                 pass
 
             elif la_ == 3:
                 localctx = SimpleParser.OpDeclStmtContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 121
+                self.state = 97
                 self.match(SimpleParser.ID)
-                self.state = 122
+                self.state = 98
                 self.match(SimpleParser.T__1)
-                self.state = 123
+                self.state = 99
                 self.operation()
                 pass
 
@@ -934,17 +824,17 @@ class SimpleParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 126
+            self.state = 102
             self.match(SimpleParser.L_PAREN)
-            self.state = 128
+            self.state = 104
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if ((_la) & ~0x3f) == 0 and ((1 << _la) & 27287335980761088) != 0:
-                self.state = 127
+            if ((_la) & ~0x3f) == 0 and ((1 << _la) & 3692391974305792) != 0:
+                self.state = 103
                 self.typedargslist()
 
 
-            self.state = 130
+            self.state = 106
             self.match(SimpleParser.R_PAREN)
         except RecognitionException as re:
             localctx.exception = re
@@ -969,11 +859,11 @@ class SimpleParser ( Parser ):
                 return self.getTypedRuleContext(SimpleParser.ArgContext,i)
 
 
-        def ioletdeclasarg(self, i:int=None):
+        def ioletbase(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(SimpleParser.IoletdeclasargContext)
+                return self.getTypedRuleContexts(SimpleParser.IoletbaseContext)
             else:
-                return self.getTypedRuleContext(SimpleParser.IoletdeclasargContext,i)
+                return self.getTypedRuleContext(SimpleParser.IoletbaseContext,i)
 
 
         def getRuleIndex(self):
@@ -1002,33 +892,58 @@ class SimpleParser ( Parser ):
         self.enterRule(localctx, 12, self.RULE_typedargslist)
         self._la = 0 # Token type
         try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 132
-            self.arg()
-            self.state = 137
+            self.state = 131
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,9,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
-                    self.state = 133
-                    self.match(SimpleParser.T__2)
-                    self.state = 134
-                    self.arg() 
-                self.state = 139
+            token = self._input.LA(1)
+            if token in [33, 34, 36, 37, 41, 42, 43, 44, 50, 51]:
+                self.enterOuterAlt(localctx, 1)
+                self.state = 108
+                self.arg()
+                self.state = 113
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,9,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,6,self._ctx)
+                while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+                    if _alt==1:
+                        self.state = 109
+                        self.match(SimpleParser.T__2)
+                        self.state = 110
+                        self.arg() 
+                    self.state = 115
+                    self._errHandler.sync(self)
+                    _alt = self._interp.adaptivePredict(self._input,6,self._ctx)
 
-            self.state = 144
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            while _la==3:
-                self.state = 140
-                self.match(SimpleParser.T__2)
-                self.state = 141
-                self.ioletdeclasarg()
-                self.state = 146
+                self.state = 120
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
+                while _la==3:
+                    self.state = 116
+                    self.match(SimpleParser.T__2)
+                    self.state = 117
+                    self.ioletbase()
+                    self.state = 122
+                    self._errHandler.sync(self)
+                    _la = self._input.LA(1)
+
+                pass
+            elif token in [48]:
+                self.enterOuterAlt(localctx, 2)
+                self.state = 123
+                self.ioletbase()
+                self.state = 128
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                while _la==3:
+                    self.state = 124
+                    self.match(SimpleParser.T__2)
+                    self.state = 125
+                    self.ioletbase()
+                    self.state = 130
+                    self._errHandler.sync(self)
+                    _la = self._input.LA(1)
+
+                pass
+            else:
+                raise NoViableAltException(self)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1078,17 +993,17 @@ class SimpleParser ( Parser ):
         localctx = SimpleParser.ArgContext(self, self._ctx, self.state)
         self.enterRule(localctx, 14, self.RULE_arg)
         try:
-            self.state = 149
+            self.state = 135
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [53]:
+            if token in [50]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 147
+                self.state = 133
                 self.match(SimpleParser.SYMBOL)
                 pass
-            elif token in [36, 37, 39, 40, 44, 45, 46, 47, 54]:
+            elif token in [33, 34, 36, 37, 41, 42, 43, 44, 51]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 148
+                self.state = 134
                 self.operation()
                 pass
             else:
@@ -1164,29 +1079,29 @@ class SimpleParser ( Parser ):
         self.enterRule(localctx, 16, self.RULE_operation)
         self._la = 0 # Token type
         try:
-            self.state = 156
+            self.state = 142
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [54]:
+            if token in [51]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 151
+                self.state = 137
                 self.match(SimpleParser.NUMBER)
                 pass
-            elif token in [36, 37, 39, 40, 44, 45, 46, 47]:
+            elif token in [33, 34, 36, 37, 41, 42, 43, 44]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 152
+                self.state = 138
                 localctx.op = self._input.LT(1)
                 _la = self._input.LA(1)
-                if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 265738216538112) != 0):
+                if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 33217277067264) != 0):
                     localctx.op = self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
                     self.consume()
-                self.state = 154
+                self.state = 140
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==54:
-                    self.state = 153
+                if _la==51:
+                    self.state = 139
                     self.match(SimpleParser.NUMBER)
 
 
@@ -1203,7 +1118,7 @@ class SimpleParser ( Parser ):
         return localctx
 
 
-    class IoletdeclasargContext(ParserRuleContext):
+    class IoletbaseContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -1228,50 +1143,50 @@ class SimpleParser ( Parser ):
             return self.getToken(SimpleParser.ID, 0)
 
         def getRuleIndex(self):
-            return SimpleParser.RULE_ioletdeclasarg
+            return SimpleParser.RULE_ioletbase
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterIoletdeclasarg" ):
-                listener.enterIoletdeclasarg(self)
+            if hasattr( listener, "enterIoletbase" ):
+                listener.enterIoletbase(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitIoletdeclasarg" ):
-                listener.exitIoletdeclasarg(self)
+            if hasattr( listener, "exitIoletbase" ):
+                listener.exitIoletbase(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitIoletdeclasarg" ):
-                return visitor.visitIoletdeclasarg(self)
+            if hasattr( visitor, "visitIoletbase" ):
+                return visitor.visitIoletbase(self)
             else:
                 return visitor.visitChildren(self)
 
 
 
 
-    def ioletdeclasarg(self):
+    def ioletbase(self):
 
-        localctx = SimpleParser.IoletdeclasargContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 18, self.RULE_ioletdeclasarg)
+        localctx = SimpleParser.IoletbaseContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 18, self.RULE_ioletbase)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 158
+            self.state = 144
             self.match(SimpleParser.INOUTID)
-            self.state = 159
+            self.state = 145
             self.match(SimpleParser.T__1)
-            self.state = 164
+            self.state = 150
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [48]:
-                self.state = 160
+            if token in [45]:
+                self.state = 146
                 self.match(SimpleParser.NODETYPE)
-                self.state = 161
+                self.state = 147
                 self.parameters()
                 pass
-            elif token in [36, 37, 39, 40, 44, 45, 46, 47, 54]:
-                self.state = 162
+            elif token in [33, 34, 36, 37, 41, 42, 43, 44, 51]:
+                self.state = 148
                 self.operation()
                 pass
-            elif token in [52]:
-                self.state = 163
+            elif token in [49]:
+                self.state = 149
                 self.match(SimpleParser.ID)
                 pass
             else:
@@ -1296,8 +1211,8 @@ class SimpleParser ( Parser ):
         def ID(self):
             return self.getToken(SimpleParser.ID, 0)
 
-        def ioletdeclasarg(self):
-            return self.getTypedRuleContext(SimpleParser.IoletdeclasargContext,0)
+        def ioletbase(self):
+            return self.getTypedRuleContext(SimpleParser.IoletbaseContext,0)
 
 
         def NODETYPE(self):
@@ -1332,28 +1247,28 @@ class SimpleParser ( Parser ):
         localctx = SimpleParser.IoletdeclstmtContext(self, self._ctx, self.state)
         self.enterRule(localctx, 20, self.RULE_ioletdeclstmt)
         try:
-            self.state = 174
+            self.state = 160
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [52]:
+            if token in [49]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 166
+                self.state = 152
                 self.match(SimpleParser.ID)
-                self.state = 167
+                self.state = 153
                 self.match(SimpleParser.T__3)
-                self.state = 168
-                self.ioletdeclasarg()
+                self.state = 154
+                self.ioletbase()
                 pass
-            elif token in [48]:
+            elif token in [45]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 169
+                self.state = 155
                 self.match(SimpleParser.NODETYPE)
-                self.state = 170
+                self.state = 156
                 self.parameters()
-                self.state = 171
+                self.state = 157
                 self.match(SimpleParser.T__3)
-                self.state = 172
-                self.ioletdeclasarg()
+                self.state = 158
+                self.ioletbase()
                 pass
             else:
                 raise NoViableAltException(self)
@@ -1413,34 +1328,22 @@ class SimpleParser ( Parser ):
         self.enterRule(localctx, 22, self.RULE_connectionstmt)
         self._la = 0 # Token type
         try:
-            self.state = 184
+            self.enterOuterAlt(localctx, 1)
+            self.state = 162
+            self.connectionelem()
+            self.state = 165 
             self._errHandler.sync(self)
-            token = self._input.LA(1)
-            if token in [32, 48, 52]:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 176
+            _la = self._input.LA(1)
+            while True:
+                self.state = 163
+                self.match(SimpleParser.CONNECT)
+                self.state = 164
                 self.connectionelem()
-                self.state = 179 
+                self.state = 167 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while True:
-                    self.state = 177
-                    self.match(SimpleParser.CONNECT)
-                    self.state = 178
-                    self.connectionelem()
-                    self.state = 181 
-                    self._errHandler.sync(self)
-                    _la = self._input.LA(1)
-                    if not (_la==13):
-                        break
-
-                pass
-            elif token in [57]:
-                self.enterOuterAlt(localctx, 2)
-
-                pass
-            else:
-                raise NoViableAltException(self)
+                if not (_la==11):
+                    break
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1557,40 +1460,40 @@ class SimpleParser ( Parser ):
         localctx = SimpleParser.DeclinsideContext(self, self._ctx, self.state)
         self.enterRule(localctx, 24, self.RULE_declinside)
         try:
-            self.state = 195
+            self.state = 178
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,18,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,16,self._ctx)
             if la_ == 1:
                 localctx = SimpleParser.FullDeclStmtInsideContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 186
+                self.state = 169
                 self.match(SimpleParser.ID)
-                self.state = 187
+                self.state = 170
                 self.match(SimpleParser.T__1)
 
-                self.state = 188
+                self.state = 171
                 self.match(SimpleParser.NODETYPE)
-                self.state = 189
+                self.state = 172
                 self.parameters()
                 pass
 
             elif la_ == 2:
                 localctx = SimpleParser.FastDeclStmtInsideContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 190
+                self.state = 173
                 self.match(SimpleParser.NODETYPE)
-                self.state = 191
+                self.state = 174
                 self.parameters()
                 pass
 
             elif la_ == 3:
                 localctx = SimpleParser.OpDeclStmtInsideContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 192
+                self.state = 175
                 self.match(SimpleParser.ID)
-                self.state = 193
+                self.state = 176
                 self.match(SimpleParser.T__1)
-                self.state = 194
+                self.state = 177
                 self.operation()
                 pass
 
@@ -1656,228 +1559,70 @@ class SimpleParser ( Parser ):
         self.enterRule(localctx, 26, self.RULE_connectionelem)
         self._la = 0 # Token type
         try:
-            self.state = 217
+            self.state = 200
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [32]:
+            if token in [29]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 197
+                self.state = 180
                 self.match(SimpleParser.L_ANGLE)
-                self.state = 200
+                self.state = 183
                 self._errHandler.sync(self)
-                la_ = self._interp.adaptivePredict(self._input,19,self._ctx)
+                la_ = self._interp.adaptivePredict(self._input,17,self._ctx)
                 if la_ == 1:
-                    self.state = 198
+                    self.state = 181
                     self.match(SimpleParser.ID)
                     pass
 
                 elif la_ == 2:
-                    self.state = 199
+                    self.state = 182
                     self.declinside()
                     pass
 
 
-                self.state = 209
+                self.state = 192
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==3:
-                    self.state = 202
+                    self.state = 185
                     self.match(SimpleParser.T__2)
-                    self.state = 205
+                    self.state = 188
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input,20,self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input,18,self._ctx)
                     if la_ == 1:
-                        self.state = 203
+                        self.state = 186
                         self.match(SimpleParser.ID)
                         pass
 
                     elif la_ == 2:
-                        self.state = 204
+                        self.state = 187
                         self.declinside()
                         pass
 
 
-                    self.state = 211
+                    self.state = 194
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                self.state = 212
+                self.state = 195
                 self.match(SimpleParser.R_ANGLE)
                 pass
-            elif token in [48, 52]:
+            elif token in [45, 49]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 215
+                self.state = 198
                 self._errHandler.sync(self)
-                la_ = self._interp.adaptivePredict(self._input,22,self._ctx)
+                la_ = self._interp.adaptivePredict(self._input,20,self._ctx)
                 if la_ == 1:
-                    self.state = 213
+                    self.state = 196
                     self.match(SimpleParser.ID)
                     pass
 
                 elif la_ == 2:
-                    self.state = 214
+                    self.state = 197
                     self.declinside()
                     pass
 
 
-                pass
-            else:
-                raise NoViableAltException(self)
-
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class DisconnectionstmtContext(ParserRuleContext):
-        __slots__ = 'parser'
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def disconnectionelem(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(SimpleParser.DisconnectionelemContext)
-            else:
-                return self.getTypedRuleContext(SimpleParser.DisconnectionelemContext,i)
-
-
-        def DISCONNECT(self, i:int=None):
-            if i is None:
-                return self.getTokens(SimpleParser.DISCONNECT)
-            else:
-                return self.getToken(SimpleParser.DISCONNECT, i)
-
-        def getRuleIndex(self):
-            return SimpleParser.RULE_disconnectionstmt
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterDisconnectionstmt" ):
-                listener.enterDisconnectionstmt(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitDisconnectionstmt" ):
-                listener.exitDisconnectionstmt(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDisconnectionstmt" ):
-                return visitor.visitDisconnectionstmt(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-
-    def disconnectionstmt(self):
-
-        localctx = SimpleParser.DisconnectionstmtContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 28, self.RULE_disconnectionstmt)
-        self._la = 0 # Token type
-        try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 219
-            self.disconnectionelem()
-            self.state = 222 
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            while True:
-                self.state = 220
-                self.match(SimpleParser.DISCONNECT)
-                self.state = 221
-                self.disconnectionelem()
-                self.state = 224 
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-                if not (_la==14):
-                    break
-
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-
-    class DisconnectionelemContext(ParserRuleContext):
-        __slots__ = 'parser'
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def L_ANGLE(self):
-            return self.getToken(SimpleParser.L_ANGLE, 0)
-
-        def ID(self, i:int=None):
-            if i is None:
-                return self.getTokens(SimpleParser.ID)
-            else:
-                return self.getToken(SimpleParser.ID, i)
-
-        def R_ANGLE(self):
-            return self.getToken(SimpleParser.R_ANGLE, 0)
-
-        def getRuleIndex(self):
-            return SimpleParser.RULE_disconnectionelem
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterDisconnectionelem" ):
-                listener.enterDisconnectionelem(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitDisconnectionelem" ):
-                listener.exitDisconnectionelem(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDisconnectionelem" ):
-                return visitor.visitDisconnectionelem(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-
-    def disconnectionelem(self):
-
-        localctx = SimpleParser.DisconnectionelemContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 30, self.RULE_disconnectionelem)
-        self._la = 0 # Token type
-        try:
-            self.state = 237
-            self._errHandler.sync(self)
-            token = self._input.LA(1)
-            if token in [32]:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 226
-                self.match(SimpleParser.L_ANGLE)
-                self.state = 227
-                self.match(SimpleParser.ID)
-                self.state = 232
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-                while _la==3:
-                    self.state = 228
-                    self.match(SimpleParser.T__2)
-                    self.state = 229
-                    self.match(SimpleParser.ID)
-                    self.state = 234
-                    self._errHandler.sync(self)
-                    _la = self._input.LA(1)
-
-                self.state = 235
-                self.match(SimpleParser.R_ANGLE)
-                pass
-            elif token in [52]:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 236
-                self.match(SimpleParser.ID)
                 pass
             else:
                 raise NoViableAltException(self)
@@ -1926,13 +1671,6 @@ class SimpleParser ( Parser ):
                 return self.getTypedRuleContext(SimpleParser.StmtContext,i)
 
 
-        def subblockstmt(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(SimpleParser.SubblockstmtContext)
-            else:
-                return self.getTypedRuleContext(SimpleParser.SubblockstmtContext,i)
-
-
         def getRuleIndex(self):
             return SimpleParser.RULE_recallstmt
 
@@ -1956,45 +1694,33 @@ class SimpleParser ( Parser ):
     def recallstmt(self):
 
         localctx = SimpleParser.RecallstmtContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 32, self.RULE_recallstmt)
+        self.enterRule(localctx, 28, self.RULE_recallstmt)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 239
+            self.state = 202
             self.match(SimpleParser.RECALL)
-            self.state = 240
+            self.state = 203
             self.match(SimpleParser.ID)
-            self.state = 241
+            self.state = 204
             self.match(SimpleParser.TO)
-            self.state = 242
+            self.state = 205
             self.match(SimpleParser.ID)
-            self.state = 243
+            self.state = 206
             self.match(SimpleParser.L_CURLY)
-            self.state = 244
+            self.state = 207
             self.match(SimpleParser.NL)
-            self.state = 249
+            self.state = 211
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while ((_la) & ~0x3f) == 0 and ((1 << _la) & 148900266999320576) != 0:
-                self.state = 247
-                self._errHandler.sync(self)
-                token = self._input.LA(1)
-                if token in [15, 18, 20, 21, 22, 24, 32, 48, 52, 57]:
-                    self.state = 245
-                    self.stmt()
-                    pass
-                elif token in [12]:
-                    self.state = 246
-                    self.subblockstmt()
-                    pass
-                else:
-                    raise NoViableAltException(self)
-
-                self.state = 251
+            while ((_la) & ~0x3f) == 0 and ((1 << _la) & 18612533374914560) != 0:
+                self.state = 208
+                self.stmt()
+                self.state = 213
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 252
+            self.state = 214
             self.match(SimpleParser.R_CURLY)
         except RecognitionException as re:
             localctx.exception = re
@@ -2064,47 +1790,47 @@ class SimpleParser ( Parser ):
     def ifstmt(self):
 
         localctx = SimpleParser.IfstmtContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 34, self.RULE_ifstmt)
+        self.enterRule(localctx, 30, self.RULE_ifstmt)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 254
+            self.state = 216
             self.match(SimpleParser.IF)
-            self.state = 255
+            self.state = 217
             self.expr(0)
-            self.state = 256
+            self.state = 218
             self.match(SimpleParser.T__4)
-            self.state = 257
+            self.state = 219
             self.suite()
-            self.state = 265
+            self.state = 227
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==16:
-                self.state = 258
+            while _la==13:
+                self.state = 220
                 self.match(SimpleParser.ELIF)
-                self.state = 259
+                self.state = 221
                 self.expr(0)
-                self.state = 260
+                self.state = 222
                 self.match(SimpleParser.T__4)
-                self.state = 261
+                self.state = 223
                 self.suite()
-                self.state = 267
+                self.state = 229
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 271
+            self.state = 233
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==17:
-                self.state = 268
+            if _la==14:
+                self.state = 230
                 self.match(SimpleParser.ELSE)
-                self.state = 269
+                self.state = 231
                 self.match(SimpleParser.T__4)
-                self.state = 270
+                self.state = 232
                 self.suite()
 
 
-            self.state = 273
+            self.state = 235
             self.match(SimpleParser.END)
         except RecognitionException as re:
             localctx.exception = re
@@ -2158,20 +1884,20 @@ class SimpleParser ( Parser ):
     def forstmt(self):
 
         localctx = SimpleParser.ForstmtContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 36, self.RULE_forstmt)
+        self.enterRule(localctx, 32, self.RULE_forstmt)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 275
+            self.state = 237
             self.match(SimpleParser.FOR)
-            self.state = 276
+            self.state = 238
             self.match(SimpleParser.INTEGER)
-            self.state = 277
+            self.state = 239
             self.match(SimpleParser.T__5)
-            self.state = 278
+            self.state = 240
             self.match(SimpleParser.T__4)
-            self.state = 279
+            self.state = 241
             self.suite()
-            self.state = 280
+            self.state = 242
             self.match(SimpleParser.END)
         except RecognitionException as re:
             localctx.exception = re
@@ -2222,22 +1948,22 @@ class SimpleParser ( Parser ):
     def suite(self):
 
         localctx = SimpleParser.SuiteContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 38, self.RULE_suite)
+        self.enterRule(localctx, 34, self.RULE_suite)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 282
+            self.state = 244
             self.match(SimpleParser.NL)
-            self.state = 284 
+            self.state = 246 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 283
+                self.state = 245
                 self.stmt()
-                self.state = 286 
+                self.state = 248 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not (((_la) & ~0x3f) == 0 and ((1 << _la) & 148900266999316480) != 0):
+                if not (((_la) & ~0x3f) == 0 and ((1 << _la) & 18612533374914560) != 0):
                     break
 
         except RecognitionException as re:
@@ -2289,7 +2015,68 @@ class SimpleParser ( Parser ):
                 return visitor.visitChildren(self)
 
 
-    class MulDivContext(ExprContext):
+    class ParensExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def L_PAREN(self):
+            return self.getToken(SimpleParser.L_PAREN, 0)
+        def expr(self):
+            return self.getTypedRuleContext(SimpleParser.ExprContext,0)
+
+        def R_PAREN(self):
+            return self.getToken(SimpleParser.R_PAREN, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParensExpr" ):
+                listener.enterParensExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParensExpr" ):
+                listener.exitParensExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitParensExpr" ):
+                return visitor.visitParensExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class LogicalExprContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(SimpleParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(SimpleParser.ExprContext,i)
+
+        def AND(self):
+            return self.getToken(SimpleParser.AND, 0)
+        def OR(self):
+            return self.getToken(SimpleParser.OR, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLogicalExpr" ):
+                listener.enterLogicalExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLogicalExpr" ):
+                listener.exitLogicalExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLogicalExpr" ):
+                return visitor.visitLogicalExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class MathExprContext(ExprContext):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.ExprContext
             super().__init__(parser)
@@ -2306,64 +2093,27 @@ class SimpleParser ( Parser ):
             return self.getToken(SimpleParser.STAR, 0)
         def DIV(self):
             return self.getToken(SimpleParser.DIV, 0)
-        def SIGSTAR(self):
-            return self.getToken(SimpleParser.SIGSTAR, 0)
-        def SIGDIV(self):
-            return self.getToken(SimpleParser.SIGDIV, 0)
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterMulDiv" ):
-                listener.enterMulDiv(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitMulDiv" ):
-                listener.exitMulDiv(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitMulDiv" ):
-                return visitor.visitMulDiv(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class AddSubContext(ExprContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.ExprContext
-            super().__init__(parser)
-            self.op = None # Token
-            self.copyFrom(ctx)
-
-        def expr(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(SimpleParser.ExprContext)
-            else:
-                return self.getTypedRuleContext(SimpleParser.ExprContext,i)
-
         def PLUS(self):
             return self.getToken(SimpleParser.PLUS, 0)
         def MINUS(self):
             return self.getToken(SimpleParser.MINUS, 0)
-        def SIGPLUS(self):
-            return self.getToken(SimpleParser.SIGPLUS, 0)
-        def SIGMINUS(self):
-            return self.getToken(SimpleParser.SIGMINUS, 0)
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAddSub" ):
-                listener.enterAddSub(self)
+            if hasattr( listener, "enterMathExpr" ):
+                listener.enterMathExpr(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAddSub" ):
-                listener.exitAddSub(self)
+            if hasattr( listener, "exitMathExpr" ):
+                listener.exitMathExpr(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAddSub" ):
-                return visitor.visitAddSub(self)
+            if hasattr( visitor, "visitMathExpr" ):
+                return visitor.visitMathExpr(self)
             else:
                 return visitor.visitChildren(self)
 
 
-    class TestContext(ExprContext):
+    class TestExprContext(ExprContext):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.ExprContext
             super().__init__(parser)
@@ -2387,77 +2137,16 @@ class SimpleParser ( Parser ):
             return self.getToken(SimpleParser.MOD, 0)
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTest" ):
-                listener.enterTest(self)
+            if hasattr( listener, "enterTestExpr" ):
+                listener.enterTestExpr(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTest" ):
-                listener.exitTest(self)
+            if hasattr( listener, "exitTestExpr" ):
+                listener.exitTestExpr(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTest" ):
-                return visitor.visitTest(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class ParensContext(ExprContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.ExprContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def L_PAREN(self):
-            return self.getToken(SimpleParser.L_PAREN, 0)
-        def expr(self):
-            return self.getTypedRuleContext(SimpleParser.ExprContext,0)
-
-        def R_PAREN(self):
-            return self.getToken(SimpleParser.R_PAREN, 0)
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterParens" ):
-                listener.enterParens(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitParens" ):
-                listener.exitParens(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitParens" ):
-                return visitor.visitParens(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class LogicalContext(ExprContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.ExprContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def expr(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(SimpleParser.ExprContext)
-            else:
-                return self.getTypedRuleContext(SimpleParser.ExprContext,i)
-
-        def AND(self):
-            return self.getToken(SimpleParser.AND, 0)
-        def OR(self):
-            return self.getToken(SimpleParser.OR, 0)
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLogical" ):
-                listener.enterLogical(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLogical" ):
-                listener.exitLogical(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLogical" ):
-                return visitor.visitLogical(self)
+            if hasattr( visitor, "visitTestExpr" ):
+                return visitor.visitTestExpr(self)
             else:
                 return visitor.visitChildren(self)
 
@@ -2468,126 +2157,107 @@ class SimpleParser ( Parser ):
         _parentState = self.state
         localctx = SimpleParser.ExprContext(self, self._ctx, _parentState)
         _prevctx = localctx
-        _startState = 40
-        self.enterRecursionRule(localctx, 40, self.RULE_expr, _p)
+        _startState = 36
+        self.enterRecursionRule(localctx, 36, self.RULE_expr, _p)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 294
+            self.state = 256
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [54]:
+            if token in [51]:
                 localctx = SimpleParser.NumberContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
 
-                self.state = 289
+                self.state = 251
                 self.match(SimpleParser.NUMBER)
                 pass
-            elif token in [26]:
-                localctx = SimpleParser.ParensContext(self, localctx)
+            elif token in [23]:
+                localctx = SimpleParser.ParensExprContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 290
+                self.state = 252
                 self.match(SimpleParser.L_PAREN)
-                self.state = 291
+                self.state = 253
                 self.expr(0)
-                self.state = 292
+                self.state = 254
                 self.match(SimpleParser.R_PAREN)
                 pass
             else:
                 raise NoViableAltException(self)
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 310
+            self.state = 269
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,34,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,28,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 308
+                    self.state = 267
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input,33,self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input,27,self._ctx)
                     if la_ == 1:
-                        localctx = SimpleParser.MulDivContext(self, SimpleParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = SimpleParser.MathExprContext(self, SimpleParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 296
-                        if not self.precpred(self._ctx, 6):
-                            from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
-                        self.state = 297
-                        localctx.op = self._input.LT(1)
-                        _la = self._input.LA(1)
-                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 212755499974656) != 0):
-                            localctx.op = self._errHandler.recoverInline(self)
-                        else:
-                            self._errHandler.reportMatch(self)
-                            self.consume()
-                        self.state = 298
-                        self.expr(7)
-                        pass
-
-                    elif la_ == 2:
-                        localctx = SimpleParser.AddSubContext(self, SimpleParser.ExprContext(self, _parentctx, _parentState))
-                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 299
+                        self.state = 258
                         if not self.precpred(self._ctx, 5):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
-                        self.state = 300
+                        self.state = 259
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
-                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 52982716563456) != 0):
+                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 231928233984) != 0):
                             localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 301
+                        self.state = 260
                         self.expr(6)
                         pass
 
-                    elif la_ == 3:
-                        localctx = SimpleParser.TestContext(self, SimpleParser.ExprContext(self, _parentctx, _parentState))
+                    elif la_ == 2:
+                        localctx = SimpleParser.TestExprContext(self, SimpleParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 302
+                        self.state = 261
                         if not self.precpred(self._ctx, 4):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
-                        self.state = 303
+                        self.state = 262
                         _la = self._input.LA(1)
-                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 2263447765376) != 0):
+                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 282930971008) != 0):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 304
+                        self.state = 263
                         self.expr(5)
                         pass
 
-                    elif la_ == 4:
-                        localctx = SimpleParser.LogicalContext(self, SimpleParser.ExprContext(self, _parentctx, _parentState))
+                    elif la_ == 3:
+                        localctx = SimpleParser.LogicalExprContext(self, SimpleParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 305
+                        self.state = 264
                         if not self.precpred(self._ctx, 3):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 3)")
-                        self.state = 306
+                        self.state = 265
                         _la = self._input.LA(1)
-                        if not(_la==42 or _la==43):
+                        if not(_la==39 or _la==40):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 307
+                        self.state = 266
                         self.expr(4)
                         pass
 
              
-                self.state = 312
+                self.state = 271
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,34,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,28,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2602,7 +2272,7 @@ class SimpleParser ( Parser ):
     def sempred(self, localctx:RuleContext, ruleIndex:int, predIndex:int):
         if self._predicates == None:
             self._predicates = dict()
-        self._predicates[20] = self.expr_sempred
+        self._predicates[18] = self.expr_sempred
         pred = self._predicates.get(ruleIndex, None)
         if pred is None:
             raise Exception("No predicate with index:" + str(ruleIndex))
@@ -2611,18 +2281,14 @@ class SimpleParser ( Parser ):
 
     def expr_sempred(self, localctx:ExprContext, predIndex:int):
             if predIndex == 0:
-                return self.precpred(self._ctx, 6)
-         
-
-            if predIndex == 1:
                 return self.precpred(self._ctx, 5)
          
 
-            if predIndex == 2:
+            if predIndex == 1:
                 return self.precpred(self._ctx, 4)
          
 
-            if predIndex == 3:
+            if predIndex == 2:
                 return self.precpred(self._ctx, 3)
          
 

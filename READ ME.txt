@@ -7,11 +7,11 @@ Regole implementate:
 - node declaration (declaration statement)
 - inlet/outlet declaration (una sorta di connessione in cui specificare anche gli inlet/outlet)
 - connessione (connection statement) 
+- block, con scoping per blocco
 
 Da fare:
 - algoritmo di posizionamento [[WORK IN PROGRESS]]
 - implementare i restanti costrutti (if, for, block ...)
-- scoping per blocco [[WORK IN PROGRESS]]
 
 Bug da fixare:
 - dentro alle stringhe non sono allowed i whitespace!!!

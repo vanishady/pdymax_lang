@@ -1,4 +1,3 @@
-include mylib
 patch mycanva
 
 #this block is a stepseq
@@ -20,25 +19,23 @@ block bpm {
 
 	t = object('bang')
 
-	subblock technobpm {
-		a = array()
-		if 1==2:
-    			if 2==2:
-				pass
-			elif 2==3:
-				continue
-			else:
-				message()
-			end
-		else:
-    			continue
-		end
-		numbernode = 8*7	
 
-	}
+	a = array()
+	if 1==2:
+    		if 2==2:
+			pass
+		elif 2==3:
+			continue
+		else:
+			message()
+		end
+	else:
+    		continue
+	end
+	numbernode = *7	
 	
 	recall technobpm to housebpm {
-		numbernode = 9*array(10)
+		numbernode = array(10)
 	}
 }
 ;

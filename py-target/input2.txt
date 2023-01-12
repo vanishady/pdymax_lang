@@ -1,8 +1,13 @@
-include nothing
-patch something
+patch something2
 
-#title = text('additive synth')
-obj(440)::<osc1=\osc~(), num1=*2, num2=*3, num3=*4, num4=*5>
+block onoff {
+ msg('dsp', 1).$-1=\s('pd')
+}
+
+msg(440)::f=floatatom()
+
+title = text('additivesynth')
+f::<osc1=\osc~(), num1=*2, num2=*3, num3=*4, num4=*5>
 osc1 :: mul=*~ 0.1
 
 num1::floatatom()::\osc~()::mul1=*~ 0.75
