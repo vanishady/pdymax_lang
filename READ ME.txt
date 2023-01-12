@@ -10,7 +10,7 @@ Regole implementate:
 - block, con scoping per blocco
 
 Da fare:
-- algoritmo di posizionamento [[WORK IN PROGRESS]]
+- algoritmo di posizionamento [[WORK IN PROGRESS CODICE ASSOLUTAMENTE IMPROVVISATO]]
 - implementare i restanti costrutti (if, for, block ...)
 
 Bug da fixare:

@@ -13,7 +13,7 @@ import Remakez
         
 ### LEXER AND PARSER WORK ###
 
-lexer = SimpleLexer(FileStream('input4.txt'))
+lexer = SimpleLexer(FileStream('input2.txt'))
 stream = CommonTokenStream(lexer)
 parser = SimpleParser(stream)
 
@@ -37,6 +37,59 @@ for elem in visitor.memory:
 for elem in visitor.connections:
     print(type(elem), elem.makeString())
 """
+### FORMATTER ###
+xindex = 20
+yindex = 20
+for conn in visitor.connections:
+    if type(conn) == Remakez.Connection:
+        for node in visitor.memory:
+            if type(node)==Remakez.Block:
+                continue
+            if node.getIndex() == conn.getSource() and node.getScope()==conn.getScope():
+                source=node
+                for anothernode in visitor.memory:
+                    if type(anothernode)==Remakez.Block:
+                        continue
+                    if anothernode.getIndex() == conn.getSink() and anothernode.getScope()==conn.getScope():
+                        sink=anothernode
+                if source.getPos == None: #la pos non è ancora stata assegnata al node
+                    node.setPos(xindex, yindex)
+                yindex += 40
+                sink.setPos(xindex, yindex)
+            xindex=0
+    if type(conn) == Remakez.MultipleConn:
+        nodelist = conn.connectednodes
+        parts = conn.splitlist(nodelist)
+        xindex+=80
+        for c in range(len(parts)-1):
+            p1, p2 = parts[c], parts[c+1]
+            yindex+=40
+            for sourceId in p1:
+                for sinkId in p2:
+                    for node in visitor.memory:
+                        if type(node)==Remakez.Block:
+                            continue
+                        if node.getIndex() == sourceId and node.getScope()==conn.getScope():
+                            for anothernode in visitor.memory:
+                                if type(anothernode)==Remakez.Block:
+                                    continue
+                                if anothernode.getIndex() == sinkId and anothernode.getScope()==conn.getScope():
+                                    sink=anothernode
+                            if node.getPos == None: #la pos non è ancora stata assegnata al node
+                                node.setPos(xindex, yindex)
+                            xindex += 40
+                            sink.setPos(xindex, yindex)
+            xindex = 20
+
+"""
+for node in visitor.memory:
+    if type(node)==Remakez.Block:
+        continue
+    if node.getPos() == False:
+        print('nonnn')
+        node.setPos(random.randint(20,500),random.randint(20,500))
+"""
+                        
 
 ### INTERPRETER WORK ###
 

@@ -39,6 +39,12 @@ class Connection():
         self.inlet = inlet
         self.scope = scope
 
+    def getSource(self):
+        return self.source
+
+    def getSink(self):
+        return self.sink
+
     def getScope(self):
         return self.scope
 
@@ -93,8 +99,8 @@ class Node():
         self.nodetype = None
         self.args = []
         self.objtype = ''
-        self.posx = random.randint(20, 500)
-        self.posy = random.randint(20, 500)
+        self.posx = None
+        self.posy = None
         self.nodesIn = {} # { inlet0: [], inlet1: [], ...}
         self.nodesOut = {} # { outlet0: [], outlet1: [], ...}
         self.scope = None
@@ -147,7 +153,7 @@ class Node():
     def getPos(self):
         if (self.posx and self.posy) != None:
             return self.posx, self.posy
-        return None
+        return False
 
     def getScope(self):
         return self.scope
