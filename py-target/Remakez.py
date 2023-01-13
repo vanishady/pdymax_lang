@@ -99,8 +99,8 @@ class Node():
         self.nodetype = None
         self.args = []
         self.objtype = ''
-        self.posx = None
-        self.posy = None
+        self.posx = 0
+        self.posy = 0
         self.nodesIn = {} # { inlet0: [], inlet1: [], ...}
         self.nodesOut = {} # { outlet0: [], outlet1: [], ...}
         self.scope = None
@@ -144,8 +144,11 @@ class Node():
             self.variablenames.update({scope: []})
 
     def setPos(self, x, y):
-        self.posx = x
-        self.posy = y
+        if self.posx!=0 and self.posy!=0:
+            pass
+        else:
+            self.posx = x
+            self.posy = y
 
     def getName(self):
         return self.name
@@ -402,6 +405,7 @@ class Remake(SimpleVisitor):
         else:
             self.nodeIndex += 1
             self.memory.append(Node(self.nodeIndex))
+            self.memory[-1].setScope(self.currscope)
 
             nt = ctx.NODETYPE().getText()
             self.memory[-1].setNodeType(nt)

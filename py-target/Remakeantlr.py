@@ -36,7 +36,8 @@ for elem in visitor.memory:
 
 for elem in visitor.connections:
     print(type(elem), elem.makeString())
-"""
+
+
 ### FORMATTER ###
 xindex = 20
 yindex = 20
@@ -80,17 +81,81 @@ for conn in visitor.connections:
                             xindex += 40
                             sink.setPos(xindex, yindex)
             xindex = 20
-
 """
+
+#[scope1, scope2, scope3 ...]
+#scope1 : {sourceId : [sink1, sink2, sink3 ...], sourceId : [sink1, ...], ...}
+scopelist={}
+for elem in visitor.connections:
+    #print(type(elem), elem.getScope(), elem.makeString())
+    scope = elem.getScope()
+    if type(elem)==Remakez.Connection:
+        connection = elem.makeString()
+        connection=connection.split(' ')
+        source=connection[2]
+        sink=connection[4]
+        #print(scope,source, sink)
+        if (scope,int(source)) not in scopelist.keys():
+            scopelist.update({(scope,int(source)):[int(sink)]})
+        else:
+            scopelist[(scope,int(source))].append(int(sink))
+        #print(scopelist[(scope,int(source))])
+        
+    else:
+        parts = elem.makeString().split(';\r\n')
+        for p in parts:
+            p=p.split(' ')
+            try:
+                source=p[2]
+                sink=p[4]
+                #print(scope,source, sink)
+            except:
+                continue
+            if (scope,int(source)) not in scopelist.keys():
+                scopelist.update({(scope,int(source)):[int(sink)]})
+            else:
+                scopelist[(scope,int(source))].append(int(sink))
+            #print(scopelist[(scope,int(source))])
+
+
+print(scopelist)
+
+x=20
+y=20
+
+issource=False
+
+
 for node in visitor.memory:
-    if type(node)==Remakez.Block:
+    if type(node)!=Remakez.Node:
         continue
-    if node.getPos() == False:
-        print('nonnn')
-        node.setPos(random.randint(20,500),random.randint(20,500))
-"""
-                        
+    scope = node.getScope()
+    index = node.getIndex()
+    print(node, scope, index)
 
+    for k in scopelist.keys():
+        if k[0]==scope and k[1]==index:
+            issource=True
+            node.setPos(x,y)
+            y+=40
+            #print(scopelist[k])
+            counter=0
+            for n in scopelist[k]:
+                counter+=1
+                for another in visitor.memory:
+                    if type(another)!=Remakez.Node:
+                        continue
+                    if another.getIndex()==int(n) and another.getScope()==scope:
+                        another.setPos(x,y)
+                        x+=40
+            x=x-(40*counter)
+    if issource==False:
+        node.setPos(x,y)
+        y-=40
+    if issource==True:
+        issource=False
+
+            
 ### INTERPRETER WORK ###
 
 result = '#N canvas 676 207 681 509 12 ;\r\n'
