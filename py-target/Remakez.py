@@ -2,6 +2,7 @@
 from antlr4 import *
 import itertools
 import random
+from copy import copy
 if __name__ is not None and "." in __name__:
     from .SimpleParser import SimpleParser
     from .SimpleVisitor import SimpleVisitor
@@ -17,8 +18,8 @@ class Block():
     def __init__(self, blockId, endofblock):
         self.endofblock = endofblock
         self.blockId = blockId
-        self.posx=69
-        self.posy=69
+        self.posx=0
+        self.posy=0
 
     def getBlockId(self):
         return self.blockId
@@ -28,7 +29,7 @@ class Block():
 
     def makeString(self):
         if self.endofblock == True:
-            return f'#X restore {self.posx} {self.posy} pd {self.blockId};\r\n'
+            return f'#X self.restore {self.posx} {self.posy} pd {self.blockId};\r\n'
         else:
             return f'#N canvas 697 62 450 300 {self.blockId} 0;\r\n'
 
@@ -55,6 +56,9 @@ class Connection():
     def getScope(self):
         return self.scope
 
+    def setScope(self, scope):
+        elf.scope = scope
+
     def makeString(self):
         return f'#X connect {self.source} {self.outlet} {self.sink} {self.inlet};\r\n'
 
@@ -66,6 +70,9 @@ class MultipleConn():
 
     def getScope(self):
         return self.connectionscope
+
+    def setScope(self, scope):
+        self.connectionscope = scope
 
     def addNode(self, nodeId):
         self.connectednodes.append(nodeId)
@@ -108,8 +115,7 @@ class Node():
         self.objtype = ''
         self.posx = 0
         self.posy = 0
-        self.nodesIn = [] # { inlet0: [], inlet1: [], ...}
-        self.nodesOut = {} # { outlet0: [], outlet1: [], ...}
+        self.nodesIn = [] #list of sources connected to this node if node is sink
         self.scope = None
 
     #returns full node attributes
@@ -149,6 +155,9 @@ class Node():
         self.scope = scope
         if scope not in self.variablenames:
             self.variablenames.update({scope: []})
+
+    def setIndex(self, index):
+        self.index = index
 
     def setPos(self, x, y):
         if y>self.posy:
@@ -512,11 +521,38 @@ class Remake(SimpleVisitor):
 
     # Visit a parse tree produced by SimpleParser#recallstmt.
     def visitRecallstmt(self, ctx:SimpleParser.RecallstmtContext):
+        self.generalNodeIndex = self.nodeIndex+1
+        self.nodeIndex = -1
+        src=ctx.ID(0).getText()
+        target=ctx.ID(1).getText()
+        self.currscope=target
+        self.memory.append(Block(self.currscope, False))
+
+        #update memory
+        for n in self.memory:
+            if type(n)!=Node:
+                continue
+            if n.getScope()==src:
+                newn = copy(n)
+                self.nodeIndex+=1
+                self.memory.append(newn)
+                self.memory[-1].setIndex(self.nodeIndex)
+                self.memory[-1].setScope(self.currscope)
+
+        #update connections
+        for conn in self.connections:
+            if conn.getScope()==src:
+                newconn = copy(conn)
+                newconn.setScope(self.currscope)
+                self.connections.append(newconn)
+                
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by SimpleParser#ifstmt.
     def visitIfstmt(self, ctx:SimpleParser.IfstmtContext):
+        if self.visitTestExpr(ctx.expr())==True:
+            self.visitSuite()
         return self.visitChildren(ctx)
 
 
@@ -532,6 +568,8 @@ class Remake(SimpleVisitor):
 
     # Visit a parse tree produced by SimpleParser#number.
     def visitNumber(self, ctx:SimpleParser.NumberContext):
+        n= ctx.NUMBER().getText()
+        n=int(n)
         return self.visitChildren(ctx)
 
 
@@ -539,20 +577,63 @@ class Remake(SimpleVisitor):
     def visitParensExpr(self, ctx:SimpleParser.ParensExprContext):
         return self.visitChildren(ctx)
 
-
-    # Visit a parse tree produced by SimpleParser#LogicalExpr.
-    def visitLogicalExpr(self, ctx:SimpleParser.LogicalExprContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by SimpleParser#MathExpr.
     def visitMathExpr(self, ctx:SimpleParser.MathExprContext):
-        return self.visitChildren(ctx)
+        left = ctx.expr(0).getText()
+        right = ctx.expr(1).getText()
+
+        if ctx.op.text == '+':
+            self.res=int(left)+int(right)
+        elif ctx.op.text == '-':
+            self.res=int(left)-int(right)
+        elif ctx.op.text == '*':
+            self.res=int(left)*int(right)
+        elif ctx.op.text == '/':
+            self.res=int(left)/int(right)
+        elif ctx.op.text == '%':
+            self.res=int(left)%int(right)
+
+        return self.res,self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by SimpleParser#TestExpr.
     def visitTestExpr(self, ctx:SimpleParser.TestExprContext):
-        return self.visitChildren(ctx)
+        print(ctx.getText())
+        left = self.visitMathExpr(ctx.expr(0))
+        right = self.visitMathExpr(ctx.expr(1))
+
+        if ctx.testop.text == '==':
+            if int(left)==int(right):
+                self.eval=True
+            else:
+                self.eval=False
+        elif ctx.testop.text == '!=':
+            if int(left)!=int(right):
+                self.eval=True
+            else:
+                self.eval=False
+        elif ctx.testop.text == '>':
+            if int(left)>int(right):
+                self.eval=True
+            else:
+                self.eval=False
+        elif ctx.testop.text == '>=':
+            if int(left)>=int(right):
+                self.eval=True
+            else:
+                self.eval=False
+        elif ctx.testop.text == '<=':
+            if int(left)<=int(right):
+                self.eval=True
+            else:
+                self.eval=False
+        elif ctx.testop.text == '<':
+            if int(left)<int(right):
+                self.eval=True
+            else:
+                self.eval=False
+        
+        return self.eval,self.visitChildren(ctx)
 
 
 

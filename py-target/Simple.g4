@@ -80,9 +80,8 @@ connectionelem
  ;
 
 
-
 recallstmt
- : RECALL ID TO ID '{' NL stmt* '}' 
+ : RECALL ID TO ID '{' NL stmt* endofblock 
  ;
 
 
@@ -101,9 +100,8 @@ suite
 
 
 expr
- : expr op=('*'|'/'|'+'|'-') expr	#MathExpr	
- | expr (EQ | NOT_EQ | '>' | '>=' | '<' | '<=' | '%' ) expr	#TestExpr
- | expr (AND | OR) expr	#LogicalExpr
+ : expr op=('*'|'/'|'+'|'-'|'%') expr	#MathExpr	
+ | expr testop=(EQ | NOT_EQ | '>' | '>=' | '<' | '<=') expr	#TestExpr
  | NUMBER	#number
  | L_PAREN expr R_PAREN #ParensExpr
  ;

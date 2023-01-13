@@ -13,7 +13,7 @@ import Remakez
         
 ### LEXER AND PARSER WORK ###
 
-lexer = SimpleLexer(FileStream('input2.txt'))
+lexer = SimpleLexer(FileStream('input4.txt'))
 stream = CommonTokenStream(lexer)
 parser = SimpleParser(stream)
 
@@ -22,7 +22,7 @@ tree = parser.prog()
 
 visitor = Remakez.Remake()
 visitor.visit(tree)
-"""
+
 #see how nodes and connections are stored
 for elem in visitor.memory:
     if type(elem)==Remakez.Node:
@@ -35,7 +35,7 @@ for elem in visitor.memory:
 
 for elem in visitor.connections:
     print(type(elem), elem.makeString())
-"""
+
 
 ### FORMATTER ###
 

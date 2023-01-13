@@ -129,11 +129,6 @@ class SimpleVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#LogicalExpr.
-    def visitLogicalExpr(self, ctx:SimpleParser.LogicalExprContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by SimpleParser#MathExpr.
     def visitMathExpr(self, ctx:SimpleParser.MathExprContext):
         return self.visitChildren(ctx)

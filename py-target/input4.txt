@@ -17,5 +17,10 @@ m2=msg('tetsuoooooo')
 m2.$1=m
 m3 = floatatom(400)
 
+recall war to krieg {
+	if 4+3:
+		msg('ciao')
+	end
+}
 
 ;

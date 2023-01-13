@@ -224,15 +224,6 @@ class SimpleListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by SimpleParser#LogicalExpr.
-    def enterLogicalExpr(self, ctx:SimpleParser.LogicalExprContext):
-        pass
-
-    # Exit a parse tree produced by SimpleParser#LogicalExpr.
-    def exitLogicalExpr(self, ctx:SimpleParser.LogicalExprContext):
-        pass
-
-
     # Enter a parse tree produced by SimpleParser#MathExpr.
     def enterMathExpr(self, ctx:SimpleParser.MathExprContext):
         pass
