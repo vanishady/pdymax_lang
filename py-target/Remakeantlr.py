@@ -22,7 +22,6 @@ tree = parser.prog()
 
 visitor = Remakez.Remake()
 visitor.visit(tree)
-
 """
 #see how nodes and connections are stored
 for elem in visitor.memory:
@@ -36,55 +35,12 @@ for elem in visitor.memory:
 
 for elem in visitor.connections:
     print(type(elem), elem.makeString())
-
-
-### FORMATTER ###
-xindex = 20
-yindex = 20
-for conn in visitor.connections:
-    if type(conn) == Remakez.Connection:
-        for node in visitor.memory:
-            if type(node)==Remakez.Block:
-                continue
-            if node.getIndex() == conn.getSource() and node.getScope()==conn.getScope():
-                source=node
-                for anothernode in visitor.memory:
-                    if type(anothernode)==Remakez.Block:
-                        continue
-                    if anothernode.getIndex() == conn.getSink() and anothernode.getScope()==conn.getScope():
-                        sink=anothernode
-                if source.getPos == None: #la pos non è ancora stata assegnata al node
-                    node.setPos(xindex, yindex)
-                yindex += 40
-                sink.setPos(xindex, yindex)
-            xindex=0
-    if type(conn) == Remakez.MultipleConn:
-        nodelist = conn.connectednodes
-        parts = conn.splitlist(nodelist)
-        xindex+=80
-        for c in range(len(parts)-1):
-            p1, p2 = parts[c], parts[c+1]
-            yindex+=40
-            for sourceId in p1:
-                for sinkId in p2:
-                    for node in visitor.memory:
-                        if type(node)==Remakez.Block:
-                            continue
-                        if node.getIndex() == sourceId and node.getScope()==conn.getScope():
-                            for anothernode in visitor.memory:
-                                if type(anothernode)==Remakez.Block:
-                                    continue
-                                if anothernode.getIndex() == sinkId and anothernode.getScope()==conn.getScope():
-                                    sink=anothernode
-                            if node.getPos == None: #la pos non è ancora stata assegnata al node
-                                node.setPos(xindex, yindex)
-                            xindex += 40
-                            sink.setPos(xindex, yindex)
-            xindex = 20
 """
 
-#[scope1, scope2, scope3 ...]
-#scope1 : {sourceId : [sink1, sink2, sink3 ...], sourceId : [sink1, ...], ...}
+### FORMATTER ###
+
+#{('onoff', 0): [1], ('general', 1): [2], ('general', 2): [3],
+#('general', 3): [5, 6, 7, 8, 9], ...}
 scopelist={}
 for elem in visitor.connections:
     #print(type(elem), elem.getScope(), elem.makeString())
@@ -117,44 +73,43 @@ for elem in visitor.connections:
                 scopelist[(scope,int(source))].append(int(sink))
             #print(scopelist[(scope,int(source))])
 
-
-print(scopelist)
-
+forcex=100
 x=20
 y=20
 
-issource=False
-
-
 for node in visitor.memory:
+    issource=False
     if type(node)!=Remakez.Node:
-        continue
+            node.setPos(x,y)
+            y+=40
+            continue
     scope = node.getScope()
     index = node.getIndex()
-    print(node, scope, index)
 
     for k in scopelist.keys():
         if k[0]==scope and k[1]==index:
             issource=True
             node.setPos(x,y)
-            y+=40
-            #print(scopelist[k])
-            counter=0
+            x=node.getPosx()
             for n in scopelist[k]:
-                counter+=1
                 for another in visitor.memory:
                     if type(another)!=Remakez.Node:
                         continue
                     if another.getIndex()==int(n) and another.getScope()==scope:
-                        another.setPos(x,y)
-                        x+=40
-            x=x-(40*counter)
+                        another.setPos(x,node.getPosy()+60)
+                        x+=60
+                        another.setSource(node)
+            x=node.getPosx()
+            
     if issource==False:
-        node.setPos(x,y)
-        y-=40
-    if issource==True:
-        issource=False
+        srcy= node.getSourceY()
+        node.setPos(x,srcy+60)
+        if srcy == 0:
+            node.forcePos(x+60,y+60)
 
+
+
+    
             
 ### INTERPRETER WORK ###
 

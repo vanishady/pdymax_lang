@@ -11,11 +11,14 @@ else:
 
 # This class defines a complete generic visitor for a parse tree produced by SimpleParser.
 
+
 class Block():
 
     def __init__(self, blockId, endofblock):
         self.endofblock = endofblock
         self.blockId = blockId
+        self.posx=69
+        self.posy=69
 
     def getBlockId(self):
         return self.blockId
@@ -25,9 +28,13 @@ class Block():
 
     def makeString(self):
         if self.endofblock == True:
-            return f'#X restore 69 69 pd {self.blockId};\r\n'
+            return f'#X restore {self.posx} {self.posy} pd {self.blockId};\r\n'
         else:
             return f'#N canvas 697 62 450 300 {self.blockId} 0;\r\n'
+
+    def setPos(self,x,y):
+        self.posx=x
+        self.posy=y
 
 
 class Connection():
@@ -101,7 +108,7 @@ class Node():
         self.objtype = ''
         self.posx = 0
         self.posy = 0
-        self.nodesIn = {} # { inlet0: [], inlet1: [], ...}
+        self.nodesIn = [] # { inlet0: [], inlet1: [], ...}
         self.nodesOut = {} # { outlet0: [], outlet1: [], ...}
         self.scope = None
 
@@ -144,25 +151,45 @@ class Node():
             self.variablenames.update({scope: []})
 
     def setPos(self, x, y):
-        if self.posx!=0 and self.posy!=0:
-            pass
-        else:
-            self.posx = x
-            self.posy = y
+        if y>self.posy:
+            self.posy=y
+        elif self.posy==0:
+            self.posy=y
+
+        if self.posx==0:
+            self.posx=x
+
+    def forcePos(self,x,y):
+        self.posx=x
+        self.posy=y
 
     def getName(self):
         return self.name
 
     def getPos(self):
-        if (self.posx and self.posy) != None:
-            return self.posx, self.posy
-        return False
+        return self.posx, self.posy
 
+    def getPosx(self):
+        return self.posx
+    
+    def getPosy(self):
+        return self.posy
+    
     def getScope(self):
         return self.scope
 
     def getIndex(self):
         return self.index
+
+    def setSource(self, node):
+        self.nodesIn.append(node)
+
+    def getSourceY(self):
+        trace=0
+        for n in self.nodesIn:
+            if n.getPosy()>trace:
+                trace=n.getPosy()
+        return trace
 
     def getNodeString(self):
         if self.nodetype == 'floatatom':
