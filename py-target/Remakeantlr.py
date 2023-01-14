@@ -23,6 +23,7 @@ tree = parser.prog()
 visitor = Remakez.Remake()
 visitor.visit(tree)
 
+"""
 #see how nodes and connections are stored
 for elem in visitor.memory:
     if type(elem)==Remakez.Node:
@@ -35,7 +36,7 @@ for elem in visitor.memory:
 
 for elem in visitor.connections:
     print(type(elem), elem.makeString())
-
+"""
 
 ### FORMATTER ###
 

@@ -29,7 +29,7 @@ class Block():
 
     def makeString(self):
         if self.endofblock == True:
-            return f'#X self.restore {self.posx} {self.posy} pd {self.blockId};\r\n'
+            return f'#X restore {self.posx} {self.posy} pd {self.blockId};\r\n'
         else:
             return f'#N canvas 697 62 450 300 {self.blockId} 0;\r\n'
 
@@ -551,9 +551,13 @@ class Remake(SimpleVisitor):
 
     # Visit a parse tree produced by SimpleParser#ifstmt.
     def visitIfstmt(self, ctx:SimpleParser.IfstmtContext):
-        if self.visitTestExpr(ctx.expr())==True:
-            self.visitSuite()
-        return self.visitChildren(ctx)
+        if self.visit(ctx.expr(0))==True:
+            return self.visitSuite(ctx)
+        else:
+            pass
+        #return self.visitChildren(ctx)
+        
+        
 
 
     # Visit a parse tree produced by SimpleParser#forstmt.
@@ -570,7 +574,7 @@ class Remake(SimpleVisitor):
     def visitNumber(self, ctx:SimpleParser.NumberContext):
         n= ctx.NUMBER().getText()
         n=int(n)
-        return self.visitChildren(ctx)
+        return n
 
 
     # Visit a parse tree produced by SimpleParser#ParensExpr.
@@ -579,9 +583,9 @@ class Remake(SimpleVisitor):
 
     # Visit a parse tree produced by SimpleParser#MathExpr.
     def visitMathExpr(self, ctx:SimpleParser.MathExprContext):
-        left = ctx.expr(0).getText()
-        right = ctx.expr(1).getText()
-
+        left=self.visit(ctx.expr(0))
+        right=self.visit(ctx.expr(1))
+        
         if ctx.op.text == '+':
             self.res=int(left)+int(right)
         elif ctx.op.text == '-':
@@ -593,14 +597,13 @@ class Remake(SimpleVisitor):
         elif ctx.op.text == '%':
             self.res=int(left)%int(right)
 
-        return self.res,self.visitChildren(ctx)
+        return self.res
 
 
     # Visit a parse tree produced by SimpleParser#TestExpr.
     def visitTestExpr(self, ctx:SimpleParser.TestExprContext):
-        print(ctx.getText())
-        left = self.visitMathExpr(ctx.expr(0))
-        right = self.visitMathExpr(ctx.expr(1))
+        left = self.visit(ctx.expr(0))
+        right = self.visit(ctx.expr(1))
 
         if ctx.testop.text == '==':
             if int(left)==int(right):
@@ -633,7 +636,7 @@ class Remake(SimpleVisitor):
             else:
                 self.eval=False
         
-        return self.eval,self.visitChildren(ctx)
+        return self.eval
 
 
 
