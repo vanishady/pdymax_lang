@@ -1,4 +1,4 @@
-# Generated from Simple.g4 by ANTLR 4.11.1
+# Generated from Pdlang.g4 by ANTLR 4.11.1
 from antlr4 import *
 from io import StringIO
 import sys
@@ -160,7 +160,7 @@ def serializedATN():
         394,401,409,1,6,0,0
     ]
 
-class SimpleLexer(Lexer):
+class PdlangLexer(Lexer):
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
@@ -256,7 +256,7 @@ class SimpleLexer(Lexer):
                   "NON_ZERO_DIGIT", "ID_START", "ID_CONTINUE", "NL", "WS", 
                   "COMMENT" ]
 
-    grammarFileName = "Simple.g4"
+    grammarFileName = "Pdlang.g4"
 
     def __init__(self, input=None, output:TextIO = sys.stdout):
         super().__init__(input, output)

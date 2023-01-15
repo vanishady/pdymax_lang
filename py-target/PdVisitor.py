@@ -1,19 +1,19 @@
-# Generated from Simple.g4 by ANTLR 4.11.1
 from antlr4 import *
 import itertools
 import random
 from copy import copy
 if __name__ is not None and "." in __name__:
-    from .SimpleParser import SimpleParser
-    from .SimpleVisitor import SimpleVisitor
+    from .PdlangParser import PdlangParser
+    from .PdlangVisitor import PdlangVisitor
 else:
-    from SimpleParser import SimpleParser
-    from SimpleVisitor import SimpleVisitor
-
-# This class defines a complete generic visitor for a parse tree produced by SimpleParser.
-
+    from PdlangParser import PdlangParser
+    from PdlangVisitor import PdlangVisitor
 
 class Block():
+
+    """
+    This class implements a block for puredata.
+    """
 
     def __init__(self, blockId, endofblock):
         self.endofblock = endofblock
@@ -21,7 +21,8 @@ class Block():
         self.posx=0
         self.posy=0
 
-    def getBlockId(self):
+    def getBlockId(self) -> str: 
+        """returns block id"""
         return self.blockId
 
     def isBlockEnd(self):
@@ -42,6 +43,10 @@ class Block():
 
 
 class Connection():
+
+    """
+    This class implements a connection for puredata.
+    """
 
     def __init__(self, source, outlet, sink, inlet, scope):
         self.source = source
@@ -66,6 +71,10 @@ class Connection():
         return f'#X connect {self.source} {self.outlet} {self.sink} {self.inlet};\r\n'
 
 class MultipleConn():
+
+    """
+    This class implements a series of connection for puredata.
+    """
 
     def __init__(self, scope):
         self.connectednodes = []
@@ -108,6 +117,10 @@ class MultipleConn():
 
 class Node():
 
+    """
+    This class implements a node declaration for puredata.
+    """
+
     variablenames = {}  # { scope1: [], scope2: [], ...}
 
     def __init__(self, index):
@@ -136,7 +149,7 @@ class Node():
 
     #set object specific type; check if it exists in basic obj types first
     def setObjType(self, objtype):
-        types = open('basicnodes.txt', 'r') 
+        types = open('utils/basicnodes.txt', 'r') 
         if objtype not in types.read():
             raise Exception(f'This object type <{objtype}> does not esist')
         self.objtype = objtype
@@ -149,11 +162,9 @@ class Node():
         else:
             self.nodetype = nt
 
-    #set arguments
     def setArg(self, arg):
         self.args.append(arg)
 
-    #def setScope
     def setScope(self, scope):
         self.scope = scope
         if scope not in self.variablenames:
@@ -170,6 +181,9 @@ class Node():
 
         if self.posx==0:
             self.posx=x
+
+    def setSource(self, node):
+        self.nodesIn.append(node)
 
     def forcePos(self,x,y):
         self.posx=x
@@ -193,11 +207,8 @@ class Node():
     def getIndex(self):
         return self.index
 
-    def setSource(self, node):
-        self.nodesIn.append(node)
-
     def getSourceY(self):
-        #returns y pos of nodesource, returns 0 if node is not connected to any source 
+        """returns y pos of nodesource with max y (=0 if node is not connected to any source)""" 
         trace=0
         for n in self.nodesIn:
             if n.getPosy()>trace:
@@ -205,26 +216,28 @@ class Node():
         return trace
 
     def getNodeString(self):
+        """returns a node declaration string in the format of pd files"""
         if self.nodetype == 'floatatom':
             return f'#X {self.nodetype} {self.posx} {self.posy} 5 0 0 0 - - - 0'
         return f'#X {self.nodetype} {self.posx} {self.posy} {self.objtype} {[x for x in self.args]}'
 
 
-class Remake(SimpleVisitor):
+class CustomVisitor(PdlangVisitor):
+
+    """
+    This class extends automatically generated Pdlang Visitor.
+    """
 
     def __init__(self):
-        #variable storing declarations' count
-        self.nodeIndex = -1
-        self.generalNodeIndex = -1
-        #memory is a list of Node() and Block()
-        self.memory = [] 
+        self.nodeIndex = -1 #variable storing nodes count, resets when inside a new block
+        self.generalNodeIndex = -1 #variable stornig nodes count inside main patch (scope:general)
+        self.memory = [] #memory is a list of Node() and Block()
 
-        self.currscope = 'general'
-        #self.connections is a list of Connection() and MultipleConn()
-        self.connections = []
-        self.parent = None
+        self.currscope = 'general' 
+        
+        self.connections = [] #self.connections is a list of Connection() and MultipleConn()
+        self.parent = None #temporarily stores source node for a sink
 
-    #returns name of output file
     def getPatchName(self):
         return self.patch
 
@@ -246,7 +259,7 @@ class Remake(SimpleVisitor):
         if notfound == True:
             raise Exception (f'node <{nodeName}> does not exist')
 
-    def getNodeFromId(self, nodeId):
+    def getNodeFromId(self, nodeId:str):
         notfound = True
         for node in self.memory:
             try:
@@ -259,15 +272,15 @@ class Remake(SimpleVisitor):
             raise Exception ('something\'s wrong I can feel it')
 
         
-    # Visit a parse tree produced by SimpleParser#prog.
-    def visitProg(self, ctx:SimpleParser.ProgContext):
+    # Visit a parse tree produced by PdlangParser#prog.
+    def visitProg(self, ctx:PdlangParser.ProgContext):
         patch = ctx.ID().getText()
         self.patch = patch
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#blockstmt.
-    def visitBlockstmt(self, ctx:SimpleParser.BlockstmtContext):
+    # Visit a parse tree produced by PdlangParser#blockstmt.
+    def visitBlockstmt(self, ctx:PdlangParser.BlockstmtContext):
         self.generalNodeIndex = self.nodeIndex+1
         self.nodeIndex = -1
         blockId = ctx.ID().getText()
@@ -275,21 +288,21 @@ class Remake(SimpleVisitor):
         self.memory.append(Block(self.currscope, False))
         return self.visitChildren(ctx)
 
-    # Visit a parse tree produced by SimpleParser#endofblock.
-    def visitEndofblock(self, ctx:SimpleParser.EndofblockContext):
+    # Visit a parse tree produced by PdlangParser#endofblock.
+    def visitEndofblock(self, ctx:PdlangParser.EndofblockContext):
         self.nodeIndex = self.generalNodeIndex
         self.memory.append(Block(self.currscope, True))
         self.currscope = 'general'
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#stmt.
-    def visitStmt(self, ctx:SimpleParser.StmtContext):
+    # Visit a parse tree produced by PdlangParser#stmt.
+    def visitStmt(self, ctx:PdlangParser.StmtContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#FullDeclStmt.
-    def visitFullDeclStmt(self, ctx:SimpleParser.FullDeclStmtContext):
+    # Visit a parse tree produced by PdlangParser#FullDeclStmt.
+    def visitFullDeclStmt(self, ctx:PdlangParser.FullDeclStmtContext):
         self.nodeIndex += 1
         self.memory.append(Node(self.nodeIndex))
         
@@ -305,8 +318,8 @@ class Remake(SimpleVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#FastDeclStmt.
-    def visitFastDeclStmt(self, ctx:SimpleParser.FastDeclStmtContext):
+    # Visit a parse tree produced by PdlangParser#FastDeclStmt.
+    def visitFastDeclStmt(self, ctx:PdlangParser.FastDeclStmtContext):
         self.nodeIndex += 1
         self.memory.append(Node(self.nodeIndex))
 
@@ -320,8 +333,8 @@ class Remake(SimpleVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#OpDeclStmt.
-    def visitOpDeclStmt(self, ctx:SimpleParser.OpDeclStmtContext):
+    # Visit a parse tree produced by PdlangParser#OpDeclStmt.
+    def visitOpDeclStmt(self, ctx:PdlangParser.OpDeclStmtContext):
         self.nodeIndex += 1
         self.memory.append(Node(self.nodeIndex))
 
@@ -336,18 +349,18 @@ class Remake(SimpleVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#parameters.
-    def visitParameters(self, ctx:SimpleParser.ParametersContext):
+    # Visit a parse tree produced by PdlangParser#parameters.
+    def visitParameters(self, ctx:PdlangParser.ParametersContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#typedargslist.
-    def visitTypedargslist(self, ctx:SimpleParser.TypedargslistContext):
+    # Visit a parse tree produced by PdlangParser#typedargslist.
+    def visitTypedargslist(self, ctx:PdlangParser.TypedargslistContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#arg.
-    def visitArg(self, ctx:SimpleParser.ArgContext):
+    # Visit a parse tree produced by PdlangParser#arg.
+    def visitArg(self, ctx:PdlangParser.ArgContext):
         arg = None
         if ctx.SYMBOL():
             arg = ctx.SYMBOL().getText()
@@ -358,8 +371,8 @@ class Remake(SimpleVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#operation.
-    def visitOperation(self, ctx:SimpleParser.OperationContext):
+    # Visit a parse tree produced by PdlangParser#operation.
+    def visitOperation(self, ctx:PdlangParser.OperationContext):
         op = None
         if ctx.STAR(): op = '*'
         elif ctx.SIGSTAR(): op = '*~'
@@ -379,8 +392,8 @@ class Remake(SimpleVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#ioletbase.
-    def visitIoletbase(self, ctx:SimpleParser.IoletbaseContext):
+    # Visit a parse tree produced by PdlangParser#ioletbase.
+    def visitIoletbase(self, ctx:PdlangParser.IoletbaseContext):
 
         #calcolo dell'inlet/outlet
         outlet = False
@@ -433,8 +446,8 @@ class Remake(SimpleVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#ioletdeclstmt.
-    def visitIoletdeclstmt(self, ctx:SimpleParser.IoletdeclstmtContext):
+    # Visit a parse tree produced by PdlangParser#ioletdeclstmt.
+    def visitIoletdeclstmt(self, ctx:PdlangParser.IoletdeclstmtContext):
         #case 1: ID.ioletbase
         if ctx.ID():
             name = ctx.ID().getText()
@@ -455,16 +468,16 @@ class Remake(SimpleVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#connectionstmt.
-    def visitConnectionstmt(self, ctx:SimpleParser.ConnectionstmtContext):
+    # Visit a parse tree produced by PdlangParser#connectionstmt.
+    def visitConnectionstmt(self, ctx:PdlangParser.ConnectionstmtContext):
         line = ctx.getText()
         if line:
             self.connections.append(MultipleConn(self.currscope))
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#FullDeclStmtInside.
-    def visitFullDeclStmtInside(self, ctx:SimpleParser.FullDeclStmtInsideContext):
+    # Visit a parse tree produced by PdlangParser#FullDeclStmtInside.
+    def visitFullDeclStmtInside(self, ctx:PdlangParser.FullDeclStmtInsideContext):
         #praticamente lo stesso codice di visitFullDeclStmt, ma con self.addToParentList(self.nodeIndex)
         self.nodeIndex += 1
         self.memory.append(Node(self.nodeIndex))
@@ -481,8 +494,8 @@ class Remake(SimpleVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#FastDeclStmtInside.
-    def visitFastDeclStmtInside(self, ctx:SimpleParser.FastDeclStmtInsideContext):
+    # Visit a parse tree produced by PdlangParser#FastDeclStmtInside.
+    def visitFastDeclStmtInside(self, ctx:PdlangParser.FastDeclStmtInsideContext):
         self.nodeIndex += 1
         self.memory.append(Node(self.nodeIndex))
 
@@ -496,8 +509,8 @@ class Remake(SimpleVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#OpDeclStmtInside.
-    def visitOpDeclStmtInside(self, ctx:SimpleParser.OpDeclStmtInsideContext):
+    # Visit a parse tree produced by PdlangParser#OpDeclStmtInside.
+    def visitOpDeclStmtInside(self, ctx:PdlangParser.OpDeclStmtInsideContext):
         self.nodeIndex += 1
         self.memory.append(Node(self.nodeIndex))
         
@@ -512,8 +525,8 @@ class Remake(SimpleVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#connectionelem.
-    def visitConnectionelem(self, ctx:SimpleParser.ConnectionelemContext):
+    # Visit a parse tree produced by PdlangParser#connectionelem.
+    def visitConnectionelem(self, ctx:PdlangParser.ConnectionelemContext):
         self.connections[-1].addSeparator()
         #catch nodes already declared
         for node in ctx.ID():
@@ -523,8 +536,8 @@ class Remake(SimpleVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#recallstmt.
-    def visitRecallstmt(self, ctx:SimpleParser.RecallstmtContext):
+    # Visit a parse tree produced by PdlangParser#recallstmt.
+    def visitRecallstmt(self, ctx:PdlangParser.RecallstmtContext):
         self.generalNodeIndex = self.nodeIndex+1
         self.nodeIndex = -1
         src=ctx.ID(0).getText()
@@ -553,8 +566,8 @@ class Remake(SimpleVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#ifstmt.
-    def visitIfstmt(self, ctx:SimpleParser.IfstmtContext):
+    # Visit a parse tree produced by PdlangParser#ifstmt.
+    def visitIfstmt(self, ctx:PdlangParser.IfstmtContext):
         if self.visit(ctx.expr(0))==True:
             return self.visitSuite(ctx.suite(0))
         if ctx.ELIF():
@@ -566,29 +579,29 @@ class Remake(SimpleVisitor):
         #return self.visitChildren(ctx)
         
 
-    # Visit a parse tree produced by SimpleParser#forstmt.
-    def visitForstmt(self, ctx:SimpleParser.ForstmtContext):
+    # Visit a parse tree produced by PdlangParser#forstmt.
+    def visitForstmt(self, ctx:PdlangParser.ForstmtContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#suite.
-    def visitSuite(self, ctx:SimpleParser.SuiteContext):
+    # Visit a parse tree produced by PdlangParser#suite.
+    def visitSuite(self, ctx:PdlangParser.SuiteContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SimpleParser#number.
-    def visitNumber(self, ctx:SimpleParser.NumberContext):
+    # Visit a parse tree produced by PdlangParser#number.
+    def visitNumber(self, ctx:PdlangParser.NumberContext):
         n= ctx.NUMBER().getText()
         n=int(n) #peraltro, dovrebbe ritornare un float o un int non solo int
         return n
 
 
-    # Visit a parse tree produced by SimpleParser#ParensExpr.
-    def visitParensExpr(self, ctx:SimpleParser.ParensExprContext):
+    # Visit a parse tree produced by PdlangParser#ParensExpr.
+    def visitParensExpr(self, ctx:PdlangParser.ParensExprContext):
         return self.visit(ctx.expr())
 
-    # Visit a parse tree produced by SimpleParser#MathExpr.
-    def visitMathExpr(self, ctx:SimpleParser.MathExprContext):
+    # Visit a parse tree produced by PdlangParser#MathExpr.
+    def visitMathExpr(self, ctx:PdlangParser.MathExprContext):
         left=self.visit(ctx.expr(0))
         right=self.visit(ctx.expr(1))
         
@@ -606,8 +619,8 @@ class Remake(SimpleVisitor):
         return self.res
 
 
-    # Visit a parse tree produced by SimpleParser#TestExpr.
-    def visitTestExpr(self, ctx:SimpleParser.TestExprContext):
+    # Visit a parse tree produced by PdlangParser#TestExpr.
+    def visitTestExpr(self, ctx:PdlangParser.TestExprContext):
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
 
@@ -646,4 +659,4 @@ class Remake(SimpleVisitor):
 
 
 
-del SimpleParser
+del PdlangParser

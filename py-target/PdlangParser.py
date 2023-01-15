@@ -1,4 +1,4 @@
-# Generated from Simple.g4 by ANTLR 4.11.1
+# Generated from Pdlang.g4 by ANTLR 4.11.1
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -108,9 +108,9 @@ def serializedATN():
         150,160,167,178,183,188,192,198,200,211,227,233,248,256,264,266
     ]
 
-class SimpleParser ( Parser ):
+class PdlangParser ( Parser ):
 
-    grammarFileName = "Simple.g4"
+    grammarFileName = "Pdlang.g4"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
@@ -238,30 +238,30 @@ class SimpleParser ( Parser ):
             self.parser = parser
 
         def PATCH(self):
-            return self.getToken(SimpleParser.PATCH, 0)
+            return self.getToken(PdlangParser.PATCH, 0)
 
         def ID(self):
-            return self.getToken(SimpleParser.ID, 0)
+            return self.getToken(PdlangParser.ID, 0)
 
         def NL(self):
-            return self.getToken(SimpleParser.NL, 0)
+            return self.getToken(PdlangParser.NL, 0)
 
         def blockstmt(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(SimpleParser.BlockstmtContext)
+                return self.getTypedRuleContexts(PdlangParser.BlockstmtContext)
             else:
-                return self.getTypedRuleContext(SimpleParser.BlockstmtContext,i)
+                return self.getTypedRuleContext(PdlangParser.BlockstmtContext,i)
 
 
         def stmt(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(SimpleParser.StmtContext)
+                return self.getTypedRuleContexts(PdlangParser.StmtContext)
             else:
-                return self.getTypedRuleContext(SimpleParser.StmtContext,i)
+                return self.getTypedRuleContext(PdlangParser.StmtContext,i)
 
 
         def getRuleIndex(self):
-            return SimpleParser.RULE_prog
+            return PdlangParser.RULE_prog
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterProg" ):
@@ -282,17 +282,17 @@ class SimpleParser ( Parser ):
 
     def prog(self):
 
-        localctx = SimpleParser.ProgContext(self, self._ctx, self.state)
+        localctx = PdlangParser.ProgContext(self, self._ctx, self.state)
         self.enterRule(localctx, 0, self.RULE_prog)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 38
-            self.match(SimpleParser.PATCH)
+            self.match(PdlangParser.PATCH)
             self.state = 39
-            self.match(SimpleParser.ID)
+            self.match(PdlangParser.ID)
             self.state = 40
-            self.match(SimpleParser.NL)
+            self.match(PdlangParser.NL)
             self.state = 43 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
@@ -318,7 +318,7 @@ class SimpleParser ( Parser ):
                     break
 
             self.state = 47
-            self.match(SimpleParser.T__0)
+            self.match(PdlangParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -336,33 +336,33 @@ class SimpleParser ( Parser ):
             self.parser = parser
 
         def BLOCK(self):
-            return self.getToken(SimpleParser.BLOCK, 0)
+            return self.getToken(PdlangParser.BLOCK, 0)
 
         def ID(self):
-            return self.getToken(SimpleParser.ID, 0)
+            return self.getToken(PdlangParser.ID, 0)
 
         def L_CURLY(self):
-            return self.getToken(SimpleParser.L_CURLY, 0)
+            return self.getToken(PdlangParser.L_CURLY, 0)
 
         def NL(self, i:int=None):
             if i is None:
-                return self.getTokens(SimpleParser.NL)
+                return self.getTokens(PdlangParser.NL)
             else:
-                return self.getToken(SimpleParser.NL, i)
+                return self.getToken(PdlangParser.NL, i)
 
         def endofblock(self):
-            return self.getTypedRuleContext(SimpleParser.EndofblockContext,0)
+            return self.getTypedRuleContext(PdlangParser.EndofblockContext,0)
 
 
         def stmt(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(SimpleParser.StmtContext)
+                return self.getTypedRuleContexts(PdlangParser.StmtContext)
             else:
-                return self.getTypedRuleContext(SimpleParser.StmtContext,i)
+                return self.getTypedRuleContext(PdlangParser.StmtContext,i)
 
 
         def getRuleIndex(self):
-            return SimpleParser.RULE_blockstmt
+            return PdlangParser.RULE_blockstmt
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterBlockstmt" ):
@@ -383,19 +383,19 @@ class SimpleParser ( Parser ):
 
     def blockstmt(self):
 
-        localctx = SimpleParser.BlockstmtContext(self, self._ctx, self.state)
+        localctx = PdlangParser.BlockstmtContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_blockstmt)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 49
-            self.match(SimpleParser.BLOCK)
+            self.match(PdlangParser.BLOCK)
             self.state = 50
-            self.match(SimpleParser.ID)
+            self.match(PdlangParser.ID)
             self.state = 51
-            self.match(SimpleParser.L_CURLY)
+            self.match(PdlangParser.L_CURLY)
             self.state = 52
-            self.match(SimpleParser.NL)
+            self.match(PdlangParser.NL)
             self.state = 56
             self._errHandler.sync(self)
             _la = self._input.LA(1)
@@ -409,7 +409,7 @@ class SimpleParser ( Parser ):
             self.state = 59
             self.endofblock()
             self.state = 60
-            self.match(SimpleParser.NL)
+            self.match(PdlangParser.NL)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -427,10 +427,10 @@ class SimpleParser ( Parser ):
             self.parser = parser
 
         def R_CURLY(self):
-            return self.getToken(SimpleParser.R_CURLY, 0)
+            return self.getToken(PdlangParser.R_CURLY, 0)
 
         def getRuleIndex(self):
-            return SimpleParser.RULE_endofblock
+            return PdlangParser.RULE_endofblock
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterEndofblock" ):
@@ -451,12 +451,12 @@ class SimpleParser ( Parser ):
 
     def endofblock(self):
 
-        localctx = SimpleParser.EndofblockContext(self, self._ctx, self.state)
+        localctx = PdlangParser.EndofblockContext(self, self._ctx, self.state)
         self.enterRule(localctx, 4, self.RULE_endofblock)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 62
-            self.match(SimpleParser.R_CURLY)
+            self.match(PdlangParser.R_CURLY)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -474,43 +474,43 @@ class SimpleParser ( Parser ):
             self.parser = parser
 
         def declarationstmt(self):
-            return self.getTypedRuleContext(SimpleParser.DeclarationstmtContext,0)
+            return self.getTypedRuleContext(PdlangParser.DeclarationstmtContext,0)
 
 
         def NL(self):
-            return self.getToken(SimpleParser.NL, 0)
+            return self.getToken(PdlangParser.NL, 0)
 
         def ioletdeclstmt(self):
-            return self.getTypedRuleContext(SimpleParser.IoletdeclstmtContext,0)
+            return self.getTypedRuleContext(PdlangParser.IoletdeclstmtContext,0)
 
 
         def connectionstmt(self):
-            return self.getTypedRuleContext(SimpleParser.ConnectionstmtContext,0)
+            return self.getTypedRuleContext(PdlangParser.ConnectionstmtContext,0)
 
 
         def recallstmt(self):
-            return self.getTypedRuleContext(SimpleParser.RecallstmtContext,0)
+            return self.getTypedRuleContext(PdlangParser.RecallstmtContext,0)
 
 
         def ifstmt(self):
-            return self.getTypedRuleContext(SimpleParser.IfstmtContext,0)
+            return self.getTypedRuleContext(PdlangParser.IfstmtContext,0)
 
 
         def forstmt(self):
-            return self.getTypedRuleContext(SimpleParser.ForstmtContext,0)
+            return self.getTypedRuleContext(PdlangParser.ForstmtContext,0)
 
 
         def BREAK(self):
-            return self.getToken(SimpleParser.BREAK, 0)
+            return self.getToken(PdlangParser.BREAK, 0)
 
         def CONTINUE(self):
-            return self.getToken(SimpleParser.CONTINUE, 0)
+            return self.getToken(PdlangParser.CONTINUE, 0)
 
         def PASS(self):
-            return self.getToken(SimpleParser.PASS, 0)
+            return self.getToken(PdlangParser.PASS, 0)
 
         def getRuleIndex(self):
-            return SimpleParser.RULE_stmt
+            return PdlangParser.RULE_stmt
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterStmt" ):
@@ -531,7 +531,7 @@ class SimpleParser ( Parser ):
 
     def stmt(self):
 
-        localctx = SimpleParser.StmtContext(self, self._ctx, self.state)
+        localctx = PdlangParser.StmtContext(self, self._ctx, self.state)
         self.enterRule(localctx, 6, self.RULE_stmt)
         try:
             self.state = 89
@@ -542,7 +542,7 @@ class SimpleParser ( Parser ):
                 self.state = 64
                 self.declarationstmt()
                 self.state = 65
-                self.match(SimpleParser.NL)
+                self.match(PdlangParser.NL)
                 pass
 
             elif la_ == 2:
@@ -550,7 +550,7 @@ class SimpleParser ( Parser ):
                 self.state = 67
                 self.ioletdeclstmt()
                 self.state = 68
-                self.match(SimpleParser.NL)
+                self.match(PdlangParser.NL)
                 pass
 
             elif la_ == 3:
@@ -558,7 +558,7 @@ class SimpleParser ( Parser ):
                 self.state = 70
                 self.connectionstmt()
                 self.state = 71
-                self.match(SimpleParser.NL)
+                self.match(PdlangParser.NL)
                 pass
 
             elif la_ == 4:
@@ -566,7 +566,7 @@ class SimpleParser ( Parser ):
                 self.state = 73
                 self.recallstmt()
                 self.state = 74
-                self.match(SimpleParser.NL)
+                self.match(PdlangParser.NL)
                 pass
 
             elif la_ == 5:
@@ -574,7 +574,7 @@ class SimpleParser ( Parser ):
                 self.state = 76
                 self.ifstmt()
                 self.state = 77
-                self.match(SimpleParser.NL)
+                self.match(PdlangParser.NL)
                 pass
 
             elif la_ == 6:
@@ -582,37 +582,37 @@ class SimpleParser ( Parser ):
                 self.state = 79
                 self.forstmt()
                 self.state = 80
-                self.match(SimpleParser.NL)
+                self.match(PdlangParser.NL)
                 pass
 
             elif la_ == 7:
                 self.enterOuterAlt(localctx, 7)
                 self.state = 82
-                self.match(SimpleParser.BREAK)
+                self.match(PdlangParser.BREAK)
                 self.state = 83
-                self.match(SimpleParser.NL)
+                self.match(PdlangParser.NL)
                 pass
 
             elif la_ == 8:
                 self.enterOuterAlt(localctx, 8)
                 self.state = 84
-                self.match(SimpleParser.CONTINUE)
+                self.match(PdlangParser.CONTINUE)
                 self.state = 85
-                self.match(SimpleParser.NL)
+                self.match(PdlangParser.NL)
                 pass
 
             elif la_ == 9:
                 self.enterOuterAlt(localctx, 9)
                 self.state = 86
-                self.match(SimpleParser.PASS)
+                self.match(PdlangParser.PASS)
                 self.state = 87
-                self.match(SimpleParser.NL)
+                self.match(PdlangParser.NL)
                 pass
 
             elif la_ == 10:
                 self.enterOuterAlt(localctx, 10)
                 self.state = 88
-                self.match(SimpleParser.NL)
+                self.match(PdlangParser.NL)
                 pass
 
 
@@ -634,7 +634,7 @@ class SimpleParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return SimpleParser.RULE_declarationstmt
+            return PdlangParser.RULE_declarationstmt
 
      
         def copyFrom(self, ctx:ParserRuleContext):
@@ -644,16 +644,16 @@ class SimpleParser ( Parser ):
 
     class FullDeclStmtContext(DeclarationstmtContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.DeclarationstmtContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PdlangParser.DeclarationstmtContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def ID(self):
-            return self.getToken(SimpleParser.ID, 0)
+            return self.getToken(PdlangParser.ID, 0)
         def NODETYPE(self):
-            return self.getToken(SimpleParser.NODETYPE, 0)
+            return self.getToken(PdlangParser.NODETYPE, 0)
         def parameters(self):
-            return self.getTypedRuleContext(SimpleParser.ParametersContext,0)
+            return self.getTypedRuleContext(PdlangParser.ParametersContext,0)
 
 
         def enterRule(self, listener:ParseTreeListener):
@@ -673,14 +673,14 @@ class SimpleParser ( Parser ):
 
     class FastDeclStmtContext(DeclarationstmtContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.DeclarationstmtContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PdlangParser.DeclarationstmtContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def NODETYPE(self):
-            return self.getToken(SimpleParser.NODETYPE, 0)
+            return self.getToken(PdlangParser.NODETYPE, 0)
         def parameters(self):
-            return self.getTypedRuleContext(SimpleParser.ParametersContext,0)
+            return self.getTypedRuleContext(PdlangParser.ParametersContext,0)
 
 
         def enterRule(self, listener:ParseTreeListener):
@@ -700,14 +700,14 @@ class SimpleParser ( Parser ):
 
     class OpDeclStmtContext(DeclarationstmtContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.DeclarationstmtContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PdlangParser.DeclarationstmtContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def ID(self):
-            return self.getToken(SimpleParser.ID, 0)
+            return self.getToken(PdlangParser.ID, 0)
         def operation(self):
-            return self.getTypedRuleContext(SimpleParser.OperationContext,0)
+            return self.getTypedRuleContext(PdlangParser.OperationContext,0)
 
 
         def enterRule(self, listener:ParseTreeListener):
@@ -728,42 +728,42 @@ class SimpleParser ( Parser ):
 
     def declarationstmt(self):
 
-        localctx = SimpleParser.DeclarationstmtContext(self, self._ctx, self.state)
+        localctx = PdlangParser.DeclarationstmtContext(self, self._ctx, self.state)
         self.enterRule(localctx, 8, self.RULE_declarationstmt)
         try:
             self.state = 100
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,4,self._ctx)
             if la_ == 1:
-                localctx = SimpleParser.FullDeclStmtContext(self, localctx)
+                localctx = PdlangParser.FullDeclStmtContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 91
-                self.match(SimpleParser.ID)
+                self.match(PdlangParser.ID)
                 self.state = 92
-                self.match(SimpleParser.T__1)
+                self.match(PdlangParser.T__1)
 
                 self.state = 93
-                self.match(SimpleParser.NODETYPE)
+                self.match(PdlangParser.NODETYPE)
                 self.state = 94
                 self.parameters()
                 pass
 
             elif la_ == 2:
-                localctx = SimpleParser.FastDeclStmtContext(self, localctx)
+                localctx = PdlangParser.FastDeclStmtContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 95
-                self.match(SimpleParser.NODETYPE)
+                self.match(PdlangParser.NODETYPE)
                 self.state = 96
                 self.parameters()
                 pass
 
             elif la_ == 3:
-                localctx = SimpleParser.OpDeclStmtContext(self, localctx)
+                localctx = PdlangParser.OpDeclStmtContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 97
-                self.match(SimpleParser.ID)
+                self.match(PdlangParser.ID)
                 self.state = 98
-                self.match(SimpleParser.T__1)
+                self.match(PdlangParser.T__1)
                 self.state = 99
                 self.operation()
                 pass
@@ -786,17 +786,17 @@ class SimpleParser ( Parser ):
             self.parser = parser
 
         def L_PAREN(self):
-            return self.getToken(SimpleParser.L_PAREN, 0)
+            return self.getToken(PdlangParser.L_PAREN, 0)
 
         def R_PAREN(self):
-            return self.getToken(SimpleParser.R_PAREN, 0)
+            return self.getToken(PdlangParser.R_PAREN, 0)
 
         def typedargslist(self):
-            return self.getTypedRuleContext(SimpleParser.TypedargslistContext,0)
+            return self.getTypedRuleContext(PdlangParser.TypedargslistContext,0)
 
 
         def getRuleIndex(self):
-            return SimpleParser.RULE_parameters
+            return PdlangParser.RULE_parameters
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterParameters" ):
@@ -817,13 +817,13 @@ class SimpleParser ( Parser ):
 
     def parameters(self):
 
-        localctx = SimpleParser.ParametersContext(self, self._ctx, self.state)
+        localctx = PdlangParser.ParametersContext(self, self._ctx, self.state)
         self.enterRule(localctx, 10, self.RULE_parameters)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 102
-            self.match(SimpleParser.L_PAREN)
+            self.match(PdlangParser.L_PAREN)
             self.state = 104
             self._errHandler.sync(self)
             _la = self._input.LA(1)
@@ -833,7 +833,7 @@ class SimpleParser ( Parser ):
 
 
             self.state = 106
-            self.match(SimpleParser.R_PAREN)
+            self.match(PdlangParser.R_PAREN)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -852,20 +852,20 @@ class SimpleParser ( Parser ):
 
         def arg(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(SimpleParser.ArgContext)
+                return self.getTypedRuleContexts(PdlangParser.ArgContext)
             else:
-                return self.getTypedRuleContext(SimpleParser.ArgContext,i)
+                return self.getTypedRuleContext(PdlangParser.ArgContext,i)
 
 
         def ioletbase(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(SimpleParser.IoletbaseContext)
+                return self.getTypedRuleContexts(PdlangParser.IoletbaseContext)
             else:
-                return self.getTypedRuleContext(SimpleParser.IoletbaseContext,i)
+                return self.getTypedRuleContext(PdlangParser.IoletbaseContext,i)
 
 
         def getRuleIndex(self):
-            return SimpleParser.RULE_typedargslist
+            return PdlangParser.RULE_typedargslist
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterTypedargslist" ):
@@ -886,7 +886,7 @@ class SimpleParser ( Parser ):
 
     def typedargslist(self):
 
-        localctx = SimpleParser.TypedargslistContext(self, self._ctx, self.state)
+        localctx = PdlangParser.TypedargslistContext(self, self._ctx, self.state)
         self.enterRule(localctx, 12, self.RULE_typedargslist)
         self._la = 0 # Token type
         try:
@@ -903,7 +903,7 @@ class SimpleParser ( Parser ):
                 while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                     if _alt==1:
                         self.state = 109
-                        self.match(SimpleParser.T__2)
+                        self.match(PdlangParser.T__2)
                         self.state = 110
                         self.arg() 
                     self.state = 115
@@ -915,7 +915,7 @@ class SimpleParser ( Parser ):
                 _la = self._input.LA(1)
                 while _la==3:
                     self.state = 116
-                    self.match(SimpleParser.T__2)
+                    self.match(PdlangParser.T__2)
                     self.state = 117
                     self.ioletbase()
                     self.state = 122
@@ -932,7 +932,7 @@ class SimpleParser ( Parser ):
                 _la = self._input.LA(1)
                 while _la==3:
                     self.state = 124
-                    self.match(SimpleParser.T__2)
+                    self.match(PdlangParser.T__2)
                     self.state = 125
                     self.ioletbase()
                     self.state = 130
@@ -960,14 +960,14 @@ class SimpleParser ( Parser ):
             self.parser = parser
 
         def SYMBOL(self):
-            return self.getToken(SimpleParser.SYMBOL, 0)
+            return self.getToken(PdlangParser.SYMBOL, 0)
 
         def operation(self):
-            return self.getTypedRuleContext(SimpleParser.OperationContext,0)
+            return self.getTypedRuleContext(PdlangParser.OperationContext,0)
 
 
         def getRuleIndex(self):
-            return SimpleParser.RULE_arg
+            return PdlangParser.RULE_arg
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterArg" ):
@@ -988,7 +988,7 @@ class SimpleParser ( Parser ):
 
     def arg(self):
 
-        localctx = SimpleParser.ArgContext(self, self._ctx, self.state)
+        localctx = PdlangParser.ArgContext(self, self._ctx, self.state)
         self.enterRule(localctx, 14, self.RULE_arg)
         try:
             self.state = 135
@@ -997,7 +997,7 @@ class SimpleParser ( Parser ):
             if token in [50]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 133
-                self.match(SimpleParser.SYMBOL)
+                self.match(PdlangParser.SYMBOL)
                 pass
             elif token in [33, 34, 36, 37, 41, 42, 43, 44, 51]:
                 self.enterOuterAlt(localctx, 2)
@@ -1025,34 +1025,34 @@ class SimpleParser ( Parser ):
             self.op = None # Token
 
         def NUMBER(self):
-            return self.getToken(SimpleParser.NUMBER, 0)
+            return self.getToken(PdlangParser.NUMBER, 0)
 
         def STAR(self):
-            return self.getToken(SimpleParser.STAR, 0)
+            return self.getToken(PdlangParser.STAR, 0)
 
         def DIV(self):
-            return self.getToken(SimpleParser.DIV, 0)
+            return self.getToken(PdlangParser.DIV, 0)
 
         def SIGSTAR(self):
-            return self.getToken(SimpleParser.SIGSTAR, 0)
+            return self.getToken(PdlangParser.SIGSTAR, 0)
 
         def SIGDIV(self):
-            return self.getToken(SimpleParser.SIGDIV, 0)
+            return self.getToken(PdlangParser.SIGDIV, 0)
 
         def PLUS(self):
-            return self.getToken(SimpleParser.PLUS, 0)
+            return self.getToken(PdlangParser.PLUS, 0)
 
         def MINUS(self):
-            return self.getToken(SimpleParser.MINUS, 0)
+            return self.getToken(PdlangParser.MINUS, 0)
 
         def SIGPLUS(self):
-            return self.getToken(SimpleParser.SIGPLUS, 0)
+            return self.getToken(PdlangParser.SIGPLUS, 0)
 
         def SIGMINUS(self):
-            return self.getToken(SimpleParser.SIGMINUS, 0)
+            return self.getToken(PdlangParser.SIGMINUS, 0)
 
         def getRuleIndex(self):
-            return SimpleParser.RULE_operation
+            return PdlangParser.RULE_operation
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterOperation" ):
@@ -1073,7 +1073,7 @@ class SimpleParser ( Parser ):
 
     def operation(self):
 
-        localctx = SimpleParser.OperationContext(self, self._ctx, self.state)
+        localctx = PdlangParser.OperationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 16, self.RULE_operation)
         self._la = 0 # Token type
         try:
@@ -1083,7 +1083,7 @@ class SimpleParser ( Parser ):
             if token in [51]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 137
-                self.match(SimpleParser.NUMBER)
+                self.match(PdlangParser.NUMBER)
                 pass
             elif token in [33, 34, 36, 37, 41, 42, 43, 44]:
                 self.enterOuterAlt(localctx, 2)
@@ -1100,7 +1100,7 @@ class SimpleParser ( Parser ):
                 _la = self._input.LA(1)
                 if _la==51:
                     self.state = 139
-                    self.match(SimpleParser.NUMBER)
+                    self.match(PdlangParser.NUMBER)
 
 
                 pass
@@ -1124,24 +1124,24 @@ class SimpleParser ( Parser ):
             self.parser = parser
 
         def INOUTID(self):
-            return self.getToken(SimpleParser.INOUTID, 0)
+            return self.getToken(PdlangParser.INOUTID, 0)
 
         def NODETYPE(self):
-            return self.getToken(SimpleParser.NODETYPE, 0)
+            return self.getToken(PdlangParser.NODETYPE, 0)
 
         def parameters(self):
-            return self.getTypedRuleContext(SimpleParser.ParametersContext,0)
+            return self.getTypedRuleContext(PdlangParser.ParametersContext,0)
 
 
         def operation(self):
-            return self.getTypedRuleContext(SimpleParser.OperationContext,0)
+            return self.getTypedRuleContext(PdlangParser.OperationContext,0)
 
 
         def ID(self):
-            return self.getToken(SimpleParser.ID, 0)
+            return self.getToken(PdlangParser.ID, 0)
 
         def getRuleIndex(self):
-            return SimpleParser.RULE_ioletbase
+            return PdlangParser.RULE_ioletbase
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterIoletbase" ):
@@ -1162,20 +1162,20 @@ class SimpleParser ( Parser ):
 
     def ioletbase(self):
 
-        localctx = SimpleParser.IoletbaseContext(self, self._ctx, self.state)
+        localctx = PdlangParser.IoletbaseContext(self, self._ctx, self.state)
         self.enterRule(localctx, 18, self.RULE_ioletbase)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 144
-            self.match(SimpleParser.INOUTID)
+            self.match(PdlangParser.INOUTID)
             self.state = 145
-            self.match(SimpleParser.T__1)
+            self.match(PdlangParser.T__1)
             self.state = 150
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [45]:
                 self.state = 146
-                self.match(SimpleParser.NODETYPE)
+                self.match(PdlangParser.NODETYPE)
                 self.state = 147
                 self.parameters()
                 pass
@@ -1185,7 +1185,7 @@ class SimpleParser ( Parser ):
                 pass
             elif token in [49]:
                 self.state = 149
-                self.match(SimpleParser.ID)
+                self.match(PdlangParser.ID)
                 pass
             else:
                 raise NoViableAltException(self)
@@ -1207,21 +1207,21 @@ class SimpleParser ( Parser ):
             self.parser = parser
 
         def ID(self):
-            return self.getToken(SimpleParser.ID, 0)
+            return self.getToken(PdlangParser.ID, 0)
 
         def ioletbase(self):
-            return self.getTypedRuleContext(SimpleParser.IoletbaseContext,0)
+            return self.getTypedRuleContext(PdlangParser.IoletbaseContext,0)
 
 
         def NODETYPE(self):
-            return self.getToken(SimpleParser.NODETYPE, 0)
+            return self.getToken(PdlangParser.NODETYPE, 0)
 
         def parameters(self):
-            return self.getTypedRuleContext(SimpleParser.ParametersContext,0)
+            return self.getTypedRuleContext(PdlangParser.ParametersContext,0)
 
 
         def getRuleIndex(self):
-            return SimpleParser.RULE_ioletdeclstmt
+            return PdlangParser.RULE_ioletdeclstmt
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterIoletdeclstmt" ):
@@ -1242,7 +1242,7 @@ class SimpleParser ( Parser ):
 
     def ioletdeclstmt(self):
 
-        localctx = SimpleParser.IoletdeclstmtContext(self, self._ctx, self.state)
+        localctx = PdlangParser.IoletdeclstmtContext(self, self._ctx, self.state)
         self.enterRule(localctx, 20, self.RULE_ioletdeclstmt)
         try:
             self.state = 160
@@ -1251,20 +1251,20 @@ class SimpleParser ( Parser ):
             if token in [49]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 152
-                self.match(SimpleParser.ID)
+                self.match(PdlangParser.ID)
                 self.state = 153
-                self.match(SimpleParser.T__3)
+                self.match(PdlangParser.T__3)
                 self.state = 154
                 self.ioletbase()
                 pass
             elif token in [45]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 155
-                self.match(SimpleParser.NODETYPE)
+                self.match(PdlangParser.NODETYPE)
                 self.state = 156
                 self.parameters()
                 self.state = 157
-                self.match(SimpleParser.T__3)
+                self.match(PdlangParser.T__3)
                 self.state = 158
                 self.ioletbase()
                 pass
@@ -1289,19 +1289,19 @@ class SimpleParser ( Parser ):
 
         def connectionelem(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(SimpleParser.ConnectionelemContext)
+                return self.getTypedRuleContexts(PdlangParser.ConnectionelemContext)
             else:
-                return self.getTypedRuleContext(SimpleParser.ConnectionelemContext,i)
+                return self.getTypedRuleContext(PdlangParser.ConnectionelemContext,i)
 
 
         def CONNECT(self, i:int=None):
             if i is None:
-                return self.getTokens(SimpleParser.CONNECT)
+                return self.getTokens(PdlangParser.CONNECT)
             else:
-                return self.getToken(SimpleParser.CONNECT, i)
+                return self.getToken(PdlangParser.CONNECT, i)
 
         def getRuleIndex(self):
-            return SimpleParser.RULE_connectionstmt
+            return PdlangParser.RULE_connectionstmt
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterConnectionstmt" ):
@@ -1322,7 +1322,7 @@ class SimpleParser ( Parser ):
 
     def connectionstmt(self):
 
-        localctx = SimpleParser.ConnectionstmtContext(self, self._ctx, self.state)
+        localctx = PdlangParser.ConnectionstmtContext(self, self._ctx, self.state)
         self.enterRule(localctx, 22, self.RULE_connectionstmt)
         self._la = 0 # Token type
         try:
@@ -1334,7 +1334,7 @@ class SimpleParser ( Parser ):
             _la = self._input.LA(1)
             while True:
                 self.state = 163
-                self.match(SimpleParser.CONNECT)
+                self.match(PdlangParser.CONNECT)
                 self.state = 164
                 self.connectionelem()
                 self.state = 167 
@@ -1361,7 +1361,7 @@ class SimpleParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return SimpleParser.RULE_declinside
+            return PdlangParser.RULE_declinside
 
      
         def copyFrom(self, ctx:ParserRuleContext):
@@ -1371,16 +1371,16 @@ class SimpleParser ( Parser ):
 
     class FullDeclStmtInsideContext(DeclinsideContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.DeclinsideContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PdlangParser.DeclinsideContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def ID(self):
-            return self.getToken(SimpleParser.ID, 0)
+            return self.getToken(PdlangParser.ID, 0)
         def NODETYPE(self):
-            return self.getToken(SimpleParser.NODETYPE, 0)
+            return self.getToken(PdlangParser.NODETYPE, 0)
         def parameters(self):
-            return self.getTypedRuleContext(SimpleParser.ParametersContext,0)
+            return self.getTypedRuleContext(PdlangParser.ParametersContext,0)
 
 
         def enterRule(self, listener:ParseTreeListener):
@@ -1400,14 +1400,14 @@ class SimpleParser ( Parser ):
 
     class OpDeclStmtInsideContext(DeclinsideContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.DeclinsideContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PdlangParser.DeclinsideContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def ID(self):
-            return self.getToken(SimpleParser.ID, 0)
+            return self.getToken(PdlangParser.ID, 0)
         def operation(self):
-            return self.getTypedRuleContext(SimpleParser.OperationContext,0)
+            return self.getTypedRuleContext(PdlangParser.OperationContext,0)
 
 
         def enterRule(self, listener:ParseTreeListener):
@@ -1427,14 +1427,14 @@ class SimpleParser ( Parser ):
 
     class FastDeclStmtInsideContext(DeclinsideContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.DeclinsideContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PdlangParser.DeclinsideContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def NODETYPE(self):
-            return self.getToken(SimpleParser.NODETYPE, 0)
+            return self.getToken(PdlangParser.NODETYPE, 0)
         def parameters(self):
-            return self.getTypedRuleContext(SimpleParser.ParametersContext,0)
+            return self.getTypedRuleContext(PdlangParser.ParametersContext,0)
 
 
         def enterRule(self, listener:ParseTreeListener):
@@ -1455,42 +1455,42 @@ class SimpleParser ( Parser ):
 
     def declinside(self):
 
-        localctx = SimpleParser.DeclinsideContext(self, self._ctx, self.state)
+        localctx = PdlangParser.DeclinsideContext(self, self._ctx, self.state)
         self.enterRule(localctx, 24, self.RULE_declinside)
         try:
             self.state = 178
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,16,self._ctx)
             if la_ == 1:
-                localctx = SimpleParser.FullDeclStmtInsideContext(self, localctx)
+                localctx = PdlangParser.FullDeclStmtInsideContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 169
-                self.match(SimpleParser.ID)
+                self.match(PdlangParser.ID)
                 self.state = 170
-                self.match(SimpleParser.T__1)
+                self.match(PdlangParser.T__1)
 
                 self.state = 171
-                self.match(SimpleParser.NODETYPE)
+                self.match(PdlangParser.NODETYPE)
                 self.state = 172
                 self.parameters()
                 pass
 
             elif la_ == 2:
-                localctx = SimpleParser.FastDeclStmtInsideContext(self, localctx)
+                localctx = PdlangParser.FastDeclStmtInsideContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 173
-                self.match(SimpleParser.NODETYPE)
+                self.match(PdlangParser.NODETYPE)
                 self.state = 174
                 self.parameters()
                 pass
 
             elif la_ == 3:
-                localctx = SimpleParser.OpDeclStmtInsideContext(self, localctx)
+                localctx = PdlangParser.OpDeclStmtInsideContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 175
-                self.match(SimpleParser.ID)
+                self.match(PdlangParser.ID)
                 self.state = 176
-                self.match(SimpleParser.T__1)
+                self.match(PdlangParser.T__1)
                 self.state = 177
                 self.operation()
                 pass
@@ -1513,26 +1513,26 @@ class SimpleParser ( Parser ):
             self.parser = parser
 
         def L_ANGLE(self):
-            return self.getToken(SimpleParser.L_ANGLE, 0)
+            return self.getToken(PdlangParser.L_ANGLE, 0)
 
         def R_ANGLE(self):
-            return self.getToken(SimpleParser.R_ANGLE, 0)
+            return self.getToken(PdlangParser.R_ANGLE, 0)
 
         def ID(self, i:int=None):
             if i is None:
-                return self.getTokens(SimpleParser.ID)
+                return self.getTokens(PdlangParser.ID)
             else:
-                return self.getToken(SimpleParser.ID, i)
+                return self.getToken(PdlangParser.ID, i)
 
         def declinside(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(SimpleParser.DeclinsideContext)
+                return self.getTypedRuleContexts(PdlangParser.DeclinsideContext)
             else:
-                return self.getTypedRuleContext(SimpleParser.DeclinsideContext,i)
+                return self.getTypedRuleContext(PdlangParser.DeclinsideContext,i)
 
 
         def getRuleIndex(self):
-            return SimpleParser.RULE_connectionelem
+            return PdlangParser.RULE_connectionelem
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterConnectionelem" ):
@@ -1553,7 +1553,7 @@ class SimpleParser ( Parser ):
 
     def connectionelem(self):
 
-        localctx = SimpleParser.ConnectionelemContext(self, self._ctx, self.state)
+        localctx = PdlangParser.ConnectionelemContext(self, self._ctx, self.state)
         self.enterRule(localctx, 26, self.RULE_connectionelem)
         self._la = 0 # Token type
         try:
@@ -1563,13 +1563,13 @@ class SimpleParser ( Parser ):
             if token in [29]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 180
-                self.match(SimpleParser.L_ANGLE)
+                self.match(PdlangParser.L_ANGLE)
                 self.state = 183
                 self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,17,self._ctx)
                 if la_ == 1:
                     self.state = 181
-                    self.match(SimpleParser.ID)
+                    self.match(PdlangParser.ID)
                     pass
 
                 elif la_ == 2:
@@ -1583,13 +1583,13 @@ class SimpleParser ( Parser ):
                 _la = self._input.LA(1)
                 while _la==3:
                     self.state = 185
-                    self.match(SimpleParser.T__2)
+                    self.match(PdlangParser.T__2)
                     self.state = 188
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,18,self._ctx)
                     if la_ == 1:
                         self.state = 186
-                        self.match(SimpleParser.ID)
+                        self.match(PdlangParser.ID)
                         pass
 
                     elif la_ == 2:
@@ -1603,7 +1603,7 @@ class SimpleParser ( Parser ):
                     _la = self._input.LA(1)
 
                 self.state = 195
-                self.match(SimpleParser.R_ANGLE)
+                self.match(PdlangParser.R_ANGLE)
                 pass
             elif token in [45, 49]:
                 self.enterOuterAlt(localctx, 2)
@@ -1612,7 +1612,7 @@ class SimpleParser ( Parser ):
                 la_ = self._interp.adaptivePredict(self._input,20,self._ctx)
                 if la_ == 1:
                     self.state = 196
-                    self.match(SimpleParser.ID)
+                    self.match(PdlangParser.ID)
                     pass
 
                 elif la_ == 2:
@@ -1642,36 +1642,36 @@ class SimpleParser ( Parser ):
             self.parser = parser
 
         def RECALL(self):
-            return self.getToken(SimpleParser.RECALL, 0)
+            return self.getToken(PdlangParser.RECALL, 0)
 
         def ID(self, i:int=None):
             if i is None:
-                return self.getTokens(SimpleParser.ID)
+                return self.getTokens(PdlangParser.ID)
             else:
-                return self.getToken(SimpleParser.ID, i)
+                return self.getToken(PdlangParser.ID, i)
 
         def TO(self):
-            return self.getToken(SimpleParser.TO, 0)
+            return self.getToken(PdlangParser.TO, 0)
 
         def L_CURLY(self):
-            return self.getToken(SimpleParser.L_CURLY, 0)
+            return self.getToken(PdlangParser.L_CURLY, 0)
 
         def NL(self):
-            return self.getToken(SimpleParser.NL, 0)
+            return self.getToken(PdlangParser.NL, 0)
 
         def endofblock(self):
-            return self.getTypedRuleContext(SimpleParser.EndofblockContext,0)
+            return self.getTypedRuleContext(PdlangParser.EndofblockContext,0)
 
 
         def stmt(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(SimpleParser.StmtContext)
+                return self.getTypedRuleContexts(PdlangParser.StmtContext)
             else:
-                return self.getTypedRuleContext(SimpleParser.StmtContext,i)
+                return self.getTypedRuleContext(PdlangParser.StmtContext,i)
 
 
         def getRuleIndex(self):
-            return SimpleParser.RULE_recallstmt
+            return PdlangParser.RULE_recallstmt
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterRecallstmt" ):
@@ -1692,23 +1692,23 @@ class SimpleParser ( Parser ):
 
     def recallstmt(self):
 
-        localctx = SimpleParser.RecallstmtContext(self, self._ctx, self.state)
+        localctx = PdlangParser.RecallstmtContext(self, self._ctx, self.state)
         self.enterRule(localctx, 28, self.RULE_recallstmt)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 202
-            self.match(SimpleParser.RECALL)
+            self.match(PdlangParser.RECALL)
             self.state = 203
-            self.match(SimpleParser.ID)
+            self.match(PdlangParser.ID)
             self.state = 204
-            self.match(SimpleParser.TO)
+            self.match(PdlangParser.TO)
             self.state = 205
-            self.match(SimpleParser.ID)
+            self.match(PdlangParser.ID)
             self.state = 206
-            self.match(SimpleParser.L_CURLY)
+            self.match(PdlangParser.L_CURLY)
             self.state = 207
-            self.match(SimpleParser.NL)
+            self.match(PdlangParser.NL)
             self.state = 211
             self._errHandler.sync(self)
             _la = self._input.LA(1)
@@ -1738,36 +1738,36 @@ class SimpleParser ( Parser ):
             self.parser = parser
 
         def IF(self):
-            return self.getToken(SimpleParser.IF, 0)
+            return self.getToken(PdlangParser.IF, 0)
 
         def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(SimpleParser.ExprContext)
+                return self.getTypedRuleContexts(PdlangParser.ExprContext)
             else:
-                return self.getTypedRuleContext(SimpleParser.ExprContext,i)
+                return self.getTypedRuleContext(PdlangParser.ExprContext,i)
 
 
         def suite(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(SimpleParser.SuiteContext)
+                return self.getTypedRuleContexts(PdlangParser.SuiteContext)
             else:
-                return self.getTypedRuleContext(SimpleParser.SuiteContext,i)
+                return self.getTypedRuleContext(PdlangParser.SuiteContext,i)
 
 
         def END(self):
-            return self.getToken(SimpleParser.END, 0)
+            return self.getToken(PdlangParser.END, 0)
 
         def ELIF(self, i:int=None):
             if i is None:
-                return self.getTokens(SimpleParser.ELIF)
+                return self.getTokens(PdlangParser.ELIF)
             else:
-                return self.getToken(SimpleParser.ELIF, i)
+                return self.getToken(PdlangParser.ELIF, i)
 
         def ELSE(self):
-            return self.getToken(SimpleParser.ELSE, 0)
+            return self.getToken(PdlangParser.ELSE, 0)
 
         def getRuleIndex(self):
-            return SimpleParser.RULE_ifstmt
+            return PdlangParser.RULE_ifstmt
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterIfstmt" ):
@@ -1788,17 +1788,17 @@ class SimpleParser ( Parser ):
 
     def ifstmt(self):
 
-        localctx = SimpleParser.IfstmtContext(self, self._ctx, self.state)
+        localctx = PdlangParser.IfstmtContext(self, self._ctx, self.state)
         self.enterRule(localctx, 30, self.RULE_ifstmt)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 216
-            self.match(SimpleParser.IF)
+            self.match(PdlangParser.IF)
             self.state = 217
             self.expr(0)
             self.state = 218
-            self.match(SimpleParser.T__4)
+            self.match(PdlangParser.T__4)
             self.state = 219
             self.suite()
             self.state = 227
@@ -1806,11 +1806,11 @@ class SimpleParser ( Parser ):
             _la = self._input.LA(1)
             while _la==13:
                 self.state = 220
-                self.match(SimpleParser.ELIF)
+                self.match(PdlangParser.ELIF)
                 self.state = 221
                 self.expr(0)
                 self.state = 222
-                self.match(SimpleParser.T__4)
+                self.match(PdlangParser.T__4)
                 self.state = 223
                 self.suite()
                 self.state = 229
@@ -1822,15 +1822,15 @@ class SimpleParser ( Parser ):
             _la = self._input.LA(1)
             if _la==14:
                 self.state = 230
-                self.match(SimpleParser.ELSE)
+                self.match(PdlangParser.ELSE)
                 self.state = 231
-                self.match(SimpleParser.T__4)
+                self.match(PdlangParser.T__4)
                 self.state = 232
                 self.suite()
 
 
             self.state = 235
-            self.match(SimpleParser.END)
+            self.match(PdlangParser.END)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1848,20 +1848,20 @@ class SimpleParser ( Parser ):
             self.parser = parser
 
         def FOR(self):
-            return self.getToken(SimpleParser.FOR, 0)
+            return self.getToken(PdlangParser.FOR, 0)
 
         def INTEGER(self):
-            return self.getToken(SimpleParser.INTEGER, 0)
+            return self.getToken(PdlangParser.INTEGER, 0)
 
         def suite(self):
-            return self.getTypedRuleContext(SimpleParser.SuiteContext,0)
+            return self.getTypedRuleContext(PdlangParser.SuiteContext,0)
 
 
         def END(self):
-            return self.getToken(SimpleParser.END, 0)
+            return self.getToken(PdlangParser.END, 0)
 
         def getRuleIndex(self):
-            return SimpleParser.RULE_forstmt
+            return PdlangParser.RULE_forstmt
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterForstmt" ):
@@ -1882,22 +1882,22 @@ class SimpleParser ( Parser ):
 
     def forstmt(self):
 
-        localctx = SimpleParser.ForstmtContext(self, self._ctx, self.state)
+        localctx = PdlangParser.ForstmtContext(self, self._ctx, self.state)
         self.enterRule(localctx, 32, self.RULE_forstmt)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 237
-            self.match(SimpleParser.FOR)
+            self.match(PdlangParser.FOR)
             self.state = 238
-            self.match(SimpleParser.INTEGER)
+            self.match(PdlangParser.INTEGER)
             self.state = 239
-            self.match(SimpleParser.T__5)
+            self.match(PdlangParser.T__5)
             self.state = 240
-            self.match(SimpleParser.T__4)
+            self.match(PdlangParser.T__4)
             self.state = 241
             self.suite()
             self.state = 242
-            self.match(SimpleParser.END)
+            self.match(PdlangParser.END)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1915,17 +1915,17 @@ class SimpleParser ( Parser ):
             self.parser = parser
 
         def NL(self):
-            return self.getToken(SimpleParser.NL, 0)
+            return self.getToken(PdlangParser.NL, 0)
 
         def stmt(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(SimpleParser.StmtContext)
+                return self.getTypedRuleContexts(PdlangParser.StmtContext)
             else:
-                return self.getTypedRuleContext(SimpleParser.StmtContext,i)
+                return self.getTypedRuleContext(PdlangParser.StmtContext,i)
 
 
         def getRuleIndex(self):
-            return SimpleParser.RULE_suite
+            return PdlangParser.RULE_suite
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterSuite" ):
@@ -1946,13 +1946,13 @@ class SimpleParser ( Parser ):
 
     def suite(self):
 
-        localctx = SimpleParser.SuiteContext(self, self._ctx, self.state)
+        localctx = PdlangParser.SuiteContext(self, self._ctx, self.state)
         self.enterRule(localctx, 34, self.RULE_suite)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 244
-            self.match(SimpleParser.NL)
+            self.match(PdlangParser.NL)
             self.state = 246 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
@@ -1983,7 +1983,7 @@ class SimpleParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return SimpleParser.RULE_expr
+            return PdlangParser.RULE_expr
 
      
         def copyFrom(self, ctx:ParserRuleContext):
@@ -1992,12 +1992,12 @@ class SimpleParser ( Parser ):
 
     class NumberContext(ExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PdlangParser.ExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def NUMBER(self):
-            return self.getToken(SimpleParser.NUMBER, 0)
+            return self.getToken(PdlangParser.NUMBER, 0)
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterNumber" ):
@@ -2016,17 +2016,17 @@ class SimpleParser ( Parser ):
 
     class ParensExprContext(ExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PdlangParser.ExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def L_PAREN(self):
-            return self.getToken(SimpleParser.L_PAREN, 0)
+            return self.getToken(PdlangParser.L_PAREN, 0)
         def expr(self):
-            return self.getTypedRuleContext(SimpleParser.ExprContext,0)
+            return self.getTypedRuleContext(PdlangParser.ExprContext,0)
 
         def R_PAREN(self):
-            return self.getToken(SimpleParser.R_PAREN, 0)
+            return self.getToken(PdlangParser.R_PAREN, 0)
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterParensExpr" ):
@@ -2045,27 +2045,27 @@ class SimpleParser ( Parser ):
 
     class MathExprContext(ExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PdlangParser.ExprContext
             super().__init__(parser)
             self.op = None # Token
             self.copyFrom(ctx)
 
         def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(SimpleParser.ExprContext)
+                return self.getTypedRuleContexts(PdlangParser.ExprContext)
             else:
-                return self.getTypedRuleContext(SimpleParser.ExprContext,i)
+                return self.getTypedRuleContext(PdlangParser.ExprContext,i)
 
         def STAR(self):
-            return self.getToken(SimpleParser.STAR, 0)
+            return self.getToken(PdlangParser.STAR, 0)
         def DIV(self):
-            return self.getToken(SimpleParser.DIV, 0)
+            return self.getToken(PdlangParser.DIV, 0)
         def PLUS(self):
-            return self.getToken(SimpleParser.PLUS, 0)
+            return self.getToken(PdlangParser.PLUS, 0)
         def MINUS(self):
-            return self.getToken(SimpleParser.MINUS, 0)
+            return self.getToken(PdlangParser.MINUS, 0)
         def MOD(self):
-            return self.getToken(SimpleParser.MOD, 0)
+            return self.getToken(PdlangParser.MOD, 0)
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterMathExpr" ):
@@ -2084,25 +2084,25 @@ class SimpleParser ( Parser ):
 
     class TestExprContext(ExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PdlangParser.ExprContext
             super().__init__(parser)
             self.testop = None # Token
             self.copyFrom(ctx)
 
         def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(SimpleParser.ExprContext)
+                return self.getTypedRuleContexts(PdlangParser.ExprContext)
             else:
-                return self.getTypedRuleContext(SimpleParser.ExprContext,i)
+                return self.getTypedRuleContext(PdlangParser.ExprContext,i)
 
         def EQ(self):
-            return self.getToken(SimpleParser.EQ, 0)
+            return self.getToken(PdlangParser.EQ, 0)
         def NOT_EQ(self):
-            return self.getToken(SimpleParser.NOT_EQ, 0)
+            return self.getToken(PdlangParser.NOT_EQ, 0)
         def R_ANGLE(self):
-            return self.getToken(SimpleParser.R_ANGLE, 0)
+            return self.getToken(PdlangParser.R_ANGLE, 0)
         def L_ANGLE(self):
-            return self.getToken(SimpleParser.L_ANGLE, 0)
+            return self.getToken(PdlangParser.L_ANGLE, 0)
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterTestExpr" ):
@@ -2123,7 +2123,7 @@ class SimpleParser ( Parser ):
     def expr(self, _p:int=0):
         _parentctx = self._ctx
         _parentState = self.state
-        localctx = SimpleParser.ExprContext(self, self._ctx, _parentState)
+        localctx = PdlangParser.ExprContext(self, self._ctx, _parentState)
         _prevctx = localctx
         _startState = 36
         self.enterRecursionRule(localctx, 36, self.RULE_expr, _p)
@@ -2134,23 +2134,23 @@ class SimpleParser ( Parser ):
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [51]:
-                localctx = SimpleParser.NumberContext(self, localctx)
+                localctx = PdlangParser.NumberContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
 
                 self.state = 251
-                self.match(SimpleParser.NUMBER)
+                self.match(PdlangParser.NUMBER)
                 pass
             elif token in [23]:
-                localctx = SimpleParser.ParensExprContext(self, localctx)
+                localctx = PdlangParser.ParensExprContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
                 self.state = 252
-                self.match(SimpleParser.L_PAREN)
+                self.match(PdlangParser.L_PAREN)
                 self.state = 253
                 self.expr(0)
                 self.state = 254
-                self.match(SimpleParser.R_PAREN)
+                self.match(PdlangParser.R_PAREN)
                 pass
             else:
                 raise NoViableAltException(self)
@@ -2168,7 +2168,7 @@ class SimpleParser ( Parser ):
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,27,self._ctx)
                     if la_ == 1:
-                        localctx = SimpleParser.MathExprContext(self, SimpleParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = PdlangParser.MathExprContext(self, PdlangParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 258
                         if not self.precpred(self._ctx, 4):
@@ -2187,7 +2187,7 @@ class SimpleParser ( Parser ):
                         pass
 
                     elif la_ == 2:
-                        localctx = SimpleParser.TestExprContext(self, SimpleParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = PdlangParser.TestExprContext(self, PdlangParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 261
                         if not self.precpred(self._ctx, 3):

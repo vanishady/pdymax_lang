@@ -1,4 +1,4 @@
-grammar Simple;
+grammar Pdlang;
 
 /*
 * parser rules
