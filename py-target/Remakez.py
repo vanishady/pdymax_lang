@@ -37,6 +37,9 @@ class Block():
         self.posx=x
         self.posy=y
 
+    def getPos(self):
+        return self.posx, self.posy
+
 
 class Connection():
 
@@ -194,6 +197,7 @@ class Node():
         self.nodesIn.append(node)
 
     def getSourceY(self):
+        #returns y pos of nodesource, returns 0 if node is not connected to any source 
         trace=0
         for n in self.nodesIn:
             if n.getPosy()>trace:
@@ -552,13 +556,15 @@ class Remake(SimpleVisitor):
     # Visit a parse tree produced by SimpleParser#ifstmt.
     def visitIfstmt(self, ctx:SimpleParser.IfstmtContext):
         if self.visit(ctx.expr(0))==True:
-            return self.visitSuite(ctx)
-        else:
-            pass
+            return self.visitSuite(ctx.suite(0))
+        if ctx.ELIF():
+            for cont in range (len(ctx.ELIF())):
+                if self.visit(ctx.expr(cont))==True:
+                    return self.visitSuite(ctx.suite(cont))
+            if ctx.ELSE():
+                return self.visitSuite(ctx.suite(len(ctx.ELIF())+1))
         #return self.visitChildren(ctx)
         
-        
-
 
     # Visit a parse tree produced by SimpleParser#forstmt.
     def visitForstmt(self, ctx:SimpleParser.ForstmtContext):
@@ -573,13 +579,13 @@ class Remake(SimpleVisitor):
     # Visit a parse tree produced by SimpleParser#number.
     def visitNumber(self, ctx:SimpleParser.NumberContext):
         n= ctx.NUMBER().getText()
-        n=int(n)
+        n=int(n) #peraltro, dovrebbe ritornare un float o un int non solo int
         return n
 
 
     # Visit a parse tree produced by SimpleParser#ParensExpr.
     def visitParensExpr(self, ctx:SimpleParser.ParensExprContext):
-        return self.visitChildren(ctx)
+        return self.visit(ctx.expr())
 
     # Visit a parse tree produced by SimpleParser#MathExpr.
     def visitMathExpr(self, ctx:SimpleParser.MathExprContext):

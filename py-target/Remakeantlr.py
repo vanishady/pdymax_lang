@@ -13,7 +13,7 @@ import Remakez
         
 ### LEXER AND PARSER WORK ###
 
-lexer = SimpleLexer(FileStream('input4.txt'))
+lexer = SimpleLexer(FileStream('input2.txt'))
 stream = CommonTokenStream(lexer)
 parser = SimpleParser(stream)
 
@@ -40,8 +40,7 @@ for elem in visitor.connections:
 
 ### FORMATTER ###
 
-#{('onoff', 0): [1], ('general', 1): [2], ('general', 2): [3],
-#('general', 3): [5, 6, 7, 8, 9], ...}
+#{('onoff', 0): [1], ('general', 1): [2], ('general', 3): [5, 6, 7, 8, 9], ...}
 scopelist={}
 for elem in visitor.connections:
     #print(type(elem), elem.getScope(), elem.makeString())
@@ -74,15 +73,27 @@ for elem in visitor.connections:
                 scopelist[(scope,int(source))].append(int(sink))
             #print(scopelist[(scope,int(source))])
 
-forcex=100
+forcex=0
 x=20
 y=20
 
+#prima sistemo i nodi che sono subbatch (block)
+for node in visitor.memory:
+    if type(node)==Remakez.Block and node.isBlockEnd()==True:
+        node.setPos(x,y)
+        if x>600:
+            x=20
+            y+=40
+        else:
+            x+=200
+
+x=20
+y+=40
+
+#poi sistemo i nodi che sono connessi ad altri nodi
 for node in visitor.memory:
     issource=False
     if type(node)!=Remakez.Node:
-            node.setPos(x,y)
-            y+=40
             continue
     scope = node.getScope()
     index = node.getIndex()
@@ -101,12 +112,16 @@ for node in visitor.memory:
                         x+=60
                         another.setSource(node)
             x=node.getPosx()
-            
+    #se i nodi non sono connessi a niente, li sistemo così     
     if issource==False:
+        if forcex>800:
+            forcex=0
+            y+=40
+        forcex+=x
         srcy= node.getSourceY()
-        node.setPos(x,srcy+60)
+        node.setPos(forcex+100,srcy+60)
         if srcy == 0:
-            node.forcePos(x+60,y+60)
+            node.forcePos(forcex+100,y+60)
 
 
 
@@ -123,7 +138,7 @@ for elem in visitor.memory:
             if char not in ',"[]\'':
                 result+= char
         result+= ';\r\n'
-    elif type(elem)==Remakez.Block: #è un blocco che inizia o finisce
+    elif type(elem)==Remakez.Block:
         if elem.isBlockEnd():
             for c in visitor.connections:
                 if c.getScope() == elem.getBlockId():
@@ -138,5 +153,3 @@ outfile = visitor.getPatchName()
 output = open(outfile+'.pd', 'w')
 output.write(result)
 output.close()
-#print('OUTPUT.PD\r\n')
-#print(result)

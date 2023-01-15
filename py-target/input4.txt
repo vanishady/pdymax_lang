@@ -20,7 +20,16 @@ m3 = floatatom(400)
 recall war to krieg {
 	if 4+3==8:
 		msg('ciao')
+	elif 4%2==(4-4):
+		msg('elseif')
+	elif 4+5==99:
+		msg('elseifif')
+	else:
+		msg('ellllse')
 	end
 }
+
+for 3 rounds do:
+	\bang()
 
 ;

@@ -10,15 +10,19 @@ Regole implementate:
 - block, con scoping per blocco
 
 Da fare:
-- algoritmo di posizionamento [[WORK IN PROGRESS CODICE ASSOLUTAMENTE IMPROVVISATO]]
-- implementare i restanti costrutti (if, for, block ...)
+- implementare il FOR [[WORK IN PROGRESS]]
+- pass, continue
 
 Bug da fixare:
-- dentro alle stringhe non sono allowed i whitespace!!!
+- dentro alle stringhe non sono allowed i whitespace!!! e nemmeno i numeri.
+- algoritmo di posizionamento (non è che funzioni proprio benissimo)
 
 Plus:
+- aggiungere function call alla grammatica, per scrivere cose tipo 'numbernode.getValue()' (in realtà si può 
+costruire qualcosa di utile usando la select di puredata)
 - supporto per nodetypes (generaltypes e objtypes)
 - shell personalizzata con documentazione di supporto pure
+
 
 ********************* DOMANDE ***********************
 
@@ -31,4 +35,6 @@ Il problema era che:
 
 <a, b = 'libro', c> :: message(000) #i nodi che vanno nell'istanza di Connection() sono: a,b,c,message(000)
 f = message('farina') #questo nodo f non deve andare nell'istanza di Connection(), ma dal mio codice ci andava :(
+
+- for statement: line 32:4 mismatched input '3' expecting INTEGER. Problea con visitNumber secondo me, ma non so.
  
