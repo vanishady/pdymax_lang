@@ -1,14 +1,27 @@
-patch _something
+patch something2
 
-mtest = msg(3, $1 = array(1,2,3))
-m = msg(3, 2, 1)
-o = obj(1)
-obj(4,4,4,'givenstring')
-o = 5
-other = *6
-pooo = *~
-o.$1 = msg('aaaa')
-<a = msg(360), b>::m = msg('ahiahi')::<a,b>
-a = \bang(1,1, $1 = *6)
-i= msg()
+block onoff {
+msg('dsp', 1).$-1=\s('pd')
+}
+
+\loadbang()::msg(440)::f=floatatom()
+
+title = text('additivesynth')
+f::<osc1=\osc~(), num1=*2, num2=*3, num3=*4, num4=*5>
+osc1 :: mul=*~ 0.1
+
+num1::floatatom()::\osc~()::mul1=*~ 0.75
+num2::floatatom()::\osc~()::mul2=*~ 0.5
+num3::floatatom()::\osc~()::mul3=*~ 0.35
+num4::floatatom()::\osc~()::mul4=*~ 0.25
+
+mul.$1 = mul1
+mul.$1 = mul2
+mul.$1 = mul3
+mul.$1 = mul4
+output=\dac~()
+
+mul.$-1 =output
+output.$2 = mul
+
 ;

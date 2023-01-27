@@ -22,8 +22,8 @@ public class SimpleParser extends Parser {
 		L_CURLY=25, R_CURLY=26, L_BRACKET=27, R_BRACKET=28, L_ANGLE=29, R_ANGLE=30, 
 		EQ=31, NOT_EQ=32, PLUS=33, MINUS=34, POW=35, STAR=36, DIV=37, MOD=38, 
 		OR=39, AND=40, SIGMINUS=41, SIGPLUS=42, SIGDIV=43, SIGSTAR=44, NODETYPE=45, 
-		GENERALTYPE=46, OBJTYPE=47, INOUTID=48, ID=49, SYMBOL=50, NUMBER=51, INTEGER=52, 
-		FLOAT=53, NL=54, WS=55, COMMENT=56;
+		GENERALTYPE=46, OBJTYPE=47, INOUTID=48, ID=49, SYMBOL=50, NUMBER=51, FLOAT=52, 
+		INTEGER=53, NL=54, WS=55, COMMENT=56;
 	public static final int
 		RULE_prog = 0, RULE_blockstmt = 1, RULE_stmt = 2, RULE_declarationstmt = 3, 
 		RULE_parameters = 4, RULE_typedargslist = 5, RULE_arg = 6, RULE_operation = 7, 
@@ -58,7 +58,7 @@ public class SimpleParser extends Parser {
 			"L_BRACKET", "R_BRACKET", "L_ANGLE", "R_ANGLE", "EQ", "NOT_EQ", "PLUS", 
 			"MINUS", "POW", "STAR", "DIV", "MOD", "OR", "AND", "SIGMINUS", "SIGPLUS", 
 			"SIGDIV", "SIGSTAR", "NODETYPE", "GENERALTYPE", "OBJTYPE", "INOUTID", 
-			"ID", "SYMBOL", "NUMBER", "INTEGER", "FLOAT", "NL", "WS", "COMMENT"
+			"ID", "SYMBOL", "NUMBER", "FLOAT", "INTEGER", "NL", "WS", "COMMENT"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -210,6 +210,7 @@ public class SimpleParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class BlockstmtContext extends ParserRuleContext {
+		public Token endofblock;
 		public TerminalNode BLOCK() { return getToken(SimpleParser.BLOCK, 0); }
 		public TerminalNode ID() { return getToken(SimpleParser.ID, 0); }
 		public TerminalNode L_CURLY() { return getToken(SimpleParser.L_CURLY, 0); }
@@ -268,7 +269,7 @@ public class SimpleParser extends Parser {
 				_la = _input.LA(1);
 			}
 			setState(57);
-			match(R_CURLY);
+			((BlockstmtContext)_localctx).endofblock = match(R_CURLY);
 			setState(58);
 			match(NL);
 			}
@@ -1528,7 +1529,7 @@ public class SimpleParser extends Parser {
 	@SuppressWarnings("CheckReturnValue")
 	public static class ForstmtContext extends ParserRuleContext {
 		public TerminalNode FOR() { return getToken(SimpleParser.FOR, 0); }
-		public TerminalNode INTEGER() { return getToken(SimpleParser.INTEGER, 0); }
+		public TerminalNode NUMBER() { return getToken(SimpleParser.NUMBER, 0); }
 		public SuiteContext suite() {
 			return getRuleContext(SuiteContext.class,0);
 		}
@@ -1556,7 +1557,7 @@ public class SimpleParser extends Parser {
 			setState(233);
 			match(FOR);
 			setState(234);
-			match(INTEGER);
+			match(NUMBER);
 			setState(235);
 			match(T__5);
 			setState(236);
@@ -2054,7 +2055,7 @@ public class SimpleParser extends Parser {
 		"\u00e2\u0001\u0000\u0000\u0000\u00e5\u00e6\u0001\u0000\u0000\u0000\u00e6"+
 		"\u00e7\u0001\u0000\u0000\u0000\u00e7\u00e8\u0005\u0014\u0000\u0000\u00e8"+
 		"\u001d\u0001\u0000\u0000\u0000\u00e9\u00ea\u0005\u000f\u0000\u0000\u00ea"+
-		"\u00eb\u00054\u0000\u0000\u00eb\u00ec\u0005\u0006\u0000\u0000\u00ec\u00ed"+
+		"\u00eb\u00053\u0000\u0000\u00eb\u00ec\u0005\u0006\u0000\u0000\u00ec\u00ed"+
 		"\u0005\u0005\u0000\u0000\u00ed\u00ee\u0003 \u0010\u0000\u00ee\u00ef\u0005"+
 		"\u0014\u0000\u0000\u00ef\u001f\u0001\u0000\u0000\u0000\u00f0\u00f2\u0005"+
 		"6\u0000\u0000\u00f1\u00f3\u0003\u0004\u0002\u0000\u00f2\u00f1\u0001\u0000"+

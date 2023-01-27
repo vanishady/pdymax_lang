@@ -24,7 +24,6 @@ stmt
  ;
 
 
-
 declarationstmt
  : ID '=' (NODETYPE parameters) #FullDeclStmt
  | NODETYPE parameters #FastDeclStmt
@@ -89,7 +88,7 @@ ifstmt
  ;
 
 forstmt
- : FOR INTEGER 'rounds do' ':' suite END
+ : FOR NUMBER 'rounds do' ':' suite END
  ;
 
 
@@ -173,8 +172,8 @@ ID : ID_START ID_CONTINUE* ;
 
 SYMBOL : '\'' LETTER* '\'' ;
 NUMBER : INTEGER | FLOAT ;
-INTEGER : NON_ZERO_DIGIT DIGIT* | '0'+ ;
 FLOAT : INTEGER? '.' INTEGER ;
+INTEGER : NON_ZERO_DIGIT DIGIT* | '0'+ ;
 
 
 fragment LETTER : [a-zA-Z] ;

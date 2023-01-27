@@ -90,7 +90,7 @@ ifstmt
  ;
 
 forstmt
- : FOR INTEGER 'rounds do' ':' suite END
+ : FOR NUMBER 'rounds do' ':' suite END
  ;
 
 

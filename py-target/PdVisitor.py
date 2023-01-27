@@ -572,8 +572,8 @@ class CustomVisitor(PdlangVisitor):
             return self.visitSuite(ctx.suite(0))
         if ctx.ELIF():
             for cont in range (len(ctx.ELIF())):
-                if self.visit(ctx.expr(cont))==True:
-                    return self.visitSuite(ctx.suite(cont))
+                if self.visit(ctx.expr(cont+1))==True:
+                    return self.visitSuite(ctx.suite(cont+1))
             if ctx.ELSE():
                 return self.visitSuite(ctx.suite(len(ctx.ELIF())+1))
         #return self.visitChildren(ctx)
@@ -592,7 +592,9 @@ class CustomVisitor(PdlangVisitor):
     # Visit a parse tree produced by PdlangParser#number.
     def visitNumber(self, ctx:PdlangParser.NumberContext):
         n= ctx.NUMBER().getText()
-        n=int(n) #peraltro, dovrebbe ritornare un float o un int non solo int
+        if '.' in n:
+            n = float(n)
+        else: n=int(n) #peraltro, dovrebbe ritornare un float o un int non solo int
         return n
 
 
@@ -606,15 +608,15 @@ class CustomVisitor(PdlangVisitor):
         right=self.visit(ctx.expr(1))
         
         if ctx.op.text == '+':
-            self.res=int(left)+int(right)
+            self.res=(left)+(right)
         elif ctx.op.text == '-':
-            self.res=int(left)-int(right)
+            self.res=(left)-(right)
         elif ctx.op.text == '*':
-            self.res=int(left)*int(right)
+            self.res=(left)*(right)
         elif ctx.op.text == '/':
-            self.res=int(left)/int(right)
+            self.res=(left)/(right)
         elif ctx.op.text == '%':
-            self.res=int(left)%int(right)
+            self.res=(left)%(right)
 
         return self.res
 
@@ -625,32 +627,32 @@ class CustomVisitor(PdlangVisitor):
         right = self.visit(ctx.expr(1))
 
         if ctx.testop.text == '==':
-            if int(left)==int(right):
+            if (left)==(right):
                 self.eval=True
             else:
                 self.eval=False
         elif ctx.testop.text == '!=':
-            if int(left)!=int(right):
+            if (left)!=(right):
                 self.eval=True
             else:
                 self.eval=False
         elif ctx.testop.text == '>':
-            if int(left)>int(right):
+            if (left)>(right):
                 self.eval=True
             else:
                 self.eval=False
         elif ctx.testop.text == '>=':
-            if int(left)>=int(right):
+            if (left)>=(right):
                 self.eval=True
             else:
                 self.eval=False
         elif ctx.testop.text == '<=':
-            if int(left)<=int(right):
+            if (left)<=(right):
                 self.eval=True
             else:
                 self.eval=False
         elif ctx.testop.text == '<':
-            if int(left)<int(right):
+            if (left)<(right):
                 self.eval=True
             else:
                 self.eval=False

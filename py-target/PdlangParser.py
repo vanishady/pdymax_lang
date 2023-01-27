@@ -95,7 +95,7 @@ def serializedATN():
         0,227,225,1,0,0,0,227,228,1,0,0,0,228,233,1,0,0,0,229,227,1,0,0,
         0,230,231,5,14,0,0,231,232,5,5,0,0,232,234,3,34,17,0,233,230,1,0,
         0,0,233,234,1,0,0,0,234,235,1,0,0,0,235,236,5,20,0,0,236,31,1,0,
-        0,0,237,238,5,15,0,0,238,239,5,52,0,0,239,240,5,6,0,0,240,241,5,
+        0,0,237,238,5,15,0,0,238,239,5,51,0,0,239,240,5,6,0,0,240,241,5,
         5,0,0,241,242,3,34,17,0,242,243,5,20,0,0,243,33,1,0,0,0,244,246,
         5,54,0,0,245,247,3,6,3,0,246,245,1,0,0,0,247,248,1,0,0,0,248,246,
         1,0,0,0,248,249,1,0,0,0,249,35,1,0,0,0,250,251,6,18,-1,0,251,257,
@@ -1850,8 +1850,8 @@ class PdlangParser ( Parser ):
         def FOR(self):
             return self.getToken(PdlangParser.FOR, 0)
 
-        def INTEGER(self):
-            return self.getToken(PdlangParser.INTEGER, 0)
+        def NUMBER(self):
+            return self.getToken(PdlangParser.NUMBER, 0)
 
         def suite(self):
             return self.getTypedRuleContext(PdlangParser.SuiteContext,0)
@@ -1889,7 +1889,7 @@ class PdlangParser ( Parser ):
             self.state = 237
             self.match(PdlangParser.FOR)
             self.state = 238
-            self.match(PdlangParser.INTEGER)
+            self.match(PdlangParser.NUMBER)
             self.state = 239
             self.match(PdlangParser.T__5)
             self.state = 240
