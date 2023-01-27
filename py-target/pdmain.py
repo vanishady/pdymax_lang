@@ -11,7 +11,12 @@ from antlr4.tree.Tree import ParseTreeWalker
 from antlr4.error.ErrorListener import ErrorListener
 import PdVisitor
         
+class PrintListener(PdlangListener):
+    def enterEveryRule(self, ctx):
+        print(ctx.start, ctx.stop, PdlangParser.ruleNames[ctx.getRuleIndex()])
 
+    def exitSuite(self, ctx):
+        print(ctx.start, ctx.stop, 'end'+PdlangParser.ruleNames[ctx.getRuleIndex()])
 ### get input filename ###
 
 fn=False
@@ -34,6 +39,10 @@ tree = parser.prog()
 
 visitor = PdVisitor.CustomVisitor()
 visitor.visit(tree)
+
+#listener = PrintListener()
+#walker = ParseTreeWalker()
+#walker.walk(listener, tree)
 
 """
 #see how nodes and connections are stored

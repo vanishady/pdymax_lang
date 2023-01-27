@@ -298,6 +298,9 @@ class CustomVisitor(PdlangVisitor):
 
     # Visit a parse tree produced by PdlangParser#stmt.
     def visitStmt(self, ctx:PdlangParser.StmtContext):
+        print(ctx.getText())
+        if ctx.getText()=='break':
+            print('breakstmt')
         return self.visitChildren(ctx)
 
 
@@ -581,20 +584,23 @@ class CustomVisitor(PdlangVisitor):
 
     # Visit a parse tree produced by PdlangParser#forstmt.
     def visitForstmt(self, ctx:PdlangParser.ForstmtContext):
-        return self.visitChildren(ctx)
+        if '.' in ctx.NUMBER().getText():
+            raise Exception('integer only in for loops please')
+        for i in range(int(ctx.NUMBER().getText())):
+            self.visitSuite(ctx.suite())
+        #return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by PdlangParser#suite.
     def visitSuite(self, ctx:PdlangParser.SuiteContext):
         return self.visitChildren(ctx)
 
-
     # Visit a parse tree produced by PdlangParser#number.
     def visitNumber(self, ctx:PdlangParser.NumberContext):
         n= ctx.NUMBER().getText()
         if '.' in n:
             n = float(n)
-        else: n=int(n) #peraltro, dovrebbe ritornare un float o un int non solo int
+        else: n=int(n)
         return n
 
 

@@ -10,8 +10,7 @@ Regole implementate:
 - block, con scoping per blocco
 
 Da fare:
-- implementare il FOR [[WORK IN PROGRESS]]
-- pass, continue
+- pass, continue, break [[WORK IN PROGRESS]] -> vedi visitStmt
 
 Bug da fixare:
 - dentro alle stringhe non sono allowed i whitespace!!! e nemmeno i numeri.
@@ -36,5 +35,6 @@ Il problema era che:
 <a, b = 'libro', c> :: message(000) #i nodi che vanno nell'istanza di Connection() sono: a,b,c,message(000)
 f = message('farina') #questo nodo f non deve andare nell'istanza di Connection(), ma dal mio codice ci andava :(
 
-- for statement: line 32:4 mismatched input '3' expecting INTEGER. Problea con visitNumber secondo me, ma non so.
+- for statement: line 32:4 mismatched input '3' expecting INTEGER. Fixato con NUMBER nella grammatica e controllo successivo
+
  

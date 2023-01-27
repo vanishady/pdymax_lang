@@ -31,6 +31,9 @@ recall war to krieg {
 
 for 3 rounds do:
 	\bang()
+	if 2==2:
+		break
+	end
 end
 
 ;
