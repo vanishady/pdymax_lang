@@ -242,5 +242,32 @@ class PdlangListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by PdlangParser#breakstmt.
+    def enterBreakstmt(self, ctx:PdlangParser.BreakstmtContext):
+        pass
+
+    # Exit a parse tree produced by PdlangParser#breakstmt.
+    def exitBreakstmt(self, ctx:PdlangParser.BreakstmtContext):
+        pass
+
+
+    # Enter a parse tree produced by PdlangParser#continuestmt.
+    def enterContinuestmt(self, ctx:PdlangParser.ContinuestmtContext):
+        pass
+
+    # Exit a parse tree produced by PdlangParser#continuestmt.
+    def exitContinuestmt(self, ctx:PdlangParser.ContinuestmtContext):
+        pass
+
+
+    # Enter a parse tree produced by PdlangParser#passstmt.
+    def enterPassstmt(self, ctx:PdlangParser.PassstmtContext):
+        pass
+
+    # Exit a parse tree produced by PdlangParser#passstmt.
+    def exitPassstmt(self, ctx:PdlangParser.PassstmtContext):
+        pass
+
+
 
 del PdlangParser

@@ -238,6 +238,10 @@ class CustomVisitor(PdlangVisitor):
         self.connections = [] #self.connections is a list of Connection() and MultipleConn()
         self.parent = None #temporarily stores source node for a sink
 
+        self.breakthis = False
+        self.continuethis = False
+        self.passthis = False
+
     def getPatchName(self):
         return self.patch
 
@@ -298,9 +302,6 @@ class CustomVisitor(PdlangVisitor):
 
     # Visit a parse tree produced by PdlangParser#stmt.
     def visitStmt(self, ctx:PdlangParser.StmtContext):
-        print(ctx.getText())
-        if ctx.getText()=='break':
-            print('breakstmt')
         return self.visitChildren(ctx)
 
 
@@ -587,7 +588,17 @@ class CustomVisitor(PdlangVisitor):
         if '.' in ctx.NUMBER().getText():
             raise Exception('integer only in for loops please')
         for i in range(int(ctx.NUMBER().getText())):
-            self.visitSuite(ctx.suite())
+            if self.breakthis==True:
+                self.breakthis=False
+                break
+            elif self.continuethis==True:
+                self.continuethis=False
+                continue
+            elif self.passthis==True:
+                self.passthis=False
+                pass
+            else:
+                self.visitSuite(ctx.suite())
         #return self.visitChildren(ctx)
 
 
@@ -664,6 +675,21 @@ class CustomVisitor(PdlangVisitor):
                 self.eval=False
         
         return self.eval
+    
+
+    # Visit a parse tree produced by PdlangParser#breakstmt.
+    def visitBreakstmt(self, ctx:PdlangParser.BreakstmtContext):
+        self.breakthis = True
+
+
+    # Visit a parse tree produced by PdlangParser#continuestmt.
+    def visitContinuestmt(self, ctx:PdlangParser.ContinuestmtContext):
+        self.continuethis=True
+
+
+    # Visit a parse tree produced by PdlangParser#passstmt.
+    def visitPassstmt(self, ctx:PdlangParser.PassstmtContext):
+        self.passthis=True
 
 
 

@@ -26,6 +26,4 @@
 #X connect 2 0 3 0;
 #X restore 420 20 pd krieg;
 #X obj 300 120 bang ;
-#X obj 320 120 bang ;
-#X obj 340 120 bang ;
 #X connect 2 0 4 0;

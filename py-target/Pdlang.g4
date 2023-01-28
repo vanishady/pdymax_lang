@@ -19,12 +19,9 @@ stmt
  | recallstmt NL
  | ifstmt NL
  | forstmt NL
- | BREAK NL
- | CONTINUE NL
- | PASS NL
+ | specialstmt NL
  | NL
  ;
-
 
 
 declarationstmt
@@ -105,6 +102,14 @@ expr
  | NUMBER	#number
  | L_PAREN expr R_PAREN #ParensExpr
  ;
+
+
+specialstmt
+ : BREAK #breakstmt
+ | CONTINUE #continuestmt
+ | PASS #passstmt
+ ;
+
 
 /*
 * lexer rules

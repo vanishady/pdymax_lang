@@ -139,5 +139,20 @@ class PdlangVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by PdlangParser#breakstmt.
+    def visitBreakstmt(self, ctx:PdlangParser.BreakstmtContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PdlangParser#continuestmt.
+    def visitContinuestmt(self, ctx:PdlangParser.ContinuestmtContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PdlangParser#passstmt.
+    def visitPassstmt(self, ctx:PdlangParser.PassstmtContext):
+        return self.visitChildren(ctx)
+
+
 
 del PdlangParser
