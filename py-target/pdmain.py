@@ -31,6 +31,7 @@ try:
     lexer = PdlangLexer(FileStream(fn))
 except FileNotFoundError:
     sys.exit(f'file {fn} does not exist.')
+    
 stream = CommonTokenStream(lexer)
 parser = PdlangParser(stream)
 

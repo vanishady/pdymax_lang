@@ -45,7 +45,7 @@ class Block():
 class Connection():
 
     """
-    This class implements a connection for puredata.
+    This class implements a single connection for puredata.
     """
 
     def __init__(self, source, outlet, sink, inlet, scope):
@@ -77,7 +77,7 @@ class MultipleConn():
     """
 
     def __init__(self, scope):
-        self.connectednodes = []
+        self.connectednodes = [] #costruita in questo modo: id1 id2 | id3 | id4 id5 ... sono nodi connessi
         self.connectionscope = scope
 
     def getScope(self):
@@ -142,7 +142,7 @@ class Node():
 
     #set node name
     def setName(self, name):
-        if name in self.variablenames[self.scope]:
+        if name in self.variablenames[self.scope]: #controllo dei duplicati
             raise Exception(f'you cant use this name <{name}> again, use your imagination!')
         self.variablenames[self.scope].append(name)
         self.name = name
@@ -150,7 +150,7 @@ class Node():
     #set object specific type; check if it exists in basic obj types first
     def setObjType(self, objtype):
         types = open('utils/basicnodes.txt', 'r') 
-        if objtype not in types.read():
+        if objtype not in types.read(): #controllo basilare, sicuramente da upgradare
             raise Exception(f'This object type <{objtype}> does not esist')
         self.objtype = objtype
 
@@ -208,7 +208,9 @@ class Node():
         return self.index
 
     def getSourceY(self):
-        """returns y pos of nodesource with max y (=0 if node is not connected to any source)""" 
+        """
+        returns y pos of nodesource with max y (=0 if node is not connected to any source)
+        """ 
         trace=0
         for n in self.nodesIn:
             if n.getPosy()>trace:
@@ -216,7 +218,9 @@ class Node():
         return trace
 
     def getNodeString(self):
-        """returns a node declaration string in the format of pd files"""
+        """
+        returns a node declaration string in the format of pd files
+        """
         if self.nodetype == 'floatatom':
             return f'#X {self.nodetype} {self.posx} {self.posy} 5 0 0 0 - - - 0'
         return f'#X {self.nodetype} {self.posx} {self.posy} {self.objtype} {[x for x in self.args]}'
@@ -225,7 +229,7 @@ class Node():
 class CustomVisitor(PdlangVisitor):
 
     """
-    This class extends automatically generated Pdlang Visitor.
+    This class extends automatically generated module Pdlang Visitor.
     """
 
     def __init__(self):
@@ -238,9 +242,14 @@ class CustomVisitor(PdlangVisitor):
         self.connections = [] #self.connections is a list of Connection() and MultipleConn()
         self.parent = None #temporarily stores source node for a sink
 
-        self.breakthis = False
-        self.continuethis = False
-        self.passthis = False
+        self.breakthis = False #flag for break stmt
+        self.continuethis = False #flag for continue stmt
+        self.passthis = False #flag for pass stmt
+        
+
+    #############################
+    #getter and setter methods
+    #############################
 
     def getPatchName(self):
         return self.patch
@@ -258,8 +267,8 @@ class CustomVisitor(PdlangVisitor):
                 if (node.getName() == nodeName) and (node.getScope() == self.currscope):
                     notfound = False
                     return node.getIndex()
-            except:
-                continue         
+            except AttributeError:
+                continue #continues bc node found was a block() instance  
         if notfound == True:
             raise Exception (f'node <{nodeName}> does not exist')
 
@@ -270,11 +279,15 @@ class CustomVisitor(PdlangVisitor):
                 if node.getIndex() == nodeId:
                     notfound = False
                     return node
-            except:
+            except AttributeError:
                 continue
         if notfound == True:
             raise Exception ('something\'s wrong I can feel it')
 
+
+    #############################
+    #visit methods
+    #############################
         
     # Visit a parse tree produced by PdlangParser#prog.
     def visitProg(self, ctx:PdlangParser.ProgContext):
@@ -285,8 +298,8 @@ class CustomVisitor(PdlangVisitor):
 
     # Visit a parse tree produced by PdlangParser#blockstmt.
     def visitBlockstmt(self, ctx:PdlangParser.BlockstmtContext):
-        self.generalNodeIndex = self.nodeIndex+1
-        self.nodeIndex = -1
+        self.generalNodeIndex = self.nodeIndex+1 #general nodeIndex is augmented by 1 bc a block itself has index in pd
+        self.nodeIndex = -1 #each time a new block is declared, nodeIndex resets
         blockId = ctx.ID().getText()
         self.currscope = blockId
         self.memory.append(Block(self.currscope, False))
@@ -294,7 +307,7 @@ class CustomVisitor(PdlangVisitor):
 
     # Visit a parse tree produced by PdlangParser#endofblock.
     def visitEndofblock(self, ctx:PdlangParser.EndofblockContext):
-        self.nodeIndex = self.generalNodeIndex
+        self.nodeIndex = self.generalNodeIndex #each time a block is left, nodeIndex is set to generalNodeIndex
         self.memory.append(Block(self.currscope, True))
         self.currscope = 'general'
         return self.visitChildren(ctx)
@@ -307,6 +320,9 @@ class CustomVisitor(PdlangVisitor):
 
     # Visit a parse tree produced by PdlangParser#FullDeclStmt.
     def visitFullDeclStmt(self, ctx:PdlangParser.FullDeclStmtContext):
+        """
+        rule: ID '=' (NODETYPE parameters) 
+        """
         self.nodeIndex += 1
         self.memory.append(Node(self.nodeIndex))
         
@@ -324,6 +340,9 @@ class CustomVisitor(PdlangVisitor):
 
     # Visit a parse tree produced by PdlangParser#FastDeclStmt.
     def visitFastDeclStmt(self, ctx:PdlangParser.FastDeclStmtContext):
+        """
+        rule: NODETYPE parameters
+        """
         self.nodeIndex += 1
         self.memory.append(Node(self.nodeIndex))
 
@@ -339,6 +358,9 @@ class CustomVisitor(PdlangVisitor):
 
     # Visit a parse tree produced by PdlangParser#OpDeclStmt.
     def visitOpDeclStmt(self, ctx:PdlangParser.OpDeclStmtContext):
+        """
+        rule: ID '=' operation
+        """
         self.nodeIndex += 1
         self.memory.append(Node(self.nodeIndex))
 
@@ -346,7 +368,7 @@ class CustomVisitor(PdlangVisitor):
 
         self.memory[-1].setScope(self.currscope)
         self.memory[-1].setName(name)
-        self.memory[-1].setNodeType('obj')
+        self.memory[-1].setNodeType('obj') #nodetype is automatically set to obj
 
         self.setParent(self.nodeIndex) 
             
@@ -370,7 +392,7 @@ class CustomVisitor(PdlangVisitor):
             arg = ctx.SYMBOL().getText()
             try:
                 self.memory[-1].setArg(arg)
-            except:
+            except AttributeError:
                 pass
         return self.visitChildren(ctx)
 
@@ -398,6 +420,9 @@ class CustomVisitor(PdlangVisitor):
 
     # Visit a parse tree produced by PdlangParser#ioletbase.
     def visitIoletbase(self, ctx:PdlangParser.IoletbaseContext):
+        """
+        rule: ioletbase (only appears indise ioletdeclstmt)
+        """
 
         #calcolo dell'inlet/outlet
         outlet = False
@@ -406,7 +431,7 @@ class CustomVisitor(PdlangVisitor):
             outlet = True
         iolet = int(iolet[-1])-1
 
-        #case 1: new node declaration
+        #case 1: new node declaration (connecting to a brand new node)
         # INOUTID = NODETYPE parameters | operation
         if not ctx.ID():
             self.nodeIndex += 1
@@ -421,15 +446,11 @@ class CustomVisitor(PdlangVisitor):
             if outlet is False:
                 source = self.nodeIndex
                 sink = self.getParent()
-                 #node = self.getNodeFromId(source)
-                 #node.setNodeOut(sink)
                 self.connections.append(Connection(source, 0, sink, iolet, self.currscope))
 
             else:
                 source = self.getParent()
                 sink = self.nodeIndex
-                #node = self.getNodeFromId(source)
-                #node.setNodeOut(sink)
                 self.connections.append(Connection(source, iolet, sink, 0, self.currscope))
 
 
@@ -452,6 +473,9 @@ class CustomVisitor(PdlangVisitor):
 
     # Visit a parse tree produced by PdlangParser#ioletdeclstmt.
     def visitIoletdeclstmt(self, ctx:PdlangParser.IoletdeclstmtContext):
+        """
+        rule: ID '.' ioletbase | NODETYPE parameters '.' ioletbase
+        """
         #case 1: ID.ioletbase
         if ctx.ID():
             name = ctx.ID().getText()
@@ -474,6 +498,9 @@ class CustomVisitor(PdlangVisitor):
 
     # Visit a parse tree produced by PdlangParser#connectionstmt.
     def visitConnectionstmt(self, ctx:PdlangParser.ConnectionstmtContext):
+        """
+        rule: connectionelem (CONNECT connectionelem)+
+        """
         line = ctx.getText()
         if line:
             self.connections.append(MultipleConn(self.currscope))
@@ -482,7 +509,11 @@ class CustomVisitor(PdlangVisitor):
 
     # Visit a parse tree produced by PdlangParser#FullDeclStmtInside.
     def visitFullDeclStmtInside(self, ctx:PdlangParser.FullDeclStmtInsideContext):
-        #praticamente lo stesso codice di visitFullDeclStmt, ma con self.addToParentList(self.nodeIndex)
+        """
+        rule: ID '=' (NODETYPE parameters) #FullDeclStmtInside 
+        """
+        #praticamente lo stesso codice di visitFullDeclStmt, ma con il nodo che viene aggiunto alla connessione attuale (che è una MultipleConn())
+        #insomma se il nodo viene dichiarato dinamicamente all'interno di una connessione, deve essere aggiunto alla connessione attuale oltre che in memoria
         self.nodeIndex += 1
         self.memory.append(Node(self.nodeIndex))
         
@@ -500,6 +531,9 @@ class CustomVisitor(PdlangVisitor):
 
     # Visit a parse tree produced by PdlangParser#FastDeclStmtInside.
     def visitFastDeclStmtInside(self, ctx:PdlangParser.FastDeclStmtInsideContext):
+        """
+        rule: NODETYPE parameters #FastDeclStmtInside
+        """
         self.nodeIndex += 1
         self.memory.append(Node(self.nodeIndex))
 
@@ -515,6 +549,9 @@ class CustomVisitor(PdlangVisitor):
 
     # Visit a parse tree produced by PdlangParser#OpDeclStmtInside.
     def visitOpDeclStmtInside(self, ctx:PdlangParser.OpDeclStmtInsideContext):
+        """
+        rule: ID '=' operation #OpDeclStmtInside
+        """
         self.nodeIndex += 1
         self.memory.append(Node(self.nodeIndex))
         
@@ -531,6 +568,9 @@ class CustomVisitor(PdlangVisitor):
 
     # Visit a parse tree produced by PdlangParser#connectionelem.
     def visitConnectionelem(self, ctx:PdlangParser.ConnectionelemContext):
+        """
+        rule: '<' (ID | declinside) (',' (ID | declinside))* '>' | (ID | declinside)
+        """
         self.connections[-1].addSeparator()
         #catch nodes already declared
         for node in ctx.ID():
@@ -542,10 +582,13 @@ class CustomVisitor(PdlangVisitor):
 
     # Visit a parse tree produced by PdlangParser#recallstmt.
     def visitRecallstmt(self, ctx:PdlangParser.RecallstmtContext):
+        """
+        rule: RECALL ID TO ID '{' NL stmt* endofblock 
+        """
         self.generalNodeIndex = self.nodeIndex+1
         self.nodeIndex = -1
-        src=ctx.ID(0).getText()
-        target=ctx.ID(1).getText()
+        src=ctx.ID(0).getText() #blockId of block that is going to be copied
+        target=ctx.ID(1).getText() #blockId of target block (new block)
         self.currscope=target
         self.memory.append(Block(self.currscope, False))
 
@@ -572,6 +615,9 @@ class CustomVisitor(PdlangVisitor):
 
     # Visit a parse tree produced by PdlangParser#ifstmt.
     def visitIfstmt(self, ctx:PdlangParser.IfstmtContext):
+        """
+        rule: IF expr ':' suite (ELIF expr ':' suite)* (ELSE ':' suite)? END
+        """
         if self.visit(ctx.expr(0))==True:
             return self.visitSuite(ctx.suite(0))
         if ctx.ELIF():
@@ -585,6 +631,9 @@ class CustomVisitor(PdlangVisitor):
 
     # Visit a parse tree produced by PdlangParser#forstmt.
     def visitForstmt(self, ctx:PdlangParser.ForstmtContext):
+        """
+        rule: FOR NUMBER 'rounds do' ':' suite END
+        """
         if '.' in ctx.NUMBER().getText():
             raise Exception('integer only in for loops please')
         for i in range(int(ctx.NUMBER().getText())):
