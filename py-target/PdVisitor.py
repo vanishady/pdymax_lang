@@ -131,7 +131,7 @@ class Node():
         self.objtype = ''
         self.posx = 0
         self.posy = 0
-        self.nodesIn = [] #list of sources connected to this node if node is sink
+        self.nodeSources = [] #list of sources connected to this node if node is sink
         self.scope = None
 
     #returns full node attributes
@@ -183,11 +183,7 @@ class Node():
             self.posx=x
 
     def setSource(self, node):
-        self.nodesIn.append(node)
-
-    def forcePos(self,x,y):
-        self.posx=x
-        self.posy=y
+        self.nodeSources.append(node)
 
     def getName(self):
         return self.name
@@ -212,7 +208,7 @@ class Node():
         returns y pos of nodesource with max y (=0 if node is not connected to any source)
         """ 
         trace=0
-        for n in self.nodesIn:
+        for n in self.nodeSources:
             if n.getPosy()>trace:
                 trace=n.getPosy()
         return trace

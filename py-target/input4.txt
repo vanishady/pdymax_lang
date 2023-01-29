@@ -36,4 +36,10 @@ for 3 rounds do:
 	end
 end
 
+block altro1 {
+}
+
+block altro2 {
+}
+
 ;

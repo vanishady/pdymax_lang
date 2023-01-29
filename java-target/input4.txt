@@ -1,6 +1,6 @@
 patch something4
 
-text('firstofall')
+text('first of all')
 
 block guerra {
  msg('dsp', 1).$-1=\s('pd')

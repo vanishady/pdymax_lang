@@ -8,9 +8,12 @@ Regole implementate:
 - inlet/outlet declaration (una sorta di connessione in cui specificare anche gli inlet/outlet)
 - connessione (connection statement) 
 - block, con scoping per blocco
+- if, elif, else
+- for loops
+- break, continue, pass
 
 Da fare:
-- pass, continue, break [[WORK IN PROGRESS]] -> vedi visitStmt
+-/
 
 Bug da fixare:
 - dentro alle stringhe non sono allowed i whitespace!!! e nemmeno i numeri.
@@ -19,9 +22,12 @@ Bug da fixare:
 Plus:
 - aggiungere function call alla grammatica, per scrivere cose tipo 'numbernode.getValue()' (in realtà si può 
 costruire qualcosa di utile usando la select di puredata)
+- aggiungere gli iteratori (variabile thisround) per creare tanti oggetti dai nomi diversi nei for
 - supporto per nodetypes (generaltypes e objtypes)
-- shell personalizzata con documentazione di supporto pure
-
+- shell personalizzata con documentazione di supporto
+- colors e font
+- preparare patch (da usare come oggetti nella main patch, facendo un import tipo)
+- controllo degli errori
 
 ********************* DOMANDE ***********************
 

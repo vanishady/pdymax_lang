@@ -69,11 +69,11 @@ scopelist={}
 #{('onoff', 0): [1], ('general', 1): [2], ('general', 3): [5, 6, 7, 8, 9], ...}
 for elem in visitor.connections:
     scope = elem.getScope()
-    if type(elem)==PdVisitor.Connection:
+    if type(elem)==PdVisitor.Connection: #caso connessione singola per inlet/outlet
         connection = elem.makeString()
         connection=connection.split(' ')
-        source=connection[2]
-        sink=connection[4]
+        source=connection[2] #id source
+        sink=connection[4] #id sink
         if (scope,int(source)) not in scopelist.keys():
             scopelist.update({(scope,int(source)):[int(sink)]})
         else:
@@ -110,10 +110,12 @@ for node in visitor.memory:
         else:
             x+=200
 
+#ritorno a capo dopo la sistemazione dei blocchi
 x=20
 y+=40
 
 for node in visitor.memory:
+    
     issource=False
     if type(node)!=PdVisitor.Node:
             continue
@@ -134,23 +136,16 @@ for node in visitor.memory:
                         another.setPos(x,node.getPosy()+60)
                         x+=60
                         another.setSource(node)
-            x=node.getPosx()
+            x=node.getPosx() #resetto la posizione a dove eravamo arrivati consultando la source
             
-    #sistemazioni di nodi da cui non partono connessioni (ancora wip)  
+    #sistemazioni di nodi che non sono sink né source
     if issource==False:
-        if forcex>800:
-            forcex=0
-            y+=40
-        forcex+=x
-        srcy= node.getSourceY()
-        node.setPos(forcex+100,srcy+60)
-        if srcy == 0:
-            node.forcePos(forcex+100,y+60)
-
+        y+=40
+        node.setPos([x+200 if x+200<800 else 0],max(node.getSourceY()+40,y))
            
 ### INTERPRETER WORK ###
 
-result = '#N canvas 676 207 681 509 12 ;\r\n'
+result = '#N canvas 300 100 800 500 12 ;\r\n'
 
 
 for elem in visitor.memory:
