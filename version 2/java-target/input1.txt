@@ -1,0 +1,56 @@
+import pdawlib
+
+patch myfirst
+
+func bpm_to_ms($bpm:intn) {
+
+	$ms = 60
+	return $ms
+
+}
+
+func label($nodename:node, $text:symbol) {
+
+	text($text) > $nodename
+
+}
+
+block clock($lenstepseq:intn, $bpm:intn) {
+	
+
+	inlet > msg(@bpm_to_ms($bpm))> floatatom > $m = metro.in2
+	bang > [$m, $sel0 = sel(0)]
+
+	[loadbang, $sel0] > bang > msg(-1) > $i=int(1)
+	$m > $i  
+	
+	$i > floatatom >  %8 > +1 > $f=floatatom
+
+	if $lenstepseq==16:
+		$list2 = ['one', 'two', 'three', 'sixteen']
+	elif $lenstepseq==8:
+		$list2 = [1, 2, 3, 8]
+	end
+
+	for $i in range @len($stepseq):
+		$f > sel($i) > bang
+		$f > sel($i) > bang > send($list2[$i])
+	end
+
+	
+	
+
+}
+
+
+block onoff() {
+
+	dsp > msg('pd',1)
+
+}
+
+
+@clock(8, 160)
+@clock(16, 160)
+
+;

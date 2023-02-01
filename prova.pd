@@ -1,0 +1,5 @@
+#N canvas 300 100 800 500 12 ;
+#N canvas 697 62 450 300 onoff 0;
+#X msg 20 60  dsp 1;
+#X obj 20 120 s pd;
+#X obj 40 40 floatatom ;

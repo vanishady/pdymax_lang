@@ -1,0 +1,18 @@
+#N canvas 783 184 450 300 12;
+#X obj 55 57 loadbang;
+#X msg 55 81 60000;
+#X obj 113 200 /;
+#X floatatom 113 229 5 0 0 0 - - - 0;
+#X floatatom 131 105 5 0 0 0 - - - 0;
+#X obj 108 141 bng 19 250 50 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000;
+#X text 89 20 BPM;
+#X obj 113 252 send 4th_time;
+#X obj 131 57 inlet;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 7 0;
+#X connect 4 0 5 0;
+#X connect 4 0 2 1;
+#X connect 5 0 2 0;
+#X connect 8 0 4 0;
