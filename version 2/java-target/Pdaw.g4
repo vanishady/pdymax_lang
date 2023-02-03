@@ -44,6 +44,7 @@ simpledeclstmt
  | VARNAME '=' list
  | VARNAME '=' slicedlist
  | VARNAME '=' callstmt
+ | VARNAME '=' expr
  ;
 
 list

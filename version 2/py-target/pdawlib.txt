@@ -1,19 +1,4 @@
-import pdawlib
-
-patch myfirst
-
-func bpm_to_ms($bpm:intn) {
-
-	$ms = 60
-	return $ms
-
-}
-
-func label($nodename:node, $text:symbol) {
-
-	text($text) > $nodename
-
-}
+patch nihil
 
 block clock($lenstepseq:intn, $bpm:intn) {
 	
@@ -41,17 +26,3 @@ block clock($lenstepseq:intn, $bpm:intn) {
 	.. @label($m, 'bpm')
 
 }
-
-
-block onoff() {
-
-	dsp > msg('pd',1)
-
-}
-
-
-@clock(8, 160)
-@clock(16, 160)
-
-;
-

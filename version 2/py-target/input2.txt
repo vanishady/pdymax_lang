@@ -26,6 +26,9 @@ block clock($lenstepseq:intn, $bpm:intn) {
 	
 	$i > floatatom >  %8 > +1 > $f=floatatom
 
+	$list3 = [$i, $ffa, $dsgadg]
+	$list4 = [$ms, $text]
+
 
 	if $lenstepseq==16:
 		$list2 = ['one', 'two', 'eight', 'sixteen']

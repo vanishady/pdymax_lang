@@ -3,8 +3,10 @@ import pdawlib
 patch myfirst
 
 func bpm_to_ms($bpm:intn) {
-    $ms = 60
-    return $ms
+
+	$ms = (60*100)/$bpm
+	return $ms
+
 }
 
 func label($nodename:node, $text:symbol) {
@@ -14,17 +16,32 @@ func label($nodename:node, $text:symbol) {
 }
 
 block clock($lenstepseq:intn, $bpm:intn) {
+	
 
-
+	inlet > msg(@bpm_to_ms($bpm))> floatatom > $m = metro.in2
 	bang > [$m, $sel0 = sel(0)]
 
-	[loadbang, $sel0] > bang > $i=int(1)
-	$m > $i
-
+	[loadbang, $sel0] > bang > msg(-1) > $i=int(1)
+	$m > $i  
+	
 	$i > floatatom >  %8 > +1 > $f=floatatom
 
 
+	if $lenstepseq==16:
+		$list2 = ['one', 'two', 'eight', 'sixteen']
+	elif $lenstepseq==8:
+		$list2 = ['one', 'two', 'eight']
+	end
+
+	for $i in range @len($stepseq):
+		$f > sel($i) > bang > send($list2[$i])
+	end
+
+	.. loadbang > $m=msg($bpm) > self.in1
+	.. @label($m, 'bpm')
+
 }
+
 
 block onoff() {
 
@@ -37,3 +54,4 @@ block onoff() {
 @clock(16, 160)
 
 ;
+
