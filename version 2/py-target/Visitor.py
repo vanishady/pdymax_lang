@@ -10,15 +10,17 @@ else:
 
 class NotFoundException(Exception):
 
-    def __init__(self):
-        pass
+    def __init__(self, varname):
+        self._varname = varname
+
+    def __str__(self):
+        return f'cannot find variable {self._varname}'
 
 class TypeException(Exception):
 
     def __init__(self):
         pass
 
-# This class defines a complete generic visitor for a parse tree produced by PdawParser.
 class SimpleVar():
 
     def __init__(self):
@@ -120,7 +122,7 @@ class CustomVisitor(PdawVisitor):
     def inMemory(self, varname):
         for var in self.memory:
             if var.name == varname:
-                return True
+                return var
         return False
 
     # Visit a parse tree produced by PdawParser#prog.
@@ -218,6 +220,7 @@ class CustomVisitor(PdawVisitor):
 
 
     # Visit a parse tree produced by PdawParser#simpledeclstmt.
+    # rule -> VARNAME '=' SYMBOL | NUMBER | list | slicedlist | callstmt | expr
     def visitSimpledeclstmt(self, ctx:PdawParser.SimpledeclstmtContext):
         self.memory.append(SimpleVar())
         self.memory[-1].name = ctx.VARNAME().getText()
@@ -243,21 +246,42 @@ class CustomVisitor(PdawVisitor):
             for elem in ctx.VARNAME():
                 try:
                     if self.inMemory(elem.getText())==False:
-                        raise NotFoundException
+                        raise NotFoundException(elem.getText())
                     for n in self.memory:
                         if n.name == elem.getText() and type(n)==Node:
                             raise TypeException
                     else:
                         self.memory[-1].addvalue(elem.getText())
-                except NotFoundException:
-                    print(f'cannot find variable {elem.getText()}')
+                except NotFoundException as e:
+                    print(e)
                 except TypeException:
                     print(f'cannot add node variables to list[] type')
 
 
     # Visit a parse tree produced by PdawParser#slicedlist.
+    # rule ->  VARNAME '[' VARNAME ']' | VARNAME '[' NUMBER ']'
     def visitSlicedlist(self, ctx:PdawParser.SlicedlistContext):
-        return self.visitChildren(ctx)
+        list_var = ctx.VARNAME(0).getText()
+        
+        try:
+            if self.inMemory(list_var) == False:
+                raise NotFoundException(list_var)
+            list_var = self.inMemory(list_var)    
+            if ctx.VARNAME(1): #VARNAME '[' VARNAME ']' 
+                num_var = ctx.VARNAME(1).getText()
+                if self.inMemory(num_var) == False:
+                    raise NotFoundException(num_var)
+                self.memory[-1].value = list_var.value[int(self.inMemory(num_var).value)]
+            elif ctx.NUMBER(): #VARNAME '[' NUMBER ']'
+                num = ctx.NUMBER().getText()   
+                self.memory[-1].value = list_var.value[int(num)]
+                
+        except NotFoundException as e:
+            print(e)
+        except AttributeError:
+            print(f'cannot use non numeric variable as index in list slicing, at line: {ctx.getText()}')
+        except IndexError:
+            print(f'index out of range, at line: {ctx.getText()}')
 
 
     # Visit a parse tree produced by PdawParser#connectionstmt.

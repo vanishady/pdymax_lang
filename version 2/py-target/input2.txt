@@ -26,8 +26,10 @@ block clock($lenstepseq:intn, $bpm:intn) {
 	
 	$i > floatatom >  %8 > +1 > $f=floatatom
 
-	$list3 = [$i, $ffa, $dsgadg]
+	$list3 = ['pino', 'gatt', 'pollo']
 	$list4 = [$ms, $text]
+	$c = 4
+	$elemfrom3 = $list3[$d]
 
 
 	if $lenstepseq==16:
@@ -36,8 +38,8 @@ block clock($lenstepseq:intn, $bpm:intn) {
 		$list2 = ['one', 'two', 'eight']
 	end
 
-	for $i in range @len($stepseq):
-		$f > sel($i) > bang > send($list2[$i])
+	for $counter in range @len($stepseq):
+		$f > sel($counter) > bang > send($list2[$counter])
 	end
 
 	.. loadbang > $m=msg($bpm) > self.in1
