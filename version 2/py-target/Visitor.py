@@ -10,10 +10,13 @@ else:
 
 class NotFoundException(Exception):
 
-    def __init__(self, varname):
+    def __init__(self, varname, isfunc=False):
         self._varname = varname
+        self._isfunc = isfunc
 
     def __str__(self):
+        if self._isfunc == True:
+            return f'cannot find function {self._varname}'
         return f'cannot find variable {self._varname}'
 
 class TypeException(Exception):
@@ -21,12 +24,50 @@ class TypeException(Exception):
     def __init__(self):
         pass
 
+class Function():
+
+    def __init__(self):
+        self._name = None
+        self._expectedparams = {}
+        self._returnval = None
+
+    def spec(self):
+        return self.name, self.expectedparams
+
+    def getValue(self, vname):
+        return self.expecedparams[vname][1]
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, funcname):
+        self._name = funcname
+
+    @property
+    def expectedparams(self):
+        return self._expectedparams
+
+    @expectedparams.setter
+    def expectedparams(self, typedarg):
+        self._expectedparams.update(typedarg)
+
+    @property
+    def returnval(self):
+        return self._returnval
+
+    @returnval.setter
+    def returnval(self, val):
+        self._returnval = val
+
 class SimpleVar():
 
     def __init__(self):
         self._name = None
         self._vartype = None
         self._value = None
+        self._scope = None
 
     def spec(self):
         return self.name, self.vartype, self.value
@@ -58,6 +99,14 @@ class SimpleVar():
     def value(self, val):
         self._value = val
 
+    @property
+    def scope(self):
+        return self._scope
+
+    @scope.setter
+    def scope(self, scopename):
+        self._scope = scopename
+
 
 class Node():
 
@@ -66,7 +115,7 @@ class Node():
         self._index = None
         self._name = None
         self._nodetype = None
-        self._args = []
+        self._args = None
 
     def spec(self):
         return self.index, self.scope, self.index, self.name, self.nodetype, self.args
@@ -109,7 +158,7 @@ class Node():
 
     @args.setter
     def args(self, arg):
-        self._args.append(arg)
+        self._args = arg
 
 class CustomVisitor(PdawVisitor):
 
@@ -118,6 +167,7 @@ class CustomVisitor(PdawVisitor):
         self.memory = [] #memory is a list of node(), normal variables and block()
         self._index = -1
         self._currscope = 'general'
+        self.functions = [] #list of functions
 
     def inMemory(self, varname):
         for var in self.memory:
@@ -143,7 +193,15 @@ class CustomVisitor(PdawVisitor):
         self.patch = ctx.NAME().getText() #assign patch name
 
     # Visit a parse tree produced by PdawParser#funcdefstmt.
+    # rule -> FUNC NAME typedparams '{' suite returnstmt? NL* '}' NL ; 
     def visitFuncdefstmt(self, ctx:PdawParser.FuncdefstmtContext):
+        name = ctx.NAME().getText()
+        for f in self.functions:
+            if f.name == name:
+                raise Exception(f'a function with this name <{name}> already exists.')
+        self.functions.append(Function())
+        self.currscope = name
+        self.functions[-1].name = name
         return self.visitChildren(ctx)
 
 
@@ -170,6 +228,18 @@ class CustomVisitor(PdawVisitor):
 
     # Visit a parse tree produced by PdawParser#callstmt.
     def visitCallstmt(self, ctx:PdawParser.CallstmtContext):
+        called = ctx.NAME().getText()
+        try:
+            found = False
+            for f in self.functions:
+                if f.name==called:
+                    found = True
+                    break
+            if found == False:
+                raise NotFoundException(called, True)
+        except NotFoundException as e:
+            print(e)
+        
         return self.visitChildren(ctx)
 
 
@@ -182,7 +252,8 @@ class CustomVisitor(PdawVisitor):
         self.memory[-1].index = self.index
         self.memory[-1].name = ctx.VARNAME().getText()
         self.memory[-1].nodetype = ctx.NAME().getText()
-        return self.visitChildren(ctx)
+        if ctx.parameters():
+            self.memory[-1].args = self.visit(ctx.parameters())
 
 
     # Visit a parse tree produced by PdawParser#nodedecl2.
@@ -193,7 +264,8 @@ class CustomVisitor(PdawVisitor):
         self.memory[-1].scope = self.currscope
         self.memory[-1].index = self.index
         self.memory[-1].nodetype = ctx.NAME().getText()
-        return self.visitChildren(ctx)
+        if ctx.parameters():
+            self.memory[-1].args = self.visit(ctx.parameters())
 
 
     # Visit a parse tree produced by PdawParser#nodedecl3.
@@ -224,10 +296,15 @@ class CustomVisitor(PdawVisitor):
     def visitSimpledeclstmt(self, ctx:PdawParser.SimpledeclstmtContext):
         self.memory.append(SimpleVar())
         self.memory[-1].name = ctx.VARNAME().getText()
+        self.memory[-1].scope = self.currscope
         if ctx.SYMBOL():
             self.memory[-1].value = ctx.SYMBOL().getText()
         elif ctx.NUMBER():
             self.memory[-1].value = ctx.NUMBER().getText()
+        elif ctx.callstmt():
+            self.memory[-1].value = self.visit(ctx.callstmt())
+        elif ctx.expr():
+            self.memory[-1].value = self.visit(ctx.expr())
         else:
             return self.visitChildren(ctx)
 
@@ -248,7 +325,7 @@ class CustomVisitor(PdawVisitor):
                     if self.inMemory(elem.getText())==False:
                         raise NotFoundException(elem.getText())
                     for n in self.memory:
-                        if n.name == elem.getText() and type(n)==Node:
+                        if n.name == elem.getText() and type(n)==Node: #la lista non può essere di nodi, per ora.
                             raise TypeException
                     else:
                         self.memory[-1].addvalue(elem.getText())
@@ -296,7 +373,7 @@ class CustomVisitor(PdawVisitor):
 
     # Visit a parse tree produced by PdawParser#parameters.
     def visitParameters(self, ctx:PdawParser.ParametersContext):
-        return self.visitChildren(ctx)
+        return self.visit(ctx.argslist())
 
 
     # Visit a parse tree produced by PdawParser#typedparams.
@@ -306,7 +383,11 @@ class CustomVisitor(PdawVisitor):
 
     # Visit a parse tree produced by PdawParser#argslist.
     def visitArgslist(self, ctx:PdawParser.ArgslistContext):
-        return self.visitChildren(ctx)
+        arglist = []
+        for i in range (len(ctx.arg())):
+            arg = self.visit(ctx.arg(i))
+            arglist.append(arg)
+        return arglist
 
 
     # Visit a parse tree produced by PdawParser#typedargslist.
@@ -317,15 +398,21 @@ class CustomVisitor(PdawVisitor):
     # Visit a parse tree produced by PdawParser#arg.
     def visitArg(self, ctx:PdawParser.ArgContext):
         if ctx.SYMBOL(): 
-            self.memory[-1].args = ctx.SYMBOL().getText()[1:-1]
+            #self.memory[-1].args = ctx.SYMBOL().getText()[1:-1]
+            return ctx.SYMBOL().getText()[1:-1]
         if ctx.NUMBER():
-            self.memory[-1].args = ctx.NUMBER().getText()
+            #self.memory[-1].args = ctx.NUMBER().getText()
+            return ctx.NUMBER().getText()
 
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by PdawParser#typedarg.
+    # rule ->  VARNAME ':' VARTYPE
     def visitTypedarg(self, ctx:PdawParser.TypedargContext):
+        vname = ctx.VARNAME().getText()
+        vtype = ctx.VARTYPE().getText()
+        self.functions[-1].expectedparams = {vname : [vtype, None]}
         return self.visitChildren(ctx)
 
 
@@ -350,17 +437,33 @@ class CustomVisitor(PdawVisitor):
 
     # Visit a parse tree produced by PdawParser#testnumber.
     def visitTestnumber(self, ctx:PdawParser.TestnumberContext):
-        return self.visitChildren(ctx)
+        num = ctx.NUMBER().getText()
+        return int(num)
 
 
     # Visit a parse tree produced by PdawParser#testvar.
     def visitTestvar(self, ctx:PdawParser.TestvarContext):
-        return self.visitChildren(ctx)
+        vname = ctx.VARNAME().getText()
+        try:
+            if self.inMemory(vname)==False:
+                raise NotFoundException(vname)
+            if self.inMemory(vname).value.isnumeric()==False:
+                raise TypeException()
+            
+        except NotFoundException as e:
+            print(e)
+        except TypeException as e:
+            print(f'cannot use non numeric variables in expressions')
+        except AttributeError:
+            print('cannot use nodes in expressions')
+            
+        else:
+            return int(self.inMemory(vname).value)
 
 
     # Visit a parse tree produced by PdawParser#ParensExpr.
     def visitParensExpr(self, ctx:PdawParser.ParensExprContext):
-        return self.visitChildren(ctx)
+        return self.visit(ctx.expr())
 
 
     # Visit a parse tree produced by PdawParser#testfunc.
@@ -370,12 +473,60 @@ class CustomVisitor(PdawVisitor):
 
     # Visit a parse tree produced by PdawParser#MathExpr.
     def visitMathExpr(self, ctx:PdawParser.MathExprContext):
-        return self.visitChildren(ctx)
+        left=self.visit(ctx.expr(0))
+        right=self.visit(ctx.expr(1))
+        
+        if ctx.op.text == '+':
+            self.res=(left)+(right)
+        elif ctx.op.text == '-':
+            self.res=(left)-(right)
+        elif ctx.op.text == '*':
+            self.res=(left)*(right)
+        elif ctx.op.text == '/':
+            self.res=(left)/(right)
+        elif ctx.op.text == '%':
+            self.res=(left)%(right)
+
+        return self.res
 
 
     # Visit a parse tree produced by PdawParser#TestExpr.
     def visitTestExpr(self, ctx:PdawParser.TestExprContext):
-        return self.visitChildren(ctx)
+        left = self.visit(ctx.expr(0))
+        right = self.visit(ctx.expr(1))
+
+        if ctx.testop.text == '==':
+            if (left)==(right):
+                self.eval=True
+            else:
+                self.eval=False
+        elif ctx.testop.text == '!=':
+            if (left)!=(right):
+                self.eval=True
+            else:
+                self.eval=False
+        elif ctx.testop.text == '>':
+            if (left)>(right):
+                self.eval=True
+            else:
+                self.eval=False
+        elif ctx.testop.text == '>=':
+            if (left)>=(right):
+                self.eval=True
+            else:
+                self.eval=False
+        elif ctx.testop.text == '<=':
+            if (left)<=(right):
+                self.eval=True
+            else:
+                self.eval=False
+        elif ctx.testop.text == '<':
+            if (left)<(right):
+                self.eval=True
+            else:
+                self.eval=False
+        
+        return self.eval
 
 
     # Visit a parse tree produced by PdawParser#forstmt.
