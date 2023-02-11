@@ -1,0 +1,8 @@
+COSE LASCIATE INDIETRO:
+simpledeclstmt -> callstmt
+arg -> callstmt
+expr -> testfunc
+
+NELLA GR:
+'-' nelle espressioni: non lo riconosce
+aggiungere list ai possibili VARTYPE

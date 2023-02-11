@@ -369,6 +369,7 @@ class CustomVisitor(PdawVisitor):
 
 
     # Visit a parse tree produced by PdawParser#nodedecl2.
+    # rule -> NAME parameters?
     def visitNodedecl2(self, ctx:PdawParser.Nodedecl2Context):
         self.index += 1
         self.memory.append(Node())
@@ -383,11 +384,13 @@ class CustomVisitor(PdawVisitor):
 
 
     # Visit a parse tree produced by PdawParser#nodedecl3.
+    # rule -> operation
     def visitNodedecl3(self, ctx:PdawParser.Nodedecl3Context):
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by PdawParser#nodedecl4.
+    # rule -> VARNAME '=' operation
     def visitNodedecl4(self, ctx:PdawParser.Nodedecl4Context):
         return self.visitChildren(ctx)
 
@@ -402,14 +405,17 @@ class CustomVisitor(PdawVisitor):
         if ctx.SYMBOL():
             bookmark.value = ctx.SYMBOL().getText()[1:-1]
         elif ctx.NUMBER():
-            bookmark.value = ctx.NUMBER().getText()
+            if '.' in ctx.NUMBER().getText():
+                bookmark.value = float(ctx.NUMBER().getText())
+            else:
+                bookmark.value = int(ctx.NUMBER().getText())
         elif ctx.slicedlist():
-            print('sliced')
+            bookmark.value = self.visit(ctx.slicedlist())
         elif ctx.callstmt():
             print('callstmt')
         elif ctx.expr():
-            print('exprrr')
-        else:
+            bookmark.value = self.visit(ctx.expr())
+        else: #list
             bookmark.value = self.visitChildren(ctx)
 
         print(bookmark.spec())
@@ -440,7 +446,24 @@ class CustomVisitor(PdawVisitor):
 
     # Visit a parse tree produced by PdawParser#slicedlist.
     def visitSlicedlist(self, ctx:PdawParser.SlicedlistContext):
-        return self.visitChildren(ctx)
+        list_var = ctx.VARNAME(0).getText()
+
+        try:
+            list_var = self.memorized(list_var)    
+            if ctx.VARNAME(1): #VARNAME '[' VARNAME ']' 
+                num_var = ctx.VARNAME(1).getText()
+                res = list_var.value[int(self.memorized(num_var).value)]
+            elif ctx.NUMBER(): #VARNAME '[' NUMBER ']'
+                num = ctx.NUMBER().getText()   
+                res = list_var.value[int(num)]
+                
+        except AttributeError:
+            print(f'cannot use non numeric variable as index in list slicing, at line: {ctx.getText()}')
+        except IndexError:
+            print(f'index out of range, at line: {ctx.getText()}')
+
+        else:
+            return res
 
 
     # Visit a parse tree produced by PdawParser#connectionstmt.
@@ -495,6 +518,14 @@ class CustomVisitor(PdawVisitor):
                 raise Exception('argument cannot be node')
             if type(self.memorized(vname))==SimpleVar:
                 return self.memorized(vname).value
+        elif ctx.slicedlist():
+            return self.visit(ctx.slicedlist())
+        elif ctx.expr():
+            return self.visit(ctx.expr())
+        elif ctx.callstmt():
+            print('callstmtttt')
+        else: #list
+            return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by PdawParser#typedarg.
@@ -522,17 +553,34 @@ class CustomVisitor(PdawVisitor):
 
     # Visit a parse tree produced by PdawParser#testnumber.
     def visitTestnumber(self, ctx:PdawParser.TestnumberContext):
-        return self.visitChildren(ctx)
+        num = ctx.NUMBER().getText()
+        if '.' in num:
+            return float(num)
+        return int(num)
 
 
     # Visit a parse tree produced by PdawParser#testvar.
     def visitTestvar(self, ctx:PdawParser.TestvarContext):
-        return self.visitChildren(ctx)
+        vname = ctx.VARNAME().getText()
+        try:
+            if isinstance(self.memorized(vname).value, (float, int))==False:
+                raise TypeException()
+            
+        except TypeException as e:
+            print(f'cannot use non numeric variables in expressions')
+        except AttributeError:
+            print('cannot use nodes in expressions')
+            sys.exit(1)
+            
+        else:
+            if '.' in str(self.memorized(vname).value):
+                return float(self.memorized(vname).value)
+            return int(self.memorized(vname).value)
 
 
     # Visit a parse tree produced by PdawParser#ParensExpr.
     def visitParensExpr(self, ctx:PdawParser.ParensExprContext):
-        return self.visitChildren(ctx)
+        return self.visit(ctx.expr())
 
 
     # Visit a parse tree produced by PdawParser#testfunc.
@@ -542,12 +590,60 @@ class CustomVisitor(PdawVisitor):
 
     # Visit a parse tree produced by PdawParser#MathExpr.
     def visitMathExpr(self, ctx:PdawParser.MathExprContext):
-        return self.visitChildren(ctx)
+        left=self.visit(ctx.expr(0))
+        right=self.visit(ctx.expr(1))
+        
+        if ctx.op.text == '+':
+            res=(left)+(right)
+        elif ctx.op.text == '-':
+            res=(left)-(right)
+        elif ctx.op.text == '*':
+            res=(left)*(right)
+        elif ctx.op.text == '/':
+            res=(left)/(right)
+        elif ctx.op.text == '%':
+            res=(left)%(right)
+
+        return res
 
 
     # Visit a parse tree produced by PdawParser#TestExpr.
     def visitTestExpr(self, ctx:PdawParser.TestExprContext):
-        return self.visitChildren(ctx)
+        left = self.visit(ctx.expr(0))
+        right = self.visit(ctx.expr(1))
+
+        if ctx.testop.text == '==':
+            if (left)==(right):
+                res=True
+            else:
+                res=False
+        elif ctx.testop.text == '!=':
+            if (left)!=(right):
+                res=True
+            else:
+                res=False
+        elif ctx.testop.text == '>':
+            if (left)>(right):
+                res=True
+            else:
+                res=False
+        elif ctx.testop.text == '>=':
+            if (left)>=(right):
+                res=True
+            else:
+                res=False
+        elif ctx.testop.text == '<=':
+            if (left)<=(right):
+                res=True
+            else:
+                res=False
+        elif ctx.testop.text == '<':
+            if (left)<(right):
+                res=True
+            else:
+                res=False
+        
+        return res
 
 
     # Visit a parse tree produced by PdawParser#forstmt.

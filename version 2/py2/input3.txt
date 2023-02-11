@@ -20,8 +20,12 @@ block clock($lenstepseq:intn, $bpm:intn) {
 
 }
 
-
+$ten = 10.1
+$bool = 10>2
 text('CLOCK_1')
+$exxx = 5.5/4
+$ex = $ten/3
+$prin = obj(10/8)
 @clock(8, 160)
 
 ;
