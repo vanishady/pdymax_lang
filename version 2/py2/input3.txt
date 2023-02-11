@@ -1,0 +1,28 @@
+import pdawlib
+
+patch myfirst
+
+func bpm_to_ms($bpm:intn) {
+
+	$ms = (60*100)/$bpm
+	return $ms
+
+}
+
+
+
+block clock($lenstepseq:intn, $bpm:intn) {
+	
+
+	msg(@bpm_to_ms($bpm)) > floatatom > $m = metro.in2
+	toggle > [$m, $sel0 = sel(0)]
+
+
+}
+
+
+text('CLOCK_1')
+@clock(8, 160)
+
+;
+

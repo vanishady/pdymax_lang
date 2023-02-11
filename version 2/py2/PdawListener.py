@@ -143,6 +143,15 @@ class PdawListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by PdawParser#listelem.
+    def enterListelem(self, ctx:PdawParser.ListelemContext):
+        pass
+
+    # Exit a parse tree produced by PdawParser#listelem.
+    def exitListelem(self, ctx:PdawParser.ListelemContext):
+        pass
+
+
     # Enter a parse tree produced by PdawParser#slicedlist.
     def enterSlicedlist(self, ctx:PdawParser.SlicedlistContext):
         pass

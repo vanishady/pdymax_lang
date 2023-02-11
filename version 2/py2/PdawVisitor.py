@@ -84,6 +84,11 @@ class PdawVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by PdawParser#listelem.
+    def visitListelem(self, ctx:PdawParser.ListelemContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by PdawParser#slicedlist.
     def visitSlicedlist(self, ctx:PdawParser.SlicedlistContext):
         return self.visitChildren(ctx)

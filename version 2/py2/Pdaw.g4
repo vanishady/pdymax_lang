@@ -48,9 +48,11 @@ simpledeclstmt
  ;
 
 list
- : '[' (SYMBOL (',' SYMBOL)*)* ']'
- | '[' (NUMBER (',' NUMBER)*)* ']'
- | '[' (VARNAME (',' VARNAME)*)* ']'
+ : '[' (listelem (',' listelem)*)* ']'
+ ;
+
+listelem
+ : SYMBOL | NUMBER | VARNAME
  ;
 
 slicedlist

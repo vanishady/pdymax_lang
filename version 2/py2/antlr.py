@@ -15,7 +15,7 @@ class PrintListener(PdawListener):
 
 
 
-lexer = PdawLexer(FileStream('input1.txt'))
+lexer = PdawLexer(FileStream('input3.txt'))
 stream = CommonTokenStream(lexer)
 parser = PdawParser(stream)
 tree = parser.prog()
@@ -31,7 +31,12 @@ v = Visitor.CustomVisitor()
 
 v.visit(tree)
 
-for n in v.memory:
+#for n in v.memory:
     #if type(n)==Visitor.Node:
-    print(n.spec())
+#    print(n.spec())
 
+#outfile = v.patch
+#output = open('outputs/'+outfile+'.pd', 'w')
+#output.write(result)
+#output.close()
+#print(f'generated file {outfile}.pd')
