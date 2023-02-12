@@ -109,6 +109,11 @@ class PdawVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by PdawParser#singlenode.
+    def visitSinglenode(self, ctx:PdawParser.SinglenodeContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by PdawParser#parameters.
     def visitParameters(self, ctx:PdawParser.ParametersContext):
         return self.visitChildren(ctx)

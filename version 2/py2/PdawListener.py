@@ -188,6 +188,15 @@ class PdawListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by PdawParser#singlenode.
+    def enterSinglenode(self, ctx:PdawParser.SinglenodeContext):
+        pass
+
+    # Exit a parse tree produced by PdawParser#singlenode.
+    def exitSinglenode(self, ctx:PdawParser.SinglenodeContext):
+        pass
+
+
     # Enter a parse tree produced by PdawParser#parameters.
     def enterParameters(self, ctx:PdawParser.ParametersContext):
         pass
