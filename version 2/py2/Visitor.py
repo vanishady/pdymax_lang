@@ -543,13 +543,54 @@ class CustomVisitor(PdawVisitor):
 
 
     # Visit a parse tree produced by PdawParser#connectionstmt.
+    # connectionelem (CONNECT connectionelem)+
     def visitConnectionstmt(self, ctx:PdawParser.ConnectionstmtContext):
+        for i in range(len(ctx.connectionelem())-1):
+            sourcelist = self.visit(ctx.connectionelem(i)) # [(node_id, out1)]
+            sinklist = self.visit(ctx.connectionelem(i+1)) # [(node_id, in1), (node_id, out2)]
+            #controllino del primo giro:
+            if i == 0:
+                for source,outlet in sourcelist:
+                    if outlet.startswith('in'):
+                        print('warning: as a source, u should spec outlets, not inlets!')
+            #controllino dell'ultimo giro:
+            if i == len(ctx.connectionelem())-1:
+                for sink,inlet in sinklist:
+                    if inlet.startswith('out'):
+                        print('warning: as a sink, u should spec inlets, not outlets!')   
+            for source,outlet in sourcelist:
+                for sink,inlet in sinklist:
+                    if outlet.startswith('in'):
+                        outlet = 'out1'
+                    if inlet.startswith('out'):
+                        #in questo caso in realtà l'out serve quando il nodo sarà source
+                        #ovvero al prossimo connectionelem(i)
+                        inlet = 'in1'  
+                    Connection(source, outlet, sink, inlet)
+                
+
+
+    # Visit a parse tree produced by PdawParser#multipleconn.
+    # '[' (VARNAME | nodedeclstmt) ('.'IOLET)? (',' (VARNAME | nodedeclstmt) ('.'IOLET)?)* ']'
+    def visitMultipleconn(self, ctx:PdawParser.MultipleconnContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by PdawParser#connectionelem.
-    def visitConnectionelem(self, ctx:PdawParser.ConnectionelemContext):
-        return self.visitChildren(ctx)
+    # Visit a parse tree produced by PdawParser#singleconn.
+    # (VARNAME | nodedeclstmt)('.'IOLET)? #singleconn
+    def visitSingleconn(self, ctx:PdawParser.SingleconnContext):
+        if ctx.nodedeclstmt():
+            node_id = self.index+1
+            self.visit(ctx.nodedeclstmt())
+        elif ctx.VARNAME():
+            vname = ctx.VARNAME().getText()
+            node_id = self.memorized(vname).index
+            
+        if ctx.IOLET():
+            iolet = ctx.IOLET().getText()
+            if iolet.startswith('out'):
+                
+        
 
 
     # Visit a parse tree produced by PdawParser#parameters.

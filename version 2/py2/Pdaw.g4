@@ -65,8 +65,8 @@ connectionstmt
  ;
 
 connectionelem
- : '[' (VARNAME | nodedeclstmt) ('.'IOLET)? (',' (VARNAME | nodedeclstmt) ('.'IOLET)?)* ']' 
- | (VARNAME | nodedeclstmt)('.'IOLET)?
+ : '[' (VARNAME | nodedeclstmt) ('.'IOLET)? (',' (VARNAME | nodedeclstmt) ('.'IOLET)?)* ']' #multipleconn 
+ | (VARNAME | nodedeclstmt)('.'IOLET)? #singleconn
  ;
 
 

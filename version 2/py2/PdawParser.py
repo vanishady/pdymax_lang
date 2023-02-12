@@ -1715,18 +1715,32 @@ class PdawParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+
+        def getRuleIndex(self):
+            return PdawParser.RULE_connectionelem
+
+     
+        def copyFrom(self, ctx:ParserRuleContext):
+            super().copyFrom(ctx)
+
+
+
+    class MultipleconnContext(ConnectionelemContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PdawParser.ConnectionelemContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
         def VARNAME(self, i:int=None):
             if i is None:
                 return self.getTokens(PdawParser.VARNAME)
             else:
                 return self.getToken(PdawParser.VARNAME, i)
-
         def nodedeclstmt(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(PdawParser.NodedeclstmtContext)
             else:
                 return self.getTypedRuleContext(PdawParser.NodedeclstmtContext,i)
-
 
         def IOLET(self, i:int=None):
             if i is None:
@@ -1734,23 +1748,48 @@ class PdawParser ( Parser ):
             else:
                 return self.getToken(PdawParser.IOLET, i)
 
-        def getRuleIndex(self):
-            return PdawParser.RULE_connectionelem
-
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterConnectionelem" ):
-                listener.enterConnectionelem(self)
+            if hasattr( listener, "enterMultipleconn" ):
+                listener.enterMultipleconn(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitConnectionelem" ):
-                listener.exitConnectionelem(self)
+            if hasattr( listener, "exitMultipleconn" ):
+                listener.exitMultipleconn(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitConnectionelem" ):
-                return visitor.visitConnectionelem(self)
+            if hasattr( visitor, "visitMultipleconn" ):
+                return visitor.visitMultipleconn(self)
             else:
                 return visitor.visitChildren(self)
 
+
+    class SingleconnContext(ConnectionelemContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PdawParser.ConnectionelemContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def VARNAME(self):
+            return self.getToken(PdawParser.VARNAME, 0)
+        def nodedeclstmt(self):
+            return self.getTypedRuleContext(PdawParser.NodedeclstmtContext,0)
+
+        def IOLET(self):
+            return self.getToken(PdawParser.IOLET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSingleconn" ):
+                listener.enterSingleconn(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSingleconn" ):
+                listener.exitSingleconn(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSingleconn" ):
+                return visitor.visitSingleconn(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1764,6 +1803,7 @@ class PdawParser ( Parser ):
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [7]:
+                localctx = PdawParser.MultipleconnContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 248
                 self.match(PdawParser.T__6)
@@ -1829,6 +1869,7 @@ class PdawParser ( Parser ):
                 self.match(PdawParser.T__7)
                 pass
             elif token in [13, 14, 15, 16, 17, 18, 19, 20, 21, 42, 43]:
+                localctx = PdawParser.SingleconnContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 274
                 self._errHandler.sync(self)

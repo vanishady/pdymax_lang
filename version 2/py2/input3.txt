@@ -20,12 +20,7 @@ block clock($lenstepseq:intn, $bpm:intn) {
 
 }
 
-$bool = 10>2
-text('CLOCK_1')
-$exxx = 5.5/4
-$ten = *3
-/7
-$prin = obj(10/8)
+$node = obj(6) > text('ciao')
 @clock(8, 160)
 
 ;

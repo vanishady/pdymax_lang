@@ -99,8 +99,13 @@ class PdawVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by PdawParser#connectionelem.
-    def visitConnectionelem(self, ctx:PdawParser.ConnectionelemContext):
+    # Visit a parse tree produced by PdawParser#multipleconn.
+    def visitMultipleconn(self, ctx:PdawParser.MultipleconnContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PdawParser#singleconn.
+    def visitSingleconn(self, ctx:PdawParser.SingleconnContext):
         return self.visitChildren(ctx)
 
 

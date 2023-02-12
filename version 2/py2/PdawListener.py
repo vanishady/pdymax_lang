@@ -170,12 +170,21 @@ class PdawListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by PdawParser#connectionelem.
-    def enterConnectionelem(self, ctx:PdawParser.ConnectionelemContext):
+    # Enter a parse tree produced by PdawParser#multipleconn.
+    def enterMultipleconn(self, ctx:PdawParser.MultipleconnContext):
         pass
 
-    # Exit a parse tree produced by PdawParser#connectionelem.
-    def exitConnectionelem(self, ctx:PdawParser.ConnectionelemContext):
+    # Exit a parse tree produced by PdawParser#multipleconn.
+    def exitMultipleconn(self, ctx:PdawParser.MultipleconnContext):
+        pass
+
+
+    # Enter a parse tree produced by PdawParser#singleconn.
+    def enterSingleconn(self, ctx:PdawParser.SingleconnContext):
+        pass
+
+    # Exit a parse tree produced by PdawParser#singleconn.
+    def exitSingleconn(self, ctx:PdawParser.SingleconnContext):
         pass
 
 
