@@ -12,13 +12,14 @@ else:
 
 class AlreadyExistsException(Exception):
 
-    def __init__(self, varname, vartype=0):
+    def __init__(self, lineno, varname, vartype=0):
         vartypes = ['function/block', 'node', 'variable']
         self._varname = varname
         self._vartype = vartypes[vartype]
+        self._lineno = lineno
 
     def __str__(self):
-        return f'{self._vartype} <{self._varname}> already exists. Change name.'
+        return f'error at line: {self._lineno}\n{self._vartype} <{self._varname}> already exists. Change name.'
 
 class NotFoundException(Exception):
 
@@ -41,12 +42,67 @@ class InvalidTypeException(Exception):
 
 class TypeException(Exception):
 
-    def __init__(self, name):
+    def __init__(self, lineno, name):
         self._name = name
+        self._lineno = lineno
 
     def __str__(self):
-        return f'cannot add node variable to list'
-    
+        return f'error at line: {self._lineno}\n cannot add node variable to list'
+
+
+class Connection():
+
+    """implements connections"""
+
+    def __init__(self):
+        self._source = 0
+        self._outlet = 0
+        self._sink = 0 
+        self._inlet = 0
+        self._scope = None
+
+    def spec(self):
+        return self.scope, self.source, self.outlet, self.sink, self.inlet
+
+    @property
+    def source(self):
+        return self._source
+
+    @source.setter
+    def source(self, nodeId):
+        self._source = nodeId
+
+    @property
+    def outlet(self):
+        return self._outlet
+
+    @outlet.setter
+    def outlet(self, iolet):
+        self._outlet = iolet
+
+    @property
+    def sink(self):
+        return self._sink
+
+    @sink.setter
+    def sink(self, nodeId):
+        self._sink = nodeId
+
+    @property
+    def inlet(self):
+        return self._inlet
+
+    @inlet.setter
+    def outlet(self, iolet):
+        self._inlet = iolet
+
+    @property
+    def scope(self):
+        return self._scope
+
+    @scope.setter
+    def scope(self, scopename):
+        self._scope = scopename
 
 class Function():
 
@@ -243,8 +299,8 @@ class Node():
         return self._args
 
     @args.setter
-    def args(self, arg):
-        self._args = arg
+    def args(self, arglist):
+        self._args = arglist
     
 
 class CustomVisitor(PdawVisitor):
@@ -295,10 +351,11 @@ class CustomVisitor(PdawVisitor):
         try:
             for f in self.callables:
                 if f.name == name:
-                    raise AlreadyExistsException(name, 0)
+                    raise AlreadyExistsException(ctx.start.line, name, 0)
             self.callables.append(Function())
         except AlreadyExistsException as e:
             print(e)
+            sys.exit(1)
 
         bookmark = self.callables[-1]
         bookmark.name = name #store name
@@ -307,7 +364,7 @@ class CustomVisitor(PdawVisitor):
         if ctx.returnstmt():
             bookmark.returns = ctx.returnstmt() #store return ctx
 
-        print(bookmark.spec())
+        print(type(bookmark), bookmark.spec())
 
 
     # Visit a parse tree produced by PdawParser#returnstmt.
@@ -327,7 +384,7 @@ class CustomVisitor(PdawVisitor):
         try:
             for f in self.callables:
                 if f.name == name:
-                    raise AlreadyExistsException(name, 0)
+                    raise AlreadyExistsException(ctx.start.line, name, 0)
             self.callables.append(Block())
         except AlreadyExistsException as e:
             print(e)
@@ -340,7 +397,7 @@ class CustomVisitor(PdawVisitor):
             for i in range(len(ctx.dotdotstmt())):
                 bookmark.dotdot = ctx.dotdotstmt(i) #store dotdot ctx
 
-        print(bookmark.spec())
+        print(type(bookmark), bookmark.spec())
 
     # Visit a parse tree produced by PdawParser#dotdotstmt.
     def visitDotdotstmt(self, ctx:PdawParser.DotdotstmtContext):
@@ -348,6 +405,7 @@ class CustomVisitor(PdawVisitor):
 
 
     # Visit a parse tree produced by PdawParser#callstmt.
+    # callstmt: '@' NAME parameters ; 
     def visitCallstmt(self, ctx:PdawParser.CallstmtContext):
         return self.visitChildren(ctx)
 
@@ -365,7 +423,7 @@ class CustomVisitor(PdawVisitor):
         if ctx.parameters():
             bookmark.args = self.visit(ctx.parameters())
 
-        print(bookmark.spec())
+        print(type(bookmark), bookmark.spec())
 
 
     # Visit a parse tree produced by PdawParser#nodedecl2.
@@ -380,19 +438,36 @@ class CustomVisitor(PdawVisitor):
         if ctx.parameters():
             bookmark.args = self.visit(ctx.parameters())
 
-        print(bookmark.spec())
+        print(type(bookmark), bookmark.spec())
 
 
     # Visit a parse tree produced by PdawParser#nodedecl3.
     # rule -> operation
     def visitNodedecl3(self, ctx:PdawParser.Nodedecl3Context):
-        return self.visitChildren(ctx)
+        self.index += 1
+        self.memory.append(Node())
+        bookmark = self.memory[-1]
+        bookmark.scope = self.currscope 
+        bookmark.index = self.index
+        bookmark.nodetype = 'obj'
+        bookmark.args = self.visit(ctx.operation())
+
+        print(type(bookmark), bookmark.spec())
 
 
     # Visit a parse tree produced by PdawParser#nodedecl4.
     # rule -> VARNAME '=' operation
     def visitNodedecl4(self, ctx:PdawParser.Nodedecl4Context):
-        return self.visitChildren(ctx)
+        self.index += 1
+        self.memory.append(Node())
+        bookmark = self.memory[-1]
+        bookmark.scope = self.currscope 
+        bookmark.index = self.index
+        bookmark.name = ctx.VARNAME().getText()
+        bookmark.nodetype = 'obj'
+        bookmark.args = self.visit(ctx.operation())
+
+        print(type(bookmark), bookmark.spec())
 
 
     # Visit a parse tree produced by PdawParser#simpledeclstmt.
@@ -418,7 +493,7 @@ class CustomVisitor(PdawVisitor):
         else: #list
             bookmark.value = self.visitChildren(ctx)
 
-        print(bookmark.spec())
+        print(type(bookmark), bookmark.spec())
 
     # Visit a parse tree produced by PdawParser#list.
     # : '[' (SYMBOL (',' SYMBOL)*)* ']' | '[' (NUMBER (',' NUMBER)*)* ']' | '[' (VARNAME (',' VARNAME)*)* ']' | mixedlist
@@ -438,9 +513,10 @@ class CustomVisitor(PdawVisitor):
             try:
                 vname = ctx.VARNAME().getText()
                 if type(self.memorized(vname))==Node:
-                    raise TypeException   
+                    raise TypeException(ctx.start.line, vname) 
             except TypeException as e:
                 print(e)
+                sys.exit(1)
             return self.memorized(ctx.VARNAME().getText()).value    
 
 
@@ -543,7 +619,11 @@ class CustomVisitor(PdawVisitor):
 
     # Visit a parse tree produced by PdawParser#operation.
     def visitOperation(self, ctx:PdawParser.OperationContext):
-        return self.visitChildren(ctx)
+        arglist = []
+        arglist.append(ctx.op.text)
+        if ctx.NUMBER():
+            arglist.append(ctx.NUMBER().getText())
+        return arglist
 
 
     # Visit a parse tree produced by PdawParser#ifstmt.
@@ -564,12 +644,12 @@ class CustomVisitor(PdawVisitor):
         vname = ctx.VARNAME().getText()
         try:
             if isinstance(self.memorized(vname).value, (float, int))==False:
-                raise TypeException()
+                raise TypeException(ctx.start.line, vname)
             
         except TypeException as e:
-            print(f'cannot use non numeric variables in expressions')
+            print(f'error at line: {ctx.start.line}\n cannot use non numeric variables in expressions')
         except AttributeError:
-            print('cannot use nodes in expressions')
+            print(f'error at line: {ctx.start.line}\n cannot use nodes in expressions')
             sys.exit(1)
             
         else:
