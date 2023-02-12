@@ -54,15 +54,15 @@ class Connection():
 
     """implements connections"""
 
-    def __init__(self):
-        self._source = 0
-        self._outlet = 0
-        self._sink = 0 
-        self._inlet = 0
-        self._scope = None
+    def __init__(self, scope, source, outlet, sink, inlet):
+        self._scope = scope
+        self._source = source
+        self._outlet = outlet
+        self._sink = sink
+        self._inlet = inlet
 
     def spec(self):
-        return self.scope, self.source, self.outlet, self.sink, self.inlet
+        return self.scope, self.source, self.outlet[3:], self.sink, self.inlet[2:]
 
     @property
     def source(self):
@@ -93,7 +93,7 @@ class Connection():
         return self._inlet
 
     @inlet.setter
-    def outlet(self, iolet):
+    def inlet(self, iolet):
         self._inlet = iolet
 
     @property
@@ -550,20 +550,18 @@ class CustomVisitor(PdawVisitor):
         for i in range(len(ctx.connectionelem())-1):
             sourcelist = self.visit(ctx.connectionelem(i)) # [(node_id, out1)]
             sinklist = self.visit(ctx.connectionelem(i+1)) # [(node_id, in1), (node_id, out2)]
-            #print(sourcelist)
-            #print(sinklist)
-            """
-            #controllino del primo giro:
+
+            #controllino del primo giro
             if i == 0:
-                for source,outlet in sourcelist:
+                for (source,outlet) in sourcelist:
                     if outlet.startswith('in'):
                         print('warning: as a source, u should spec outlets, not inlets!')
             #controllino dell'ultimo giro:
-            if i == len(ctx.connectionelem())-1:
+            if i == len(ctx.connectionelem())-2:
                 for sink,inlet in sinklist:
                     if inlet.startswith('out'):
-                        print('warning: as a sink, u should spec inlets, not outlets!')   
-            """
+                        print('warning: as a sink, u should spec inlets, not outlets!')
+                        
             for (source,outlet) in sourcelist:
                 for (sink,inlet) in sinklist:
                     if outlet.startswith('in') or outlet=='':
@@ -572,17 +570,18 @@ class CustomVisitor(PdawVisitor):
                         #in questo caso in realtà l'out serve quando il nodo sarà source
                         #ovvero al prossimo connectionelem(i)
                         inlet = 'in1'
-                    print(f'#X connect {source} {outlet} {sink} {inlet}')
-                    #Connection(source, outlet, sink, inlet)
-            
-                
+                    #print(f'#X connect {source} {outlet} {sink} {inlet}')
+                    conn = Connection(self.currscope, source, outlet, sink, inlet)
+                    self.memory.append(conn)
+                    print(type(conn), conn.spec())
+                   
 
     # Visit a parse tree produced by PdawParser#multipleconn.
     # '[' (VARNAME | nodedeclstmt) ('.'IOLET)? (',' (VARNAME | nodedeclstmt) ('.'IOLET)?)* ']'
     def visitMultipleconn(self, ctx:PdawParser.MultipleconnContext):
         nodelist = []
         for i in range(len(ctx.singlenode())):
-            nodelist.append(self.visit(ctx.singlenode(i))) 
+            nodelist.append(self.visit(ctx.singlenode(i)))
         return nodelist
 
 
@@ -590,37 +589,31 @@ class CustomVisitor(PdawVisitor):
     # (VARNAME | nodedeclstmt)('.'IOLET)? #singleconn
     def visitSingleconn(self, ctx:PdawParser.SingleconnContext):
         nodelist = []
-        nodelist.append(self.visit(ctx.singlenode()))    
+        nodelist.append(self.visit(ctx.singlenode()))
         return nodelist
 
     def visitSinglenode(self, ctx:PdawParser.SinglenodeContext):
         #controllo che il nodo non sia già stato dichiarato alla visita precedente
         dont = False
         ctx_text = ctx.getText()
-        if ctx_text in self.full_text:
+        if (ctx_text, ctx.start) in self.full_text:
             dont = True
-        else:
-            self.full_text.update({ctx_text : None})
 
         iolet = ''
         
         if ctx.nodedeclstmt():
             if dont == True:
-                node_id = self.full_text[ctx_text]
+                node_id = self.full_text[(ctx_text, ctx.start)]
             else:
                 node_id = self.index+1
                 self.visit(ctx.nodedeclstmt())
+                self.full_text.update({(ctx_text, ctx.start) : node_id})
         elif ctx.VARNAME():
             vname = ctx.VARNAME().getText()
             node_id = self.memorized(vname).index
             
         if ctx.IOLET():
             iolet = ctx.IOLET().getText()
-
-        #aggiungo all context il nodeid, per poterlo riprendere in caso abbia già declared il nodo
-        if dont == False:
-            self.full_text[ctx_text] = node_id
-        print(self.full_text)
         
         return (node_id, iolet)
 

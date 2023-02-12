@@ -20,7 +20,7 @@ block clock($lenstepseq:intn, $bpm:intn) {
 
 }
 
-$node = obj(6) > text('ciao') > [$u = osc, dac]
+$node = obj(6).out3 > text('ciao').in2 > [$u = osc, dac] > text('dioca') > text('ciao').in1
 @clock(8, 160)
 
 ;
