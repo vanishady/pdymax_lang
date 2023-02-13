@@ -13,7 +13,7 @@ else:
 class AlreadyExistsException(Exception):
 
     def __init__(self, lineno, varname, vartype=0):
-        vartypes = ['function/block', 'node', 'variable']
+        vartypes = ['function/block', 'variable']
         self._varname = varname
         self._vartype = vartypes[vartype]
         self._lineno = lineno
@@ -366,7 +366,7 @@ class CustomVisitor(PdawVisitor):
        for var in self.memory:
             if type(var)==Connection:
                 continue
-            if var.name == varname and var.scope == self.currscope:
+            if (var.name == varname and var.scope == self.currscope):
                 return True
        return False
         
@@ -459,6 +459,13 @@ class CustomVisitor(PdawVisitor):
     # Visit a parse tree produced by PdawParser#nodedecl1.
     # rule -> VARNAME '=' NAME parameters?
     def visitNodedecl1(self, ctx:PdawParser.Nodedecl1Context):
+        try:
+            if self.alreadyexists(ctx.VARNAME().getText()):
+                raise AlreadyExistsException(ctx.start.line, ctx.VARNAME().getText(), 1)
+        except AlreadyExistsException as e:
+            print(e)
+            sys.exit(1)
+            
         self.index += 1
         self.memory.append(Node())
         bookmark = self.memory[-1]
@@ -504,6 +511,13 @@ class CustomVisitor(PdawVisitor):
     # Visit a parse tree produced by PdawParser#nodedecl4.
     # rule -> VARNAME '=' operation
     def visitNodedecl4(self, ctx:PdawParser.Nodedecl4Context):
+        try:
+            if self.alreadyexists(ctx.VARNAME().getText()):
+                raise AlreadyExistsException(ctx.start.line, ctx.VARNAME().getText(), 1)
+        except AlreadyExistsException as e:
+            print(e)
+            sys.exit(1)
+            
         self.index += 1
         self.memory.append(Node())
         bookmark = self.memory[-1]
@@ -519,6 +533,13 @@ class CustomVisitor(PdawVisitor):
     # Visit a parse tree produced by PdawParser#simpledeclstmt.
     # rule -> VARNAME '=' SYMBOL | NUMBER | list | slicedlist | callstmt | expr
     def visitSimpledeclstmt(self, ctx:PdawParser.SimpledeclstmtContext):
+        try:
+            if self.alreadyexists(ctx.VARNAME().getText()):
+                raise AlreadyExistsException(ctx.start.line, ctx.VARNAME().getText(), 1)
+        except AlreadyExistsException as e:
+            print(e)
+            sys.exit(1)
+
         self.memory.append(SimpleVar())
         bookmark = self.memory[-1]
         bookmark.name = ctx.VARNAME().getText()

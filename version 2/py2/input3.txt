@@ -24,6 +24,7 @@ $node = obj(6).out3 > text('ciao').in2 > [$u = osc, dac] > text('dioca') > text(
 $refree = 55
 $list2 = ['diofa', 2, 3, 4, 88, 3]
 msg('yo_bro')
+$refree = obj('noice')
 
 
 for $counter in range 5:
