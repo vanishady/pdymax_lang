@@ -14,7 +14,26 @@ class PrintListener(PdawListener):
         print(ctx.start, ctx.stop, PdawParser.ruleNames[ctx.getRuleIndex()])
 
 
+"""     
 
+    # Visit a parse tree produced by PdlangParser#forstmt.
+    def visitForstmt(self, ctx:PdlangParser.ForstmtContext):
+        if '.' in ctx.NUMBER().getText():
+            raise Exception('integer only in for loops please')
+        for i in range(int(ctx.NUMBER().getText())):
+            if self.breakthis==True:
+                self.breakthis=False
+                break
+            elif self.continuethis==True:
+                self.continuethis=False
+                continue
+            elif self.passthis==True:
+                self.passthis=False
+                pass
+            else:
+                self.visitSuite(ctx.suite())
+        #return self.visitChildren(ctx)
+"""
 lexer = PdawLexer(FileStream('input3.txt'))
 stream = CommonTokenStream(lexer)
 parser = PdawParser(stream)

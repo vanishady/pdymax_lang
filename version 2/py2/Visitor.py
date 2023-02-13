@@ -42,13 +42,49 @@ class InvalidTypeException(Exception):
 
 class TypeException(Exception):
 
-    def __init__(self, lineno, name):
+    def __init__(self, lineno, name, err):
         self._name = name
         self._lineno = lineno
+        self._err = err
 
     def __str__(self):
-        return f'error at line: {self._lineno}\n cannot add node variable to list'
+        return f'error at line: {self._lineno}\n'+self._err
 
+class Iterator():
+
+    """implements iterators"""
+
+    def __init__(self):
+        self._name = None
+        self._value = -1
+        self._scope = None
+
+    def spec(self):
+        return self.scope, self.name, self.value
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, itername):
+        self._name = itername
+
+    @property
+    def value(self):
+        return self._value
+
+    @value.setter
+    def value(self, val):
+        self._value = val
+
+    @property
+    def scope(self):
+        return self._scope
+
+    @scope.setter
+    def scope(self, iterscope):
+        self._scope = iterscope
 
 class Connection():
 
@@ -314,15 +350,25 @@ class CustomVisitor(PdawVisitor):
         self._prevscope = []
 
     def memorized(self, varname):
-        #just ckecks if variable with given varname is in memory
+        #just ckecks if variable with given varname is in memory, and returns var
         try:
             for var in self.memory:
+                if type(var)==Connection:
+                    continue
                 if var.name == varname:
                     return var
             raise NotFoundException(varname)
         except NotFoundException as e:
             print(e)
             sys.exit(1)
+
+    def alreadyexists(self, varname):
+       for var in self.memory:
+            if type(var)==Connection:
+                continue
+            if var.name == varname and var.scope == self.currscope:
+                return True
+       return False
         
     # Visit a parse tree produced by PdawParser#prog.
     def visitProg(self, ctx:PdawParser.ProgContext):
@@ -513,7 +559,8 @@ class CustomVisitor(PdawVisitor):
             try:
                 vname = ctx.VARNAME().getText()
                 if type(self.memorized(vname))==Node:
-                    raise TypeException(ctx.start.line, vname) 
+                    err_str = 'cannot add node variable to list'
+                    raise TypeException(ctx.start.line, vname, err_str) 
             except TypeException as e:
                 print(e)
                 sys.exit(1)
@@ -537,6 +584,7 @@ class CustomVisitor(PdawVisitor):
             print(f'cannot use non numeric variable as index in list slicing, at line: {ctx.getText()}')
         except IndexError:
             print(f'index out of range, at line: {ctx.getText()}')
+            sys.exit(1)
 
         else:
             return res
@@ -592,6 +640,8 @@ class CustomVisitor(PdawVisitor):
         nodelist.append(self.visit(ctx.singlenode()))
         return nodelist
 
+    # Visit a parse tree produced by PdawParser#singlenode.
+    # this method is called when visiting a single node inside connection
     def visitSinglenode(self, ctx:PdawParser.SinglenodeContext):
         #controllo che il nodo non sia già stato dichiarato alla visita precedente
         dont = False
@@ -600,17 +650,23 @@ class CustomVisitor(PdawVisitor):
             dont = True
 
         iolet = ''
+
+        try:
         
-        if ctx.nodedeclstmt():
-            if dont == True:
-                node_id = self.full_text[(ctx_text, ctx.start)]
-            else:
-                node_id = self.index+1
-                self.visit(ctx.nodedeclstmt())
-                self.full_text.update({(ctx_text, ctx.start) : node_id})
-        elif ctx.VARNAME():
-            vname = ctx.VARNAME().getText()
-            node_id = self.memorized(vname).index
+            if ctx.nodedeclstmt():
+                if dont == True:
+                    node_id = self.full_text[(ctx_text, ctx.start)]
+                else:
+                    node_id = self.index+1
+                    self.visit(ctx.nodedeclstmt())
+                    self.full_text.update({(ctx_text, ctx.start) : node_id})
+            elif ctx.VARNAME():
+                vname = ctx.VARNAME().getText()
+                node_id = self.memorized(vname).index
+
+        except AttributeError:
+            print(f'cannot use {type(self.memorized(vname))} in connections')
+            sys.exit(1)
             
         if ctx.IOLET():
             iolet = ctx.IOLET().getText()
@@ -658,8 +714,9 @@ class CustomVisitor(PdawVisitor):
             vname = ctx.VARNAME().getText()
             if type(self.memorized(vname))==Node:
                 raise Exception('argument cannot be node')
-            if type(self.memorized(vname))==SimpleVar:
+            if type(self.memorized(vname)) in [SimpleVar, Iterator]:
                 return self.memorized(vname).value
+                
         elif ctx.slicedlist():
             return self.visit(ctx.slicedlist())
         elif ctx.expr():
@@ -693,9 +750,17 @@ class CustomVisitor(PdawVisitor):
 
 
     # Visit a parse tree produced by PdawParser#ifstmt.
+    # IF expr ':' suite (ELIF expr ':' suite)* (ELSE ':' suite)? END
     def visitIfstmt(self, ctx:PdawParser.IfstmtContext):
-        return self.visitChildren(ctx)
-
+        if self.visit(ctx.expr(0))==True:
+            return self.visitSuite(ctx.suite(0))
+        if ctx.ELIF():
+            for i in range (len(ctx.ELIF())):
+                if self.visit(ctx.expr(i+1))==True:
+                    return self.visitSuite(ctx.suite(i+1))
+        if ctx.ELSE():
+            lastsuite = len(ctx.suite())-1
+            return self.visitSuite(ctx.suite(lastsuite))
 
     # Visit a parse tree produced by PdawParser#testnumber.
     def visitTestnumber(self, ctx:PdawParser.TestnumberContext):
@@ -710,12 +775,13 @@ class CustomVisitor(PdawVisitor):
         vname = ctx.VARNAME().getText()
         try:
             if isinstance(self.memorized(vname).value, (float, int))==False:
-                raise TypeException(ctx.start.line, vname)
+                err_str = 'cannot use non numeric variables in expressions'
+                raise TypeException(ctx.start.line, vname, err_str)
             
         except TypeException as e:
-            print(f'error at line: {ctx.start.line}\n cannot use non numeric variables in expressions')
+            print(f'error at line: {ctx.start.line}\n ')
         except AttributeError:
-            print(f'error at line: {ctx.start.line}\n cannot use nodes in expressions')
+            print(e)
             sys.exit(1)
             
         else:
@@ -793,9 +859,54 @@ class CustomVisitor(PdawVisitor):
 
 
     # Visit a parse tree produced by PdawParser#forstmt.
+    # FOR VARNAME 'in range' (NUMBER | callstmt | VARNAME) ':' suite END
     def visitForstmt(self, ctx:PdawParser.ForstmtContext):
-        return self.visitChildren(ctx)
+        name = ctx.VARNAME(0).getText()
+        if self.alreadyexists(name):
+            bookmark = self.memorized(name)
+        else: 
+            self.memory.append(Iterator())
+            bookmark = self.memory[-1]
+            bookmark.name = name
+            bookmark.scope = self.currscope
 
+        bookmark.value = -1
+        print(type(bookmark), bookmark.spec())
+
+        #get range len
+        try:
+            if ctx.NUMBER():
+                if '.' in ctx.NUMBER().getText():
+                    rangelen = ctx.NUMBER().getText().split('.')
+                    rangelen = int(rangelen[0])
+                    print('warning: cannot use float variables as range len, will use {rangelen} instead')
+                else:
+                    rangelen = int(ctx.NUMBER().getText())
+            elif ctx.callstmt():
+                print('callsmttttt')
+            elif ctx.VARNAME(1):
+                vname = ctx.VARNAME(1).getText()
+                if type(self.memorized(vname)) == Node:
+                    err_str = 'cannot use node variables as range len'
+                    raise TypeException(ctx.start.line, vname, err_str)
+                if isinstance(self.memorized(vname).value, int):
+                    rangelen = int(self.memorized(vname).value)
+                elif isinstance(self.memorized(vname).value, float):
+                    rangelen = int(self.memorized(vname).value)
+                    print('warning: cannot use float variables as range len, will use {rangelen} instead')
+                else:
+                    raise TypeException(ctx.start.line, vname, 'wrong type used as range len')
+                
+        except TypeException as e:
+            print(e)
+            sys.exit(1)
+
+        #visit suite
+        for i in range(rangelen):
+            bookmark.value+=1
+            self.visitSuite(ctx.suite())
+
+        bookmark.value = -1
 
     # Visit a parse tree produced by PdawParser#eos.
     def visitEos(self, ctx:PdawParser.EosContext):
