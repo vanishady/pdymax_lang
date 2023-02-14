@@ -4,6 +4,7 @@ patch myfirst
 
 func bpm_to_ms($bpm:intn) {
 
+	$bpm = 50
 	$ms = (60*100)/$bpm
 	return $ms
 
@@ -14,8 +15,10 @@ func bpm_to_ms($bpm:intn) {
 block clock($lenstepseq:intn, $bpm:intn) {
 	
 
+	$bpm = 30
 	msg(@bpm_to_ms($bpm)) > floatatom > $m = metro.in2
 	toggle > [$m, $sel0 = sel(0)]
+	.. $gaa = obj(44)
 
 
 }
@@ -24,7 +27,7 @@ $node = obj(6).out3 > text('ciao').in2 > [$u = osc, dac] > text('dioca') > text(
 $refree = 55
 $list2 = ['diofa', 2, 3, 4, 88, 3]
 msg('yo_bro')
-$refree = obj('noice')
+$sounds = obj('noice')
 
 
 for $counter in range 5:
@@ -37,6 +40,7 @@ for $counter in range 3:
 end
 
 @clock(8, 160)
+$boss = @bpm_to_ms()
 
 ;
 

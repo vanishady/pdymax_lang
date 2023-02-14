@@ -1,4 +1,4 @@
-#N canvas 636 0 757 716 12;
+#N canvas 401 38 681 716 12;
 #X obj 62 171 loadbang;
 #X obj 146 219 bng 19 250 50 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000;
 #X obj 146 170 sel 0;

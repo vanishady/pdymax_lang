@@ -31,8 +31,8 @@ v = Visitor.CustomVisitor()
 v.visit(tree)
 
 #for n in v.memory:
-    #if type(n)==Visitor.Node:
-#    print(n.spec())
+    #if type(n) in [Visitor.Node, Visitor.Connection]:
+    #    print(n.spec())
 
 #outfile = v.patch
 #output = open('outputs/'+outfile+'.pd', 'w')

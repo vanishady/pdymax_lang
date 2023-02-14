@@ -12,7 +12,7 @@ patchstmt: PATCH NAME NL ;
 
 funcdefstmt: FUNC NAME typedparams '{' suite returnstmt? NL* eos NL ; 
 
-returnstmt: RETURN VARNAME (',' VARNAME)* NL ;
+returnstmt: RETURN VARNAME? NL ;
 
 stmt
  : blockstmt NL
@@ -25,7 +25,7 @@ stmt
  | NL
  ; 
 
-blockstmt: BLOCK NAME typedparams '{' suite dotdotstmt* NL* eos NL ;
+blockstmt: BLOCK NAME typedparams '{' suite NL* dotdotstmt* NL* eos NL ;
 
 dotdotstmt: '..' (connectionstmt | nodedeclstmt | callstmt) NL ;  
 

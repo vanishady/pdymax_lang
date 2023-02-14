@@ -10,6 +10,15 @@ else:
 
 # This class defines a complete generic visitor for a parse tree produced by PdawParser.
 
+class InvalidParametersException(Exception):
+
+    def __init__(self, expected, given):
+        self._expected = expected
+        self._given = given
+
+    def __str__(self):
+        return f'{type(self)}, expected: {self._expected} \n found: {self._given}'
+    
 class AlreadyExistsException(Exception):
 
     def __init__(self, lineno, varname, vartype=0):
@@ -149,6 +158,7 @@ class Function():
         self._expargs = [] #[ (vname, vtype), (vname, vtype),  ...]
         self._body = None
         self._returns = None
+        self._callnum = 0
 
     def spec(self):
         return self.name, self.expargs
@@ -185,6 +195,14 @@ class Function():
     def returns(self, returnctx):
         self._returns = returnctx
 
+    @property
+    def callnum(self):
+        return self._callnum
+
+    @callnum.setter
+    def callnum(self, num):
+        self._callnum = num
+
 class Block():
 
     """ implements blocks """
@@ -194,6 +212,7 @@ class Block():
         self._expargs = [] #[ (vname, vtype), (vname, vtype),  ...]
         self._body = None
         self._dotdot = []
+        self._callnum = 0
 
     def spec(self):
         return self.name, self.expargs
@@ -229,6 +248,14 @@ class Block():
     @dotdot.setter
     def dotdot(self, dotdotctx):
         self._dotdot.append(dotdotctx)
+
+    @property
+    def callnum(self):
+        return self._callnum
+
+    @callnum.setter
+    def callnum(self, num):
+        self._callnum = num
 
 class SimpleVar():
 
@@ -415,7 +442,10 @@ class CustomVisitor(PdawVisitor):
 
     # Visit a parse tree produced by PdawParser#returnstmt.
     def visitReturnstmt(self, ctx:PdawParser.ReturnstmtContext):
-        return self.visitChildren(ctx)
+        vname = ctx.VARNAME().getText()
+        retval = self.memorized(vname).value
+        self.currscope = self.prevscope
+        return retval
 
 
     # Visit a parse tree produced by PdawParser#stmt.
@@ -453,7 +483,49 @@ class CustomVisitor(PdawVisitor):
     # Visit a parse tree produced by PdawParser#callstmt.
     # callstmt: '@' NAME parameters ; 
     def visitCallstmt(self, ctx:PdawParser.CallstmtContext):
-        return self.visitChildren(ctx)
+        callee = None
+        fname = ctx.NAME().getText()
+        #check if called func/block exists
+        try:
+            for f in self.callables:
+                if f.name == fname:
+                    callee = f
+                    callee.callnum += 1
+            if callee == None:
+                raise NotFoundException(fname, True)
+
+        except NotFoundException as e:
+            print(e, True)
+
+
+        try:
+            params = self.visit(ctx.parameters())
+            if len(params)!= len(callee.expargs):
+                raise InvalidParametersException(callee.expargs, ctx.parameters().getText())
+        except InvalidParametersException as e:
+            print(e)
+            sys.exit(1)
+        except AttributeError: #case params = ()
+            params = []
+
+        print(params)
+
+        #function called
+        if type(callee)==Function:
+            self.currscope = callee.name+str(callee.callnum)
+            #TODO: CHECK ARGS TYPES
+            #for i in range(len(params)):
+            #    if params[i]
+            self.visit(callee.body)
+            return self.visit(callee.returns)
+
+        #block called
+        if type(callee)==Block:
+            self.currscope = callee.name+str(callee.callnum)
+            self.visit(callee.body)
+            for i in range(len(callee.dotdot)):
+                self.visit(callee.dotdot[i])
+            return None
 
 
     # Visit a parse tree produced by PdawParser#nodedecl1.
@@ -554,7 +626,7 @@ class CustomVisitor(PdawVisitor):
         elif ctx.slicedlist():
             bookmark.value = self.visit(ctx.slicedlist())
         elif ctx.callstmt():
-            print('callstmt')
+            bookmark.value = self.visit(ctx.callstmt())
         elif ctx.expr():
             bookmark.value = self.visit(ctx.expr())
         else: #list
@@ -743,7 +815,10 @@ class CustomVisitor(PdawVisitor):
         elif ctx.expr():
             return self.visit(ctx.expr())
         elif ctx.callstmt():
-            print('callstmtttt')
+            value = self.visit(ctx.callstmt())
+            if value==None:
+                raise Exception('cannot call a block as argument')
+            return self.visit(ctx.callstmt())
         else: #list
             return self.visitChildren(ctx)
 
@@ -960,7 +1035,9 @@ class CustomVisitor(PdawVisitor):
 
     @property
     def prevscope(self):
-        return self._prevscope
+        latestscope = self._prevscope[-1]
+        self._prevscope = self._prevscope[:-1]
+        return latestscope
 
     @prevscope.setter
     def prevscope(self, scope):

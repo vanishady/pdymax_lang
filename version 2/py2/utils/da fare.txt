@@ -2,6 +2,8 @@ COSE LASCIATE INDIETRO:
 simpledeclstmt -> callstmt
 arg -> callstmt
 expr -> testfunc
+callstmt
+returnstmt -> return VARNAME (, VARNAME)
 
 NELLA GR:
 '-' nelle espressioni: non lo riconosce
