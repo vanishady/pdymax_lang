@@ -213,6 +213,7 @@ class Block():
         self._body = None
         self._dotdot = []
         self._callnum = 0
+        self._resume = None #scope in which block was summoned
 
     def spec(self):
         return self.name, self.expargs
@@ -256,6 +257,14 @@ class Block():
     @callnum.setter
     def callnum(self, num):
         self._callnum = num
+
+    @property
+    def resume(self):
+        return self._resume
+
+    @resume.setter
+    def resume(self, scope):
+        self._resume = scope
 
 class SimpleVar():
 
@@ -351,7 +360,9 @@ class Node():
     def nodetype(self, ntype):
         try:
             objnodes = open('utils/basicnodes.txt', 'r')
-            if ntype not in objnodes.read():
+            if ntype in ['floatatom', 'array', 'text', 'symbolatom']:
+                pass
+            elif ntype not in objnodes.read():
                 raise InvalidTypeException(ntype)
         except InvalidTypeException as e:
             print(e)
@@ -382,7 +393,7 @@ class CustomVisitor(PdawVisitor):
             for var in self.memory:
                 if type(var)==Connection:
                     continue
-                if var.name == varname:
+                if var.name == varname and var.scope==self.currscope:
                     return var
             raise NotFoundException(varname)
         except NotFoundException as e:
@@ -477,7 +488,10 @@ class CustomVisitor(PdawVisitor):
 
     # Visit a parse tree produced by PdawParser#dotdotstmt.
     def visitDotdotstmt(self, ctx:PdawParser.DotdotstmtContext):
-        return self.visitChildren(ctx)
+        for b in self.callables:
+            if self.currscope.startswith(b.name):
+                self.currscope = b.resume
+        self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by PdawParser#callstmt.
@@ -491,13 +505,15 @@ class CustomVisitor(PdawVisitor):
                 if f.name == fname:
                     callee = f
                     callee.callnum += 1
+                    if type(callee)==Block:
+                        callee.resume = self.currscope
             if callee == None:
                 raise NotFoundException(fname, True)
 
         except NotFoundException as e:
             print(e, True)
 
-
+        #check passed parameters 
         try:
             params = self.visit(ctx.parameters())
             if len(params)!= len(callee.expargs):
@@ -508,20 +524,41 @@ class CustomVisitor(PdawVisitor):
         except AttributeError: #case params = ()
             params = []
 
-        print(params)
+        try:
+            if len(params)!=len(callee.expargs):
+                raise InvalidParametersException(callee.expargs, params)
+        except InvalidParametersException as e:
+            print(e)
+            sys.exit(1)
+
+        #assign given parameters to expected + type check
+        self.currscope = callee.name+str(callee.callnum)
+        
+        for i in range(len(params)):
+            try: 
+                if callee.expargs[i][1]=='intn':
+                    params[i]=int(params[i])
+                elif callee.expargs[i][1]=='floatn':
+                    params[i]=float(params[i])
+                elif callee.expargs[i][1]=='symbol':
+                    params[i]=str(params[i])
+                    
+                self.memory.append(SimpleVar())
+                self.memory[-1].name = callee.expargs[i][0]
+                self.memory[-1].scope = self.currscope
+                self.memory[-1].value = params[i]
+
+            except ValueError:
+                print(f'wrong parameter type! expected: <{callee.expargs[i][1]}>, found: <{params[i]}>')
+                sys.exit(1)
 
         #function called
         if type(callee)==Function:
-            self.currscope = callee.name+str(callee.callnum)
-            #TODO: CHECK ARGS TYPES
-            #for i in range(len(params)):
-            #    if params[i]
             self.visit(callee.body)
             return self.visit(callee.returns)
 
         #block called
         if type(callee)==Block:
-            self.currscope = callee.name+str(callee.callnum)
             self.visit(callee.body)
             for i in range(len(callee.dotdot)):
                 self.visit(callee.dotdot[i])
@@ -818,7 +855,7 @@ class CustomVisitor(PdawVisitor):
             value = self.visit(ctx.callstmt())
             if value==None:
                 raise Exception('cannot call a block as argument')
-            return self.visit(ctx.callstmt())
+            return value
         else: #list
             return self.visitChildren(ctx)
 
@@ -893,7 +930,7 @@ class CustomVisitor(PdawVisitor):
 
     # Visit a parse tree produced by PdawParser#testfunc.
     def visitTestfunc(self, ctx:PdawParser.TestfuncContext):
-        return self.visitChildren(ctx)
+        return self.visit(ctx.callstmt())
 
 
     # Visit a parse tree produced by PdawParser#MathExpr.
@@ -979,7 +1016,7 @@ class CustomVisitor(PdawVisitor):
                 else:
                     rangelen = int(ctx.NUMBER().getText())
             elif ctx.callstmt():
-                print('callsmttttt')
+                rangelen = int(self.visit(ctx.callstmt()))
             elif ctx.VARNAME(1):
                 vname = ctx.VARNAME(1).getText()
                 if type(self.memorized(vname)) == Node:

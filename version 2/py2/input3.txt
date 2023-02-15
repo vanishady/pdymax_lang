@@ -4,7 +4,6 @@ patch myfirst
 
 func bpm_to_ms($bpm:intn) {
 
-	$bpm = 50
 	$ms = (60*100)/$bpm
 	return $ms
 
@@ -15,7 +14,6 @@ func bpm_to_ms($bpm:intn) {
 block clock($lenstepseq:intn, $bpm:intn) {
 	
 
-	$bpm = 30
 	msg(@bpm_to_ms($bpm)) > floatatom > $m = metro.in2
 	toggle > [$m, $sel0 = sel(0)]
 	.. $gaa = obj(44)
@@ -40,7 +38,9 @@ for $counter in range 3:
 end
 
 @clock(8, 160)
-$boss = @bpm_to_ms()
+
+$fant = 'astic'
+$res=@bpm_to_ms(40)
 
 ;
 
