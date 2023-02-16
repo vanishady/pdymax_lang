@@ -35,7 +35,7 @@ scopes = {}
 for n in v.memory:
     if type(n) in [Visitor.Node, Visitor.Connection]:
         if n.scope not in scopes:
-            scopes[n.scope] = []
+            scopes[n.scope] = [n]
         else:
             scopes[n.scope].append(n)
 
@@ -43,10 +43,12 @@ for n in v.memory:
 ###printer###
 res = '#N canvas 0 0 400 400 12;\r\n'
 
+
 for node in scopes['main']:
     if type(node)==Visitor.Node:
         res+=(node.printer())
-        
+
+    
 for scope in scopes:
     if scope == 'main':
         continue
@@ -55,6 +57,7 @@ for scope in scopes:
         for node in scopes[scope]:
             if type(node)==Visitor.Node:
                 res+=(node.printer())
+
         for conn in scopes[scope]:
             if type(conn)==Visitor.Connection:
                 res+=(conn.printer())
@@ -64,11 +67,13 @@ for conn in scopes['main']:
     if type(conn)==Visitor.Connection:
         res+=(conn.printer())
 
+
 """
 for n in v.memory:
     if type(n) in [Visitor.Node, Visitor.Connection]:
         print(n.printer())
 """
+
 
 outfile = v.patch
 output = open('outputs/'+outfile+'.pd', 'w')

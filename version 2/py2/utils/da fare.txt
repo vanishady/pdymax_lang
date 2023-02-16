@@ -1,6 +1,7 @@
 COSE LASCIATE INDIETRO:
 pass node, list as argument in function/block
 parola riservata $elf nella suite/dotdot del blockstmt
+dotdotstmt è obbligatorio per tornare al main patch in questo momento: cambiare gr
 
 
 NELLA GR:

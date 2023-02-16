@@ -1,5 +1,7 @@
 #N canvas 0 0 400 400 12;
+#X obj 0 0 44 ;
 #N canvas 0 0 400 400 clock1;
+#X msg 0 0 37.5 ;
 #X floatatom 0 0 5 0 0 0 - - -;
 #X obj 0 0 metro ;
 #X obj 0 0 tgl 19 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000 0 1;
