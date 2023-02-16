@@ -59,6 +59,7 @@ class TypeException(Exception):
     def __str__(self):
         return f'error at line: {self._lineno}\n'+self._err
 
+
 class Iterator():
 
     """implements iterators"""
@@ -108,6 +109,9 @@ class Connection():
 
     def spec(self):
         return self.scope, self.source, self.outlet[3:], self.sink, self.inlet[2:]
+
+    def printer(self):
+        return f'#X connect {self.source} {self.outlet[3:]} {self.sink} {self.inlet[2:]};\r\n'
 
     @property
     def source(self):
@@ -323,11 +327,38 @@ class Node():
         self._index = None
         self._name = None
         self._nodetype = None
-        self._args = None
+        self._args = ''
+        self._xpos = 0
+        self._ypos = 0
 
     def spec(self):
         return self.index, self.scope, self.name, self.nodetype, self.args
 
+    def printer(self):
+        #caso nodi non oggetto
+        if self.nodetype in ['floatatom','symbolatom','text','msg','array','coords','obj']:
+            result = ''
+            if self.nodetype == 'floatatom':
+                result = '5 0 0 0 - - -'
+            else:
+                for char in self.args:
+                    if char not in ',"[]\'':
+                        result+= char
+                    result+=' '
+            return f'#X {self.nodetype} {self.xpos} {self.ypos} {result};\r\n'
+        else:
+            result = ''
+            if self.nodetype == 'bng':
+                result = '19 250 50 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000'
+            elif self.nodetype == 'tgl':
+                result = '19 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000 0 1'
+            else:
+                for char in self.args:
+                    if char not in ',"[]\'':
+                        result+= char
+                    result+= ' '
+            return f'#X obj {self.xpos} {self.ypos} {self.nodetype} {result};\r\n'
+        
     @property
     def scope(self):
         return self._scope
@@ -360,12 +391,18 @@ class Node():
     def nodetype(self, ntype):
         try:
             objnodes = open('utils/basicnodes.txt', 'r')
-            if ntype in ['floatatom', 'array', 'text', 'symbolatom']:
+            if ntype in ['floatatom','symbolatom','text','msg','array','coords']:
+                pass
+            elif ntype in ['bng','tgl','bang','toggle','nbx','vsl','hsl','vu','vradio','hradio','cnv']:
+                if ntype=='bang': ntype = 'bng'
+                if ntype=='toggle': ntype = 'tgl'
                 pass
             elif ntype not in objnodes.read():
                 raise InvalidTypeException(ntype)
+            
         except InvalidTypeException as e:
             print(e)
+            
         self._nodetype = ntype
 
     @property
@@ -374,7 +411,28 @@ class Node():
 
     @args.setter
     def args(self, arglist):
-        self._args = arglist
+        newlist = []
+        for a in arglist:
+            a = str(a)
+            newlist.append(a)
+        self._args = newlist
+
+    @property
+    def xpos(self):
+        return self._xpos
+
+    @xpos.setter
+    def xpos(self, x):
+        self._xpos = x
+
+    @property
+    def ypos(self):
+        return self._ypos
+
+    @ypos.setter
+    def ypos(self, y):
+        self._ypos = y
+
     
 
 class CustomVisitor(PdawVisitor):
@@ -384,6 +442,7 @@ class CustomVisitor(PdawVisitor):
         self.memory = [] #memory of nodes and simple variables
         self.callables = [] #memory of functions and blocks
         self._index = -1 #index of node declarations
+        self._mainIndex = -1
         self._currscope = 'main'
         self._prevscope = []
 
@@ -489,8 +548,10 @@ class CustomVisitor(PdawVisitor):
     # Visit a parse tree produced by PdawParser#dotdotstmt.
     def visitDotdotstmt(self, ctx:PdawParser.DotdotstmtContext):
         for b in self.callables:
-            if self.currscope.startswith(b.name):
-                self.currscope = b.resume
+            if self.currscope.startswith(b.name): #siamo nello scope clock1, clock2 ecc.
+                self.currscope = b.resume #torna allo scope dove il nodo è stato chiamato
+                if b.resume == 'main':
+                    self.index = self.mainIndex #torno all'indice del main
         self.visitChildren(ctx)
 
 
@@ -559,6 +620,8 @@ class CustomVisitor(PdawVisitor):
 
         #block called
         if type(callee)==Block:
+            self.mainIndex = self.index
+            self.index = -1
             self.visit(callee.body)
             for i in range(len(callee.dotdot)):
                 self.visit(callee.dotdot[i])
@@ -782,7 +845,7 @@ class CustomVisitor(PdawVisitor):
         iolet = ''
 
         try:
-        
+            vname = ''
             if ctx.nodedeclstmt():
                 if dont == True:
                     node_id = self.full_text[(ctx_text, ctx.start)]
@@ -795,8 +858,11 @@ class CustomVisitor(PdawVisitor):
                 node_id = self.memorized(vname).index
 
         except AttributeError:
-            print(f'cannot use {type(self.memorized(vname))} in connections')
-            sys.exit(1)
+            if vname == '':
+                print('an error occourred in memory')
+            else:
+                print(f'cannot use {type(self.memorized(vname))} in connections')
+                sys.exit(1)
             
         if ctx.IOLET():
             iolet = ctx.IOLET().getText()
@@ -812,7 +878,9 @@ class CustomVisitor(PdawVisitor):
     # Visit a parse tree produced by PdawParser#typedparams.
     #  : '(' typedargslist? ')'
     def visitTypedparams(self, ctx:PdawParser.TypedparamsContext):
-        return self.visit(ctx.typedargslist())
+        if ctx.typedargslist():
+            return self.visit(ctx.typedargslist())
+        return []
 
 
     # Visit a parse tree produced by PdawParser#argslist.
@@ -1060,6 +1128,14 @@ class CustomVisitor(PdawVisitor):
     @index.setter
     def index(self, nodeindex):
         self._index = nodeindex
+
+    @property
+    def mainIndex(self):
+        return self._mainIndex
+
+    @mainIndex.setter
+    def mainIndex(self, nodeindex):
+        self._mainIndex = nodeindex
 
     @property
     def currscope(self):

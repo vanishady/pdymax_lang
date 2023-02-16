@@ -30,12 +30,48 @@ v = Visitor.CustomVisitor()
 
 v.visit(tree)
 
-#for n in v.memory:
-    #if type(n) in [Visitor.Node, Visitor.Connection]:
-    #    print(n.spec())
+#attribuisci nuove posizioni ai nodi
+scopes = {}
+for n in v.memory:
+    if type(n) in [Visitor.Node, Visitor.Connection]:
+        if n.scope not in scopes:
+            scopes[n.scope] = []
+        else:
+            scopes[n.scope].append(n)
 
-#outfile = v.patch
-#output = open('outputs/'+outfile+'.pd', 'w')
-#output.write(result)
-#output.close()
-#print(f'generated file {outfile}.pd')
+
+###printer###
+res = '#N canvas 0 0 400 400 12;\r\n'
+
+for node in scopes['main']:
+    if type(node)==Visitor.Node:
+        res+=(node.printer())
+        
+for scope in scopes:
+    if scope == 'main':
+        continue
+    else:
+        res+=(f'#N canvas 0 0 400 400 {scope};\r\n')
+        for node in scopes[scope]:
+            if type(node)==Visitor.Node:
+                res+=(node.printer())
+        for conn in scopes[scope]:
+            if type(conn)==Visitor.Connection:
+                res+=(conn.printer())
+        res+=(f'#X restore 120 120 pd {scope};\r\n')
+
+for conn in scopes['main']:
+    if type(conn)==Visitor.Connection:
+        res+=(conn.printer())
+
+"""
+for n in v.memory:
+    if type(n) in [Visitor.Node, Visitor.Connection]:
+        print(n.printer())
+"""
+
+outfile = v.patch
+output = open('outputs/'+outfile+'.pd', 'w')
+output.write(res)
+output.close()
+print(f'generated file {outfile}.pd')

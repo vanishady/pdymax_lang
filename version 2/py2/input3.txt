@@ -1,6 +1,6 @@
 import pdawlib
 
-patch myfirst
+patch outie
 
 func bpm_to_ms($bpm:intn) {
 
@@ -16,31 +16,37 @@ block clock($lenstepseq:intn, $bpm:intn) {
 
 	msg(@bpm_to_ms($bpm)) > floatatom > $m = metro.in2
 	toggle > [$m, $sel0 = sel(0)]
+
+	[loadbang, $sel0] > bang > msg(-1) > $i=int(1)
+	$m > $i 
+
+	$i > floatatom >  %8 > +1 > $f=floatatom
+
+	if $lenstepseq==16:
+		$list2 = ['one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen',''fifteen','sixteen']]
+	elif $lenstepseq==8:
+		$list2 = ['one','two','three','four','five','six','seven','eight']
+	end
+
+	for $counter in range $lenstepseq:
+		$f > sel($counter) > bang > send($list2[$counter])
+	end
+
+
 	.. $gaa = obj(44)
 
 
 }
 
-$node = obj(6).out3 > text('ciao').in2 > [$u = osc, dac] > text('dioca') > text('ciao').in1
-$refree = 55
-$list2 = ['diofa', 2, 3, 4, 88, 3]
-msg('yo_bro')
-$sounds = obj('noice')
+block onoff() {
 
+	dsp > msg('pd',1)
 
-for $counter in range 5:
-	send($list2[$counter])
-	#$node > sel($counter) > bang > send($list2[$counter])
-end
+}
 
-for $counter in range 3:
-	bang($counter+1)
-end
 
 @clock(8, 160)
 
-$fant = 'astic'
-$res=@bpm_to_ms(40)
 
 ;
 

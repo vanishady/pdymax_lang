@@ -1,10 +1,9 @@
 COSE LASCIATE INDIETRO:
-simpledeclstmt -> callstmt
-arg -> callstmt
-expr -> testfunc
-callstmt
-returnstmt -> return VARNAME (, VARNAME)
+pass node, list as argument in function/block
+parola riservata $elf nella suite/dotdot del blockstmt
+
 
 NELLA GR:
 '-' nelle espressioni: non lo riconosce
 aggiungere list ai possibili VARTYPE
+$varname+str($counter) nei FOR loops
