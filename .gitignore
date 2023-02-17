@@ -1,5 +1,5 @@
 .experiments
 .BASHAVVIO.txt
-py-target/.ISTRUZIONI.txt
-java-target/.ISTRUZIONI.txt
-indent-dedent/.ISTRUZIONI.txt
+version1/py-target/.ISTRUZIONI.txt
+version1/java-target/.ISTRUZIONI.txt
+version 2/py2/.references"
