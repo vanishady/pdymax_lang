@@ -17,15 +17,6 @@ class PdawListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by PdawParser#importstmt.
-    def enterImportstmt(self, ctx:PdawParser.ImportstmtContext):
-        pass
-
-    # Exit a parse tree produced by PdawParser#importstmt.
-    def exitImportstmt(self, ctx:PdawParser.ImportstmtContext):
-        pass
-
-
     # Enter a parse tree produced by PdawParser#patchstmt.
     def enterPatchstmt(self, ctx:PdawParser.PatchstmtContext):
         pass
@@ -143,6 +134,15 @@ class PdawListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by PdawParser#listelem.
+    def enterListelem(self, ctx:PdawParser.ListelemContext):
+        pass
+
+    # Exit a parse tree produced by PdawParser#listelem.
+    def exitListelem(self, ctx:PdawParser.ListelemContext):
+        pass
+
+
     # Enter a parse tree produced by PdawParser#slicedlist.
     def enterSlicedlist(self, ctx:PdawParser.SlicedlistContext):
         pass
@@ -161,12 +161,30 @@ class PdawListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by PdawParser#connectionelem.
-    def enterConnectionelem(self, ctx:PdawParser.ConnectionelemContext):
+    # Enter a parse tree produced by PdawParser#multipleconn.
+    def enterMultipleconn(self, ctx:PdawParser.MultipleconnContext):
         pass
 
-    # Exit a parse tree produced by PdawParser#connectionelem.
-    def exitConnectionelem(self, ctx:PdawParser.ConnectionelemContext):
+    # Exit a parse tree produced by PdawParser#multipleconn.
+    def exitMultipleconn(self, ctx:PdawParser.MultipleconnContext):
+        pass
+
+
+    # Enter a parse tree produced by PdawParser#singleconn.
+    def enterSingleconn(self, ctx:PdawParser.SingleconnContext):
+        pass
+
+    # Exit a parse tree produced by PdawParser#singleconn.
+    def exitSingleconn(self, ctx:PdawParser.SingleconnContext):
+        pass
+
+
+    # Enter a parse tree produced by PdawParser#singlenode.
+    def enterSinglenode(self, ctx:PdawParser.SinglenodeContext):
+        pass
+
+    # Exit a parse tree produced by PdawParser#singlenode.
+    def exitSinglenode(self, ctx:PdawParser.SinglenodeContext):
         pass
 
 
@@ -314,12 +332,12 @@ class PdawListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by PdawParser#eos.
-    def enterEos(self, ctx:PdawParser.EosContext):
+    # Enter a parse tree produced by PdawParser#varname.
+    def enterVarname(self, ctx:PdawParser.VarnameContext):
         pass
 
-    # Exit a parse tree produced by PdawParser#eos.
-    def exitEos(self, ctx:PdawParser.EosContext):
+    # Exit a parse tree produced by PdawParser#varname.
+    def exitVarname(self, ctx:PdawParser.VarnameContext):
         pass
 
 

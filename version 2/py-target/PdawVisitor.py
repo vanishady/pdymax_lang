@@ -14,11 +14,6 @@ class PdawVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by PdawParser#importstmt.
-    def visitImportstmt(self, ctx:PdawParser.ImportstmtContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by PdawParser#patchstmt.
     def visitPatchstmt(self, ctx:PdawParser.PatchstmtContext):
         return self.visitChildren(ctx)
@@ -84,6 +79,11 @@ class PdawVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by PdawParser#listelem.
+    def visitListelem(self, ctx:PdawParser.ListelemContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by PdawParser#slicedlist.
     def visitSlicedlist(self, ctx:PdawParser.SlicedlistContext):
         return self.visitChildren(ctx)
@@ -94,8 +94,18 @@ class PdawVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by PdawParser#connectionelem.
-    def visitConnectionelem(self, ctx:PdawParser.ConnectionelemContext):
+    # Visit a parse tree produced by PdawParser#multipleconn.
+    def visitMultipleconn(self, ctx:PdawParser.MultipleconnContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PdawParser#singleconn.
+    def visitSingleconn(self, ctx:PdawParser.SingleconnContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PdawParser#singlenode.
+    def visitSinglenode(self, ctx:PdawParser.SinglenodeContext):
         return self.visitChildren(ctx)
 
 
@@ -179,8 +189,8 @@ class PdawVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by PdawParser#eos.
-    def visitEos(self, ctx:PdawParser.EosContext):
+    # Visit a parse tree produced by PdawParser#varname.
+    def visitVarname(self, ctx:PdawParser.VarnameContext):
         return self.visitChildren(ctx)
 
 

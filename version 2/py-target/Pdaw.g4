@@ -4,15 +4,13 @@ grammar Pdaw;
 * parser rules
 */
 
-prog: (importstmt|NL)* patchstmt NL* (funcdefstmt|NL)* stmt* ';' ;
-
-importstmt: IMPORT NAME NL ;
+prog: patchstmt NL* (funcdefstmt|NL)* stmt* ';' ;
 
 patchstmt: PATCH NAME NL ;  
 
-funcdefstmt: FUNC NAME typedparams '{' suite returnstmt? NL* eos NL ; 
+funcdefstmt: FUNC NAME typedparams '{' suite returnstmt NL* '}' NL ; 
 
-returnstmt: RETURN VARNAME (',' VARNAME)* NL ;
+returnstmt: RETURN varname? NL ;
 
 stmt
  : blockstmt NL
@@ -25,37 +23,39 @@ stmt
  | NL
  ; 
 
-blockstmt: BLOCK NAME typedparams '{' suite dotdotstmt* NL* eos NL ;
+blockstmt: BLOCK NAME typedparams '{' suite NL* dotdotstmt* NL* '}' NL ;
 
 dotdotstmt: '..' (connectionstmt | nodedeclstmt | callstmt) NL ;  
 
 callstmt: '@' NAME parameters ; 
 
 nodedeclstmt
- : VARNAME '=' NAME parameters? #nodedecl1
+ : varname '=' NAME parameters? #nodedecl1
  | NAME parameters? #nodedecl2
  | operation #nodedecl3
- | VARNAME '=' operation #nodedecl4
+ | varname '=' operation #nodedecl4
  ;
 
 simpledeclstmt
- : VARNAME '=' SYMBOL
- | VARNAME '=' NUMBER
- | VARNAME '=' list
- | VARNAME '=' slicedlist
- | VARNAME '=' callstmt
- | VARNAME '=' expr
+ : varname '=' SYMBOL
+ | varname '=' NUMBER
+ | varname '=' list
+ | varname '=' slicedlist
+ | varname '=' callstmt
+ | varname '=' expr
  ;
 
 list
- : '[' (SYMBOL (',' SYMBOL)*)* ']'
- | '[' (NUMBER (',' NUMBER)*)* ']'
- | '[' (VARNAME (',' VARNAME)*)* ']'
+ : '[' (listelem (',' listelem)*)* ']'
+ ;
+
+listelem
+ : SYMBOL | NUMBER | varname
  ;
 
 slicedlist
- : VARNAME '[' VARNAME ']'
- | VARNAME '[' NUMBER ']'
+ : varname '[' varname ']'
+ | varname '[' NUMBER ']'
  ;
 
 connectionstmt
@@ -63,10 +63,13 @@ connectionstmt
  ;
 
 connectionelem
- : '[' (VARNAME | nodedeclstmt) ('.'IOLET)? (',' (VARNAME | nodedeclstmt) ('.'IOLET)?)* ']' 
- | (VARNAME | nodedeclstmt)('.'IOLET)?
+ : '[' singlenode (',' singlenode)* ']' #multipleconn 
+ |  singlenode #singleconn
  ;
 
+singlenode
+ : (varname | nodedeclstmt)('.'IOLET)?
+ ;
 
 parameters
  : '(' argslist? ')'
@@ -87,7 +90,7 @@ typedargslist
 arg
  : SYMBOL
  | NUMBER
- | VARNAME
+ | varname
  | callstmt
  | slicedlist
  | list
@@ -95,7 +98,7 @@ arg
  ;
 
 typedarg
- : VARNAME ':' VARTYPE
+ : varname ':' VARTYPE
  ;
 
 suite
@@ -114,17 +117,18 @@ expr
  : expr op=('*'|'/'|'+'|'-'|'%') expr	#MathExpr	
  | expr testop=('==' | '!=' | '>' | '>=' | '<' | '<=') expr	#TestExpr
  | NUMBER	#testnumber
- | VARNAME #testvar
+ | varname #testvar
  | callstmt #testfunc
  | '(' expr ')' #ParensExpr
  ;
 
 forstmt
- : FOR VARNAME 'in range' (NUMBER | callstmt | VARNAME) ':' suite END
+ : FOR varname 'in range' (NUMBER | callstmt | varname) ':' suite END
  ;
 
-eos
- : '}'
+varname
+ : VARNAME ('+' VARNAME)?
+ | VARNAME ('+' SYMBOL)?
  ;
 
 
@@ -133,7 +137,6 @@ eos
 * lexer rules
 */
 
-IMPORT : 'import' ;
 PATCH : 'patch' ;
 FUNC : 'func' ;
 BLOCK : 'block' ;
@@ -154,7 +157,7 @@ NAME
  ;
 VARNAME : '$' ID_CONTINUE* ;
 
-SYMBOL : '\'' ID_CONTINUE* '\'' ;
+SYMBOL : '\'' SYMBOL_ADMITTED* '\'' ;
 NUMBER : INTEGER | FLOAT ;
 INTEGER : '-'? NON_ZERO_DIGIT DIGIT* | '0'+ ;
 FLOAT : INTEGER? '.' INTEGER ;
@@ -166,6 +169,7 @@ fragment NON_ZERO_DIGIT : [1-9] ;
 fragment ID_START : '_' | LETTER ;
 fragment ID_CONTINUE : LETTER | DIGIT | '_' ;
 fragment IOLET_START : 'in' | 'out' ;
+fragment SYMBOL_ADMITTED : LETTER | DIGIT | '_' | '.' | ',' ; 
 
 NL : '\r'? '\n';
 WS : [ \t]+ -> skip ;

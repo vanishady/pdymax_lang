@@ -1,49 +1,76 @@
-import pdawlib
-
-patch myfirst
+patch outietwo
 
 func bpm_to_ms($bpm:intn) {
 
-	$ms = (60*100)/$bpm
+	$ms = (60*1000)/$bpm
 	return $ms
 
 }
+
+#func label($nodename:node, $text:symbol) {
+#	text($text) > $nodename
+#}
 
 
 block clock($lenstepseq:intn, $bpm:intn) {
 	
 
-	inlet > msg(@bpm_to_ms($bpm))> floatatom > $m = metro.in2
-	bang > [$m, $sel0 = sel(0)]
+	loadbang > msg(@bpm_to_ms($bpm)) > floatatom > $m = metro.in2
+	toggle > [$m, $sel0 = sel(0)]
 
 	[loadbang, $sel0] > bang > msg(-1) > $i=int(1)
-	$m > $i  
-	
+	$m > bang > $i 
+
 	$i > floatatom >  %8 > +1 > $f=floatatom
-
-	$list3 = ['pino', 'gatt', 'pollo']
-	$list4 = [$ms]
-
+	$i.out1 > $one = +1
+	$one.out1 > $i.in2
 
 	if $lenstepseq==16:
-		$list2 = ['one', 'two', 'eight', 'sixteen']
+		$list2 = ['one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen']
 	elif $lenstepseq==8:
-		$list2 = ['one', 'two', 'eight']
+		$list2 = ['one','two','three','four','five','six','seven','eight']
 	end
 
-	.. loadbang > $m=msg($bpm) > self.in1
+	for $counter in range $lenstepseq:
+		$f > sel($counter+1) > bang > send($list2[$counter])
+	end
+
+	#.. @label($elf, 'bpm')
+
+
 }
 
+block drums ($lenstepseq:intn, $instrument:symbol, $sample:symbol) {
+
+	if $lenstepseq==16:
+		$list2 = ['one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen']
+	elif $lenstepseq==8:
+		$list2 = ['one','two','three','four','five','six','seven','eight']
+	end
+
+	$sendto = send($instrument)
+	
+	for $counter in range $lenstepseq:
+		receive($list2[$counter]) > bang > $spig+$counter = spigot > bang > $sendto
+		toggle > $spig+$counter.in2
+	end
+
+	.. receive($instrument) > bang > msg('open', $sample) > readsf~ > $vol+$instrument=*~0.5 > $out+$instrument=dac~
+	.. $vol+$instrument > $out+$instrument.in2
+
+}
 
 block onoff() {
 
-	dsp > msg('pd',1)
-	$varname = bang(1,2,4,$op1)
+	loadbang > msg('dsp',1) > s('pd')
 
 }
 
-
-@clock(8, 160)
+@onoff()
+$len = 8
+@clock($len, 160)
+@drums($len,'Kick','kick.wav')
+@drums($len,'Hat','hihat_metal.wav')
 
 ;
 
