@@ -287,6 +287,15 @@ class PdawListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by PdawParser#testsliced.
+    def enterTestsliced(self, ctx:PdawParser.TestslicedContext):
+        pass
+
+    # Exit a parse tree produced by PdawParser#testsliced.
+    def exitTestsliced(self, ctx:PdawParser.TestslicedContext):
+        pass
+
+
     # Enter a parse tree produced by PdawParser#ParensExpr.
     def enterParensExpr(self, ctx:PdawParser.ParensExprContext):
         pass

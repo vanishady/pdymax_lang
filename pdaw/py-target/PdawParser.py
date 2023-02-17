@@ -10,7 +10,7 @@ else:
 
 def serializedATN():
     return [
-        4,1,49,388,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,49,389,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
         2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,
         7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,
@@ -37,19 +37,19 @@ def serializedATN():
         8,20,1,21,1,21,1,21,1,21,1,22,1,22,4,22,314,8,22,11,22,12,22,315,
         1,23,1,23,3,23,320,8,23,1,24,1,24,1,24,1,24,1,24,1,24,1,24,1,24,
         1,24,5,24,331,8,24,10,24,12,24,334,9,24,1,24,1,24,1,24,3,24,339,
-        8,24,1,24,1,24,1,25,1,25,1,25,1,25,1,25,1,25,1,25,1,25,3,25,351,
-        8,25,1,25,1,25,1,25,1,25,1,25,1,25,5,25,359,8,25,10,25,12,25,362,
-        9,25,1,26,1,26,1,26,1,26,1,26,1,26,3,26,370,8,26,1,26,1,26,1,26,
-        1,26,1,27,1,27,1,27,3,27,379,8,27,1,27,1,27,1,27,3,27,384,8,27,3,
-        27,386,8,27,1,27,0,1,50,28,0,2,4,6,8,10,12,14,16,18,20,22,24,26,
+        8,24,1,24,1,24,1,25,1,25,1,25,1,25,1,25,1,25,1,25,1,25,1,25,3,25,
+        352,8,25,1,25,1,25,1,25,1,25,1,25,1,25,5,25,360,8,25,10,25,12,25,
+        363,9,25,1,26,1,26,1,26,1,26,1,26,1,26,3,26,371,8,26,1,26,1,26,1,
+        26,1,26,1,27,1,27,1,27,3,27,380,8,27,1,27,1,27,1,27,3,27,385,8,27,
+        3,27,387,8,27,1,27,0,1,50,28,0,2,4,6,8,10,12,14,16,18,20,22,24,26,
         28,30,32,34,36,38,40,42,44,46,48,50,52,54,0,3,1,0,14,22,3,0,14,15,
-        18,19,22,22,2,0,23,27,33,33,421,0,56,1,0,0,0,2,78,1,0,0,0,4,82,1,
+        18,19,22,22,2,0,23,27,33,33,423,0,56,1,0,0,0,2,78,1,0,0,0,4,82,1,
         0,0,0,6,97,1,0,0,0,8,125,1,0,0,0,10,127,1,0,0,0,12,153,1,0,0,0,14,
         161,1,0,0,0,16,180,1,0,0,0,18,206,1,0,0,0,20,208,1,0,0,0,22,227,
         1,0,0,0,24,239,1,0,0,0,26,241,1,0,0,0,28,260,1,0,0,0,30,264,1,0,
         0,0,32,270,1,0,0,0,34,276,1,0,0,0,36,282,1,0,0,0,38,290,1,0,0,0,
         40,305,1,0,0,0,42,307,1,0,0,0,44,311,1,0,0,0,46,317,1,0,0,0,48,321,
-        1,0,0,0,50,350,1,0,0,0,52,363,1,0,0,0,54,385,1,0,0,0,56,60,3,2,1,
+        1,0,0,0,50,351,1,0,0,0,52,364,1,0,0,0,54,386,1,0,0,0,56,60,3,2,1,
         0,57,59,5,47,0,0,58,57,1,0,0,0,59,62,1,0,0,0,60,58,1,0,0,0,60,61,
         1,0,0,0,61,67,1,0,0,0,62,60,1,0,0,0,63,66,3,4,2,0,64,66,5,47,0,0,
         65,63,1,0,0,0,65,64,1,0,0,0,66,69,1,0,0,0,67,65,1,0,0,0,67,68,1,
@@ -134,23 +134,23 @@ def serializedATN():
         333,1,0,0,0,333,338,1,0,0,0,334,332,1,0,0,0,335,336,5,37,0,0,336,
         337,5,13,0,0,337,339,3,44,22,0,338,335,1,0,0,0,338,339,1,0,0,0,339,
         340,1,0,0,0,340,341,5,34,0,0,341,49,1,0,0,0,342,343,6,25,-1,0,343,
-        351,5,44,0,0,344,351,3,54,27,0,345,351,3,14,7,0,346,347,5,11,0,0,
-        347,348,3,50,25,0,348,349,5,12,0,0,349,351,1,0,0,0,350,342,1,0,0,
-        0,350,344,1,0,0,0,350,345,1,0,0,0,350,346,1,0,0,0,351,360,1,0,0,
-        0,352,353,10,6,0,0,353,354,7,1,0,0,354,359,3,50,25,7,355,356,10,
-        5,0,0,356,357,7,2,0,0,357,359,3,50,25,6,358,352,1,0,0,0,358,355,
-        1,0,0,0,359,362,1,0,0,0,360,358,1,0,0,0,360,361,1,0,0,0,361,51,1,
-        0,0,0,362,360,1,0,0,0,363,364,5,38,0,0,364,365,3,54,27,0,365,369,
-        5,28,0,0,366,370,5,44,0,0,367,370,3,14,7,0,368,370,3,54,27,0,369,
-        366,1,0,0,0,369,367,1,0,0,0,369,368,1,0,0,0,370,371,1,0,0,0,371,
-        372,5,13,0,0,372,373,3,44,22,0,373,374,5,34,0,0,374,53,1,0,0,0,375,
-        378,5,42,0,0,376,377,5,18,0,0,377,379,5,42,0,0,378,376,1,0,0,0,378,
-        379,1,0,0,0,379,386,1,0,0,0,380,383,5,42,0,0,381,382,5,18,0,0,382,
-        384,5,43,0,0,383,381,1,0,0,0,383,384,1,0,0,0,384,386,1,0,0,0,385,
-        375,1,0,0,0,385,380,1,0,0,0,386,55,1,0,0,0,40,60,65,67,73,91,99,
-        125,135,141,147,157,169,173,180,206,214,219,227,239,246,254,260,
-        264,268,272,278,287,295,305,315,319,332,338,350,358,360,369,378,
-        383,385
+        352,5,44,0,0,344,352,3,54,27,0,345,352,3,14,7,0,346,352,3,24,12,
+        0,347,348,5,11,0,0,348,349,3,50,25,0,349,350,5,12,0,0,350,352,1,
+        0,0,0,351,342,1,0,0,0,351,344,1,0,0,0,351,345,1,0,0,0,351,346,1,
+        0,0,0,351,347,1,0,0,0,352,361,1,0,0,0,353,354,10,7,0,0,354,355,7,
+        1,0,0,355,360,3,50,25,8,356,357,10,6,0,0,357,358,7,2,0,0,358,360,
+        3,50,25,7,359,353,1,0,0,0,359,356,1,0,0,0,360,363,1,0,0,0,361,359,
+        1,0,0,0,361,362,1,0,0,0,362,51,1,0,0,0,363,361,1,0,0,0,364,365,5,
+        38,0,0,365,366,3,54,27,0,366,370,5,28,0,0,367,371,5,44,0,0,368,371,
+        3,14,7,0,369,371,3,54,27,0,370,367,1,0,0,0,370,368,1,0,0,0,370,369,
+        1,0,0,0,371,372,1,0,0,0,372,373,5,13,0,0,373,374,3,44,22,0,374,375,
+        5,34,0,0,375,53,1,0,0,0,376,379,5,42,0,0,377,378,5,18,0,0,378,380,
+        5,42,0,0,379,377,1,0,0,0,379,380,1,0,0,0,380,387,1,0,0,0,381,384,
+        5,42,0,0,382,383,5,18,0,0,383,385,5,43,0,0,384,382,1,0,0,0,384,385,
+        1,0,0,0,385,387,1,0,0,0,386,376,1,0,0,0,386,381,1,0,0,0,387,55,1,
+        0,0,0,40,60,65,67,73,91,99,125,135,141,147,157,169,173,180,206,214,
+        219,227,239,246,254,260,264,268,272,278,287,295,305,315,319,332,
+        338,351,359,361,370,379,384,386
     ]
 
 class PdawParser ( Parser ):
@@ -2543,6 +2543,31 @@ class PdawParser ( Parser ):
                 return visitor.visitChildren(self)
 
 
+    class TestslicedContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a PdawParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def slicedlist(self):
+            return self.getTypedRuleContext(PdawParser.SlicedlistContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTestsliced" ):
+                listener.enterTestsliced(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTestsliced" ):
+                listener.exitTestsliced(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTestsliced" ):
+                return visitor.visitTestsliced(self)
+            else:
+                return visitor.visitChildren(self)
+
+
     class ParensExprContext(ExprContext):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a PdawParser.ExprContext
@@ -2664,10 +2689,10 @@ class PdawParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 350
+            self.state = 351
             self._errHandler.sync(self)
-            token = self._input.LA(1)
-            if token in [44]:
+            la_ = self._interp.adaptivePredict(self._input,33,self._ctx)
+            if la_ == 1:
                 localctx = PdawParser.TestnumberContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
@@ -2675,36 +2700,46 @@ class PdawParser ( Parser ):
                 self.state = 343
                 self.match(PdawParser.NUMBER)
                 pass
-            elif token in [42]:
+
+            elif la_ == 2:
                 localctx = PdawParser.TestvarContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
                 self.state = 344
                 self.varname()
                 pass
-            elif token in [5]:
+
+            elif la_ == 3:
                 localctx = PdawParser.TestfuncContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
                 self.state = 345
                 self.callstmt()
                 pass
-            elif token in [11]:
-                localctx = PdawParser.ParensExprContext(self, localctx)
+
+            elif la_ == 4:
+                localctx = PdawParser.TestslicedContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
                 self.state = 346
-                self.match(PdawParser.T__10)
+                self.slicedlist()
+                pass
+
+            elif la_ == 5:
+                localctx = PdawParser.ParensExprContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
                 self.state = 347
-                self.expr(0)
+                self.match(PdawParser.T__10)
                 self.state = 348
+                self.expr(0)
+                self.state = 349
                 self.match(PdawParser.T__11)
                 pass
-            else:
-                raise NoViableAltException(self)
+
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 360
+            self.state = 361
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,35,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
@@ -2712,17 +2747,17 @@ class PdawParser ( Parser ):
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 358
+                    self.state = 359
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,34,self._ctx)
                     if la_ == 1:
                         localctx = PdawParser.MathExprContext(self, PdawParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 352
-                        if not self.precpred(self._ctx, 6):
-                            from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
                         self.state = 353
+                        if not self.precpred(self._ctx, 7):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 7)")
+                        self.state = 354
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 5029888) != 0):
@@ -2730,18 +2765,18 @@ class PdawParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 354
-                        self.expr(7)
+                        self.state = 355
+                        self.expr(8)
                         pass
 
                     elif la_ == 2:
                         localctx = PdawParser.TestExprContext(self, PdawParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 355
-                        if not self.precpred(self._ctx, 5):
-                            from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
                         self.state = 356
+                        if not self.precpred(self._ctx, 6):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
+                        self.state = 357
                         localctx.testop = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 8849981440) != 0):
@@ -2749,12 +2784,12 @@ class PdawParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 357
-                        self.expr(6)
+                        self.state = 358
+                        self.expr(7)
                         pass
 
              
-                self.state = 362
+                self.state = 363
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,35,self._ctx)
 
@@ -2824,35 +2859,35 @@ class PdawParser ( Parser ):
         self.enterRule(localctx, 52, self.RULE_forstmt)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 363
-            self.match(PdawParser.FOR)
             self.state = 364
-            self.varname()
+            self.match(PdawParser.FOR)
             self.state = 365
+            self.varname()
+            self.state = 366
             self.match(PdawParser.T__27)
-            self.state = 369
+            self.state = 370
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [44]:
-                self.state = 366
+                self.state = 367
                 self.match(PdawParser.NUMBER)
                 pass
             elif token in [5]:
-                self.state = 367
+                self.state = 368
                 self.callstmt()
                 pass
             elif token in [42]:
-                self.state = 368
+                self.state = 369
                 self.varname()
                 pass
             else:
                 raise NoViableAltException(self)
 
-            self.state = 371
-            self.match(PdawParser.T__12)
             self.state = 372
-            self.suite()
+            self.match(PdawParser.T__12)
             self.state = 373
+            self.suite()
+            self.state = 374
             self.match(PdawParser.END)
         except RecognitionException as re:
             localctx.exception = re
@@ -2904,20 +2939,20 @@ class PdawParser ( Parser ):
         localctx = PdawParser.VarnameContext(self, self._ctx, self.state)
         self.enterRule(localctx, 54, self.RULE_varname)
         try:
-            self.state = 385
+            self.state = 386
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,39,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 375
+                self.state = 376
                 self.match(PdawParser.VARNAME)
-                self.state = 378
+                self.state = 379
                 self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,37,self._ctx)
                 if la_ == 1:
-                    self.state = 376
-                    self.match(PdawParser.T__17)
                     self.state = 377
+                    self.match(PdawParser.T__17)
+                    self.state = 378
                     self.match(PdawParser.VARNAME)
 
 
@@ -2925,15 +2960,15 @@ class PdawParser ( Parser ):
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 380
+                self.state = 381
                 self.match(PdawParser.VARNAME)
-                self.state = 383
+                self.state = 384
                 self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,38,self._ctx)
                 if la_ == 1:
-                    self.state = 381
-                    self.match(PdawParser.T__17)
                     self.state = 382
+                    self.match(PdawParser.T__17)
+                    self.state = 383
                     self.match(PdawParser.SYMBOL)
 
 
@@ -2962,11 +2997,11 @@ class PdawParser ( Parser ):
 
     def expr_sempred(self, localctx:ExprContext, predIndex:int):
             if predIndex == 0:
-                return self.precpred(self._ctx, 6)
+                return self.precpred(self._ctx, 7)
          
 
             if predIndex == 1:
-                return self.precpred(self._ctx, 5)
+                return self.precpred(self._ctx, 6)
          
 
 

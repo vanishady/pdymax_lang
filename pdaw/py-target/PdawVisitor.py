@@ -164,6 +164,11 @@ class PdawVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by PdawParser#testsliced.
+    def visitTestsliced(self, ctx:PdawParser.TestslicedContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by PdawParser#ParensExpr.
     def visitParensExpr(self, ctx:PdawParser.ParensExprContext):
         return self.visitChildren(ctx)

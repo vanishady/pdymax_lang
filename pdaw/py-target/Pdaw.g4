@@ -119,6 +119,7 @@ expr
  | NUMBER	#testnumber
  | varname #testvar
  | callstmt #testfunc
+ | slicedlist #testsliced
  | '(' expr ')' #ParensExpr
  ;
 
@@ -149,7 +150,7 @@ ELSE : 'else' ;
 FOR : 'for' ;
 
 
-VARTYPE : 'intn' | 'floatn' | 'symbol' | 'node' ;
+VARTYPE : 'intn' | 'floatn' | 'symbol' | 'list' ;
 IOLET : IOLET_START NON_ZERO_DIGIT+ ;
 NAME 
  : ID_START ID_CONTINUE* 

@@ -1016,6 +1016,10 @@ class CustomVisitor(PdawVisitor):
     def visitParensExpr(self, ctx:PdawParser.ParensExprContext):
         return self.visit(ctx.expr())
 
+    # Visit a parse tree produced by PdawParser#testsliced.
+    def visitTestsliced(self, ctx:PdawParser.TestslicedContext):
+        return int(self.visitChildren(ctx))
+
 
     # Visit a parse tree produced by PdawParser#testfunc.
     def visitTestfunc(self, ctx:PdawParser.TestfuncContext):
