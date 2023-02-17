@@ -449,6 +449,7 @@ class CustomVisitor(PdawVisitor):
         self._mainIndex = -1
         self._currscope = 'main'
         self._prevscope = []
+        self.indotdot = False
 
     def memorized(self, varname):
         #just ckecks if variable with given varname is in memory, and returns var
@@ -457,6 +458,8 @@ class CustomVisitor(PdawVisitor):
                 if type(var)==Connection:
                     continue
                 if var.name == varname and var.scope==self.currscope:
+                    return var
+                elif var.name == varname and var.scope==self.prevscope and self.indotdot:
                     return var
             raise NotFoundException(varname)
         except NotFoundException as e:
@@ -535,6 +538,8 @@ class CustomVisitor(PdawVisitor):
     # Visit a parse tree produced by PdawParser#blockstmt.
     # blockstmt: BLOCK NAME typedparams '{' suite dotdotstmt* NL* eos NL ;
     def visitBlockstmt(self, ctx:PdawParser.BlockstmtContext):
+        self.mainIndex = self.index #general nodeIndex is augmented by 1 bc a block itself has index in pd
+        self.index =-1 #each time a new block is declared, nodeIndex resets
         name = ctx.NAME().getText()
         try:
             for f in self.callables:
@@ -551,17 +556,18 @@ class CustomVisitor(PdawVisitor):
         if ctx.dotdotstmt():
             for i in range(len(ctx.dotdotstmt())):
                 bookmark.dotdot = ctx.dotdotstmt(i) #store dotdot ctx
-
         #print(type(bookmark), bookmark.spec())
 
     # Visit a parse tree produced by PdawParser#dotdotstmt.
     def visitDotdotstmt(self, ctx:PdawParser.DotdotstmtContext):
+        self.indotdot = True
         for b in self.callables:
             if self.currscope.startswith(b.name): #siamo nello scope clock1, clock2 ecc.
                 self.currscope = b.resume #torna allo scope dove il nodo è stato chiamato
                 if b.resume == 'main':
                     self.index = self.mainIndex #torno all'indice del main
         self.visitChildren(ctx)
+        self.indotdot = False
 
 
     # Visit a parse tree produced by PdawParser#callstmt.
@@ -629,11 +635,10 @@ class CustomVisitor(PdawVisitor):
 
         #block called
         if type(callee)==Block:
-            self.mainIndex = self.index
-            self.index = -1
             self.visit(callee.body)
             if callee.dotdot == []:
                 self.currscope = callee.resume
+                self.index = self.mainIndex
             else:
                 for i in range(len(callee.dotdot)):
                     self.visit(callee.dotdot[i])
@@ -1155,6 +1160,15 @@ class CustomVisitor(PdawVisitor):
 
     @property
     def prevscope(self):
+        return self._prevscope
+
+    @prevscope.setter
+    def prevscope(self, scope):
+        self._prevscope = scope
+
+    """
+    @property
+    def prevscope(self):
         latestscope = self._prevscope[-1]
         self._prevscope = self._prevscope[:-1]
         return latestscope
@@ -1162,6 +1176,7 @@ class CustomVisitor(PdawVisitor):
     @prevscope.setter
     def prevscope(self, scope):
         self._prevscope.append(scope)
+    """
 
 
 

@@ -96,11 +96,10 @@ except:
     pass
 
 
-"""
 for n in v.memory:
-    if type(n) in [Visitor.Node, Visitor.Connection]:
-        print(n.printer())
-"""
+    if type(n) in [Visitor.Node, Visitor.Connection, Visitor.SimpleVar]:
+            print(type(n), n.spec())
+
 
 
 outfile = v.patch

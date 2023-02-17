@@ -152,7 +152,7 @@ NAME
  ;
 VARNAME : '$' ID_CONTINUE* ;
 
-SYMBOL : '\'' ID_CONTINUE* '\'' ;
+SYMBOL : '\'' SYMBOL_ADMITTED* '\'' ;
 NUMBER : INTEGER | FLOAT ;
 INTEGER : '-'? NON_ZERO_DIGIT DIGIT* | '0'+ ;
 FLOAT : INTEGER? '.' INTEGER ;
@@ -164,6 +164,7 @@ fragment NON_ZERO_DIGIT : [1-9] ;
 fragment ID_START : '_' | LETTER ;
 fragment ID_CONTINUE : LETTER | DIGIT | '_' ;
 fragment IOLET_START : 'in' | 'out' ;
+fragment SYMBOL_ADMITTED : LETTER | DIGIT | '_' | '.'; 
 
 NL : '\r'? '\n';
 WS : [ \t]+ -> skip ;
