@@ -1,0 +1,33 @@
+COSE LASCIATE INDIETRO:
+pass node, list as argument in function/block
+parola riservata $elf nella suite/dotdot del blockstmt
+dichiarare (e passare) i nodi nelle (alle) funzioni al momento non è vietato, ma non è gestito
+
+
+NELLA GR:
+'-' nelle espressioni: non lo riconosce
+aggiungere list ai possibili VARTYPE
+$varname+str($counter) nei FOR loops
+
+
+
+
+PLUS:
+- pass, continue, break
+- supporto per nodetypes (generaltypes e objtypes)
+- shell personalizzata con documentazione di supporto
+- colors e font
+- preparare patch (da usare come oggetti nella main patch, facendo un import tipo)
+
+additivesynth(1,0.75,3,0.5,5,7)
+clock
+stepseq(0001 0001 )
+player
+
+REGOLE IMPLEMENTATE:
+- node declaration (declaration statement)
+- inlet/outlet declaration (una sorta di connessione in cui specificare anche gli inlet/outlet)
+- connessione (connection statement) 
+- block, con scoping per blocco
+- if, elif, else
+- for loops

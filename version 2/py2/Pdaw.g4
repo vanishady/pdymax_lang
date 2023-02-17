@@ -4,13 +4,11 @@ grammar Pdaw;
 * parser rules
 */
 
-prog: (importstmt|NL)* patchstmt NL* (funcdefstmt|NL)* stmt* ';' ;
-
-importstmt: IMPORT NAME NL ;
+prog: patchstmt NL* (funcdefstmt|NL)* stmt* ';' ;
 
 patchstmt: PATCH NAME NL ;  
 
-funcdefstmt: FUNC NAME typedparams '{' suite returnstmt? NL* eos NL ; 
+funcdefstmt: FUNC NAME typedparams '{' suite returnstmt NL* '}' NL ; 
 
 returnstmt: RETURN VARNAME? NL ;
 
@@ -25,7 +23,7 @@ stmt
  | NL
  ; 
 
-blockstmt: BLOCK NAME typedparams '{' suite NL* dotdotstmt* NL* eos NL ;
+blockstmt: BLOCK NAME typedparams '{' suite NL* dotdotstmt* NL* '}' NL ;
 
 dotdotstmt: '..' (connectionstmt | nodedeclstmt | callstmt) NL ;  
 
@@ -128,17 +126,12 @@ forstmt
  : FOR VARNAME 'in range' (NUMBER | callstmt | VARNAME) ':' suite END
  ;
 
-eos
- : '}'
- ;
-
 
 
 /*
 * lexer rules
 */
 
-IMPORT : 'import' ;
 PATCH : 'patch' ;
 FUNC : 'func' ;
 BLOCK : 'block' ;

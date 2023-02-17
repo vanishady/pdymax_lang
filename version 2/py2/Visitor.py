@@ -111,7 +111,9 @@ class Connection():
         return self.scope, self.source, self.outlet[3:], self.sink, self.inlet[2:]
 
     def printer(self):
-        return f'#X connect {self.source} {self.outlet[3:]} {self.sink} {self.inlet[2:]};\r\n'
+        outlet = int(self.outlet[3:])-1
+        inlet = int(self.inlet[2:])-1
+        return f'#X connect {self.source} {outlet} {self.sink} {inlet};\r\n'
 
     @property
     def source(self):
@@ -339,7 +341,7 @@ class Node():
         if self.nodetype in ['floatatom','symbolatom','text','msg','array','coords','obj']:
             result = ''
             if self.nodetype == 'floatatom':
-                result = '5 0 0 0 - - -'
+                result = '5 0 0 0 - - - 0'
             else:
                 for char in self.args:
                     if char not in ',"[]\'':
@@ -423,7 +425,8 @@ class Node():
 
     @xpos.setter
     def xpos(self, x):
-        self._xpos = x
+        if self._xpos==0:
+            self._xpos = x
 
     @property
     def ypos(self):
@@ -431,7 +434,8 @@ class Node():
 
     @ypos.setter
     def ypos(self, y):
-        self._ypos = y
+        if self._ypos==0:
+            self._ypos = y
 
     
 
@@ -466,14 +470,16 @@ class CustomVisitor(PdawVisitor):
             if (var.name == varname and var.scope == self.currscope):
                 return True
        return False
+
+    def nodefromindex(self, scope, index):
+        for var in self.memory:
+            if type(var)==Node and var.index==index and var.scope==scope:
+                return var
+        return Exception('cannot find variable associated with given index')
+                
         
     # Visit a parse tree produced by PdawParser#prog.
     def visitProg(self, ctx:PdawParser.ProgContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by PdawParser#importstmt.
-    def visitImportstmt(self, ctx:PdawParser.ImportstmtContext):
         return self.visitChildren(ctx)
 
 
@@ -507,13 +513,16 @@ class CustomVisitor(PdawVisitor):
         if ctx.returnstmt():
             bookmark.returns = ctx.returnstmt() #store return ctx
 
-        print(type(bookmark), bookmark.spec())
+        #print(type(bookmark), bookmark.spec())
 
 
     # Visit a parse tree produced by PdawParser#returnstmt.
     def visitReturnstmt(self, ctx:PdawParser.ReturnstmtContext):
-        vname = ctx.VARNAME().getText()
-        retval = self.memorized(vname).value
+        if ctx.VARNAME():
+            vname = ctx.VARNAME().getText()
+            retval = self.memorized(vname).value
+        else:
+            retval = None
         self.currscope = self.prevscope
         return retval
 
@@ -543,7 +552,7 @@ class CustomVisitor(PdawVisitor):
             for i in range(len(ctx.dotdotstmt())):
                 bookmark.dotdot = ctx.dotdotstmt(i) #store dotdot ctx
 
-        print(type(bookmark), bookmark.spec())
+        #print(type(bookmark), bookmark.spec())
 
     # Visit a parse tree produced by PdawParser#dotdotstmt.
     def visitDotdotstmt(self, ctx:PdawParser.DotdotstmtContext):
@@ -623,8 +632,11 @@ class CustomVisitor(PdawVisitor):
             self.mainIndex = self.index
             self.index = -1
             self.visit(callee.body)
-            for i in range(len(callee.dotdot)):
-                self.visit(callee.dotdot[i])
+            if callee.dotdot == []:
+                self.currscope = callee.resume
+            else:
+                for i in range(len(callee.dotdot)):
+                    self.visit(callee.dotdot[i])
             return None
 
 
@@ -648,7 +660,7 @@ class CustomVisitor(PdawVisitor):
         if ctx.parameters():
             bookmark.args = self.visit(ctx.parameters())
 
-        print(type(bookmark), bookmark.spec())
+        #print(type(bookmark), bookmark.spec())
 
 
     # Visit a parse tree produced by PdawParser#nodedecl2.
@@ -663,7 +675,7 @@ class CustomVisitor(PdawVisitor):
         if ctx.parameters():
             bookmark.args = self.visit(ctx.parameters())
 
-        print(type(bookmark), bookmark.spec())
+        #print(type(bookmark), bookmark.spec())
 
 
     # Visit a parse tree produced by PdawParser#nodedecl3.
@@ -677,7 +689,7 @@ class CustomVisitor(PdawVisitor):
         bookmark.nodetype = 'obj'
         bookmark.args = self.visit(ctx.operation())
 
-        print(type(bookmark), bookmark.spec())
+        #print(type(bookmark), bookmark.spec())
 
 
     # Visit a parse tree produced by PdawParser#nodedecl4.
@@ -699,7 +711,7 @@ class CustomVisitor(PdawVisitor):
         bookmark.nodetype = 'obj'
         bookmark.args = self.visit(ctx.operation())
 
-        print(type(bookmark), bookmark.spec())
+        #print(type(bookmark), bookmark.spec())
 
 
     # Visit a parse tree produced by PdawParser#simpledeclstmt.
@@ -732,7 +744,7 @@ class CustomVisitor(PdawVisitor):
         else: #list
             bookmark.value = self.visitChildren(ctx)
 
-        print(type(bookmark), bookmark.spec())
+        #print(type(bookmark), bookmark.spec())
 
     # Visit a parse tree produced by PdawParser#list.
     # : '[' (SYMBOL (',' SYMBOL)*)* ']' | '[' (NUMBER (',' NUMBER)*)* ']' | '[' (VARNAME (',' VARNAME)*)* ']' | mixedlist
@@ -811,10 +823,9 @@ class CustomVisitor(PdawVisitor):
                         #in questo caso in realtà l'out serve quando il nodo sarà source
                         #ovvero al prossimo connectionelem(i)
                         inlet = 'in1'
-                    #print(f'#X connect {source} {outlet} {sink} {inlet}')
                     conn = Connection(self.currscope, source, outlet, sink, inlet)
                     self.memory.append(conn)
-                    print(type(conn), conn.spec())
+                    #print(type(conn), conn.spec())
                    
 
     # Visit a parse tree produced by PdawParser#multipleconn.
@@ -1072,7 +1083,7 @@ class CustomVisitor(PdawVisitor):
             bookmark.scope = self.currscope
 
         bookmark.value = -1
-        print(type(bookmark), bookmark.spec())
+        #print(type(bookmark), bookmark.spec())
 
         #get range len
         try:
@@ -1108,10 +1119,6 @@ class CustomVisitor(PdawVisitor):
             self.visitSuite(ctx.suite())
 
         bookmark.value = -1
-
-    # Visit a parse tree produced by PdawParser#eos.
-    def visitEos(self, ctx:PdawParser.EosContext):
-        return self.visitChildren(ctx)
 
     @property
     def patch(self):

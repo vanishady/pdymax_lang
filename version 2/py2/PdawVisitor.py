@@ -14,11 +14,6 @@ class PdawVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by PdawParser#importstmt.
-    def visitImportstmt(self, ctx:PdawParser.ImportstmtContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by PdawParser#patchstmt.
     def visitPatchstmt(self, ctx:PdawParser.PatchstmtContext):
         return self.visitChildren(ctx)
@@ -191,11 +186,6 @@ class PdawVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by PdawParser#forstmt.
     def visitForstmt(self, ctx:PdawParser.ForstmtContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by PdawParser#eos.
-    def visitEos(self, ctx:PdawParser.EosContext):
         return self.visitChildren(ctx)
 
 

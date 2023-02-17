@@ -17,15 +17,6 @@ class PdawListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by PdawParser#importstmt.
-    def enterImportstmt(self, ctx:PdawParser.ImportstmtContext):
-        pass
-
-    # Exit a parse tree produced by PdawParser#importstmt.
-    def exitImportstmt(self, ctx:PdawParser.ImportstmtContext):
-        pass
-
-
     # Enter a parse tree produced by PdawParser#patchstmt.
     def enterPatchstmt(self, ctx:PdawParser.PatchstmtContext):
         pass
@@ -338,15 +329,6 @@ class PdawListener(ParseTreeListener):
 
     # Exit a parse tree produced by PdawParser#forstmt.
     def exitForstmt(self, ctx:PdawParser.ForstmtContext):
-        pass
-
-
-    # Enter a parse tree produced by PdawParser#eos.
-    def enterEos(self, ctx:PdawParser.EosContext):
-        pass
-
-    # Exit a parse tree produced by PdawParser#eos.
-    def exitEos(self, ctx:PdawParser.EosContext):
         pass
 
 

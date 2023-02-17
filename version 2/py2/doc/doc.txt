@@ -1,0 +1,80 @@
+###PATCH
+
+#il nome della patch dà il nome al file
+patch nomepatch
+
+
+###BLOCCHI 
+
+#il blocco è una subpatch di puredata
+#tutte le variabili dichiarate nel blocco sono nel suo scope locale
+
+block nomeblock (param1:type, param2:type ...) {
+}
+
+#il blocco viene richiamato con una call
+@nomeblock(param1, param2, ...)
+
+###VARIABILI STANDARD
+
+#dichiarazione e assegnamento sono insieme
+$nomevar1 = 1
+$nomevar = 'pippo'
+$nomevar = 30/$nomevar1
+$nomevar = @funzionecheritornanum()
+$nomevar = [1,2,3] #una lista può essere di interi, float o symbol
+
+
+###NODI 
+
+#un nodo può essere dichiarato in più modi
+$nodename = dac~(param1, param2, ...) #con parametri
+$nodename = dac~ #senza parametri
+
+#dichiarazione senza nome della variabile
+#viene assegnato comunque un id implicito
+#per l'utente poi non è possibile riferirsi a quel nodo
+obj(param1, param2, ...)
+floatatom(param1, param2, ...)
+
+#l'unica particolarità a cui prestare attenzione è il nodo oggetto semplice
+#non posso dichiarare $nodename = 10, perché sarebbe una variabile standard e non node
+$nodename = obj(10) 
+
+#dichiarazione veloce per nodi che specificano operazioni (ancora, NON numeri singoli)
+#di default questi nodi hanno nodetype obj
+nodename = *5
+nodename = *~5
+*5
+*~5
+
+###CONNESSIONI
+
+#le connessioni sono arbitrariamente lunghe
+#il modo standard per effettuare connessioni è
+$nodename > $anothernode
+
+#connessione con dichiarazione al volo
+$nodename > $numnode=obj(8)
+
+#connessioni multiple
+[$nodename1, $nodename2] > $nodename3
+floatatom > [$nodename1, $nodename2, $node3=obj(param, ...)] > $nodename4
+
+
+###INLET E OUTLET
+
+#posso specificare outlet e inlet in una connessione
+#di default in una connessione si agganciano out1 e in1, pd-like
+$m = metro
+$m.out2 > bang 
+
+#anche nelle connessioni multiple è possibile specificare inlet e outlet
+floatatom > [$nodename1.in2, $nodename2.out2, $node3=obj(param, ...)] > $nodename4.in2
+
+
+###COSTRUTTI IF-ELIF-ELSE, FOR
+
+#funzionano nel modo più basilare
+#la test condition è un'operazione aritmetica o di confronto
+
