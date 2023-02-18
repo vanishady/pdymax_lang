@@ -1,0 +1,85 @@
+patch stepsequencer_2
+
+func bpm_to_ms($bpm:intn) {
+
+	$ms = (60*1000)/$bpm
+	return $ms
+
+}
+
+
+block clock($lenstepseq:intn, $bpm:intn) {
+	
+
+	loadbang > msg(@bpm_to_ms($bpm)) > floatatom > $m = metro.in2
+	loadbang>toggle > [$m, $sel0 = sel(0)]
+
+	[loadbang, $sel0] > bang > msg(-1) > $i=int(1)
+	$m > bang > $i 
+
+	$i > floatatom >  %8 > +1 > $f=floatatom
+	$i.out1 > $one = +1
+	$one.out1 > $i.in2
+
+	if $lenstepseq==16:
+		$list2 = ['one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen']
+	elif $lenstepseq==8:
+		$list2 = ['one','two','three','four','five','six','seven','eight']
+	end
+
+	for $counter in range $lenstepseq:
+		$f > sel($counter+1) > bang > send($list2[$counter])
+	end
+
+	#.. @label($elf, 'bpm')
+
+
+}
+
+block drums ($lenstepseq:intn, $instrument:symbol, $sample:symbol, $hits:list) {
+
+	if $lenstepseq==16:
+		$list2 = ['one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen']
+	elif $lenstepseq==8:
+		$list2 = ['one','two','three','four','five','six','seven','eight']
+	end
+
+	$sendto = send($instrument)
+	
+	
+	for $counter in range $lenstepseq:
+		receive($list2[$counter]) > bang > $spig+$counter = spigot > bang > $sendto
+		if $hits[$counter]==1:
+			loadbang >toggle > $spig+$counter.in2
+		else:
+			toggle > $spig+$counter.in2
+		end
+		
+	end
+
+	.. receive($instrument) > bang > msg('open', $sample) > readsf~ > *~0.75 > $volume 
+	.. @label($elf, $instrument)
+
+}
+
+block onoff() {
+
+	loadbang > msg('dsp',1) > s('pd')
+
+}
+
+@onoff()
+$len = 8
+$volume = *~0.75 
+
+@clock($len, 80)
+@drums($len,'Kick','../samples/kick.wav', [1,0,0,1,0,1,0,1])
+@drums($len,'HiHat','../samples/closed_hat.wav', [1,1,1,1,1,1,1,1])
+@drums($len,'Snare','../samples/dnb.wav', [0,0,0,0,1,0,0,1])
+@drums($len,'Cymbal','../samples/hihat_snake.wav', [1,0,0,0,0,0,0,0])
+
+$volume > $out=dac~.in1
+$volume > $out.in2
+
+;
+

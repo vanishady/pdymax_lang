@@ -27,7 +27,7 @@ blockstmt: BLOCK NAME typedparams '{' suite NL* dotdotstmt* NL* '}' NL ;
 
 dotdotstmt: '..' (connectionstmt | nodedeclstmt | callstmt) NL ;  
 
-callstmt: '@' NAME parameters ; 
+callstmt: '@' NAME parameters (AS SYMBOL)?; 
 
 nodedeclstmt
  : varname '=' NAME parameters? #nodedecl1
@@ -148,6 +148,7 @@ IF : 'if' ;
 ELIF : 'elif' ;
 ELSE : 'else' ;
 FOR : 'for' ;
+AS : 'as' ;
 
 
 VARTYPE : 'intn' | 'floatn' | 'symbol' | 'list' ;

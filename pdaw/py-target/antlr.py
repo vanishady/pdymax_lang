@@ -8,9 +8,23 @@ from PdawListener import PdawListener
 import Visitor
 from antlr4.tree.Tree import ParseTreeWalker
 
-### ANTLR ###
+# get input filename 
+"""
+fn=False
+while fn==False:
+    if len(sys.argv)!=2:
+        fn = input('please enter input filename, i.e. <input.txt>: ')
+    else:
+        fn = sys.argv[1]
 
-lexer = PdawLexer(FileStream('input1.txt'))
+### ANTLR ###
+try:
+    lexer = PdawLexer(FileStream(fn))
+except FileNotFoundError:
+    sys.exit(f'file {fn} does not exist.')
+"""
+
+lexer = PdawLexer(FileStream('input2.txt'))
 stream = CommonTokenStream(lexer)
 parser = PdawParser(stream)
 tree = parser.prog()
@@ -35,6 +49,7 @@ for scope in scopes:
         if type(elem)==Visitor.Connection:
             source = v.nodefromindex(scope,elem.source)
             sink = v.nodefromindex(scope,elem.sink)
+            sink.issink = True
             if source not in connections:
                 connections[source]=[sink]
             else:
@@ -47,18 +62,18 @@ for connections in allconnections:
     x=40 #ogni volta che lo scope cambia, la pos si azzera
     y = 120
     for source in connections:
+        if source.issink == False:
+            y=120
         source.xpos = x
         source.ypos = y
         x = source.xpos
-        y+=40
         for sink in connections[source]:
             sink.xpos = x
-            sink.ypos = y
+            sink.ypos = source.ypos+40
             x+=100
             
-            
 ### PRINTER ###
-res = '#N canvas 0 0 400 400 12;\r\n'
+res = '#N canvas 300 100 800 500 12 ;\r\n'
 x = 40
 y = 40
 
@@ -97,9 +112,12 @@ except:
 
 """
 for n in v.memory:
-    if type(n) in [Visitor.Node, Visitor.Connection, Visitor.SimpleVar]:
+    print(type(n), n.spec())
+
+    if type(n) in [Visitor.Node, Visitor.Connection, Visitor.SimpleVar, Visitor.Block]:
             print(type(n), n.spec())
 """
+
 
 
 outfile = v.patch

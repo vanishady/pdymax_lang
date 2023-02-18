@@ -59,6 +59,14 @@ class TypeException(Exception):
     def __str__(self):
         return f'error at line: {self._lineno}\n'+self._err
 
+class CalleException(Exception):
+
+    def __init__(self, lineno):
+        self._lineno = lineno
+
+    def __str__(self):
+        return f'error at line: {self._lineno}\n invalid function calling'
+
 
 class Iterator():
 
@@ -165,6 +173,7 @@ class Function():
         self._body = None
         self._returns = None
         self._callnum = 0
+        self._resume = None #scope in which func was summoned
 
     def spec(self):
         return self.name, self.expargs
@@ -209,6 +218,14 @@ class Function():
     def callnum(self, num):
         self._callnum = num
 
+    @property
+    def resume(self):
+        return self._resume
+
+    @resume.setter
+    def resume(self, scope):
+        self._resume = scope
+
 class Block():
 
     """ implements blocks """
@@ -220,6 +237,8 @@ class Block():
         self._dotdot = []
         self._callnum = 0
         self._resume = None #scope in which block was summoned
+        self._alias = None
+        self._resumeindex = -1
 
     def spec(self):
         return self.name, self.expargs
@@ -271,6 +290,22 @@ class Block():
     @resume.setter
     def resume(self, scope):
         self._resume = scope
+
+    @property
+    def alias(self):
+        return self._alias
+
+    @alias.setter
+    def alias(self, name):
+        self._alias = name
+
+    @property
+    def resumeindex(self):
+        return self._resumeindex
+
+    @resumeindex.setter
+    def resumeindex(self, index):
+        self._resumeindex = index
 
 class SimpleVar():
 
@@ -332,6 +367,7 @@ class Node():
         self._args = ''
         self._xpos = 0
         self._ypos = 0
+        self._issink = False
 
     def spec(self):
         return self.index, self.scope, self.name, self.nodetype, self.args
@@ -439,6 +475,14 @@ class Node():
         if self._ypos==0:
             self._ypos = y
 
+    @property
+    def issink(self):
+        return self._issink
+
+    @issink.setter
+    def issink(self, boolean):
+        self._issink = boolean
+
     
 
 class CustomVisitor(PdawVisitor):
@@ -451,7 +495,7 @@ class CustomVisitor(PdawVisitor):
         self._mainIndex = -1
         self._currscope = 'main'
         self._prevscope = []
-        self.indotdot = False
+        self._indotdot = False
 
     def memorized(self, varname):
         #just ckecks if variable with given varname is in memory, and returns var
@@ -461,7 +505,7 @@ class CustomVisitor(PdawVisitor):
                     continue
                 if var.name == varname and var.scope==self.currscope:
                     return var
-                elif var.name == varname and var.scope==self.prevscope and self.indotdot:
+                elif var.name == varname and var.scope==self.prevscope and self.indotdot==True:
                     return var
             raise NotFoundException(varname)
         except NotFoundException as e:
@@ -561,33 +605,41 @@ class CustomVisitor(PdawVisitor):
     # Visit a parse tree produced by PdawParser#dotdotstmt.
     def visitDotdotstmt(self, ctx:PdawParser.DotdotstmtContext):
         self.indotdot = True
-        for b in self.callables:
-            if self.currscope.startswith(b.name): #siamo nello scope clock1, clock2 ecc.
-                self.currscope = b.resume #torna allo scope dove il nodo è stato chiamato
-                if b.resume == 'main':
-                    self.index = self.mainIndex #torno all'indice del main
         self.visitChildren(ctx)
         self.indotdot = False
 
 
     # Visit a parse tree produced by PdawParser#callstmt.
-    # callstmt: '@' NAME parameters ; 
+    # callstmt: '@' NAME parameters (AS SYMBOL)?; 
     def visitCallstmt(self, ctx:PdawParser.CallstmtContext):
         callee = None
         fname = ctx.NAME().getText()
-        #check if called func/block exists
+        #check if called func/block exists, and check good synthax
         try:
             for f in self.callables:
                 if f.name == fname:
                     callee = f
                     callee.callnum += 1
-                    if type(callee)==Block:
-                        callee.resume = self.currscope
+                    callee.resume = self.currscope
             if callee == None:
                 raise NotFoundException(fname, True)
 
+            if ctx.AS():
+                if type(callee)==Function:
+                    raise CallException(ctx.start.lineno)
+            if type(callee)==Block:
+                callee.alias = ctx.SYMBOL().getText()[1:-1]
+
         except NotFoundException as e:
             print(e, True)
+
+        except CalleException as e:
+            print(e)
+
+        except AttributeError:
+            print('block must be called with an alias')
+            print('error at line: ', ctx.start.lineno, ctx.getText())
+            sys.exit(1)
 
         #check passed parameters 
         try:
@@ -607,9 +659,15 @@ class CustomVisitor(PdawVisitor):
             print(e)
             sys.exit(1)
 
-        #assign given parameters to expected + type check
-        self.currscope = callee.name+str(callee.callnum)
+        #change the scope!
+        if type(callee)==Function:
+            self.currscope = callee.name+str(callee.callnum)
+        elif type(callee)==Block:
+            self.memory.append(callee)
+            self.currscope = callee.alias
         
+
+        #assign given parameters to expected + type check
         for i in range(len(params)):
             try: 
                 if callee.expargs[i][1]=='intn':
@@ -618,15 +676,17 @@ class CustomVisitor(PdawVisitor):
                     params[i]=float(params[i])
                 elif callee.expargs[i][1]=='symbol':
                     params[i]=str(params[i])
-                    
+
                 self.memory.append(SimpleVar())
                 self.memory[-1].name = callee.expargs[i][0]
                 self.memory[-1].scope = self.currscope
                 self.memory[-1].value = params[i]
+                #print(self.memory[-1].spec())
 
             except ValueError:
                 print(f'wrong parameter type! expected: <{callee.expargs[i][1]}>, found: <{params[i]}>')
                 sys.exit(1)
+
 
         #function called
         if type(callee)==Function:
@@ -635,15 +695,21 @@ class CustomVisitor(PdawVisitor):
 
         #block called
         if type(callee)==Block:
-            self.mainIndex = self.index #general nodeIndex is augmented by 1 bc a block itself has index in pd
+            if callee.resume=='main':
+                self.mainIndex = self.index
+            else:
+                callee.resumeindex = self.index #general nodeIndex is augmented by 1 bc a block itself has index in pd
             self.index =-1 #each time a new block is declared, nodeIndex resets
             self.visit(callee.body)
-            if callee.dotdot == []:
-                self.currscope = callee.resume
+            self.currscope = callee.resume
+            if callee.resume=='main':
                 self.index = self.mainIndex
             else:
-                for i in range(len(callee.dotdot)):
+                self.index = callee.resumeindex
+                
+            for i in range(len(callee.dotdot)):
                     self.visit(callee.dotdot[i])
+                
             return None
 
 
@@ -1183,6 +1249,14 @@ class CustomVisitor(PdawVisitor):
     @prevscope.setter
     def prevscope(self, scope):
         self._prevscope = scope
+
+    @property
+    def indotdot(self):
+        return self._indotdot
+
+    @indotdot.setter
+    def indotdot(self, boolean):
+        self._indotdot = boolean
 
 
 

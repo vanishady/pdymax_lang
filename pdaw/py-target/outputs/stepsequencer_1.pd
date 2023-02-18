@@ -1,4 +1,4 @@
-#N canvas 0 0 400 400 12;
+#N canvas 300 100 800 500 12 ;
 #X obj 40 120 receive Kick ;
 #X obj 40 160 bng 19 250 50 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000;
 #X msg 40 200 open ../samples/kick.wav  \, 1, f 29;
