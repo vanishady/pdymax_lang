@@ -1,6 +1,45 @@
+Pdaw è un DSL che compila verso PureData [./PdFileFormat]
+
+/*/*/*/*/*/*/ puredata /*/*/*/*/*/*/
+
+PureData è un ambiente di programmazione con interfaccia grafica per il processing 
+di audio in real-time. Consiste essenzialmente di *nodi* e *connessioni*. Ad esempio,
+una patch base in PureData potrebbe essere costituita da un nodo oscillatore,
+un nodo per l'output audio e una connessione tra i due.
+
+Le connessioni sono di due tipi: *control* e *signal*, e in PureData la differenza 
+è visibile dalla comparsa o meno del simbolo '~' nel nome del nodo.
+
+Ciascun nodo può avere in generale più inlet e outlet (ganci a cui arrivano o da
+cui partono le connessioni). Il valore di un nodo si aggiorna quando riceve un
+messaggio in uno dei suoi inlet.
+
+PureData presenta un gran numero di nodi built-in, oltre che nodi 'externals'
+condivisi dalla community.
+
+
+/*/*/*/*/*/*/ obiettivi /*/*/*/*/*/*/
+
+- **programmazione da interfaccia testuale e non grafica**
+- **ordine**: strutturare una patch puredata in maniera ordinata grazie all'uso delle 
+  subpatch (implementate come blocchi nel DSL)
+- **riutilizzo del codice**: non è raro dover copiare grandi set di nodi in puredata.
+  Pdaw tiene conto di questa necessità utilizzando blocchi che raggruppano insiemi
+  di nodi, e che possono essere richiamati nel codice. 
+- **daw-like**: al momento non esiste una libreria standard di pdaw, ma l'obiettivo 
+  è permettere (tramite import) di richiamare blocchi standard quali @clock,
+  @drums, @synth ... in modo da avere un ambiente di lavoro simile a quello 
+  di una digital audio workstation.
+- **linguaggio semplice senza perdite di features**: fornire un linguaggio di 
+  programmazione semplice e intuitivo, che permetta di esprimere tutto ciò che è 
+  esprimibile anche attraverso l'interfaccia grafica di puredata.
+ 
+
+/*/*/*/*/*/*/ grammatica /*/*/*/*/*/*/
+
 ###PATCH
 
-#il nome della patch dà il nome al file
+#il nome della patch dà il nome al file .pd
 patch nomepatch
 
 
@@ -17,12 +56,19 @@ block nomeblock (param1:type, param2:type ...) {
 
 ###VARIABILI STANDARD
 
-#dichiarazione e assegnamento sono insieme
+#le variabili possono essere floatn (float), intn (interi), symbol (stringhe),
+#list (liste) se sono variabili semplici, altrimenti sono nodi
+
+#le variabili semplici non hanno un corrispettivo nell'interfaccia di puredata,
+#se non come argomento dei nodi.
+
+#dichiarazione e assegnamento sono simultanei
 $nomevar1 = 1
 $nomevar = 'pippo'
 $nomevar = 30/$nomevar1
 $nomevar = @funzionecheritornanum()
 $nomevar = [1,2,3] #una lista può essere di interi, float o symbol
+$nomevar = $lista[0] 
 
 
 ###NODI 
@@ -43,8 +89,8 @@ $nodename = obj(10)
 
 #dichiarazione veloce per nodi che specificano operazioni (ancora, NON numeri singoli)
 #di default questi nodi hanno nodetype obj
-nodename = *5
-nodename = *~5
+$nodename = *5
+$nodename = *~5
 *5
 *~5
 
@@ -75,6 +121,20 @@ floatatom > [$nodename1.in2, $nodename2.out2, $node3=obj(param, ...)] > $nodenam
 
 ###COSTRUTTI IF-ELIF-ELSE, FOR
 
-#funzionano nel modo più basilare
+#sono python-like
 #la test condition è un'operazione aritmetica o di confronto
+
+
+###FUNZIONI
+
+#le funzioni servono alla manipolazione di dati semplici nel loro scope locale, e ritornano un valore
+#i tipi accettati sono intn,floatn,list,symbol
+func nomefunc (param1:type, param2:type ...) {
+ 	[ ...]
+	return $var
+}
+
+#la funzione è richiamata in una call
+@nomefunc(param1, param2, ...)
+
 
