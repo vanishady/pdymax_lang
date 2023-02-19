@@ -1,3 +1,4 @@
 working dir: pdaw/py-target
+custom visitor: pdaw/py-target/Visitor.py
 
-testing: run <antlr.pd>
+run: python3 antlr.py

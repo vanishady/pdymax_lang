@@ -48,17 +48,17 @@ block drums ($lenstepseq:intn, $instrument:symbol, $sample:symbol, $hits:list) {
 	
 	
 	for $counter in range $lenstepseq:
-		receive($list2[$counter]) > bang > $spig+$counter = spigot > bang > $sendto
+		receive($list2[$counter]) > bang > $spig+'$counter' = spigot > bang > $sendto
 		if $hits[$counter]==1:
-			loadbang >toggle > $spig+$counter.in2
+			loadbang >toggle > $spig+'$counter'.in2
 		else:
-			toggle > $spig+$counter.in2
+			toggle > $spig+'$counter'.in2
 		end
 		
 	end
 
-	.. receive($instrument) > bang > msg('open', $sample) > readsf~ > $vol+$instrument=*~0.5 > $out+$instrument=dac~
-	.. $vol+$instrument > $out+$instrument.in2
+	.. receive($instrument) > bang > msg('open', $sample) > readsf~ > $vol+'$instrument'=*~0.5 > $out+'$instrument'=dac~
+	.. $vol+'$instrument' > $out+'$instrument'.in2
 
 }
 
@@ -68,12 +68,12 @@ block onoff() {
 
 }
 
-@onoff()
+@onoff() as $onoff
 $len = 8
-@clock($len, 160)
-@drums($len,'Kick','../samples/kick.wav', [1,0,1,0,1,0,0,0])
-@drums($len,'HiHat','../samples/hihat_dnb.wav', [0,0,0,1,0,1,1,1])
-@drums($len,'Crash','../samples/hihat_snake.wav', [0,0,0,1,0,0,0,1])
+@clock($len, 160) as $clock
+@drums($len,'Kick','../samples/kick.wav', [1,0,1,0,1,0,0,0]) as $kick
+@drums($len,'HiHat','../samples/dnb.wav', [0,0,0,1,0,1,1,1]) as $hihat
+@drums($len,'Crash','../samples/hihat_snake.wav', [0,0,0,1,0,0,0,1]) as $crash
 
 ;
 

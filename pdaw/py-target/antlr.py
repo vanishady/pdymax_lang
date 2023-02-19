@@ -9,22 +9,24 @@ import Visitor
 from antlr4.tree.Tree import ParseTreeWalker
 
 # get input filename 
-"""
+
 fn=False
 while fn==False:
     if len(sys.argv)!=2:
         fn = input('please enter input filename, i.e. <input.txt>: ')
+        if '.' not in fn:
+            fn = fn+'.txt'
     else:
         fn = sys.argv[1]
 
-### ANTLR ###
 try:
     lexer = PdawLexer(FileStream(fn))
 except FileNotFoundError:
     sys.exit(f'file {fn} does not exist.')
-"""
 
-lexer = PdawLexer(FileStream('input2.txt'))
+  
+### ANTLR ###
+lexer = PdawLexer(FileStream('input4.txt'))
 stream = CommonTokenStream(lexer)
 parser = PdawParser(stream)
 tree = parser.prog()
@@ -89,7 +91,7 @@ for scope in scopes:
     if scope == 'main':
         continue
     else:
-        res+=(f'#N canvas 0 0 400 400 {scope};\r\n')
+        res+=(f'#N canvas 0 0 400 400 {scope[1:]};\r\n')
         for node in scopes[scope]:
             if type(node)==Visitor.Node:
                 res+=(node.printer())
@@ -97,7 +99,7 @@ for scope in scopes:
         for conn in scopes[scope]:
             if type(conn)==Visitor.Connection:
                 res+=(conn.printer())
-        res+=(f'#X restore {x} {y} pd {scope};\r\n')
+        res+=(f'#X restore {x} {y} pd {scope[1:]};\r\n')
         x+=100
         if x>600:
             x = 40
@@ -117,8 +119,6 @@ for n in v.memory:
     if type(n) in [Visitor.Node, Visitor.Connection, Visitor.SimpleVar, Visitor.Block]:
             print(type(n), n.spec())
 """
-
-
 
 outfile = v.patch
 output = open('outputs/'+outfile+'.pd', 'w')

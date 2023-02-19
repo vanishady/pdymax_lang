@@ -27,7 +27,7 @@ blockstmt: BLOCK NAME typedparams '{' suite NL* dotdotstmt* NL* '}' NL ;
 
 dotdotstmt: '..' (connectionstmt | nodedeclstmt | callstmt) NL ;  
 
-callstmt: '@' NAME parameters (AS SYMBOL)?; 
+callstmt: '@' NAME parameters (AS varname)?; 
 
 nodedeclstmt
  : varname '=' NAME parameters? #nodedecl1
@@ -106,7 +106,10 @@ suite
  ;
 
 operation
- : op=('*'|'/'|'*~'|'/~'|'+'|'-'|'+~'|'-~'|'%') NUMBER?
+ : op=('*'|'/'|'*~'|'/~'|'+'|'-'|'+~'|'-~'|'%') NUMBER
+ | op=('*'|'/'|'*~'|'/~'|'+'|'-'|'+~'|'-~'|'%') varname
+ | op=('*'|'/'|'*~'|'/~'|'+'|'-'|'+~'|'-~'|'%') slicedlist
+ | op=('*'|'/'|'*~'|'/~'|'+'|'-'|'+~'|'-~'|'%')
  ;
 
 ifstmt
@@ -128,7 +131,7 @@ forstmt
  ;
 
 varname
- : VARNAME ('+' VARNAME)?
+ : VARNAME ('+' '\''VARNAME'\'')?
  | VARNAME ('+' SYMBOL)?
  ;
 

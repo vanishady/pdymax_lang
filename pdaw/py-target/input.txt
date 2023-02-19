@@ -51,12 +51,12 @@ block drums ($lenstepseq:intn, $instrument:symbol, $sample:symbol) {
 	$sendto = send($instrument)
 	
 	for $counter in range $lenstepseq:
-		receive($list2[$counter]) > bang > $spig+$counter = spigot > bang > $sendto
-		toggle > $spig+$counter.in2
+		receive($list2[$counter]) > bang > $spig+'$counter' = spigot > bang > $sendto
+		toggle > $spig+'$counter'.in2
 	end
 
-	.. receive($instrument) > bang > msg('open', $sample) > readsf~ > $vol+$instrument=*~0.5 > $out+$instrument=dac~
-	.. $vol+$instrument > $out+$instrument.in2
+	.. receive($instrument) > bang > msg('open', $sample) > readsf~ > $vol+'$instrument'=*~0.5 > $out+'$instrument'=dac~
+	.. $vol+'$instrument' > $out+'$instrument'.in2
 
 }
 
@@ -66,12 +66,12 @@ block onoff() {
 
 }
 
-@onoff()
+@onoff() as $on
 $len = 8
-@clock($len, 160)
-@drums($len,'Kick','../samples/kick.wav')
-@drums($len,'Hat','../samples/hihat_metal.wav')
-@drums($len,'Snake','../samples/hihat_snake.wav')
+@clock($len, 160) as $metronome
+@drums($len,'Kick','../samples/kick.wav') as $kick
+@drums($len,'Hat','../samples/hihat_metal.wav') as $hat
+@drums($len,'Snake','../samples/hihat_snake.wav') as $snake
 
 ;
 

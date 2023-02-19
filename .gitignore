@@ -1,5 +1,4 @@
 .experiments
 .BASHAVVIO.txt
-version1/py-target/.ISTRUZIONI.txt
-version1/java-target/.ISTRUZIONI.txt
-version 2/py2/.references"
+pdaw/py-target/.references
+pdaw/py-target/doc/.todo.txt

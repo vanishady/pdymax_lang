@@ -1,7 +1,0 @@
-#N canvas 52 52 1366 725 12;
-#X obj 913 158 bpm;
-#X obj 913 103 loadbang;
-#X msg 913 127 60;
-#X text 876 126 bpm:;
-#X connect 1 0 2 0;
-#X connect 2 0 0 0;

@@ -59,7 +59,7 @@ class TypeException(Exception):
     def __str__(self):
         return f'error at line: {self._lineno}\n'+self._err
 
-class CalleException(Exception):
+class CallException(Exception):
 
     def __init__(self, lineno):
         self._lineno = lineno
@@ -307,6 +307,7 @@ class Block():
     def resumeindex(self, index):
         self._resumeindex = index
 
+
 class SimpleVar():
 
     """implements int, float, symbol variables"""
@@ -510,7 +511,7 @@ class CustomVisitor(PdawVisitor):
             raise NotFoundException(varname)
         except NotFoundException as e:
             print(e)
-            sys.exit(1)
+            #sys.exit(1)
 
     def alreadyexists(self, varname):
        for var in self.memory:
@@ -610,10 +611,13 @@ class CustomVisitor(PdawVisitor):
 
 
     # Visit a parse tree produced by PdawParser#callstmt.
-    # callstmt: '@' NAME parameters (AS SYMBOL)?; 
+    # callstmt: '@' NAME parameters (AS varname)?; 
     def visitCallstmt(self, ctx:PdawParser.CallstmtContext):
         callee = None
         fname = ctx.NAME().getText()
+        if fname == 'len':
+            params=self.visit(ctx.parameters())
+            return len(params[0])
         #check if called func/block exists, and check good synthax
         try:
             for f in self.callables:
@@ -626,9 +630,9 @@ class CustomVisitor(PdawVisitor):
 
             if ctx.AS():
                 if type(callee)==Function:
-                    raise CallException(ctx.start.lineno)
+                    raise CallException(ctx.start.line)
             if type(callee)==Block:
-                callee.alias = ctx.SYMBOL().getText()[1:-1]
+                callee.alias = self.visit(ctx.varname())
 
         except NotFoundException as e:
             print(e, True)
@@ -638,7 +642,7 @@ class CustomVisitor(PdawVisitor):
 
         except AttributeError:
             print('block must be called with an alias')
-            print('error at line: ', ctx.start.lineno, ctx.getText())
+            print('error at line: ', ctx.start.line, ctx.getText())
             sys.exit(1)
 
         #check passed parameters 
@@ -676,6 +680,7 @@ class CustomVisitor(PdawVisitor):
                     params[i]=float(params[i])
                 elif callee.expargs[i][1]=='symbol':
                     params[i]=str(params[i])
+                #elif list: params[i] simply remains params[i]
 
                 self.memory.append(SimpleVar())
                 self.memory[-1].name = callee.expargs[i][0]
@@ -690,6 +695,7 @@ class CustomVisitor(PdawVisitor):
 
         #function called
         if type(callee)==Function:
+            
             self.visit(callee.body)
             return self.visit(callee.returns)
 
@@ -948,7 +954,7 @@ class CustomVisitor(PdawVisitor):
             if vname == '':
                 print('an error occourred in memory')
             else:
-                print(f'cannot use {type(self.memorized(vname))} in connections')
+                print(f'cannot use {type(self.memorized(vname))} in connections, error line {ctx.start.line}')
                 sys.exit(1)
             
         if ctx.IOLET():
@@ -1034,6 +1040,11 @@ class CustomVisitor(PdawVisitor):
         arglist.append(ctx.op.text)
         if ctx.NUMBER():
             arglist.append(ctx.NUMBER().getText())
+        elif ctx.varname():
+            vname = self.visit(ctx.varname())
+            arglist.append(self.memorized(vname))
+        elif ctx.slicedlist():
+            arglist.append(self.visit(ctx.slicedlist()))
         return arglist
 
 

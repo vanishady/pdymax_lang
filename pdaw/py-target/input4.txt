@@ -1,10 +1,10 @@
-patch easy_envelope
+patch keyboard_with_env
 
 
-block additivesynth ($freq:intn, $armonics:list, $volumes:list) {
+block additivesynth ($armonics:list, $volumes:list) {
 
 
-	loadbang>msg($freq)>$ff=floatatom
+	r('y')>$ff=floatatom
 	$finalvol = *~ 0.25
 	$ff > osc~ > $finalvol > s~('source')
 
@@ -20,7 +20,7 @@ block adsr($attack:intn, $sustain:intn, $suslevel:floatn, $decay:intn, $release:
 
 
 	r~('source') > *~0.5 > $mul=*~ > *~ 0.25 > dac~
-	$b1=r('bang') > msg(1, $attack) > $flow=line~ > $mul.in2
+	$b1=r('x') > msg(1, $attack) > $flow=line~ > $mul.in2
 	$b1 > delay($attack) > $b2=bang > msg($suslevel, $decay) > $flow
 	$b2 > delay($sustain+$decay) > bang > msg(0, $release) > $flow
 
@@ -33,14 +33,16 @@ block onoff() {
 }
 
 @onoff() as $onoff
-bang > s('bang')
-@additivesynth(440, [3,5,7], [0.75, 0.5, 0.25]) as $synth
 @adsr(1000, 1500, 0.5, 1500, 1000) as $adsr
+@additivesynth([3,5,7], [0.75, 0.5, 0.25]) as $synth
+$press = s('x')
 
-#$attacktime = 1000 #ms
-#$sustainlevel = 0.5
-#$decaytime = 1500 #ms
-#$sustaintime = 1500 #ms
-#$releasetime = 1000 #ms
+$notes = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88]
+#$notes_string = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
+
+for $counter in range @len($notes):
+	$b+'$counter'=bang > msg($notes[$counter]) > floatatom > send('y')
+	$b+'$counter' > $press
+end
 
 ;
