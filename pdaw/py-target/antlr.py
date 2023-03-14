@@ -26,7 +26,7 @@ except FileNotFoundError:
 
   
 ### ANTLR ###
-lexer = PdawLexer(FileStream('input4.txt'))
+lexer = PdawLexer(FileStream(fn))
 stream = CommonTokenStream(lexer)
 parser = PdawParser(stream)
 tree = parser.prog()

@@ -1,0 +1,34 @@
+import pdawlib
+patch breakbeat
+
+#start/stop audio stream
+@onoff()
+
+#set bpm
+@bpm(160) as $bpm
+
+#instruments
+@drums('kick', [0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1], 'kick.wav') as $kick
+@drums('hat', [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], 'hat.wav') as $hat
+@drums('snare', [0,1,0,1,0,0,1,0,0,1,0,1,0,0,1,0], 'snare01.wav') as $snare
+@melody('bass', [E,F,G,B,E], 'mybass.wav') as $bass
+@additivesynth(440, [2,4,6,8]) as $synth
+@melody('ambience', $synth) as $ambience
+
+#play 16th notes or 8th notes (sends to instruments)
+@clock($bpm, 16, [$kick, $hat, $snare]) as $clock16	#16th notes
+@clock($bpm, 8, [$ambience, $bass]) as $clock8	#8th notes
+
+#effects and adsr
+@adsr(1000, 1500, 0.5, 1500, 1000) as $adsrbass
+@adsr(1000, 2500, 0.75, 1500, 1000) as $adsramb
+@reverb(500, 500) as $freeverb
+
+#attach effects
+@mix([$ambience, $freeverb, $adsramb], [$bass, $adsrbass]) as $mixer
+
+
+------- requisiti --------
+- importare la libreria standard (con blocchi @drums, @melody ecc. e funzioni)
+- riferirsi a blocchi già dichiarati (per poter ad esempio mettere effetti sul blocco)
+- all'interno dei blocchi: dichiarare e connettere nodi
