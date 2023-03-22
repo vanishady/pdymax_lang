@@ -1,0 +1,33 @@
+patch mysynth
+import pdawlib
+
+func ampmod ($block_1: node, $block_2: node) {
+
+	return $block1 *~ $block2 -> output~()
+}
+
+block additivesynth ($freq: intn, $armonics: list, $volumes: list) {
+	inlet() > msg($freq) > $freq_node = num()
+	$freq_node > osc~() > $finalvol = *~ (0) > outlet~()
+
+	for $i in range @len($armonics):
+		$freq_node > * ($armonics[$i]) > num() > osc~() > * ($volumes[$i]) > $finalvol
+	end
+}
+
+block adsr ($attack:intn, $decay:intn, $sus_lev: floatn, $sustain: intn, $release:intn) {
+	$bucket = line~()
+	inlet() > msg(1, 1000) > $bucket
+	inlet() > delay(1000) > bang() > [$mess = msg(0.5, 1500), $del = delay(3000)]
+	$del > msg(0, 1000) > $bucket
+	$mess > $bucket > outlet~()
+}
+
+@additivesynth(440, [3,5,7], [0.75, 0.55, 0.35]) as $synth
+@adsr(1000, 1500, 0.5, 1500, 1000) as $myadsr
+
+bang() > [$synth, $myadsr.in1, $myadsr.in2]
+
+#attach things
+@ampmod($synth, $myadsr)  #this synth follows this envelope
+;

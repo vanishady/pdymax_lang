@@ -1,0 +1,50 @@
+1) CARATTERISTICHE COMUNI
+- creazione blocchi
+- divisione per tipo: signal, float, int, message
+- creazione nodi e connessioni
+PD: <inlet, inlet~>, <msg>, <number>, <osc~>, <*, *~>, <outlet, outlet~>
+    <delay>, <line~>, <output~>, <dac>
+MAX: <inlet>, <msg>, <int, float>, <cycle~>, <*, *~>, <outlet>
+	<delay>, <line~>, <ezdac~>, <dac~>
+
+2)OUTPUT DI CARATTERISTICHE COMUNI
+- inlet: se il nodo che si connette a inlet è di tipo signal, allora inlet va specificato con la tilde. stessa cosa con outlet. (se siamo in pd; in max, non c'è bisogno di distinzioni)
+
+- number/float/integer: in pd, non si può comunque creare un float se non attraverso un messaggio stampato prima e datogli in pasto. quindi tutto ok: in max, se ci starà un numero con '.', sarà tradotto con float, altrimenti con integer.
+
+- ezdac, output: funzionano allo stesso modo, ma di output è opportuno alzare i dB. Sorvoliamo. 
+
+3) DATA TYPES
+different kind of data that can flow through a pipe. 
+
+***
+node_atom
+	node_num
+	node_sym (bang, e qualsiasi non num)
+node_list
+node_sig
+***
+
+MAX: bang, integer, decimal, symbol, list (collection of integer, decimal, symbol, or a mix), jit matrix (multi-layer array of numbers), audio signal (numbers at audio sample rate usually 44100 Hz).
+Message
+
+PD: bang, float, symbol, list (a series of 2 or more atoms whose first atom is either the selector "list", or a numeric atom, which causes the "list" selector to be implied. A 0-atom list is a bang, a 1-atoms list is either a float or a symbol), audio signal.  
+
+Miller's definition: "In Pd, objects intercommunicate by sending messages... Messages contain a selector followed by any number of arguments. "
+
+"The selector is a symbol, which appears in the patch as a non-numeric string with no white space, semicolons, or commas." "bang", "float", "symbol", and "list" are all pre-defined selectors with a built-in meaning in Pd. Any series that has a numeric first element has an implied selector of "list". For all other messages, the selector is free to be interpreted by the object.
+
+4) FORMULE 
+PD: 
+-[binops] The arithmetic binary operators perform the 4 arithmetic functions (\[+\], etc) or output the minimum or maximum of two numbers (\[min\], \[max\]). All of these objects take a bang message to evaluate the operation with the previously set values.
+
+-[signal binops] These objects perform the 4 arithmetic functions (\[+~\], etc) or output the minimum or maximum of two numbers (\[min~\], \[max~\]), They combine two signals as above, or, if you give a numeric argument, the right inlet only takes floats (no signals) and the argument initializes the right inlet value. ((Posso usare sia signal che float negli inlet, ma se c'è un argomento vicino all'operatore, non si può attaccare nessun signal nell'inlet di destra, solo un float)
+
+MAX:
+- [binops]: come in pd, non si possono connettere signals
+- [signal binops]: a differenza di pd, si possono mettere i signals senza problemi sempre e pure i non signals. L'output però è solo signal
+
+5) LAYOUT AUTOMATICO: 
+graphvitz / mio 
+
+6) GRAMMATICA
