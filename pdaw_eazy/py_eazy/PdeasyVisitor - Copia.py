@@ -204,6 +204,11 @@ class PdeasyVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by PdeasyParser#nodeptr.
+    def visitNodeptr(self, ctx:PdeasyParser.NodeptrContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by PdeasyParser#forstmt.
     def visitForstmt(self, ctx:PdeasyParser.ForstmtContext):
         return self.visitChildren(ctx)

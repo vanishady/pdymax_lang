@@ -359,6 +359,15 @@ class PdeasyListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by PdeasyParser#nodeptr.
+    def enterNodeptr(self, ctx:PdeasyParser.NodeptrContext):
+        pass
+
+    # Exit a parse tree produced by PdeasyParser#nodeptr.
+    def exitNodeptr(self, ctx:PdeasyParser.NodeptrContext):
+        pass
+
+
     # Enter a parse tree produced by PdeasyParser#forstmt.
     def enterForstmt(self, ctx:PdeasyParser.ForstmtContext):
         pass

@@ -25,3 +25,5 @@ v.visit(tree)
 for st in v.memory:
     for var in st:
         print(var.spec())
+        #var.fullspec()
+        #print(f'\t')

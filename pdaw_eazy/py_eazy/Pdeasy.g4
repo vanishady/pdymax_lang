@@ -4,7 +4,7 @@ grammar Pdeasy;
 * parser rules
 */
 
-prog: patchstmt importstmt* (funcdefstmt)* stmt* ';' ;
+prog: patchstmt importstmt* funcdefstmt* stmt* ';' ;
  
 patchstmt: PATCH NAME ;  
 
@@ -12,7 +12,7 @@ importstmt: IMPORT NAME ;
 
 funcdefstmt: FUNC NAME typedparams '{' suite '}' ; 
 
-returnstmt: RETURN (varname | expr | node_expr)? ;
+returnstmt: RETURN (varname | expr | node_expr | connectionstmt)? ;
 
 stmt
  : blockstmt 
@@ -85,13 +85,9 @@ typedargslist
  ;
 
 arg
- : SYMBOL
- | NUMBER
- | varname
- | callstmt
- | list_access
+ : expr
  | list
- | expr
+ | nodeptr
  ;
 
 typedarg
@@ -127,8 +123,12 @@ node_expr
  | (varname | nodedecl) op=('+~'|'-~') (varname | nodedecl) '->' (varname | nodedecl)
  ;
 
+nodeptr
+ : '*' varname
+ ;
+
 forstmt
- : FOR varname 'in range' (NUMBER | callstmt | varname) ':' suite END
+ : FOR varname 'in range' (NUMBER | callstmt | varname | list_access) ':' suite END
  ;
 
 varname
