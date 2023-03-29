@@ -10,8 +10,9 @@ block additivesynth ($freq: intn, $armonics: list, $volumes: list) {
 	$freq_node > osc~() > $finalvol = *~ (0) > outlet~()
 
 	for $i in range @len($armonics):
-		$freq_node > * ($armonics[$i]) > num() > osc~() > * ($volumes[$i]) > 		$finalvol
+		$freq_node > * ($armonics[$i]) > num() > osc~() > * ($volumes[$i]) > $finalvol
 	end
+
 }
 
 block adsr ($attack:intn, $decay:intn, $sus_lev: floatn, $sustain: intn, $release:intn) {

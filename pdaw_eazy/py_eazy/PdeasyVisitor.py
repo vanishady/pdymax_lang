@@ -55,10 +55,54 @@ class MissingParameterException(Exception):
     def __str__(self):
         return f'error at line: {self._lineno}\n missing some args to pass to function/block'
 
+class TypeException(Exception):
+
+    def __init__(self, lineno, used=None, expected=None):
+        self._lineno = lineno
+        self._used = used
+        self._expected = expected
+
+    def __str__(self):
+        return f'error at line: {self._lineno}\n expected type {self._expected}, found type {self._used}'
     
 ###############
 # variables
 ###############
+
+class Iterator():
+
+    def __init__(self):
+        self._name = None
+        self._value = -1
+        self._scope = None
+
+    def spec(self):
+        return self.scope, self.name, self.value
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, itername):
+        self._name = itername
+
+    @property
+    def value(self):
+        return self._value
+
+    @value.setter
+    def value(self, val):
+        self._value = val
+
+    @property
+    def scope(self):
+        return self._scope
+
+    @scope.setter
+    def scope(self, iterscope):
+        self._scope = iterscope
+    
 
 class Function():
 
@@ -344,6 +388,7 @@ class PdeasyVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by PdeasyParser#returnstmt.
     def visitReturnstmt(self, ctx:PdeasyParser.ReturnstmtContext):
+        """updates 'returns' field of called function. return in blocks is not handled yet"""
         for elem in self.callables:
             if elem.name == self.symtable.name:
                 try:
@@ -572,8 +617,8 @@ class PdeasyVisitor(ParseTreeVisitor):
                 vname2 = self.visit(ctx.varname(1))
                 var2 = self.symtable.lookup(vname2)
                 if var2 == False: raise NotFoundException(ctx.start.line, vname2)
-                if not isinstance(index, int): raise AttributeError
                 index = var2.value
+                if not isinstance(index, int): raise AttributeError
             elif ctx.NUMBER():
                 if '.' in ctx.NUMBER().getText(): raise AttributeError
                 index = int(ctx.NUMBER().getText())
@@ -740,6 +785,7 @@ class PdeasyVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by PdeasyParser#TestCall.
     def visitTestCall(self, ctx:PdeasyParser.TestCallContext):
+        """return value returned by function call. None if a block was called"""
         return self.visit(ctx.callstmt())
 
 
@@ -851,11 +897,49 @@ class PdeasyVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by PdeasyParser#forstmt.
     def visitForstmt(self, ctx:PdeasyParser.ForstmtContext):
-        return self.visitChildren(ctx)
+        """for loops"""
+        vname = self.visit(ctx.varname(0))
+        iterator = self.symtable.lookup(vname)
+        if iterator == False:
+            iterator = Iterator()
+            self.symtable.bind(iterator)
+            iterator.name = vname
+            iterator.scope = self.symtable.name
+        iterator.value = -1
 
+        #get range len
+        try:
+            if ctx.NUMBER():
+                num = ctx.NUMBER().getText()
+                if '.' in num: raise TypeException(ctx.start.line, type(num), 'int')
+                rangelen = int(num)
+            elif ctx.callstmt():
+                rangelen = int(self.visit(ctx.callstmt()))
+            elif ctx.varname(1):
+                vname1 = self.visit(ctx.varname(1))
+                var = self.symtable.lookup(vname1)
+                if var == False: raise NotFoundException(ctx.start.line, vname1)
+                rangelen = var.value
+                if not isinstance(rangelen, int): raise TypeException(ctx.start.line, type(num), 'int')
+                
+            elif ctx.list_access():
+                rangelen = int(self.visit(ctx.list_access()))
+                
+        except TypeException as e1:
+            print(e1)
+
+        except NotFoundException as e2:
+            print(e2)
+
+        else:
+            for i in range(rangelen):
+                iterator.value+=1
+                self.visitSuite(ctx.suite())
+            iterator.value = -1
 
     # Visit a parse tree produced by PdeasyParser#varname.
     def visitVarname(self, ctx:PdeasyParser.VarnameContext):
+        """return varname"""
         return ctx.VARNAME().getText()
 
 
