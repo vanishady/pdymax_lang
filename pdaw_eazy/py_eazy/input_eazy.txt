@@ -5,19 +5,13 @@ func ampmod ($block_1: node, $block_2: node) {
 	return $block1 *~ $block2 -> output~()
 }
 
-func len($sss:list) {
-
-	$aaa = 'b'
-
-}
-
 block additivesynth ($freq: intn, $armonics: list, $volumes: list) {
 	inlet() > msg($freq) > $freq_node = num()
 	$freq_node > osc~() > $finalvol = *~ (0) > outlet~()
 
-	#for $i in range @len($armonics):
-	#	$freq_node > * ($armonics[$i]) > num() > osc~() > * ($volumes[$i]) > $finalvol
-	#end
+	for $i in range @len($armonics):
+		$freq_node > * ($armonics[$i]) > num() > osc~() > * ($volumes[$i]) > 		$finalvol
+	end
 }
 
 block adsr ($attack:intn, $decay:intn, $sus_lev: floatn, $sustain: intn, $release:intn) {
@@ -34,12 +28,12 @@ block adsr ($attack:intn, $decay:intn, $sus_lev: floatn, $sustain: intn, $releas
 bang() > [$synth, $myadsr.in1, $myadsr.in2]
 
 #attach things
-@ampmod(*$synth, *$myadsr)  #this synth follows this envelope
+#@ampmod(*$synth, *$myadsr)  #this synth follows this envelope
 
 #test cases
 $alfa = 440
 $beta = [0.0, 1.1, 2.2, 3.3]
-$altronode = bang(1)
+$altronode = bang(@ampmod(*$synth, *$myadsr))
 
 $varname1 = bang()
 $varname2 = bang(10)

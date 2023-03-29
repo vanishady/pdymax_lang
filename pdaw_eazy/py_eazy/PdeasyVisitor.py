@@ -66,6 +66,7 @@ class Function():
         self._name = None
         self._body = None
         self._expargs = None #lista di tuple (vname, vtype)
+        self._returns = None
 
     def spec(self):
         return self.name, self.expargs
@@ -85,6 +86,14 @@ class Function():
     @body.setter
     def body(self, bodyctx):
         self._body = bodyctx
+
+    @property
+    def returns(self):
+        return self._returns
+
+    @returns.setter
+    def returns(self, val):
+        self._returns = val
     
 
 class Block():
@@ -335,7 +344,24 @@ class PdeasyVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by PdeasyParser#returnstmt.
     def visitReturnstmt(self, ctx:PdeasyParser.ReturnstmtContext):
-        return self.visitChildren(ctx)
+        for elem in self.callables:
+            if elem.name == self.symtable.name:
+                try:
+                    if ctx.varname():
+                        vname = self.visit(ctx.varname())
+                        var = self.symtable.lookup(vname)
+                        if var==False: raise NotFoundException(ctx.start.line, vname)
+                        if type(var)==Node:
+                            elem.returns = var
+                        else:
+                            elem.returns = var.value
+                    elif ctx.expr():
+                        elem.returns = self.visit(ctx.expr())
+                    else:
+                        self.visitChildren(ctx)
+                        
+                except NotFoundException as e:
+                    print(e)
 
 
     # Visit a parse tree produced by PdeasyParser#stmt.
@@ -375,6 +401,7 @@ class PdeasyVisitor(ParseTreeVisitor):
                 if elem.name == callee_name:
                     callee = elem
                     found = True
+            if callee_name == 'len': return len(self.visit(ctx.parameters())[0])
             if not found: raise NotFoundException(ctx.start.line, callee_name)
             if ctx.AS() and type(callee)==Function: raise CallError(ctx.start.line, callee_name)
             if type(callee)==Block: #if block is called, bind block to symtable. bc blocks in pd are also nodes
@@ -395,13 +422,11 @@ class PdeasyVisitor(ParseTreeVisitor):
             print(f'error at line: {ctx.start.line}\n block must be called with an alias')
             sys.exit(1)
 
-        #change the scope!
-        self.enter(callee_name)
-
         #check passed parameters and add to current symtable 
         try:
             vardecl = False
             params = self.visit(ctx.parameters())
+            self.enter(callee_name) #change the scope!
             if len(params)!=len(callee.expargs): raise MissingParameterException(ctx.start.line)
             for i in range (len(params)):
                 if callee.expargs[i][1]=='intn':
@@ -438,6 +463,9 @@ class PdeasyVisitor(ParseTreeVisitor):
         #execute body
         self.visit(callee.body)
         self.leavesymtable()
+
+        if type(callee)==Function:
+            return callee.returns
 
 
     # Visit a parse tree produced by PdeasyParser#nodedecl1.
@@ -712,7 +740,7 @@ class PdeasyVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by PdeasyParser#TestCall.
     def visitTestCall(self, ctx:PdeasyParser.TestCallContext):
-        return self.visitChildren(ctx)
+        return self.visit(ctx.callstmt())
 
 
     # Visit a parse tree produced by PdeasyParser#ParensExpr.
