@@ -427,6 +427,16 @@ public interface PdeasyListener extends ParseTreeListener {
 	 */
 	void exitNode_expr(PdeasyParser.Node_exprContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link PdeasyParser#nodeptr}.
+	 * @param ctx the parse tree
+	 */
+	void enterNodeptr(PdeasyParser.NodeptrContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PdeasyParser#nodeptr}.
+	 * @param ctx the parse tree
+	 */
+	void exitNodeptr(PdeasyParser.NodeptrContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link PdeasyParser#forstmt}.
 	 * @param ctx the parse tree
 	 */

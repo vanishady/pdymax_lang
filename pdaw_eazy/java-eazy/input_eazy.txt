@@ -29,5 +29,5 @@ block adsr ($attack:intn, $decay:intn, $sus_lev: floatn, $sustain: intn, $releas
 bang() > [$synth, $myadsr.in1, $myadsr.in2]
 
 #attach things
-@ampmod($synth, $myadsr)  #this synth follows this envelope
+@ampmod(*$synth, *$myadsr)  #this synth follows this envelope
 ;

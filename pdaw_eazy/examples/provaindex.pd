@@ -1,0 +1,11 @@
+#N canvas 451 182 450 300 12;
+#N canvas 182 182 450 300 synth 0;
+#X restore 110 35 pd synth;
+#N canvas 26 26 450 300 pollo 0;
+#X restore 89 83 pd pollo;
+#X obj 79 184 osc~;
+#X floatatom 77 143 5 0 0 0 - - - 0;
+#X obj 74 232 dac~;
+#X connect 2 0 4 0;
+#X connect 2 0 4 1;
+#X connect 3 0 2 0;

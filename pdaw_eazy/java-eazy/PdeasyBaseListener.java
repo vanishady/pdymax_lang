@@ -484,6 +484,18 @@ public class PdeasyBaseListener implements PdeasyListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterNodeptr(PdeasyParser.NodeptrContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNodeptr(PdeasyParser.NodeptrContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterForstmt(PdeasyParser.ForstmtContext ctx) { }
 	/**
 	 * {@inheritDoc}

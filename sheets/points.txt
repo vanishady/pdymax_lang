@@ -12,7 +12,7 @@ MAX: <inlet>, <msg>, <int, float>, <cycle~>, <*, *~>, <outlet>
 
 - number/float/integer: in pd, non si può comunque creare un float se non attraverso un messaggio stampato prima e datogli in pasto. quindi tutto ok: in max, se ci starà un numero con '.', sarà tradotto con float, altrimenti con integer.
 
-- ezdac, output: funzionano allo stesso modo, ma di output è opportuno alzare i dB. Sorvoliamo. 
+- ezdac, output: funzionano allo stesso modo, ma di output è opportuno alzare i dB. 
 
 3) DATA TYPES
 different kind of data that can flow through a pipe. 
@@ -21,7 +21,7 @@ different kind of data that can flow through a pipe.
 node_atom
 	node_num
 	node_sym (bang, e qualsiasi non num)
-node_list
+node_list (fatta da almeno 2 node_atom)
 node_sig
 ***
 
