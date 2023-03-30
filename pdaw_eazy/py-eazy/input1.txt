@@ -1,0 +1,16 @@
+patch prova
+
+func prova ($b:noderef) {
+
+	$a = 10
+	return $b
+
+}
+
+
+$a := bang(10)
+@prova(*$a)
+return 10
+
+
+;

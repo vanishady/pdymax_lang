@@ -1,0 +1,61 @@
+patch mysynth
+import pdawlib
+
+func ampmod ($block_1: noderef, $block_2: noderef) {
+	return $block1 *~ $block2 -> output~()
+}
+
+block additivesynth ($freq: intn, $armonics: list, $volumes: list) {
+	inlet() > msg($freq) > $freq_node := num()
+	$freq_node > osc~() > $finalvol := *~ (0) > outlet~()
+
+	for $i in range @len($armonics):
+		$freq_node > * ($armonics[$i]) > num() > osc~() > * ($volumes[$i]) > $finalvol
+	end
+
+	for $i in range 5:
+		$a = $i+$i
+	end
+	$a = 'bla'
+	$a = 'blabla'
+
+}
+
+block adsr ($attack:intn, $decay:intn, $sus_lev: floatn, $sustain: intn, $release:intn) {
+	$bucket := line~()
+	inlet() > msg(1, 1000) > $bucket
+	inlet() > delay(1000) > bang() > [$mess := msg(0.5, 1500), $del := delay(3000)]
+	$del > msg(0, 1000) > $bucket
+	$mess > $bucket > outlet~()
+}
+
+@additivesynth(440, [3,5,7], [0.75, 0.55, 0.35]) as $synth
+@adsr(1000, 1500, 0.5, 1500, 1000) as $myadsr
+
+bang() > [$synth, $myadsr.in1, $myadsr.in2]
+
+#attach things
+#@ampmod(*$synth, *$myadsr)  #this synth follows this envelope
+
+#test cases
+$alfa = 440
+$beta = [0.0, 1.1, 2.2, 3.3]
+$altronode := bang(@ampmod(*$synth, *$myadsr))
+
+if 5==4:
+	$varname1 := bang()
+	$varname2 := bang(10)
+	$varname3 := bang(10, 'alfa')
+	$varname4 := bang(10, 'alfa', $beta[0])
+elif 5==2:
+	$varname5 := bang($beta[2]+$beta[1])
+	$varname6 := bang([10, 'alfa'])
+	$varname7 := bang([10, 'alfa'], 4*'pippo')
+	$varname8 := bang(*$altronode)
+	$varname9 := bang((360)/4)
+else:
+	$varname10 := bang(40)
+	$varname10 := bang(30) 
+end
+
+;
