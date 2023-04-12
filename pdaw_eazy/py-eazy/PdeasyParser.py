@@ -10,122 +10,126 @@ else:
 
 def serializedATN():
     return [
-        4,1,50,324,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,48,337,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
         2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,
         7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,
-        2,27,7,27,2,28,7,28,1,0,1,0,5,0,61,8,0,10,0,12,0,64,9,0,1,0,5,0,
-        67,8,0,10,0,12,0,70,9,0,1,0,5,0,73,8,0,10,0,12,0,76,9,0,1,0,1,0,
-        1,1,1,1,1,1,1,2,1,2,1,2,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,4,1,4,1,4,
-        3,4,96,8,4,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,3,5,106,8,5,1,6,1,6,1,
-        6,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,7,3,7,120,8,7,1,8,1,8,1,8,1,
-        8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,3,8,134,8,8,1,9,1,9,1,9,1,9,1,
-        9,1,9,1,9,1,9,3,9,144,8,9,1,10,1,10,1,10,1,10,5,10,150,8,10,10,10,
-        12,10,153,9,10,5,10,155,8,10,10,10,12,10,158,9,10,1,10,1,10,1,11,
-        1,11,1,11,3,11,165,8,11,1,12,1,12,1,12,1,12,1,12,1,12,1,12,1,12,
-        1,12,1,12,3,12,177,8,12,1,13,1,13,1,13,4,13,182,8,13,11,13,12,13,
-        183,1,14,1,14,1,14,1,14,5,14,190,8,14,10,14,12,14,193,9,14,1,14,
-        1,14,1,14,3,14,198,8,14,1,15,1,15,3,15,202,8,15,1,15,1,15,3,15,206,
-        8,15,1,16,1,16,3,16,210,8,16,1,16,1,16,1,17,1,17,3,17,216,8,17,1,
-        17,1,17,1,18,1,18,1,18,5,18,223,8,18,10,18,12,18,226,9,18,1,19,1,
-        19,1,19,5,19,231,8,19,10,19,12,19,234,9,19,1,20,1,20,1,20,3,20,239,
-        8,20,1,21,1,21,1,21,1,21,1,22,4,22,246,8,22,11,22,12,22,247,1,23,
-        1,23,1,23,1,23,1,23,3,23,255,8,23,1,23,1,23,1,24,1,24,1,24,1,24,
-        1,24,1,24,1,24,1,24,1,24,5,24,268,8,24,10,24,12,24,271,9,24,1,24,
-        1,24,1,24,3,24,276,8,24,1,24,1,24,1,25,1,25,1,25,1,25,1,25,1,25,
-        1,25,1,25,1,25,1,25,3,25,290,8,25,1,25,1,25,1,25,1,25,1,25,1,25,
-        1,25,1,25,1,25,5,25,301,8,25,10,25,12,25,304,9,25,1,26,1,26,1,26,
-        1,27,1,27,1,27,1,27,1,27,1,27,1,27,3,27,316,8,27,1,27,1,27,1,27,
-        1,27,1,28,1,28,1,28,0,1,50,29,0,2,4,6,8,10,12,14,16,18,20,22,24,
-        26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,0,4,1,0,14,22,2,
-        0,14,15,22,22,1,0,18,19,2,0,23,27,34,34,344,0,58,1,0,0,0,2,79,1,
-        0,0,0,4,82,1,0,0,0,6,85,1,0,0,0,8,92,1,0,0,0,10,105,1,0,0,0,12,107,
-        1,0,0,0,14,114,1,0,0,0,16,133,1,0,0,0,18,143,1,0,0,0,20,145,1,0,
-        0,0,22,164,1,0,0,0,24,176,1,0,0,0,26,178,1,0,0,0,28,197,1,0,0,0,
-        30,201,1,0,0,0,32,207,1,0,0,0,34,213,1,0,0,0,36,219,1,0,0,0,38,227,
-        1,0,0,0,40,238,1,0,0,0,42,240,1,0,0,0,44,245,1,0,0,0,46,249,1,0,
-        0,0,48,258,1,0,0,0,50,289,1,0,0,0,52,305,1,0,0,0,54,308,1,0,0,0,
-        56,321,1,0,0,0,58,62,3,2,1,0,59,61,3,4,2,0,60,59,1,0,0,0,61,64,1,
-        0,0,0,62,60,1,0,0,0,62,63,1,0,0,0,63,68,1,0,0,0,64,62,1,0,0,0,65,
-        67,3,6,3,0,66,65,1,0,0,0,67,70,1,0,0,0,68,66,1,0,0,0,68,69,1,0,0,
-        0,69,74,1,0,0,0,70,68,1,0,0,0,71,73,3,10,5,0,72,71,1,0,0,0,73,76,
-        1,0,0,0,74,72,1,0,0,0,74,75,1,0,0,0,75,77,1,0,0,0,76,74,1,0,0,0,
-        77,78,5,1,0,0,78,1,1,0,0,0,79,80,5,29,0,0,80,81,5,43,0,0,81,3,1,
-        0,0,0,82,83,5,30,0,0,83,84,5,43,0,0,84,5,1,0,0,0,85,86,5,31,0,0,
-        86,87,5,43,0,0,87,88,3,34,17,0,88,89,5,2,0,0,89,90,3,44,22,0,90,
-        91,5,3,0,0,91,7,1,0,0,0,92,95,5,33,0,0,93,96,3,56,28,0,94,96,3,50,
-        25,0,95,93,1,0,0,0,95,94,1,0,0,0,95,96,1,0,0,0,96,9,1,0,0,0,97,106,
-        3,12,6,0,98,106,3,26,13,0,99,106,3,14,7,0,100,106,3,16,8,0,101,106,
-        3,18,9,0,102,106,3,48,24,0,103,106,3,54,27,0,104,106,3,8,4,0,105,
-        97,1,0,0,0,105,98,1,0,0,0,105,99,1,0,0,0,105,100,1,0,0,0,105,101,
-        1,0,0,0,105,102,1,0,0,0,105,103,1,0,0,0,105,104,1,0,0,0,106,11,1,
-        0,0,0,107,108,5,32,0,0,108,109,5,43,0,0,109,110,3,34,17,0,110,111,
-        5,2,0,0,111,112,3,44,22,0,112,113,5,3,0,0,113,13,1,0,0,0,114,115,
-        5,4,0,0,115,116,5,43,0,0,116,119,3,32,16,0,117,118,5,40,0,0,118,
-        120,3,56,28,0,119,117,1,0,0,0,119,120,1,0,0,0,120,15,1,0,0,0,121,
-        122,3,56,28,0,122,123,5,5,0,0,123,124,5,43,0,0,124,125,3,32,16,0,
-        125,134,1,0,0,0,126,127,5,43,0,0,127,134,3,32,16,0,128,134,3,46,
-        23,0,129,130,3,56,28,0,130,131,5,5,0,0,131,132,3,46,23,0,132,134,
-        1,0,0,0,133,121,1,0,0,0,133,126,1,0,0,0,133,128,1,0,0,0,133,129,
-        1,0,0,0,134,17,1,0,0,0,135,136,3,56,28,0,136,137,5,6,0,0,137,138,
-        3,50,25,0,138,144,1,0,0,0,139,140,3,56,28,0,140,141,5,6,0,0,141,
-        142,3,20,10,0,142,144,1,0,0,0,143,135,1,0,0,0,143,139,1,0,0,0,144,
-        19,1,0,0,0,145,156,5,7,0,0,146,151,3,22,11,0,147,148,5,8,0,0,148,
-        150,3,22,11,0,149,147,1,0,0,0,150,153,1,0,0,0,151,149,1,0,0,0,151,
-        152,1,0,0,0,152,155,1,0,0,0,153,151,1,0,0,0,154,146,1,0,0,0,155,
-        158,1,0,0,0,156,154,1,0,0,0,156,157,1,0,0,0,157,159,1,0,0,0,158,
-        156,1,0,0,0,159,160,5,9,0,0,160,21,1,0,0,0,161,165,5,45,0,0,162,
-        165,5,46,0,0,163,165,3,56,28,0,164,161,1,0,0,0,164,162,1,0,0,0,164,
-        163,1,0,0,0,165,23,1,0,0,0,166,167,3,56,28,0,167,168,5,7,0,0,168,
-        169,3,56,28,0,169,170,5,9,0,0,170,177,1,0,0,0,171,172,3,56,28,0,
-        172,173,5,7,0,0,173,174,5,46,0,0,174,175,5,9,0,0,175,177,1,0,0,0,
-        176,166,1,0,0,0,176,171,1,0,0,0,177,25,1,0,0,0,178,181,3,28,14,0,
-        179,180,5,34,0,0,180,182,3,28,14,0,181,179,1,0,0,0,182,183,1,0,0,
-        0,183,181,1,0,0,0,183,184,1,0,0,0,184,27,1,0,0,0,185,186,5,7,0,0,
-        186,191,3,30,15,0,187,188,5,8,0,0,188,190,3,30,15,0,189,187,1,0,
-        0,0,190,193,1,0,0,0,191,189,1,0,0,0,191,192,1,0,0,0,192,194,1,0,
-        0,0,193,191,1,0,0,0,194,195,5,9,0,0,195,198,1,0,0,0,196,198,3,30,
-        15,0,197,185,1,0,0,0,197,196,1,0,0,0,198,29,1,0,0,0,199,202,3,56,
-        28,0,200,202,3,16,8,0,201,199,1,0,0,0,201,200,1,0,0,0,202,205,1,
-        0,0,0,203,204,5,10,0,0,204,206,5,42,0,0,205,203,1,0,0,0,205,206,
-        1,0,0,0,206,31,1,0,0,0,207,209,5,11,0,0,208,210,3,36,18,0,209,208,
-        1,0,0,0,209,210,1,0,0,0,210,211,1,0,0,0,211,212,5,12,0,0,212,33,
-        1,0,0,0,213,215,5,11,0,0,214,216,3,38,19,0,215,214,1,0,0,0,215,216,
-        1,0,0,0,216,217,1,0,0,0,217,218,5,12,0,0,218,35,1,0,0,0,219,224,
-        3,40,20,0,220,221,5,8,0,0,221,223,3,40,20,0,222,220,1,0,0,0,223,
-        226,1,0,0,0,224,222,1,0,0,0,224,225,1,0,0,0,225,37,1,0,0,0,226,224,
-        1,0,0,0,227,232,3,42,21,0,228,229,5,8,0,0,229,231,3,42,21,0,230,
-        228,1,0,0,0,231,234,1,0,0,0,232,230,1,0,0,0,232,233,1,0,0,0,233,
-        39,1,0,0,0,234,232,1,0,0,0,235,239,3,50,25,0,236,239,3,20,10,0,237,
-        239,3,52,26,0,238,235,1,0,0,0,238,236,1,0,0,0,238,237,1,0,0,0,239,
-        41,1,0,0,0,240,241,3,56,28,0,241,242,5,13,0,0,242,243,5,41,0,0,243,
-        43,1,0,0,0,244,246,3,10,5,0,245,244,1,0,0,0,246,247,1,0,0,0,247,
-        245,1,0,0,0,247,248,1,0,0,0,248,45,1,0,0,0,249,250,7,0,0,0,250,254,
-        5,11,0,0,251,255,5,46,0,0,252,255,3,56,28,0,253,255,3,24,12,0,254,
-        251,1,0,0,0,254,252,1,0,0,0,254,253,1,0,0,0,254,255,1,0,0,0,255,
-        256,1,0,0,0,256,257,5,12,0,0,257,47,1,0,0,0,258,259,5,36,0,0,259,
-        260,3,50,25,0,260,261,5,13,0,0,261,269,3,44,22,0,262,263,5,37,0,
-        0,263,264,3,50,25,0,264,265,5,13,0,0,265,266,3,44,22,0,266,268,1,
-        0,0,0,267,262,1,0,0,0,268,271,1,0,0,0,269,267,1,0,0,0,269,270,1,
-        0,0,0,270,275,1,0,0,0,271,269,1,0,0,0,272,273,5,38,0,0,273,274,5,
-        13,0,0,274,276,3,44,22,0,275,272,1,0,0,0,275,276,1,0,0,0,276,277,
-        1,0,0,0,277,278,5,35,0,0,278,49,1,0,0,0,279,280,6,25,-1,0,280,290,
-        5,46,0,0,281,290,5,45,0,0,282,290,3,56,28,0,283,290,3,14,7,0,284,
-        290,3,24,12,0,285,286,5,11,0,0,286,287,3,50,25,0,287,288,5,12,0,
-        0,288,290,1,0,0,0,289,279,1,0,0,0,289,281,1,0,0,0,289,282,1,0,0,
-        0,289,283,1,0,0,0,289,284,1,0,0,0,289,285,1,0,0,0,290,302,1,0,0,
-        0,291,292,10,9,0,0,292,293,7,1,0,0,293,301,3,50,25,10,294,295,10,
-        8,0,0,295,296,7,2,0,0,296,301,3,50,25,9,297,298,10,7,0,0,298,299,
-        7,3,0,0,299,301,3,50,25,8,300,291,1,0,0,0,300,294,1,0,0,0,300,297,
-        1,0,0,0,301,304,1,0,0,0,302,300,1,0,0,0,302,303,1,0,0,0,303,51,1,
-        0,0,0,304,302,1,0,0,0,305,306,5,14,0,0,306,307,3,56,28,0,307,53,
-        1,0,0,0,308,309,5,39,0,0,309,310,3,56,28,0,310,315,5,28,0,0,311,
-        316,5,46,0,0,312,316,3,14,7,0,313,316,3,56,28,0,314,316,3,24,12,
-        0,315,311,1,0,0,0,315,312,1,0,0,0,315,313,1,0,0,0,315,314,1,0,0,
-        0,316,317,1,0,0,0,317,318,5,13,0,0,318,319,3,44,22,0,319,320,5,35,
-        0,0,320,55,1,0,0,0,321,322,5,44,0,0,322,57,1,0,0,0,30,62,68,74,95,
-        105,119,133,143,151,156,164,176,183,191,197,201,205,209,215,224,
-        232,238,247,254,269,275,289,300,302,315
+        2,27,7,27,2,28,7,28,2,29,7,29,2,30,7,30,1,0,1,0,5,0,65,8,0,10,0,
+        12,0,68,9,0,1,0,5,0,71,8,0,10,0,12,0,74,9,0,1,0,5,0,77,8,0,10,0,
+        12,0,80,9,0,1,0,1,0,1,1,1,1,1,1,1,2,1,2,1,2,1,3,1,3,1,3,1,3,1,3,
+        1,3,1,3,1,4,1,4,1,4,3,4,100,8,4,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,
+        3,5,110,8,5,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,7,3,7,
+        124,8,7,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,3,8,138,
+        8,8,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,3,9,148,8,9,1,10,1,10,1,10,1,
+        10,5,10,154,8,10,10,10,12,10,157,9,10,5,10,159,8,10,10,10,12,10,
+        162,9,10,1,10,1,10,1,11,1,11,1,11,3,11,169,8,11,1,12,1,12,1,12,1,
+        12,1,12,1,12,1,12,1,12,1,12,1,12,3,12,181,8,12,1,13,1,13,1,13,4,
+        13,186,8,13,11,13,12,13,187,1,14,1,14,1,14,1,14,5,14,194,8,14,10,
+        14,12,14,197,9,14,1,14,1,14,1,14,3,14,202,8,14,1,15,1,15,1,15,3,
+        15,207,8,15,1,15,1,15,3,15,211,8,15,1,15,1,15,3,15,215,8,15,1,16,
+        1,16,3,16,219,8,16,1,16,1,16,1,17,1,17,3,17,225,8,17,1,17,1,17,1,
+        18,1,18,1,18,5,18,232,8,18,10,18,12,18,235,9,18,1,19,1,19,1,19,5,
+        19,240,8,19,10,19,12,19,243,9,19,1,20,1,20,1,20,3,20,248,8,20,1,
+        21,1,21,1,21,1,21,1,22,4,22,255,8,22,11,22,12,22,256,1,23,1,23,1,
+        23,1,23,1,23,3,23,264,8,23,1,23,1,23,1,24,1,24,1,24,1,24,1,24,1,
+        24,1,24,1,24,1,24,5,24,277,8,24,10,24,12,24,280,9,24,1,24,1,24,1,
+        24,3,24,285,8,24,1,24,1,24,1,25,1,25,1,25,1,25,1,25,1,25,1,25,1,
+        25,1,25,1,25,3,25,299,8,25,1,25,1,25,1,25,1,25,1,25,1,25,1,25,1,
+        25,1,25,5,25,310,8,25,10,25,12,25,313,9,25,1,26,1,26,1,26,1,27,1,
+        27,1,27,1,27,1,27,1,27,1,27,3,27,325,8,27,1,27,1,27,1,27,1,27,1,
+        28,1,28,1,29,1,29,1,30,1,30,1,30,0,1,50,31,0,2,4,6,8,10,12,14,16,
+        18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,
+        0,4,1,0,13,21,2,0,13,14,21,21,1,0,17,18,2,0,22,26,33,33,356,0,62,
+        1,0,0,0,2,83,1,0,0,0,4,86,1,0,0,0,6,89,1,0,0,0,8,96,1,0,0,0,10,109,
+        1,0,0,0,12,111,1,0,0,0,14,118,1,0,0,0,16,137,1,0,0,0,18,147,1,0,
+        0,0,20,149,1,0,0,0,22,168,1,0,0,0,24,180,1,0,0,0,26,182,1,0,0,0,
+        28,201,1,0,0,0,30,206,1,0,0,0,32,216,1,0,0,0,34,222,1,0,0,0,36,228,
+        1,0,0,0,38,236,1,0,0,0,40,247,1,0,0,0,42,249,1,0,0,0,44,254,1,0,
+        0,0,46,258,1,0,0,0,48,267,1,0,0,0,50,298,1,0,0,0,52,314,1,0,0,0,
+        54,317,1,0,0,0,56,330,1,0,0,0,58,332,1,0,0,0,60,334,1,0,0,0,62,66,
+        3,2,1,0,63,65,3,4,2,0,64,63,1,0,0,0,65,68,1,0,0,0,66,64,1,0,0,0,
+        66,67,1,0,0,0,67,72,1,0,0,0,68,66,1,0,0,0,69,71,3,6,3,0,70,69,1,
+        0,0,0,71,74,1,0,0,0,72,70,1,0,0,0,72,73,1,0,0,0,73,78,1,0,0,0,74,
+        72,1,0,0,0,75,77,3,10,5,0,76,75,1,0,0,0,77,80,1,0,0,0,78,76,1,0,
+        0,0,78,79,1,0,0,0,79,81,1,0,0,0,80,78,1,0,0,0,81,82,5,1,0,0,82,1,
+        1,0,0,0,83,84,5,28,0,0,84,85,5,41,0,0,85,3,1,0,0,0,86,87,5,29,0,
+        0,87,88,5,41,0,0,88,5,1,0,0,0,89,90,5,30,0,0,90,91,5,41,0,0,91,92,
+        3,34,17,0,92,93,5,2,0,0,93,94,3,44,22,0,94,95,5,3,0,0,95,7,1,0,0,
+        0,96,99,5,32,0,0,97,100,3,56,28,0,98,100,3,50,25,0,99,97,1,0,0,0,
+        99,98,1,0,0,0,99,100,1,0,0,0,100,9,1,0,0,0,101,110,3,12,6,0,102,
+        110,3,26,13,0,103,110,3,14,7,0,104,110,3,16,8,0,105,110,3,18,9,0,
+        106,110,3,48,24,0,107,110,3,54,27,0,108,110,3,8,4,0,109,101,1,0,
+        0,0,109,102,1,0,0,0,109,103,1,0,0,0,109,104,1,0,0,0,109,105,1,0,
+        0,0,109,106,1,0,0,0,109,107,1,0,0,0,109,108,1,0,0,0,110,11,1,0,0,
+        0,111,112,5,31,0,0,112,113,5,41,0,0,113,114,3,34,17,0,114,115,5,
+        2,0,0,115,116,3,44,22,0,116,117,5,3,0,0,117,13,1,0,0,0,118,119,5,
+        4,0,0,119,120,5,41,0,0,120,123,3,32,16,0,121,122,5,39,0,0,122,124,
+        3,56,28,0,123,121,1,0,0,0,123,124,1,0,0,0,124,15,1,0,0,0,125,126,
+        3,56,28,0,126,127,5,5,0,0,127,128,5,41,0,0,128,129,3,32,16,0,129,
+        138,1,0,0,0,130,131,5,41,0,0,131,138,3,32,16,0,132,138,3,46,23,0,
+        133,134,3,56,28,0,134,135,5,5,0,0,135,136,3,46,23,0,136,138,1,0,
+        0,0,137,125,1,0,0,0,137,130,1,0,0,0,137,132,1,0,0,0,137,133,1,0,
+        0,0,138,17,1,0,0,0,139,140,3,56,28,0,140,141,5,6,0,0,141,142,3,50,
+        25,0,142,148,1,0,0,0,143,144,3,56,28,0,144,145,5,6,0,0,145,146,3,
+        20,10,0,146,148,1,0,0,0,147,139,1,0,0,0,147,143,1,0,0,0,148,19,1,
+        0,0,0,149,160,5,7,0,0,150,155,3,22,11,0,151,152,5,8,0,0,152,154,
+        3,22,11,0,153,151,1,0,0,0,154,157,1,0,0,0,155,153,1,0,0,0,155,156,
+        1,0,0,0,156,159,1,0,0,0,157,155,1,0,0,0,158,150,1,0,0,0,159,162,
+        1,0,0,0,160,158,1,0,0,0,160,161,1,0,0,0,161,163,1,0,0,0,162,160,
+        1,0,0,0,163,164,5,9,0,0,164,21,1,0,0,0,165,169,5,43,0,0,166,169,
+        5,44,0,0,167,169,3,56,28,0,168,165,1,0,0,0,168,166,1,0,0,0,168,167,
+        1,0,0,0,169,23,1,0,0,0,170,171,3,56,28,0,171,172,5,7,0,0,172,173,
+        3,56,28,0,173,174,5,9,0,0,174,181,1,0,0,0,175,176,3,56,28,0,176,
+        177,5,7,0,0,177,178,5,44,0,0,178,179,5,9,0,0,179,181,1,0,0,0,180,
+        170,1,0,0,0,180,175,1,0,0,0,181,25,1,0,0,0,182,185,3,28,14,0,183,
+        184,5,33,0,0,184,186,3,28,14,0,185,183,1,0,0,0,186,187,1,0,0,0,187,
+        185,1,0,0,0,187,188,1,0,0,0,188,27,1,0,0,0,189,190,5,7,0,0,190,195,
+        3,30,15,0,191,192,5,8,0,0,192,194,3,30,15,0,193,191,1,0,0,0,194,
+        197,1,0,0,0,195,193,1,0,0,0,195,196,1,0,0,0,196,198,1,0,0,0,197,
+        195,1,0,0,0,198,199,5,9,0,0,199,202,1,0,0,0,200,202,3,30,15,0,201,
+        189,1,0,0,0,201,200,1,0,0,0,202,29,1,0,0,0,203,204,3,58,29,0,204,
+        205,5,10,0,0,205,207,1,0,0,0,206,203,1,0,0,0,206,207,1,0,0,0,207,
+        210,1,0,0,0,208,211,3,56,28,0,209,211,3,16,8,0,210,208,1,0,0,0,210,
+        209,1,0,0,0,211,214,1,0,0,0,212,213,5,10,0,0,213,215,3,60,30,0,214,
+        212,1,0,0,0,214,215,1,0,0,0,215,31,1,0,0,0,216,218,5,11,0,0,217,
+        219,3,36,18,0,218,217,1,0,0,0,218,219,1,0,0,0,219,220,1,0,0,0,220,
+        221,5,12,0,0,221,33,1,0,0,0,222,224,5,11,0,0,223,225,3,38,19,0,224,
+        223,1,0,0,0,224,225,1,0,0,0,225,226,1,0,0,0,226,227,5,12,0,0,227,
+        35,1,0,0,0,228,233,3,40,20,0,229,230,5,8,0,0,230,232,3,40,20,0,231,
+        229,1,0,0,0,232,235,1,0,0,0,233,231,1,0,0,0,233,234,1,0,0,0,234,
+        37,1,0,0,0,235,233,1,0,0,0,236,241,3,42,21,0,237,238,5,8,0,0,238,
+        240,3,42,21,0,239,237,1,0,0,0,240,243,1,0,0,0,241,239,1,0,0,0,241,
+        242,1,0,0,0,242,39,1,0,0,0,243,241,1,0,0,0,244,248,3,50,25,0,245,
+        248,3,20,10,0,246,248,3,52,26,0,247,244,1,0,0,0,247,245,1,0,0,0,
+        247,246,1,0,0,0,248,41,1,0,0,0,249,250,3,56,28,0,250,251,5,10,0,
+        0,251,252,5,40,0,0,252,43,1,0,0,0,253,255,3,10,5,0,254,253,1,0,0,
+        0,255,256,1,0,0,0,256,254,1,0,0,0,256,257,1,0,0,0,257,45,1,0,0,0,
+        258,259,7,0,0,0,259,263,5,11,0,0,260,264,5,44,0,0,261,264,3,56,28,
+        0,262,264,3,24,12,0,263,260,1,0,0,0,263,261,1,0,0,0,263,262,1,0,
+        0,0,263,264,1,0,0,0,264,265,1,0,0,0,265,266,5,12,0,0,266,47,1,0,
+        0,0,267,268,5,35,0,0,268,269,3,50,25,0,269,270,5,10,0,0,270,278,
+        3,44,22,0,271,272,5,36,0,0,272,273,3,50,25,0,273,274,5,10,0,0,274,
+        275,3,44,22,0,275,277,1,0,0,0,276,271,1,0,0,0,277,280,1,0,0,0,278,
+        276,1,0,0,0,278,279,1,0,0,0,279,284,1,0,0,0,280,278,1,0,0,0,281,
+        282,5,37,0,0,282,283,5,10,0,0,283,285,3,44,22,0,284,281,1,0,0,0,
+        284,285,1,0,0,0,285,286,1,0,0,0,286,287,5,34,0,0,287,49,1,0,0,0,
+        288,289,6,25,-1,0,289,299,5,44,0,0,290,299,5,43,0,0,291,299,3,56,
+        28,0,292,299,3,14,7,0,293,299,3,24,12,0,294,295,5,11,0,0,295,296,
+        3,50,25,0,296,297,5,12,0,0,297,299,1,0,0,0,298,288,1,0,0,0,298,290,
+        1,0,0,0,298,291,1,0,0,0,298,292,1,0,0,0,298,293,1,0,0,0,298,294,
+        1,0,0,0,299,311,1,0,0,0,300,301,10,9,0,0,301,302,7,1,0,0,302,310,
+        3,50,25,10,303,304,10,8,0,0,304,305,7,2,0,0,305,310,3,50,25,9,306,
+        307,10,7,0,0,307,308,7,3,0,0,308,310,3,50,25,8,309,300,1,0,0,0,309,
+        303,1,0,0,0,309,306,1,0,0,0,310,313,1,0,0,0,311,309,1,0,0,0,311,
+        312,1,0,0,0,312,51,1,0,0,0,313,311,1,0,0,0,314,315,5,13,0,0,315,
+        316,3,56,28,0,316,53,1,0,0,0,317,318,5,38,0,0,318,319,3,56,28,0,
+        319,324,5,27,0,0,320,325,5,44,0,0,321,325,3,14,7,0,322,325,3,56,
+        28,0,323,325,3,24,12,0,324,320,1,0,0,0,324,321,1,0,0,0,324,322,1,
+        0,0,0,324,323,1,0,0,0,325,326,1,0,0,0,326,327,5,10,0,0,327,328,3,
+        44,22,0,328,329,5,34,0,0,329,55,1,0,0,0,330,331,5,42,0,0,331,57,
+        1,0,0,0,332,333,5,44,0,0,333,59,1,0,0,0,334,335,5,44,0,0,335,61,
+        1,0,0,0,31,66,72,78,99,109,123,137,147,155,160,168,180,187,195,201,
+        206,210,214,218,224,233,241,247,256,263,278,284,298,309,311,324
     ]
 
 class PdeasyParser ( Parser ):
@@ -139,9 +143,9 @@ class PdeasyParser ( Parser ):
     sharedContextCache = PredictionContextCache()
 
     literalNames = [ "<INVALID>", "';'", "'{'", "'}'", "'@'", "':='", "'='", 
-                     "'['", "','", "']'", "'.'", "'('", "')'", "':'", "'*'", 
-                     "'/'", "'*~'", "'/~'", "'+'", "'-'", "'+~'", "'-~'", 
-                     "'%'", "'=='", "'!='", "'>='", "'<'", "'<='", "'in range'", 
+                     "'['", "','", "']'", "':'", "'('", "')'", "'*'", "'/'", 
+                     "'*~'", "'/~'", "'+'", "'-'", "'+~'", "'-~'", "'%'", 
+                     "'=='", "'!='", "'>='", "'<'", "'<='", "'in range'", 
                      "'patch'", "'import'", "'func'", "'block'", "'return'", 
                      "'>'", "'end'", "'if'", "'elif'", "'else'", "'for'", 
                      "'as'" ]
@@ -153,10 +157,10 @@ class PdeasyParser ( Parser ):
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "PATCH", "IMPORT", "FUNC", "BLOCK", "RETURN", 
-                      "CONNECT", "END", "IF", "ELIF", "ELSE", "FOR", "AS", 
-                      "VARTYPE", "IOLET", "NAME", "VARNAME", "SYMBOL", "NUMBER", 
-                      "INTEGER", "FLOAT", "WS", "COMMENT" ]
+                      "PATCH", "IMPORT", "FUNC", "BLOCK", "RETURN", "CONNECT", 
+                      "END", "IF", "ELIF", "ELSE", "FOR", "AS", "VARTYPE", 
+                      "NAME", "VARNAME", "SYMBOL", "NUMBER", "INTEGER", 
+                      "FLOAT", "WS", "COMMENT" ]
 
     RULE_prog = 0
     RULE_patchstmt = 1
@@ -187,6 +191,8 @@ class PdeasyParser ( Parser ):
     RULE_noderef = 26
     RULE_forstmt = 27
     RULE_varname = 28
+    RULE_inlet = 29
+    RULE_outlet = 30
 
     ruleNames =  [ "prog", "patchstmt", "importstmt", "funcdefstmt", "returnstmt", 
                    "stmt", "blockstmt", "callstmt", "nodedecl", "simpledecl", 
@@ -194,7 +200,7 @@ class PdeasyParser ( Parser ):
                    "connectionelem", "singlenode", "parameters", "typedparams", 
                    "argslist", "typedargslist", "arg", "typedarg", "suite", 
                    "operation", "ifstmt", "expr", "noderef", "forstmt", 
-                   "varname" ]
+                   "varname", "inlet", "outlet" ]
 
     EOF = Token.EOF
     T__0=1
@@ -224,29 +230,27 @@ class PdeasyParser ( Parser ):
     T__24=25
     T__25=26
     T__26=27
-    T__27=28
-    PATCH=29
-    IMPORT=30
-    FUNC=31
-    BLOCK=32
-    RETURN=33
-    CONNECT=34
-    END=35
-    IF=36
-    ELIF=37
-    ELSE=38
-    FOR=39
-    AS=40
-    VARTYPE=41
-    IOLET=42
-    NAME=43
-    VARNAME=44
-    SYMBOL=45
-    NUMBER=46
-    INTEGER=47
-    FLOAT=48
-    WS=49
-    COMMENT=50
+    PATCH=28
+    IMPORT=29
+    FUNC=30
+    BLOCK=31
+    RETURN=32
+    CONNECT=33
+    END=34
+    IF=35
+    ELIF=36
+    ELSE=37
+    FOR=38
+    AS=39
+    VARTYPE=40
+    NAME=41
+    VARNAME=42
+    SYMBOL=43
+    NUMBER=44
+    INTEGER=45
+    FLOAT=46
+    WS=47
+    COMMENT=48
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -316,39 +320,39 @@ class PdeasyParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 58
-            self.patchstmt()
             self.state = 62
+            self.patchstmt()
+            self.state = 66
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while _la==29:
+                self.state = 63
+                self.importstmt()
+                self.state = 68
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+            self.state = 72
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==30:
-                self.state = 59
-                self.importstmt()
-                self.state = 64
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-
-            self.state = 68
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            while _la==31:
-                self.state = 65
+                self.state = 69
                 self.funcdefstmt()
-                self.state = 70
+                self.state = 74
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 74
+            self.state = 78
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while ((_la) & ~0x3f) == 0 and ((1 << _la) & 27019647631504) != 0:
-                self.state = 71
+            while ((_la) & ~0x3f) == 0 and ((1 << _la) & 24504940093584) != 0:
+                self.state = 75
                 self.stmt()
-                self.state = 76
+                self.state = 80
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 77
+            self.state = 81
             self.match(PdeasyParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -398,9 +402,9 @@ class PdeasyParser ( Parser ):
         self.enterRule(localctx, 2, self.RULE_patchstmt)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 79
+            self.state = 83
             self.match(PdeasyParser.PATCH)
-            self.state = 80
+            self.state = 84
             self.match(PdeasyParser.NAME)
         except RecognitionException as re:
             localctx.exception = re
@@ -450,9 +454,9 @@ class PdeasyParser ( Parser ):
         self.enterRule(localctx, 4, self.RULE_importstmt)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 82
+            self.state = 86
             self.match(PdeasyParser.IMPORT)
-            self.state = 83
+            self.state = 87
             self.match(PdeasyParser.NAME)
         except RecognitionException as re:
             localctx.exception = re
@@ -510,17 +514,17 @@ class PdeasyParser ( Parser ):
         self.enterRule(localctx, 6, self.RULE_funcdefstmt)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 85
-            self.match(PdeasyParser.FUNC)
-            self.state = 86
-            self.match(PdeasyParser.NAME)
-            self.state = 87
-            self.typedparams()
-            self.state = 88
-            self.match(PdeasyParser.T__1)
             self.state = 89
-            self.suite()
+            self.match(PdeasyParser.FUNC)
             self.state = 90
+            self.match(PdeasyParser.NAME)
+            self.state = 91
+            self.typedparams()
+            self.state = 92
+            self.match(PdeasyParser.T__1)
+            self.state = 93
+            self.suite()
+            self.state = 94
             self.match(PdeasyParser.T__2)
         except RecognitionException as re:
             localctx.exception = re
@@ -575,17 +579,17 @@ class PdeasyParser ( Parser ):
         self.enterRule(localctx, 8, self.RULE_returnstmt)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 92
+            self.state = 96
             self.match(PdeasyParser.RETURN)
-            self.state = 95
+            self.state = 99
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,3,self._ctx)
             if la_ == 1:
-                self.state = 93
+                self.state = 97
                 self.varname()
 
             elif la_ == 2:
-                self.state = 94
+                self.state = 98
                 self.expr(0)
 
 
@@ -662,54 +666,54 @@ class PdeasyParser ( Parser ):
         localctx = PdeasyParser.StmtContext(self, self._ctx, self.state)
         self.enterRule(localctx, 10, self.RULE_stmt)
         try:
-            self.state = 105
+            self.state = 109
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,4,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 97
+                self.state = 101
                 self.blockstmt()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 98
+                self.state = 102
                 self.connectionstmt()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 99
+                self.state = 103
                 self.callstmt()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 100
+                self.state = 104
                 self.nodedecl()
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 101
+                self.state = 105
                 self.simpledecl()
                 pass
 
             elif la_ == 6:
                 self.enterOuterAlt(localctx, 6)
-                self.state = 102
+                self.state = 106
                 self.ifstmt()
                 pass
 
             elif la_ == 7:
                 self.enterOuterAlt(localctx, 7)
-                self.state = 103
+                self.state = 107
                 self.forstmt()
                 pass
 
             elif la_ == 8:
                 self.enterOuterAlt(localctx, 8)
-                self.state = 104
+                self.state = 108
                 self.returnstmt()
                 pass
 
@@ -770,17 +774,17 @@ class PdeasyParser ( Parser ):
         self.enterRule(localctx, 12, self.RULE_blockstmt)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 107
-            self.match(PdeasyParser.BLOCK)
-            self.state = 108
-            self.match(PdeasyParser.NAME)
-            self.state = 109
-            self.typedparams()
-            self.state = 110
-            self.match(PdeasyParser.T__1)
             self.state = 111
-            self.suite()
+            self.match(PdeasyParser.BLOCK)
             self.state = 112
+            self.match(PdeasyParser.NAME)
+            self.state = 113
+            self.typedparams()
+            self.state = 114
+            self.match(PdeasyParser.T__1)
+            self.state = 115
+            self.suite()
+            self.state = 116
             self.match(PdeasyParser.T__2)
         except RecognitionException as re:
             localctx.exception = re
@@ -838,19 +842,19 @@ class PdeasyParser ( Parser ):
         self.enterRule(localctx, 14, self.RULE_callstmt)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 114
+            self.state = 118
             self.match(PdeasyParser.T__3)
-            self.state = 115
-            self.match(PdeasyParser.NAME)
-            self.state = 116
-            self.parameters()
             self.state = 119
+            self.match(PdeasyParser.NAME)
+            self.state = 120
+            self.parameters()
+            self.state = 123
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,5,self._ctx)
             if la_ == 1:
-                self.state = 117
+                self.state = 121
                 self.match(PdeasyParser.AS)
-                self.state = 118
+                self.state = 122
                 self.varname()
 
 
@@ -996,46 +1000,46 @@ class PdeasyParser ( Parser ):
         localctx = PdeasyParser.NodedeclContext(self, self._ctx, self.state)
         self.enterRule(localctx, 16, self.RULE_nodedecl)
         try:
-            self.state = 133
+            self.state = 137
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,6,self._ctx)
             if la_ == 1:
                 localctx = PdeasyParser.Nodedecl1Context(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 121
+                self.state = 125
                 self.varname()
-                self.state = 122
+                self.state = 126
                 self.match(PdeasyParser.T__4)
-                self.state = 123
+                self.state = 127
                 self.match(PdeasyParser.NAME)
-                self.state = 124
+                self.state = 128
                 self.parameters()
                 pass
 
             elif la_ == 2:
                 localctx = PdeasyParser.Nodedecl2Context(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 126
+                self.state = 130
                 self.match(PdeasyParser.NAME)
-                self.state = 127
+                self.state = 131
                 self.parameters()
                 pass
 
             elif la_ == 3:
                 localctx = PdeasyParser.Nodedecl3Context(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 128
+                self.state = 132
                 self.operation()
                 pass
 
             elif la_ == 4:
                 localctx = PdeasyParser.Nodedecl4Context(self, localctx)
                 self.enterOuterAlt(localctx, 4)
-                self.state = 129
+                self.state = 133
                 self.varname()
-                self.state = 130
+                self.state = 134
                 self.match(PdeasyParser.T__4)
-                self.state = 131
+                self.state = 135
                 self.operation()
                 pass
 
@@ -1093,26 +1097,26 @@ class PdeasyParser ( Parser ):
         localctx = PdeasyParser.SimpledeclContext(self, self._ctx, self.state)
         self.enterRule(localctx, 18, self.RULE_simpledecl)
         try:
-            self.state = 143
+            self.state = 147
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,7,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 135
-                self.varname()
-                self.state = 136
-                self.match(PdeasyParser.T__5)
-                self.state = 137
-                self.expr(0)
-                pass
-
-            elif la_ == 2:
-                self.enterOuterAlt(localctx, 2)
                 self.state = 139
                 self.varname()
                 self.state = 140
                 self.match(PdeasyParser.T__5)
                 self.state = 141
+                self.expr(0)
+                pass
+
+            elif la_ == 2:
+                self.enterOuterAlt(localctx, 2)
+                self.state = 143
+                self.varname()
+                self.state = 144
+                self.match(PdeasyParser.T__5)
+                self.state = 145
                 self.list_()
                 pass
 
@@ -1167,31 +1171,31 @@ class PdeasyParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 145
+            self.state = 149
             self.match(PdeasyParser.T__6)
-            self.state = 156
+            self.state = 160
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while ((_la) & ~0x3f) == 0 and ((1 << _la) & 123145302310912) != 0:
-                self.state = 146
+            while ((_la) & ~0x3f) == 0 and ((1 << _la) & 30786325577728) != 0:
+                self.state = 150
                 self.listelem()
-                self.state = 151
+                self.state = 155
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==8:
-                    self.state = 147
+                    self.state = 151
                     self.match(PdeasyParser.T__7)
-                    self.state = 148
+                    self.state = 152
                     self.listelem()
-                    self.state = 153
+                    self.state = 157
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                self.state = 158
+                self.state = 162
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 159
+            self.state = 163
             self.match(PdeasyParser.T__8)
         except RecognitionException as re:
             localctx.exception = re
@@ -1244,22 +1248,22 @@ class PdeasyParser ( Parser ):
         localctx = PdeasyParser.ListelemContext(self, self._ctx, self.state)
         self.enterRule(localctx, 22, self.RULE_listelem)
         try:
-            self.state = 164
+            self.state = 168
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [45]:
+            if token in [43]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 161
+                self.state = 165
                 self.match(PdeasyParser.SYMBOL)
                 pass
-            elif token in [46]:
+            elif token in [44]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 162
+                self.state = 166
                 self.match(PdeasyParser.NUMBER)
                 pass
-            elif token in [44]:
+            elif token in [42]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 163
+                self.state = 167
                 self.varname()
                 pass
             else:
@@ -1316,30 +1320,30 @@ class PdeasyParser ( Parser ):
         localctx = PdeasyParser.List_accessContext(self, self._ctx, self.state)
         self.enterRule(localctx, 24, self.RULE_list_access)
         try:
-            self.state = 176
+            self.state = 180
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,11,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 166
+                self.state = 170
                 self.varname()
-                self.state = 167
+                self.state = 171
                 self.match(PdeasyParser.T__6)
-                self.state = 168
+                self.state = 172
                 self.varname()
-                self.state = 169
+                self.state = 173
                 self.match(PdeasyParser.T__8)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 171
+                self.state = 175
                 self.varname()
-                self.state = 172
+                self.state = 176
                 self.match(PdeasyParser.T__6)
-                self.state = 173
+                self.state = 177
                 self.match(PdeasyParser.NUMBER)
-                self.state = 174
+                self.state = 178
                 self.match(PdeasyParser.T__8)
                 pass
 
@@ -1400,20 +1404,20 @@ class PdeasyParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 178
+            self.state = 182
             self.connectionelem()
-            self.state = 181 
+            self.state = 185 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 179
+                self.state = 183
                 self.match(PdeasyParser.CONNECT)
-                self.state = 180
+                self.state = 184
                 self.connectionelem()
-                self.state = 183 
+                self.state = 187 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not (_la==34):
+                if not (_la==33):
                     break
 
         except RecognitionException as re:
@@ -1502,35 +1506,35 @@ class PdeasyParser ( Parser ):
         self.enterRule(localctx, 28, self.RULE_connectionelem)
         self._la = 0 # Token type
         try:
-            self.state = 197
+            self.state = 201
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [7]:
                 localctx = PdeasyParser.MultipleconnContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 185
+                self.state = 189
                 self.match(PdeasyParser.T__6)
-                self.state = 186
+                self.state = 190
                 self.singlenode()
-                self.state = 191
+                self.state = 195
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==8:
-                    self.state = 187
+                    self.state = 191
                     self.match(PdeasyParser.T__7)
-                    self.state = 188
+                    self.state = 192
                     self.singlenode()
-                    self.state = 193
+                    self.state = 197
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                self.state = 194
+                self.state = 198
                 self.match(PdeasyParser.T__8)
                 pass
-            elif token in [14, 15, 16, 17, 18, 19, 20, 21, 22, 43, 44]:
+            elif token in [13, 14, 15, 16, 17, 18, 19, 20, 21, 41, 42, 44]:
                 localctx = PdeasyParser.SingleconnContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 196
+                self.state = 200
                 self.singlenode()
                 pass
             else:
@@ -1560,8 +1564,13 @@ class PdeasyParser ( Parser ):
             return self.getTypedRuleContext(PdeasyParser.NodedeclContext,0)
 
 
-        def IOLET(self):
-            return self.getToken(PdeasyParser.IOLET, 0)
+        def inlet(self):
+            return self.getTypedRuleContext(PdeasyParser.InletContext,0)
+
+
+        def outlet(self):
+            return self.getTypedRuleContext(PdeasyParser.OutletContext,0)
+
 
         def getRuleIndex(self):
             return PdeasyParser.RULE_singlenode
@@ -1590,28 +1599,38 @@ class PdeasyParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 201
+            self.state = 206
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,15,self._ctx)
+            _la = self._input.LA(1)
+            if _la==44:
+                self.state = 203
+                self.inlet()
+                self.state = 204
+                self.match(PdeasyParser.T__9)
+
+
+            self.state = 210
+            self._errHandler.sync(self)
+            la_ = self._interp.adaptivePredict(self._input,16,self._ctx)
             if la_ == 1:
-                self.state = 199
+                self.state = 208
                 self.varname()
                 pass
 
             elif la_ == 2:
-                self.state = 200
+                self.state = 209
                 self.nodedecl()
                 pass
 
 
-            self.state = 205
+            self.state = 214
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==10:
-                self.state = 203
+                self.state = 212
                 self.match(PdeasyParser.T__9)
-                self.state = 204
-                self.match(PdeasyParser.IOLET)
+                self.state = 213
+                self.outlet()
 
 
         except RecognitionException as re:
@@ -1661,17 +1680,17 @@ class PdeasyParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 207
+            self.state = 216
             self.match(PdeasyParser.T__10)
-            self.state = 209
+            self.state = 218
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if ((_la) & ~0x3f) == 0 and ((1 << _la) & 123145302329488) != 0:
-                self.state = 208
+            if ((_la) & ~0x3f) == 0 and ((1 << _la) & 30786325588112) != 0:
+                self.state = 217
                 self.argslist()
 
 
-            self.state = 211
+            self.state = 220
             self.match(PdeasyParser.T__11)
         except RecognitionException as re:
             localctx.exception = re
@@ -1720,17 +1739,17 @@ class PdeasyParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 213
+            self.state = 222
             self.match(PdeasyParser.T__10)
-            self.state = 215
+            self.state = 224
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==44:
-                self.state = 214
+            if _la==42:
+                self.state = 223
                 self.typedargslist()
 
 
-            self.state = 217
+            self.state = 226
             self.match(PdeasyParser.T__11)
         except RecognitionException as re:
             localctx.exception = re
@@ -1782,17 +1801,17 @@ class PdeasyParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 219
+            self.state = 228
             self.arg()
-            self.state = 224
+            self.state = 233
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==8:
-                self.state = 220
+                self.state = 229
                 self.match(PdeasyParser.T__7)
-                self.state = 221
+                self.state = 230
                 self.arg()
-                self.state = 226
+                self.state = 235
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -1846,17 +1865,17 @@ class PdeasyParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 227
+            self.state = 236
             self.typedarg()
-            self.state = 232
+            self.state = 241
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==8:
-                self.state = 228
+                self.state = 237
                 self.match(PdeasyParser.T__7)
-                self.state = 229
+                self.state = 238
                 self.typedarg()
-                self.state = 234
+                self.state = 243
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -1913,22 +1932,22 @@ class PdeasyParser ( Parser ):
         localctx = PdeasyParser.ArgContext(self, self._ctx, self.state)
         self.enterRule(localctx, 40, self.RULE_arg)
         try:
-            self.state = 238
+            self.state = 247
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [4, 11, 44, 45, 46]:
+            if token in [4, 11, 42, 43, 44]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 235
+                self.state = 244
                 self.expr(0)
                 pass
             elif token in [7]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 236
+                self.state = 245
                 self.list_()
                 pass
-            elif token in [14]:
+            elif token in [13]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 237
+                self.state = 246
                 self.noderef()
                 pass
             else:
@@ -1983,11 +2002,11 @@ class PdeasyParser ( Parser ):
         self.enterRule(localctx, 42, self.RULE_typedarg)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 240
+            self.state = 249
             self.varname()
-            self.state = 241
-            self.match(PdeasyParser.T__12)
-            self.state = 242
+            self.state = 250
+            self.match(PdeasyParser.T__9)
+            self.state = 251
             self.match(PdeasyParser.VARTYPE)
         except RecognitionException as re:
             localctx.exception = re
@@ -2039,16 +2058,16 @@ class PdeasyParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 245 
+            self.state = 254 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 244
+                self.state = 253
                 self.stmt()
-                self.state = 247 
+                self.state = 256 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not (((_la) & ~0x3f) == 0 and ((1 << _la) & 27019647631504) != 0):
+                if not (((_la) & ~0x3f) == 0 and ((1 << _la) & 24504940093584) != 0):
                     break
 
         except RecognitionException as re:
@@ -2106,33 +2125,33 @@ class PdeasyParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 249
+            self.state = 258
             localctx.op = self._input.LT(1)
             _la = self._input.LA(1)
-            if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 8372224) != 0):
+            if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 4186112) != 0):
                 localctx.op = self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
                 self.consume()
-            self.state = 250
+            self.state = 259
             self.match(PdeasyParser.T__10)
-            self.state = 254
+            self.state = 263
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,23,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,24,self._ctx)
             if la_ == 1:
-                self.state = 251
+                self.state = 260
                 self.match(PdeasyParser.NUMBER)
 
             elif la_ == 2:
-                self.state = 252
+                self.state = 261
                 self.varname()
 
             elif la_ == 3:
-                self.state = 253
+                self.state = 262
                 self.list_access()
 
 
-            self.state = 256
+            self.state = 265
             self.match(PdeasyParser.T__11)
         except RecognitionException as re:
             localctx.exception = re
@@ -2206,43 +2225,43 @@ class PdeasyParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 258
+            self.state = 267
             self.match(PdeasyParser.IF)
-            self.state = 259
+            self.state = 268
             self.expr(0)
-            self.state = 260
-            self.match(PdeasyParser.T__12)
-            self.state = 261
-            self.suite()
             self.state = 269
+            self.match(PdeasyParser.T__9)
+            self.state = 270
+            self.suite()
+            self.state = 278
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==37:
-                self.state = 262
-                self.match(PdeasyParser.ELIF)
-                self.state = 263
-                self.expr(0)
-                self.state = 264
-                self.match(PdeasyParser.T__12)
-                self.state = 265
-                self.suite()
+            while _la==36:
                 self.state = 271
+                self.match(PdeasyParser.ELIF)
+                self.state = 272
+                self.expr(0)
+                self.state = 273
+                self.match(PdeasyParser.T__9)
+                self.state = 274
+                self.suite()
+                self.state = 280
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 275
+            self.state = 284
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==38:
-                self.state = 272
+            if _la==37:
+                self.state = 281
                 self.match(PdeasyParser.ELSE)
-                self.state = 273
-                self.match(PdeasyParser.T__12)
-                self.state = 274
+                self.state = 282
+                self.match(PdeasyParser.T__9)
+                self.state = 283
                 self.suite()
 
 
-            self.state = 277
+            self.state = 286
             self.match(PdeasyParser.END)
         except RecognitionException as re:
             localctx.exception = re
@@ -2517,15 +2536,15 @@ class PdeasyParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 289
+            self.state = 298
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,26,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,27,self._ctx)
             if la_ == 1:
                 localctx = PdeasyParser.TestNumContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
 
-                self.state = 280
+                self.state = 289
                 self.match(PdeasyParser.NUMBER)
                 pass
 
@@ -2533,7 +2552,7 @@ class PdeasyParser ( Parser ):
                 localctx = PdeasyParser.TestSymContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 281
+                self.state = 290
                 self.match(PdeasyParser.SYMBOL)
                 pass
 
@@ -2541,7 +2560,7 @@ class PdeasyParser ( Parser ):
                 localctx = PdeasyParser.TestVarContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 282
+                self.state = 291
                 self.varname()
                 pass
 
@@ -2549,7 +2568,7 @@ class PdeasyParser ( Parser ):
                 localctx = PdeasyParser.TestCallContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 283
+                self.state = 292
                 self.callstmt()
                 pass
 
@@ -2557,7 +2576,7 @@ class PdeasyParser ( Parser ):
                 localctx = PdeasyParser.TestListAccessContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 284
+                self.state = 293
                 self.list_access()
                 pass
 
@@ -2565,88 +2584,88 @@ class PdeasyParser ( Parser ):
                 localctx = PdeasyParser.ParensExprContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 285
+                self.state = 294
                 self.match(PdeasyParser.T__10)
-                self.state = 286
+                self.state = 295
                 self.expr(0)
-                self.state = 287
+                self.state = 296
                 self.match(PdeasyParser.T__11)
                 pass
 
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 302
+            self.state = 311
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,28,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,29,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 300
+                    self.state = 309
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input,27,self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input,28,self._ctx)
                     if la_ == 1:
                         localctx = PdeasyParser.MulDivContext(self, PdeasyParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 291
+                        self.state = 300
                         if not self.precpred(self._ctx, 9):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 9)")
-                        self.state = 292
+                        self.state = 301
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
-                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 4243456) != 0):
+                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 2121728) != 0):
                             localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 293
+                        self.state = 302
                         self.expr(10)
                         pass
 
                     elif la_ == 2:
                         localctx = PdeasyParser.SubAddContext(self, PdeasyParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 294
+                        self.state = 303
                         if not self.precpred(self._ctx, 8):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 8)")
-                        self.state = 295
+                        self.state = 304
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
-                        if not(_la==18 or _la==19):
+                        if not(_la==17 or _la==18):
                             localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 296
+                        self.state = 305
                         self.expr(9)
                         pass
 
                     elif la_ == 3:
                         localctx = PdeasyParser.TestCompareContext(self, PdeasyParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 297
+                        self.state = 306
                         if not self.precpred(self._ctx, 7):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 7)")
-                        self.state = 298
+                        self.state = 307
                         localctx.testop = self._input.LT(1)
                         _la = self._input.LA(1)
-                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 17439916032) != 0):
+                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 8719958016) != 0):
                             localctx.testop = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 299
+                        self.state = 308
                         self.expr(8)
                         pass
 
              
-                self.state = 304
+                self.state = 313
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,28,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,29,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2694,9 +2713,9 @@ class PdeasyParser ( Parser ):
         self.enterRule(localctx, 52, self.RULE_noderef)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 305
-            self.match(PdeasyParser.T__13)
-            self.state = 306
+            self.state = 314
+            self.match(PdeasyParser.T__12)
+            self.state = 315
             self.varname()
         except RecognitionException as re:
             localctx.exception = re
@@ -2768,41 +2787,41 @@ class PdeasyParser ( Parser ):
         self.enterRule(localctx, 54, self.RULE_forstmt)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 308
+            self.state = 317
             self.match(PdeasyParser.FOR)
-            self.state = 309
+            self.state = 318
             self.varname()
-            self.state = 310
-            self.match(PdeasyParser.T__27)
-            self.state = 315
+            self.state = 319
+            self.match(PdeasyParser.T__26)
+            self.state = 324
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,29,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,30,self._ctx)
             if la_ == 1:
-                self.state = 311
+                self.state = 320
                 self.match(PdeasyParser.NUMBER)
                 pass
 
             elif la_ == 2:
-                self.state = 312
+                self.state = 321
                 self.callstmt()
                 pass
 
             elif la_ == 3:
-                self.state = 313
+                self.state = 322
                 self.varname()
                 pass
 
             elif la_ == 4:
-                self.state = 314
+                self.state = 323
                 self.list_access()
                 pass
 
 
-            self.state = 317
-            self.match(PdeasyParser.T__12)
-            self.state = 318
+            self.state = 326
+            self.match(PdeasyParser.T__9)
+            self.state = 327
             self.suite()
-            self.state = 319
+            self.state = 328
             self.match(PdeasyParser.END)
         except RecognitionException as re:
             localctx.exception = re
@@ -2849,8 +2868,102 @@ class PdeasyParser ( Parser ):
         self.enterRule(localctx, 56, self.RULE_varname)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 321
+            self.state = 330
             self.match(PdeasyParser.VARNAME)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class InletContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def NUMBER(self):
+            return self.getToken(PdeasyParser.NUMBER, 0)
+
+        def getRuleIndex(self):
+            return PdeasyParser.RULE_inlet
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInlet" ):
+                listener.enterInlet(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInlet" ):
+                listener.exitInlet(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitInlet" ):
+                return visitor.visitInlet(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def inlet(self):
+
+        localctx = PdeasyParser.InletContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 58, self.RULE_inlet)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 332
+            self.match(PdeasyParser.NUMBER)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class OutletContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def NUMBER(self):
+            return self.getToken(PdeasyParser.NUMBER, 0)
+
+        def getRuleIndex(self):
+            return PdeasyParser.RULE_outlet
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOutlet" ):
+                listener.enterOutlet(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOutlet" ):
+                listener.exitOutlet(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitOutlet" ):
+                return visitor.visitOutlet(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def outlet(self):
+
+        localctx = PdeasyParser.OutletContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 60, self.RULE_outlet)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 334
+            self.match(PdeasyParser.NUMBER)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)

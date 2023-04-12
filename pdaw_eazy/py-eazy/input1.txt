@@ -3,14 +3,19 @@ patch prova
 func prova ($b:noderef) {
 
 	$a = 10
+	$e := osc~()
+	$b > $d := bang(1)
 	return $b
 
 }
 
+$s := delay(100)
+$a := bang(*$s)
+$b := osc~(440)
 
-$a := bang(10)
 @prova(*$a)
-return 10
 
+$f := dac~(100, 1)
+$a:2>[1:$s:2, $f]>$d:=bang()
 
 ;

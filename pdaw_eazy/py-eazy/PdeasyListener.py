@@ -377,5 +377,23 @@ class PdeasyListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by PdeasyParser#inlet.
+    def enterInlet(self, ctx:PdeasyParser.InletContext):
+        pass
+
+    # Exit a parse tree produced by PdeasyParser#inlet.
+    def exitInlet(self, ctx:PdeasyParser.InletContext):
+        pass
+
+
+    # Enter a parse tree produced by PdeasyParser#outlet.
+    def enterOutlet(self, ctx:PdeasyParser.OutletContext):
+        pass
+
+    # Exit a parse tree produced by PdeasyParser#outlet.
+    def exitOutlet(self, ctx:PdeasyParser.OutletContext):
+        pass
+
+
 
 del PdeasyParser

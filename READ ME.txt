@@ -1,7 +1,11 @@
-working dir: pdaw/py-target
-custom visitor: pdaw/py-target/Visitor.py
-documentazione: pdaw/py-target/doc
+working dir: pdaw_eazy/py_eazy
+custom visitor: pdaw_eazy/py_eazy/PdeasyVisitor.py
 
-run: 
-> python3 antlr.py 
-> python3 antlr.py input3.txt
+/* sheets */
+appunti e note sul progetto, idee di input. 
+
+/*pdaw_eazy*/
+cartella di lavoro, con
+- esempi in maxmsp e puredata (piccoli esempi per comprendere la struttura di file .maxpat e .pd)
+- antlr4 verso java (utile per visualizzare l'AST)
+- antlr4 verso python (progetto principale)

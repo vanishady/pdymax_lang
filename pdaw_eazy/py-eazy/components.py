@@ -302,3 +302,19 @@ class SymbolTable():
     def index(self, nodeId):
         self._index = nodeId
 
+        
+
+class Connections():
+
+    def __init__(self):
+        self.connections = []
+
+    def addconnection(self, conn):
+        """add a connection (list of: [scope source outlet sink inlet]) to self.connections"""
+        self.connections.append(conn)
+
+    def __iter__(self):
+        return self.connections.__iter__()
+
+    def __next__(self):
+        return self.connections.__next__()

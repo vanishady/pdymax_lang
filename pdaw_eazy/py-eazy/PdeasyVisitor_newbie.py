@@ -199,13 +199,8 @@ class PdeasyVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by PdeasyParser#node_expr.
-    def visitNode_expr(self, ctx:PdeasyParser.Node_exprContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by PdeasyParser#nodeptr.
-    def visitNodeptr(self, ctx:PdeasyParser.NodeptrContext):
+    # Visit a parse tree produced by PdeasyParser#noderef.
+    def visitNoderef(self, ctx:PdeasyParser.NoderefContext):
         return self.visitChildren(ctx)
 
 
@@ -216,6 +211,16 @@ class PdeasyVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by PdeasyParser#varname.
     def visitVarname(self, ctx:PdeasyParser.VarnameContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PdeasyParser#inlet.
+    def visitInlet(self, ctx:PdeasyParser.InletContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PdeasyParser#outlet.
+    def visitOutlet(self, ctx:PdeasyParser.OutletContext):
         return self.visitChildren(ctx)
 
 

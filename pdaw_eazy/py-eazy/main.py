@@ -27,3 +27,8 @@ for st in v.memory:
         print(var.spec())
         #var.fullspec()
         #print(f'\t')
+
+for c in v.connections:
+    print(c)
+    
+ 

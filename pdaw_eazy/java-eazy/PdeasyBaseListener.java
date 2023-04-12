@@ -472,25 +472,13 @@ public class PdeasyBaseListener implements PdeasyListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNode_expr(PdeasyParser.Node_exprContext ctx) { }
+	@Override public void enterNoderef(PdeasyParser.NoderefContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNode_expr(PdeasyParser.Node_exprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterNodeptr(PdeasyParser.NodeptrContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitNodeptr(PdeasyParser.NodeptrContext ctx) { }
+	@Override public void exitNoderef(PdeasyParser.NoderefContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -515,6 +503,30 @@ public class PdeasyBaseListener implements PdeasyListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitVarname(PdeasyParser.VarnameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterInlet(PdeasyParser.InletContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitInlet(PdeasyParser.InletContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOutlet(PdeasyParser.OutletContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOutlet(PdeasyParser.OutletContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

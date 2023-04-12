@@ -1,3 +1,4 @@
+
 grammar Pdeasy;
 
 /*
@@ -12,7 +13,7 @@ importstmt: IMPORT NAME ;
 
 funcdefstmt: FUNC NAME typedparams '{' suite '}' ; 
 
-returnstmt: RETURN (varname | expr | node_expr | connectionstmt)? ;
+returnstmt: RETURN (varname | expr )? ;
 
 stmt
  : blockstmt 
@@ -20,7 +21,6 @@ stmt
  | callstmt 
  | nodedecl 
  | simpledecl 
- | node_expr
  | ifstmt 
  | forstmt 
  | returnstmt
@@ -31,10 +31,10 @@ blockstmt: BLOCK NAME typedparams '{' suite '}' ;
 callstmt: '@' NAME parameters (AS varname)? ;
 
 nodedecl
- : varname '=' NAME parameters	#nodedecl1
+ : varname ':=' NAME parameters	#nodedecl1
  | NAME parameters 			#nodedecl2
  | operation 				#nodedecl3
- | varname '=' operation 		#nodedecl4
+ | varname ':=' operation 		#nodedecl4
  ;
 
 simpledecl
@@ -65,7 +65,7 @@ connectionelem
  ;
 
 singlenode
- : (varname | nodedecl)('.'IOLET)?
+ : (inlet ':')? (varname | nodedecl) (':' outlet)?
  ;
 
 parameters
@@ -87,7 +87,7 @@ typedargslist
 arg
  : expr
  | list
- | nodeptr
+ | noderef
  ;
 
 typedarg
@@ -118,12 +118,8 @@ expr
  | '(' expr ')' 								#ParensExpr
  ;
 
-node_expr
- : (varname | nodedecl) op=('*~'|'/~'|'%~') (varname | nodedecl) '->' (varname | nodedecl)
- | (varname | nodedecl) op=('+~'|'-~') (varname | nodedecl) '->' (varname | nodedecl)
- ;
 
-nodeptr
+noderef
  : '*' varname
  ;
 
@@ -133,6 +129,14 @@ forstmt
 
 varname
  : VARNAME 
+ ;
+
+inlet
+ : NUMBER 
+ ;
+
+outlet
+ : NUMBER 
  ;
 
 /*
@@ -153,8 +157,7 @@ FOR : 'for' ;
 AS : 'as' ;
 
 
-VARTYPE : 'intn' | 'floatn' | 'symbol' | 'list' | 'node' ;
-IOLET : IOLET_START NON_ZERO_DIGIT+ ;
+VARTYPE : 'intn' | 'floatn' | 'symbol' | 'list' | 'noderef' ;
 NAME 
  : ID_START ID_CONTINUE* 
  | LETTER+ '~'?
@@ -166,13 +169,11 @@ NUMBER : INTEGER | FLOAT ;
 INTEGER : '-'? NON_ZERO_DIGIT DIGIT* | '0'+ ;
 FLOAT : INTEGER? '.' INTEGER ;
 
-
 fragment LETTER : [a-zA-Z] ;
 fragment DIGIT : [0-9] ;
 fragment NON_ZERO_DIGIT : [1-9] ;
 fragment ID_START : '_' | LETTER ;
 fragment ID_CONTINUE : LETTER | DIGIT | '_' ;
-fragment IOLET_START : 'in' | 'out' ;
 fragment SYMBOL_ADMITTED : LETTER | DIGIT | '_' | '.' | ',' | '\\' | '/' ; 
 
 WS : [ \t\r\n]+ -> skip ;

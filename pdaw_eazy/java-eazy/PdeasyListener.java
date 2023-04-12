@@ -417,25 +417,15 @@ public interface PdeasyListener extends ParseTreeListener {
 	 */
 	void exitTestListAccess(PdeasyParser.TestListAccessContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link PdeasyParser#node_expr}.
+	 * Enter a parse tree produced by {@link PdeasyParser#noderef}.
 	 * @param ctx the parse tree
 	 */
-	void enterNode_expr(PdeasyParser.Node_exprContext ctx);
+	void enterNoderef(PdeasyParser.NoderefContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link PdeasyParser#node_expr}.
+	 * Exit a parse tree produced by {@link PdeasyParser#noderef}.
 	 * @param ctx the parse tree
 	 */
-	void exitNode_expr(PdeasyParser.Node_exprContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link PdeasyParser#nodeptr}.
-	 * @param ctx the parse tree
-	 */
-	void enterNodeptr(PdeasyParser.NodeptrContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link PdeasyParser#nodeptr}.
-	 * @param ctx the parse tree
-	 */
-	void exitNodeptr(PdeasyParser.NodeptrContext ctx);
+	void exitNoderef(PdeasyParser.NoderefContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link PdeasyParser#forstmt}.
 	 * @param ctx the parse tree
@@ -456,4 +446,24 @@ public interface PdeasyListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitVarname(PdeasyParser.VarnameContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PdeasyParser#inlet}.
+	 * @param ctx the parse tree
+	 */
+	void enterInlet(PdeasyParser.InletContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PdeasyParser#inlet}.
+	 * @param ctx the parse tree
+	 */
+	void exitInlet(PdeasyParser.InletContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PdeasyParser#outlet}.
+	 * @param ctx the parse tree
+	 */
+	void enterOutlet(PdeasyParser.OutletContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PdeasyParser#outlet}.
+	 * @param ctx the parse tree
+	 */
+	void exitOutlet(PdeasyParser.OutletContext ctx);
 }

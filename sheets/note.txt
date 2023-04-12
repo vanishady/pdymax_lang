@@ -1,0 +1,34 @@
+riassegnazione delle variabili:
+le variabili semplici si possono riassegnare (=)
+le variabili node non si possono riassegnare (:=)
+
+returnstmt
+posso ritornare una variabile (semplice o nodo) o un'espressione.
+return in contesti errati? Non è gestito per ora, viene solo ignorato.
+
+func
+nella suite posso collegare nodi (le connessioni che avvengono nello scope della funzione sono risolte 
+nello scope del chiamante, e se il chiamante è a sua volta in una funzione vengono risolte nello scope del
+chiamante di quest'ultima, e così via) + Ci vuole uno stack di chiamate. 
+il restore ... bisognerebbe diciamo tener traccia dell'ultimo blocco in cui la funzione è stata chiamata
+
+arg
+l'argomento nei node parameters è concesso che sia anche un noderef dalla grammatica, ma non dovrebbe essere
+concesso almeno nel traspilatore. 
+
+node_expr
+ancora tutto da vedere
+
+connections
+vediamo anche questo
+
+callstmt
+$c = @prova(*$a) as $nomeblocco
+non è errato sintatticamente, ma semanticamente restituisce soltanto None.
+
+connessioni
+le connessioni sono memorizzate con la rappresentazione per archi, non per adiacenza, per ridurre il tempo di ricerca (sia in max che in pd, le connessioni sono elencate alla fine di ogni scope, e sono costruite come [nodo1 out1 nodo2 in2]: tanto vale rappresentare direttamente questa connessione in una sola struttura dati piuttosto che nodo per nodo). infatti per una connessione [A, outlet n1 -> B, inlet n2] rappresentata con l'adiacenza, dovrei memorizzare:
+A (outlet n1, B)
+B (inlet n2, A)
+e infine costruire la riga di testo: nodo1 out1 nodo2 in2
+tanto vale costruirla subito. 

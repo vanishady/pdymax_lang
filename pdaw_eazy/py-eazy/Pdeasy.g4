@@ -65,7 +65,7 @@ connectionelem
  ;
 
 singlenode
- : (varname | nodedecl)('.'IOLET)?
+ : (inlet ':')? (varname | nodedecl) (':' outlet)?
  ;
 
 parameters
@@ -131,6 +131,14 @@ varname
  : VARNAME 
  ;
 
+inlet
+ : NUMBER 
+ ;
+
+outlet
+ : NUMBER 
+ ;
+
 /*
 * lexer rules
 */
@@ -150,7 +158,6 @@ AS : 'as' ;
 
 
 VARTYPE : 'intn' | 'floatn' | 'symbol' | 'list' | 'noderef' ;
-IOLET : IOLET_START NON_ZERO_DIGIT+ ;
 NAME 
  : ID_START ID_CONTINUE* 
  | LETTER+ '~'?
@@ -162,13 +169,11 @@ NUMBER : INTEGER | FLOAT ;
 INTEGER : '-'? NON_ZERO_DIGIT DIGIT* | '0'+ ;
 FLOAT : INTEGER? '.' INTEGER ;
 
-
 fragment LETTER : [a-zA-Z] ;
 fragment DIGIT : [0-9] ;
 fragment NON_ZERO_DIGIT : [1-9] ;
 fragment ID_START : '_' | LETTER ;
 fragment ID_CONTINUE : LETTER | DIGIT | '_' ;
-fragment IOLET_START : 'in' | 'out' ;
 fragment SYMBOL_ADMITTED : LETTER | DIGIT | '_' | '.' | ',' | '\\' | '/' ; 
 
 WS : [ \t\r\n]+ -> skip ;
