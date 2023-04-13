@@ -1,4 +1,4 @@
-patch mysynth
+patch nihil
 
 block additivesynth ($freq: intn, $armonics: list, $volumes: list) {
 	inlet() > msg($freq) > $freq_node := num()
@@ -18,14 +18,5 @@ block adsr ($attack:intn, $decay:intn, $sus_lev: floatn, $sustain: intn, $releas
 	$del > msg(0, 1000) > $bucket
 	$mess > $bucket > outlet~()
 }
-
-@additivesynth(440, [3,5,7], [0.75, 0.55, 0.35]) as $synth
-@adsr(1000, 1500, 0.5, 1500, 1000) as $myadsr
-@adsr(1000, 1500, 0.5, 1500, 1000) as $myadsr1
-
-bang() > [$synth, 1:$myadsr, 2:$myadsr]
-
-#attach things
-#@ampmod(*$synth, *$myadsr)  #this synth follows this envelope
 
 ;

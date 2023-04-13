@@ -1,12 +1,15 @@
 # Generated from Pdeasy.g4 by ANTLR 4.11.1
 from antlr4 import *
+from antlr4.CommonTokenStream import CommonTokenStream
 import sys
 if __name__ is not None and "." in __name__:
     from .PdeasyParser import PdeasyParser
+    from .PdeasyLexer import PdeasyLexer
     from .componentrs import *
     from .exceptions import *
 else:
     from PdeasyParser import PdeasyParser
+    from PdeasyLexer import PdeasyLexer
     from components import *
     from exceptions import *
     
@@ -28,7 +31,6 @@ class PdeasyVisitor(ParseTreeVisitor):
 
     def enter(self, name):
         """enter a scope (aka symbol table)"""
-        print('entering:',name)
         self.restore = self.symtable
         found = False
         for st in self.memory:
@@ -156,6 +158,7 @@ class PdeasyVisitor(ParseTreeVisitor):
 
         except NotFoundException as e:
             print(e)
+            sys.exit(1)
             
         except CallError as e:
             print(e)   
