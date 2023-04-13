@@ -28,6 +28,7 @@ class PdeasyVisitor(ParseTreeVisitor):
 
     def enter(self, name):
         """enter a scope (aka symbol table)"""
+        print('entering:',name)
         self.restore = self.symtable
         found = False
         for st in self.memory:
@@ -138,7 +139,9 @@ class PdeasyVisitor(ParseTreeVisitor):
             found = False
             for elem in self.callables:
                 if elem.name == callee_name:
+                    elem.callnum += 1
                     callee = elem
+                    callee_name = callee_name+str(elem.callnum)
                     found = True
             if callee_name == 'len': return len(self.visit(ctx.parameters())[0])
             if not found: raise NotFoundException(ctx.start.line, callee_name)
@@ -340,7 +343,8 @@ class PdeasyVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by PdeasyParser#connectionstmt.
     def visitConnectionstmt(self, ctx:PdeasyParser.ConnectionstmtContext):
-
+        self.full_text = {}
+        
         conn_scope = self.symtable.name
         #if current scope is function local, resolve connection in previous scope (scope del chiamante)
         for f in self.callables:
@@ -367,17 +371,25 @@ class PdeasyVisitor(ParseTreeVisitor):
 
 
     # Visit a parse tree produced by PdeasyParser#singleconn.
+    # $a > $b / $a:2 > 1:$b / A() > B() / A():2 > 1:B()
     def visitSingleconn(self, ctx:PdeasyParser.SingleconnContext):
         return [self.visit(ctx.singlenode())]
 
 
     # Visit a parse tree produced by PdeasyParser#singlenode.
-    # $a > $b / $a:2 > 1:$b / A() > B() / A():2 > 1:B()
     def visitSinglenode(self, ctx:PdeasyParser.SinglenodeContext):
+        #controllo che il nodo non sia già stato dichiarato alla visita precedente
+        dont = False
+        ctx_text = ctx.getText()
+        if (ctx_text, ctx.start) in self.full_text:
+            dont = True
+
+        #gli inlet e outlet di default sono a 0
         nodeIn = 0
         nodeOut = 0
         vname = None
-        if ctx.varname():
+        
+        if ctx.varname(): #riferimento a una variabile già esistente
             try:
                 vname = self.visit(ctx.varname())
                 node = self.symtable.lookup(vname)
@@ -389,17 +401,20 @@ class PdeasyVisitor(ParseTreeVisitor):
                 print(e)
             except TypeException as e:
                 print(e, f'\n cannot use simple variable in connection.')
-
+                
         elif ctx.nodedecl():
-            self.visit(ctx.nodedecl())
-            nodeId = self.symtable.index #l'index dell'ultimo nodo creato
-
+            if dont:
+                nodeId = self.full_text[(ctx_text, ctx.start)]
+            else:
+                self.visit(ctx.nodedecl())
+                nodeId = self.symtable.index #l'index dell'ultimo nodo creato
+                self.full_text.update({(ctx_text, ctx.start) : nodeId})
+            
         if ctx.inlet(): nodeIn = self.visit(ctx.inlet())
         if ctx.outlet(): nodeOut = self.visit(ctx.outlet())
 
         #print(nodeIn, [vname, nodeId], nodeOut, ctx.getText())
         return {'id':nodeId, 'in':nodeIn, 'out':nodeOut}
-
 
 
     # Visit a parse tree produced by PdeasyParser#parameters.

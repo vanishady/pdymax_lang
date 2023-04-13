@@ -10,7 +10,7 @@ from antlr4.tree.Tree import ParseTreeWalker
 
 
 ### ANTLR ###
-lexer = PdeasyLexer(FileStream('input1.txt'))
+lexer = PdeasyLexer(FileStream('input_eazy.txt'))
 stream = CommonTokenStream(lexer)
 parser = PdeasyParser(stream)
 tree = parser.prog()

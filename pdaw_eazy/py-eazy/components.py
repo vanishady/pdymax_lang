@@ -87,6 +87,7 @@ class Function():
         self._body = None
         self._expargs = None #lista di tuple (vname, vtype)
         self._returns = None
+        self._callnum = -1
 
     def spec(self):
         return self.name, self.expargs
@@ -114,6 +115,14 @@ class Function():
     @returns.setter
     def returns(self, val):
         self._returns = val
+
+    @property
+    def callnum(self):
+        return self._callnum
+
+    @callnum.setter
+    def callnum(self, num):
+        self._callnum = num
     
 
 class Block():
@@ -126,6 +135,7 @@ class Block():
         self._expargs = None
         self._xpos = 0
         self._ypos = 0
+        self._callnum = -1
 
     def spec(self):
         return self.expargs, self.name
@@ -153,6 +163,14 @@ class Block():
     @body.setter
     def body(self, bodyctx):
         self._body = bodyctx
+
+    @property
+    def callnum(self):
+        return self._callnum
+
+    @callnum.setter
+    def callnum(self, num):
+        self._callnum = num
     
 
 class Node():
