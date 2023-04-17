@@ -181,7 +181,7 @@ class Node():
         self._name = None
         self._index = None
         self._nodetype = None
-        self._args = ''
+        self._args = []
         self._xpos = 0
         self._ypos = 0
         self._scope = None
@@ -211,6 +211,11 @@ class Node():
 
     @args.setter
     def args(self, nodeargs):
+        try:
+            for arg in nodeargs:
+                if type(arg)==Node: raise InvalidParameterException('???', 'node', 'intn, floatn, symbol')
+        except InvalidParameterException as e:
+            print(e, f'\n Makes no sense to pass a node or noderef to {self.name}.')
         self._args = nodeargs
 
     @property
@@ -220,6 +225,14 @@ class Node():
     @scope.setter
     def scope(self, currscope):
         self._scope = currscope
+
+    @property
+    def index(self):
+        return self._index
+
+    @index.setter
+    def index(self, nodeId):
+        self._index = nodeId
 
 
 class SimpleVar():
@@ -288,15 +301,17 @@ class SymbolTable():
                     raise AlreadyExistsException('???', variable.name)
                 if elem.name == variable.name and elem.name != None and isinstance(elem, SimpleVar):
                     self._symtable.remove(elem)
+                    self._symtable.append(variable)
         except AlreadyExistsException as e:
             print(e)
         #store variable in symtable
         else:
-            self._symtable.append(variable)
+            self._symtable.append(variable)  
             #advance index in symtable if var is node
             if type(variable) in [Node]:
                 self.index+=1
                 variable.index = self.index
+            
 
     def lookup(self, name):
         for var in self._symtable:

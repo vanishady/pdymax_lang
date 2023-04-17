@@ -21,13 +21,14 @@ class NotFoundException(Exception):
     def __str__(self):
         return f'error at line: {self._lineno}\n <{self._varname}> does not exist in this scope'
 
-class CallError(Exception):
+class CallSyntaxError(Exception):
 
-    def __init__(self, lineno):
+    def __init__(self, lineno, name):
         self._lineno = lineno
+        self._name = name
 
     def __str__(self):
-        return f'warning at line: {self._lineno}\n a function is not to call with an alias' 
+        return f'error at line: {self._lineno}\n wrong syntax in calling block <{self._name}>' 
 
 class InvalidParameterException(Exception):
 
@@ -56,3 +57,14 @@ class TypeException(Exception):
 
     def __str__(self):
         return f'error at line: {self._lineno}\n expected type {self._expected}, found type {self._used}'
+
+    
+class OutOfContextError(Exception):
+
+    def __init__(self, lineno, details = None):
+        self._lineno = lineno
+        self._details = details
+        if details == None: self._details = 'seems like you used a statement out of its right context.'
+
+    def __str__(self):
+        return f'error at line: {self._lineno}\n {self._details}'

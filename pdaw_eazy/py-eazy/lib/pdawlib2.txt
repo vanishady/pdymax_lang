@@ -1,0 +1,11 @@
+patch nihil 
+
+block adsr ($attack:intn, $decay:intn, $sus_lev: floatn, $sustain: intn, $release:intn) {
+	$bucket := line~()
+	inlet() > msg(1, 1000) > $bucket
+	inlet() > delay(1000) > bang() > [$mess := msg(0.5, 1500), $del := delay(3000)]
+	$del > msg(0, 1000) > $bucket
+	$mess > $bucket > outlet~()
+}
+
+;

@@ -1,5 +1,6 @@
 patch mysynth
 import pdawlib
+import pdawlib2
 
 @additivesynth(440, [3,5,7], [0.75, 0.55, 0.35]) as $synth
 @adsr(1000, 1500, 0.5, 1500, 1000) as $myadsr

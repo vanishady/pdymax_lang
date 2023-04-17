@@ -44,8 +44,13 @@ class PdeasyVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by PdeasyParser#callstmt.
-    def visitCallstmt(self, ctx:PdeasyParser.CallstmtContext):
+    # Visit a parse tree produced by PdeasyParser#func_callstmt.
+    def visitFunc_callstmt(self, ctx:PdeasyParser.Func_callstmtContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PdeasyParser#block_callstmt.
+    def visitBlock_callstmt(self, ctx:PdeasyParser.Block_callstmtContext):
         return self.visitChildren(ctx)
 
 

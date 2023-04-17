@@ -15,7 +15,7 @@ class ImportListener(PdeasyListener):
 
     def enterImportstmt(self, ctx):
         file = ctx.NAME().getText()
-        lexer1 = PdeasyLexer(FileStream(file+'.txt'))
+        lexer1 = PdeasyLexer(FileStream('lib/'+file+'.txt'))
         stream1 = CommonTokenStream(lexer1)
         parser1 = PdeasyParser(stream1)
         tree1 = parser1.prog()

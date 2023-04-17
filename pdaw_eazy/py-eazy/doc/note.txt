@@ -1,0 +1,39 @@
+riassegnazione delle variabili:
+le variabili semplici si possono riassegnare (=)
+le variabili node non si possono riassegnare (:=)
+
+returnstmt
+posso ritornare una variabile (semplice o nodo) o un'espressione.
+return in contesti errati? Non è gestito per ora, viene solo ignorato.
+(anche nei blocchi, per ora non ha senso quindi raisa errore) [[solved]]
+
+func
+nella suite posso collegare nodi (le connessioni che avvengono nello scope della funzione sono risolte 
+nello scope del chiamante, e se il chiamante è a sua volta in una funzione vengono risolte nello scope del
+chiamante di quest'ultima, e così via) + Ci vuole uno stack di chiamate. 
+il restore ... bisognerebbe diciamo tener traccia dell'ultimo blocco in cui la funzione è stata chiamata [[solved]]
+
+arg
+l'argomento nei node parameters è concesso che sia anche un noderef dalla grammatica, ma non dovrebbe essere
+concesso almeno nel traspilatore. [[solved]]
+
+callstmt
+$c = @prova(*$a) as $nomeblocco
+non è errato sintatticamente, ma semanticamente restituisce soltanto None. 
+Nella seconda versione è sintatticamente errato, quindi... [[solved]]
+
+connessioni
+le connessioni sono memorizzate con la rappresentazione per archi, non per adiacenza, per ridurre il tempo di ricerca (sia in max che in pd, le connessioni sono elencate alla fine di ogni scope, e sono costruite come [nodo1 out1 nodo2 in2]: tanto vale rappresentare direttamente questa connessione in una sola struttura dati piuttosto che nodo per nodo). infatti per una connessione [A, outlet n1 -> B, inlet n2] rappresentata con l'adiacenza, dovrei memorizzare:
+A (outlet n1, B)
+B (inlet n2, A)
+e infine costruire la riga di testo: nodo1 out1 nodo2 in2
+tanto vale costruirla subito. [[solved]]
+
+lista di nodi al posto che $nomevar+'stringa'
+la lista di nodi poteva essere utile nei cicli for, nel senso:
+	$dac := dac~()
+	$mynodelist = [$node1:= spigot(), $node2:=spigot(), $node3:=spigot()]
+	for $1 in range 3:
+		$mynodelist[$i] > $dac
+	end
+Però ritengo che sia confusionario a livello di linguaggio: in qualsiasi altro punto del codice sorgente, lo user scriverebbe <$node := node>, e questo verrebbe creato. Ma solo nel caso della lista di nodi, allora quelli non verrebbero creati subito ma riferiti in seguito. [[unsolved]]
