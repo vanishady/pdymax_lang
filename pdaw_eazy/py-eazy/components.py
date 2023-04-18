@@ -4,46 +4,6 @@ from exceptions import *
 # variables
 ###############
 
-class Noderef():
-
-    def __init__(self):
-        self._name = None
-        self._target = None
-        self._scope = None
-
-    def spec(self):
-        return self.scope, self.name, self.target
-
-    def fullspec(self):
-        specdict = {'name':self.name,
-                    'target':self.target
-                    }
-        for key, value in specdict.items():
-            print(key, ' : ', value) 
-
-    @property
-    def name(self):
-        return self._name
-
-    @name.setter
-    def name(self, itername):
-        self._name = itername
-
-    @property
-    def target(self):
-        return self._target
-
-    @target.setter
-    def target(self, node):
-        self._target = node
-
-    @property
-    def scope(self):
-        return self._scope
-
-    @scope.setter
-    def scope(self, iterscope):
-        self._scope = iterscope
 
 class Iterator():
 
@@ -295,23 +255,19 @@ class SymbolTable():
 
     def bind(self, variable):
         #check if varname is avaiable. If variable is node, raise exception.
-        try:
-            for elem in self._symtable:
-                if elem.name == variable.name and elem.name != None and isinstance(elem, Node):
-                    raise AlreadyExistsException('???', variable.name)
-                if elem.name == variable.name and elem.name != None and isinstance(elem, SimpleVar):
-                    self._symtable.remove(elem)
-                    self._symtable.append(variable)
-        except AlreadyExistsException as e:
-            print(e)
+        for elem in self._symtable:
+            if elem.name == variable.name and elem.name != None and isinstance(elem, Node):
+                alreadyexistingvar = self.lookup(elem.name)
+                alreadyexistingvar.name = None
+            if elem.name == variable.name and elem.name != None and isinstance(elem, SimpleVar):
+                self._symtable.remove(elem)
+
         #store variable in symtable
-        else:
-            self._symtable.append(variable)  
-            #advance index in symtable if var is node
-            if type(variable) in [Node]:
-                self.index+=1
-                variable.index = self.index
-            
+        self._symtable.append(variable)  
+        #advance index in symtable if var is node
+        if type(variable) in [Node]:
+            self.index+=1
+            variable.index = self.index          
 
     def lookup(self, name):
         for var in self._symtable:

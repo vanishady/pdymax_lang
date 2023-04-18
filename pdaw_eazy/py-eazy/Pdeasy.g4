@@ -13,7 +13,7 @@ importstmt: IMPORT NAME ;
 
 funcdefstmt: FUNC NAME typedparams '{' suite '}' ; 
 
-returnstmt: RETURN (varname | expr )? ;
+returnstmt: RETURN expr? ;
 
 stmt
  : blockstmt 
@@ -31,13 +31,13 @@ blockstmt: BLOCK NAME typedparams '{' suite '}' ;
 
 func_callstmt: '@' NAME parameters ;
 
-block_callstmt: '@' NAME parameters AS varname ;
+block_callstmt: '@' NAME parameters AS (varname | list_access) ;
 
 nodedecl
- : varname ':=' NAME parameters	#nodedecl1
+ : varname '=' NAME parameters	#nodedecl1
  | NAME parameters 			#nodedecl2
  | operation 				#nodedecl3
- | varname ':=' operation 		#nodedecl4
+ | varname '=' operation 		#nodedecl4
  ;
 
 simpledecl
@@ -89,7 +89,6 @@ typedargslist
 arg
  : expr
  | list
- | noderef
  ;
 
 typedarg
@@ -120,17 +119,12 @@ expr
  | '(' expr ')' 								#ParensExpr
  ;
 
-
-noderef
- : '*' varname
- ;
-
 forstmt
  : FOR varname 'in range' (NUMBER | func_callstmt | varname | list_access) ':' suite END
  ;
 
 varname
- : VARNAME 
+ : NAME 
  ;
 
 inlet
@@ -159,12 +153,11 @@ FOR : 'for' ;
 AS : 'as' ;
 
 
-VARTYPE : 'intn' | 'floatn' | 'symbol' | 'list' | 'noderef' ;
+VARTYPE : 'intn' | 'floatn' | 'symbol' | 'list' ;
 NAME 
  : ID_START ID_CONTINUE* 
  | LETTER+ '~'?
  ;
-VARNAME : '$' ID_CONTINUE* ;
 
 SYMBOL : '\'' SYMBOL_ADMITTED* '\'' ;
 NUMBER : INTEGER | FLOAT ;

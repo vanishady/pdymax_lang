@@ -1,28 +1,31 @@
 patch prova
 
-func provafunc($b:noderef) {
+func provafunc(b:intn) {
 
-	$b > dac~()
-
-}
-
-block prova ($b:noderef) {
-
-	$a = 10
-	$e := osc~()
-	$b > $d := bang(1)
-	@provafunc(*$e)
+	return b
 
 }
 
-$s := delay(100)
-$a := bang(434)
-$b := osc~()
+block prova (b:intn) {
 
-@prova(*$a) as $bloccoprova
+	a = 10
+	e = osc~()
+	bang() > d = bang(1)
+	@provafunc(a)
 
-$f := dac~(100, 1)
-$a:2>[1:$s:2, $f]>$d:=bang()
+}
+
+s = delay(100)
+a = bang(434)
+b = osc~()
+b > a
+b = dac~()
+b > a
+
+@prova(30) as bloccoprova
+
+f = dac~(100, 1)
+a:2>[1:s:2, f]>d=bang()
 
 
 ;

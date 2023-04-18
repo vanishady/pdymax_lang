@@ -90,30 +90,9 @@ class PdeasyVisitor(ParseTreeVisitor):
         found = False
         try:
             for elem in self.callables:
-                if (self.symtable.name).startswith(elem.name):
-                    if type(elem)!= Function: raise OutOfContextError(ctx.start.line, 'returnstmt only makes sense into a function.')
+                if (self.symtable.name).startswith(elem.name) and type(elem)==Function:
                     found = True
-                    try:
-                        if ctx.varname():
-                            vname = self.visit(ctx.varname())
-                            var = self.symtable.lookup(vname)
-                            if var==False: raise NotFoundException(ctx.start.line, vname)
-                            if type(var)==Node:
-                                elem.returns = var
-                            elif type(var)==Noderef:
-                                elem.returns = var.target
-                            else:
-                                elem.returns = var.value
-                        elif ctx.expr():
-                            elem.returns = self.visit(ctx.expr())
-                        else:
-                            self.visitChildren(ctx)
-                            
-                    except NotFoundException as e:
-                        print(e)
-
-                    except OutOfContextError as e:
-                        print(e)
+                    elem.returns = self.visit(ctx.expr())
 
             if not found: raise OutOfContextError(ctx.start.line, 'returnstmt only makes sense into a function.')
 
@@ -191,15 +170,7 @@ class PdeasyVisitor(ParseTreeVisitor):
                 elif callee.expargs[i][1]=='list':
                     if isinstance(params[i], list): vardecl = True
                     else: raise InvalidParameterException(ctx.start.line, type(params[i]), 'list')
-                elif callee.expargs[i][1]=='noderef':
-                    if isinstance(params[i], Node):
-                        nr = Noderef()
-                        nr.name = callee.expargs[i][0]
-                        nr.target = params[i]
-                        nr.scope = self.symtable.name
-                        self.symtable.bind(nr)
-                    else: raise InvalidParameterException(ctx.start.line, type(params[i]), 'noderef')
-
+                
                 if vardecl == True:
                     var = SimpleVar()
                     var.name = callee.expargs[i][0]
@@ -274,15 +245,7 @@ class PdeasyVisitor(ParseTreeVisitor):
                 elif callee.expargs[i][1]=='list':
                     if isinstance(params[i], list): vardecl = True
                     else: raise InvalidParameterException(ctx.start.line, type(params[i]), 'list')
-                elif callee.expargs[i][1]=='noderef':
-                    if isinstance(params[i], Node):
-                        nr = Noderef()
-                        nr.name = callee.expargs[i][0]
-                        nr.target = params[i]
-                        nr.scope = self.symtable.name
-                        self.symtable.bind(nr)
-                    else: raise InvalidParameterException(ctx.start.line, type(params[i]), 'noderef')
-
+                
                 if vardecl == True:
                     var = SimpleVar()
                     var.name = callee.expargs[i][0]
@@ -501,8 +464,7 @@ class PdeasyVisitor(ParseTreeVisitor):
                 vname = self.visit(ctx.varname())
                 node = self.symtable.lookup(vname)
                 if node==False: raise NotFoundException(ctx.start.line, vname)
-                if type(node)not in [Node, Noderef]: raise TypeException(ctx.start.line, type(node), 'node')
-                if type(node) == Noderef: nodeId = node.target.index
+                if type(node)not in [Node]: raise TypeException(ctx.start.line, type(node), 'node')
                 else: nodeId = node.index
             except NotFoundException as e:
                 print(e)
@@ -566,7 +528,6 @@ class PdeasyVisitor(ParseTreeVisitor):
     def visitArg(self, ctx:PdeasyParser.ArgContext):
         """return argument value"""
         if ctx.expr(): return self.visit(ctx.expr())
-        elif ctx.noderef(): return self.visit(ctx.noderef())
         else: return self.visitChildren(ctx)
 
 
@@ -574,7 +535,7 @@ class PdeasyVisitor(ParseTreeVisitor):
     def visitTypedarg(self, ctx:PdeasyParser.TypedargContext):
         """
         return tuple of (name_of_expected_var : type_of_expected_var)
-        types can be: floatn (means float), intn (means int), symbol (means symbol), noderef, list
+        types can be: floatn (means float), intn (means int), symbol (means symbol), list
         """
         vname = self.visit(ctx.varname())
         vtype = ctx.VARTYPE().getText()
@@ -752,24 +713,6 @@ class PdeasyVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by PdeasyParser#noderef.
-    def visitNoderef(self, ctx:PdeasyParser.NoderefContext):
-        """returns a node variable"""
-        vname = self.visit(ctx.varname())
-        var = self.symtable.lookup(vname)
-        try:
-            if var==False: raise NotFoundException(ctx.start.line, vname)
-            if type(var) not in [Node, Block]: raise AttributeError
-        except AttributeError:
-            print(f'error at line: {ctx.start.line}\n pointer must point at some node')
-            return None
-        except NotFoundException as e:
-            print(e)
-            return None
-        else:
-            return var 
-
-
     # Visit a parse tree produced by PdeasyParser#forstmt.
     def visitForstmt(self, ctx:PdeasyParser.ForstmtContext):
         """for loops"""
@@ -815,7 +758,7 @@ class PdeasyVisitor(ParseTreeVisitor):
     # Visit a parse tree produced by PdeasyParser#varname.
     def visitVarname(self, ctx:PdeasyParser.VarnameContext):
         """return varname"""
-        return ctx.VARNAME().getText()
+        return ctx.NAME().getText()
     
 
     # Visit a parse tree produced by PdeasyParser#inlet.

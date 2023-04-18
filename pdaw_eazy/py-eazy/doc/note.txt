@@ -1,6 +1,9 @@
 riassegnazione delle variabili:
-le variabili semplici si possono riassegnare (=)
-le variabili node non si possono riassegnare (:=)
+le variabili semplici e node si possono riassegnare (=)
+il nodo vecchio semplicemente verrà deferenziato (il suo nome viene cambiato in None) e il nodo nuovo viene bindato alla symtable [[solved]]
+
+varname
+check per i nomi riservati (una variabile non si può chiamare osc~) [[unsolved]]
 
 returnstmt
 posso ritornare una variabile (semplice o nodo) o un'espressione.
@@ -20,7 +23,7 @@ concesso almeno nel traspilatore. [[solved]]
 callstmt
 $c = @prova(*$a) as $nomeblocco
 non è errato sintatticamente, ma semanticamente restituisce soltanto None. 
-Nella seconda versione è sintatticamente errato, quindi... [[solved]]
+Nella nuova versione è sintatticamente errato, quindi... [[solved]]
 
 connessioni
 le connessioni sono memorizzate con la rappresentazione per archi, non per adiacenza, per ridurre il tempo di ricerca (sia in max che in pd, le connessioni sono elencate alla fine di ogni scope, e sono costruite come [nodo1 out1 nodo2 in2]: tanto vale rappresentare direttamente questa connessione in una sola struttura dati piuttosto che nodo per nodo). infatti per una connessione [A, outlet n1 -> B, inlet n2] rappresentata con l'adiacenza, dovrei memorizzare:
@@ -32,8 +35,13 @@ tanto vale costruirla subito. [[solved]]
 lista di nodi al posto che $nomevar+'stringa'
 la lista di nodi poteva essere utile nei cicli for, nel senso:
 	$dac := dac~()
-	$mynodelist = [$node1:= spigot(), $node2:=spigot(), $node3:=spigot()]
+	$mynodelist = [spigot(), spigot(), osc~()]
 	for $1 in range 3:
 		$mynodelist[$i] > $dac
 	end
 [[solved]]
+
+blockcall
+relazione tra forstmt e blockcall: come cambio il nome alla blockcall [[unsolved]]
+
+TRY CATCH NEL MAIN

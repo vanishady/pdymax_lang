@@ -2,13 +2,13 @@ patch mysynth
 import pdawlib
 import pdawlib2
 
-@additivesynth(440, [3,5,7], [0.75, 0.55, 0.35]) as $synth
-@adsr(1000, 1500, 0.5, 1500, 1000) as $myadsr
-@adsr(1000, 1500, 0.5, 1500, 1000) as $myadsr1
+@additivesynth(440, [3,5,7], [0.75, 0.55, 0.35]) as synth
+@adsr(1000, 1500, 0.5, 1500, 1000) as myadsr
+@adsr(1000, 1500, 0.5, 1500, 1000) as myadsr1
 
-bang() > [$synth, 1:$myadsr, 2:$myadsr]
+bang() > [synth, 1:myadsr, 2:myadsr]
 
 #attach things
-#@ampmod(*$synth, *$myadsr)  #this synth follows this envelope
+#@ampmod(synth, myadsr)  #this synth follows this envelope
 
 ;
