@@ -100,13 +100,25 @@ public class PdeasyBaseListener implements PdeasyListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCallstmt(PdeasyParser.CallstmtContext ctx) { }
+	@Override public void enterFunc_callstmt(PdeasyParser.Func_callstmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCallstmt(PdeasyParser.CallstmtContext ctx) { }
+	@Override public void exitFunc_callstmt(PdeasyParser.Func_callstmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBlock_callstmt(PdeasyParser.Block_callstmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBlock_callstmt(PdeasyParser.Block_callstmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

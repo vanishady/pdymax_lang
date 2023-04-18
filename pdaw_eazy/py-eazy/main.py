@@ -42,5 +42,7 @@ for st in v.memory:
 
 for c in v.connections:
     print(c)
+
+
     
  

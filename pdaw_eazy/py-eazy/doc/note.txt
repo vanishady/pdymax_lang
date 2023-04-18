@@ -36,4 +36,4 @@ la lista di nodi poteva essere utile nei cicli for, nel senso:
 	for $1 in range 3:
 		$mynodelist[$i] > $dac
 	end
-Però ritengo che sia confusionario a livello di linguaggio: in qualsiasi altro punto del codice sorgente, lo user scriverebbe <$node := node>, e questo verrebbe creato. Ma solo nel caso della lista di nodi, allora quelli non verrebbero creati subito ma riferiti in seguito. [[unsolved]]
+[[solved]]

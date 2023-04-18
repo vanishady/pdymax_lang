@@ -1,0 +1,28 @@
+patch prova
+
+func provafunc($b:noderef) {
+
+	$b > dac~()
+
+}
+
+block prova ($b:noderef) {
+
+	$a = 10
+	$e := osc~()
+	$b > $d := bang(1)
+	@provafunc(*$e)
+
+}
+
+$s := delay(100)
+$a := bang(434)
+$b := osc~()
+
+@prova(*$a) as $bloccoprova
+
+$f := dac~(100, 1)
+$a:2>[1:$s:2, $f]>$d:=bang()
+
+
+;

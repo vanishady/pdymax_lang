@@ -350,12 +350,20 @@ class PdeasyVisitor(ParseTreeVisitor):
         """add simple variable to current symbol table"""
         var = SimpleVar()
         var.name = self.visit(ctx.varname())
-        if ctx.expr():
-            var.value = self.visit(ctx.expr())
+        try:
+            if ctx.expr():
+                var.value = self.visit(ctx.expr())
+            else:
+                var.value = self.visitChildren(ctx)
+            if type(var.value) == Node:
+                raise TypeException(ctx.start.line, 'node', 'number or symbol' )
+            
+        except TypeException as e:
+            print(e)
+ 
         else:
-            var.value = self.visitChildren(ctx)
-        var.scope = self.symtable.name
-        self.symtable.bind(var)
+            var.scope = self.symtable.name
+            self.symtable.bind(var)
 
 
     # Visit a parse tree produced by PdeasyParser#list.
@@ -376,7 +384,7 @@ class PdeasyVisitor(ParseTreeVisitor):
             num = ctx.NUMBER().getText()
             if '.' in num: return float(num)
             else: return int(num)
-        else:
+        elif ctx.varname():
             vname = self.visit(ctx.varname())
             try:
                 var = self.symtable.lookup(vname)
@@ -390,6 +398,20 @@ class PdeasyVisitor(ParseTreeVisitor):
                 return None
             else:
                 return var.value
+        elif ctx.NAME():
+            node = Node()
+            self.symtable.bind(node)
+            node.nodetype = ctx.NAME().getText()
+            node.args = self.visit(ctx.parameters())
+            node.scope = self.symtable.name
+            return node
+        elif ctx.operation():
+            node = Node()
+            self.symtable.bind(node)
+            node.nodetype = 'obj'
+            node.args = self.visit(ctx.operation())
+            node.scope = self.symtable.name
+            return node
 
 
     # Visit a parse tree produced by PdeasyParser#list_access.
@@ -398,24 +420,17 @@ class PdeasyVisitor(ParseTreeVisitor):
         return value of item indexed in a list.
         raise error if index out of range, variable not found, index non-numeric ...
         """
-        vname = self.visit(ctx.varname(0))
+        vname = self.visit(ctx.varname()) #list varibale name
 
         try:
-            var = self.symtable.lookup(vname)
+            var = self.symtable.lookup(vname) #look for list variable
             if var == False: raise NotFoundException(ctx.start.line, vname)
-            if ctx.varname(1): 
-                vname2 = self.visit(ctx.varname(1))
-                var2 = self.symtable.lookup(vname2)
-                if var2 == False: raise NotFoundException(ctx.start.line, vname2)
-                index = var2.value
-                if not isinstance(index, int): raise AttributeError
-            elif ctx.NUMBER():
-                if '.' in ctx.NUMBER().getText(): raise AttributeError
-                index = int(ctx.NUMBER().getText())
+            index = self.visit(ctx.expr())
+            if not isinstance(index, int): raise AttributeError
 
         except AttributeError:
             print(f'error at line: {ctx.start.line}\n cannot use non-integer variable as list index') 
-            return None
+            sys.exit(1)
         except NotFoundException as e:
             print(e)
             return None
@@ -501,6 +516,10 @@ class PdeasyVisitor(ParseTreeVisitor):
                 self.visit(ctx.nodedecl())
                 nodeId = self.symtable.index #l'index dell'ultimo nodo creato
                 self.full_text.update({(ctx_text, ctx.start) : nodeId})
+
+        elif ctx.list_access():
+            node = self.visit(ctx.list_access())
+            nodeId = node.index
             
         if ctx.inlet(): nodeIn = self.visit(ctx.inlet())
         if ctx.outlet(): nodeOut = self.visit(ctx.outlet())

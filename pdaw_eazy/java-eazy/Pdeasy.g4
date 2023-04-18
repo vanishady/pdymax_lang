@@ -18,7 +18,8 @@ returnstmt: RETURN (varname | expr )? ;
 stmt
  : blockstmt 
  | connectionstmt 
- | callstmt 
+ | block_callstmt
+ | func_callstmt
  | nodedecl 
  | simpledecl 
  | ifstmt 
@@ -28,7 +29,9 @@ stmt
 
 blockstmt: BLOCK NAME typedparams '{' suite '}' ;
 
-callstmt: '@' NAME parameters (AS varname)? ;
+func_callstmt: '@' NAME parameters ;
+
+block_callstmt: '@' NAME parameters AS varname ;
 
 nodedecl
  : varname ':=' NAME parameters	#nodedecl1
@@ -47,7 +50,7 @@ list
  ;
 
 listelem
- : SYMBOL | NUMBER | varname
+ : SYMBOL | NUMBER | varname | NAME parameters | operation
  ;
 
 list_access
@@ -113,7 +116,7 @@ expr
  | NUMBER									#TestNum
  | SYMBOL									#TestSym
  | varname 									#TestVar
- | callstmt 								#TestCall
+ | func_callstmt 								#TestCall
  | list_access 								#TestListAccess
  | '(' expr ')' 								#ParensExpr
  ;
@@ -124,7 +127,7 @@ noderef
  ;
 
 forstmt
- : FOR varname 'in range' (NUMBER | callstmt | varname | list_access) ':' suite END
+ : FOR varname 'in range' (NUMBER | func_callstmt | varname | list_access) ':' suite END
  ;
 
 varname

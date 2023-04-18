@@ -1,0 +1,26 @@
+patch prova
+
+
+block prova ($b:noderef) {
+
+	$a = 10
+	$e := osc~()
+	$b > $d := bang(1)
+
+}
+
+$s := delay(100)
+$b := bang()
+
+
+$mynodelist = [spigot(), msg('collegami'), spigot()]
+
+for $i in range 2:
+	#$a = $mynodelist[$i]
+	#$nodevar:= $mynodelist[$i]
+	$mynodelist[$i] > $b > $mynodelist[$i+1]
+end
+
+
+
+;

@@ -50,12 +50,11 @@ list
  ;
 
 listelem
- : SYMBOL | NUMBER | varname
+ : SYMBOL | NUMBER | varname | NAME parameters | operation
  ;
 
 list_access
- : varname '[' varname ']'
- | varname '[' NUMBER ']'
+ : varname '[' expr ']'
  ;
 
 connectionstmt
@@ -68,7 +67,7 @@ connectionelem
  ;
 
 singlenode
- : (inlet ':')? (varname | nodedecl) (':' outlet)?
+ : (inlet ':')? (varname | nodedecl | list_access) (':' outlet)?
  ;
 
 parameters
