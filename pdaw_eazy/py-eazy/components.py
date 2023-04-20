@@ -175,7 +175,7 @@ class Node():
             for arg in nodeargs:
                 if type(arg)==Node: raise InvalidParameterException('???', 'node', 'intn, floatn, symbol')
         except InvalidParameterException as e:
-            print(e, f'\n Makes no sense to pass a node or noderef to {self.name}.')
+            print(e, f'\n Makes no sense to pass a node to node <{self.name}>.')
         self._args = nodeargs
 
     @property
@@ -265,9 +265,11 @@ class SymbolTable():
         #store variable in symtable
         self._symtable.append(variable)  
         #advance index in symtable if var is node
+        
         if type(variable) in [Node]:
             self.index+=1
-            variable.index = self.index          
+            variable.index = self.index
+        
 
     def lookup(self, name):
         for var in self._symtable:

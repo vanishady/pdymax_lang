@@ -13,13 +13,12 @@ importstmt: IMPORT NAME ;
 
 funcdefstmt: FUNC NAME typedparams '{' suite '}' ; 
 
-returnstmt: RETURN expr? ;
+returnstmt: RETURN arg? ;
 
 stmt
  : blockstmt 
  | connectionstmt 
- | block_callstmt
- | func_callstmt
+ | callstmt
  | nodedecl 
  | simpledecl 
  | ifstmt 
@@ -29,9 +28,7 @@ stmt
 
 blockstmt: BLOCK NAME typedparams '{' suite '}' ;
 
-func_callstmt: '@' NAME parameters ;
-
-block_callstmt: '@' NAME parameters AS (varname | list_access) ;
+callstmt: '@' NAME parameters ;
 
 nodedecl
  : varname '=' NAME parameters	#nodedecl1
@@ -89,6 +86,8 @@ typedargslist
 arg
  : expr
  | list
+ | NAME parameters
+ | operation
  ;
 
 typedarg
@@ -100,7 +99,7 @@ suite
  ;
 
 operation
- : op=('*'|'/'|'*~'|'/~'|'+'|'-'|'+~'|'-~'|'%') '(' (NUMBER | varname | list_access)? ')'
+ : op=('*'|'/'|'*~'|'/~'|'+'|'-'|'+~'|'-~'|'%') '(' expr? ')'
  ;
 
 ifstmt
@@ -114,13 +113,13 @@ expr
  | NUMBER									#TestNum
  | SYMBOL									#TestSym
  | varname 									#TestVar
- | func_callstmt 								#TestCall
+ | callstmt 								#TestCall
  | list_access 								#TestListAccess
  | '(' expr ')' 								#ParensExpr
  ;
 
 forstmt
- : FOR varname 'in range' (NUMBER | func_callstmt | varname | list_access) ':' suite END
+ : FOR varname 'in range' expr ':' suite END
  ;
 
 varname
@@ -153,7 +152,7 @@ FOR : 'for' ;
 AS : 'as' ;
 
 
-VARTYPE : 'intn' | 'floatn' | 'symbol' | 'list' ;
+VARTYPE : 'intn' | 'floatn' | 'symbol' | 'list' | 'node' ;
 NAME 
  : ID_START ID_CONTINUE* 
  | LETTER+ '~'?
@@ -173,4 +172,3 @@ fragment SYMBOL_ADMITTED : LETTER | DIGIT | '_' | '.' | ',' | '\\' | '/' ;
 
 WS : [ \t\r\n]+ -> skip ;
 COMMENT : '#' ~[\r\n]* -> skip ;
-

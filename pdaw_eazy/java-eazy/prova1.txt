@@ -1,28 +1,41 @@
 patch prova
 
-func provafunc($b:noderef) {
+func provafunc(b:node) {
 
-	$b > dac~()
-
-}
-
-block prova ($b:noderef) {
-
-	$a = 10
-	$e := osc~()
-	$b > $d := bang(1)
-	@provafunc(*$e)
+	b > c = osc~(400)
+	return b
 
 }
 
-$s := delay(100)
-$a := bang(434)
-$b := osc~()
+block prova (b:intn) {
 
-@prova(*$a) as $bloccoprova
+	a = 10
+	e = osc~()
+	bang() > d = bang(1)
+	call = @provafunc(e)
+	
+}
 
-$f := dac~(100, 1)
-$a:2>[1:$s:2, $f]>$d:=bang()
+ciccio = [bang(), *(10), 100]
+ciccio1 = ciccio[0]
+ciccio2 = ciccio[1]
+cicio3 = ciccio[2]
+a = 'mar'
 
+f = dac~(100, 1)
+ciccio1:2>[1:ciccio[1]:2, f]>d=bang()
+
+@prova(400)
+@provafunc(f)
+
+multipleblocks = []
+for i in range 3:
+	curr = @prova(100)
+	@append(multipleblocks, curr)
+end
+
+a = ciccio1
+a > f
+a = 100
 
 ;

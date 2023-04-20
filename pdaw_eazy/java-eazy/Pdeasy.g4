@@ -13,13 +13,12 @@ importstmt: IMPORT NAME ;
 
 funcdefstmt: FUNC NAME typedparams '{' suite '}' ; 
 
-returnstmt: RETURN (varname | expr )? ;
+returnstmt: RETURN arg? ;
 
 stmt
  : blockstmt 
  | connectionstmt 
- | block_callstmt
- | func_callstmt
+ | callstmt
  | nodedecl 
  | simpledecl 
  | ifstmt 
@@ -29,15 +28,13 @@ stmt
 
 blockstmt: BLOCK NAME typedparams '{' suite '}' ;
 
-func_callstmt: '@' NAME parameters ;
-
-block_callstmt: '@' NAME parameters AS varname ;
+callstmt: '@' NAME parameters ;
 
 nodedecl
- : varname ':=' NAME parameters	#nodedecl1
+ : varname '=' NAME parameters	#nodedecl1
  | NAME parameters 			#nodedecl2
  | operation 				#nodedecl3
- | varname ':=' operation 		#nodedecl4
+ | varname '=' operation 		#nodedecl4
  ;
 
 simpledecl
@@ -54,8 +51,7 @@ listelem
  ;
 
 list_access
- : varname '[' varname ']'
- | varname '[' NUMBER ']'
+ : varname '[' expr ']'
  ;
 
 connectionstmt
@@ -68,7 +64,7 @@ connectionelem
  ;
 
 singlenode
- : (inlet ':')? (varname | nodedecl) (':' outlet)?
+ : (inlet ':')? (varname | nodedecl | list_access) (':' outlet)?
  ;
 
 parameters
@@ -90,7 +86,8 @@ typedargslist
 arg
  : expr
  | list
- | noderef
+ | NAME parameters
+ | operation
  ;
 
 typedarg
@@ -102,7 +99,7 @@ suite
  ;
 
 operation
- : op=('*'|'/'|'*~'|'/~'|'+'|'-'|'+~'|'-~'|'%') '(' (NUMBER | varname | list_access)? ')'
+ : op=('*'|'/'|'*~'|'/~'|'+'|'-'|'+~'|'-~'|'%') '(' expr? ')'
  ;
 
 ifstmt
@@ -116,22 +113,17 @@ expr
  | NUMBER									#TestNum
  | SYMBOL									#TestSym
  | varname 									#TestVar
- | func_callstmt 								#TestCall
+ | callstmt 								#TestCall
  | list_access 								#TestListAccess
  | '(' expr ')' 								#ParensExpr
  ;
 
-
-noderef
- : '*' varname
- ;
-
 forstmt
- : FOR varname 'in range' (NUMBER | func_callstmt | varname | list_access) ':' suite END
+ : FOR varname 'in range' expr ':' suite END
  ;
 
 varname
- : VARNAME 
+ : NAME 
  ;
 
 inlet
@@ -160,12 +152,11 @@ FOR : 'for' ;
 AS : 'as' ;
 
 
-VARTYPE : 'intn' | 'floatn' | 'symbol' | 'list' | 'noderef' ;
+VARTYPE : 'intn' | 'floatn' | 'symbol' | 'list' | 'node' ;
 NAME 
  : ID_START ID_CONTINUE* 
  | LETTER+ '~'?
  ;
-VARNAME : '$' ID_CONTINUE* ;
 
 SYMBOL : '\'' SYMBOL_ADMITTED* '\'' ;
 NUMBER : INTEGER | FLOAT ;
@@ -181,4 +172,3 @@ fragment SYMBOL_ADMITTED : LETTER | DIGIT | '_' | '.' | ',' | '\\' | '/' ;
 
 WS : [ \t\r\n]+ -> skip ;
 COMMENT : '#' ~[\r\n]* -> skip ;
-

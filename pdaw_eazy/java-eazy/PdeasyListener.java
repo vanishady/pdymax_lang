@@ -77,25 +77,15 @@ public interface PdeasyListener extends ParseTreeListener {
 	 */
 	void exitBlockstmt(PdeasyParser.BlockstmtContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link PdeasyParser#func_callstmt}.
+	 * Enter a parse tree produced by {@link PdeasyParser#callstmt}.
 	 * @param ctx the parse tree
 	 */
-	void enterFunc_callstmt(PdeasyParser.Func_callstmtContext ctx);
+	void enterCallstmt(PdeasyParser.CallstmtContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link PdeasyParser#func_callstmt}.
+	 * Exit a parse tree produced by {@link PdeasyParser#callstmt}.
 	 * @param ctx the parse tree
 	 */
-	void exitFunc_callstmt(PdeasyParser.Func_callstmtContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link PdeasyParser#block_callstmt}.
-	 * @param ctx the parse tree
-	 */
-	void enterBlock_callstmt(PdeasyParser.Block_callstmtContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link PdeasyParser#block_callstmt}.
-	 * @param ctx the parse tree
-	 */
-	void exitBlock_callstmt(PdeasyParser.Block_callstmtContext ctx);
+	void exitCallstmt(PdeasyParser.CallstmtContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code nodedecl1}
 	 * labeled alternative in {@link PdeasyParser#nodedecl}.
@@ -426,16 +416,6 @@ public interface PdeasyListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitTestListAccess(PdeasyParser.TestListAccessContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link PdeasyParser#noderef}.
-	 * @param ctx the parse tree
-	 */
-	void enterNoderef(PdeasyParser.NoderefContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link PdeasyParser#noderef}.
-	 * @param ctx the parse tree
-	 */
-	void exitNoderef(PdeasyParser.NoderefContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link PdeasyParser#forstmt}.
 	 * @param ctx the parse tree

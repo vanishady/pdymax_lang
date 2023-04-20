@@ -2,9 +2,13 @@ patch mysynth
 import pdawlib
 import pdawlib2
 
-@additivesynth(440, [3,5,7], [0.75, 0.55, 0.35]) as synth
-@adsr(1000, 1500, 0.5, 1500, 1000) as myadsr
-@adsr(1000, 1500, 0.5, 1500, 1000) as myadsr1
+synth = @additivesynth(440, [3,5,7], [0.75, 0.55, 0.35]) 
+
+l = [1000, 1500, 0.5, 1500, 1000]
+
+for counter in range 3:
+	myadsr = @adsr(l[0]+counter, l[1]+counter, l[2]+counter, l[3]+counter,l[4]+counter)
+end
 
 bang() > [synth, 1:myadsr, 2:myadsr]
 

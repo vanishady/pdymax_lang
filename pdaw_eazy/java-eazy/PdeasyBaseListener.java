@@ -100,25 +100,13 @@ public class PdeasyBaseListener implements PdeasyListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFunc_callstmt(PdeasyParser.Func_callstmtContext ctx) { }
+	@Override public void enterCallstmt(PdeasyParser.CallstmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFunc_callstmt(PdeasyParser.Func_callstmtContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterBlock_callstmt(PdeasyParser.Block_callstmtContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitBlock_callstmt(PdeasyParser.Block_callstmtContext ctx) { }
+	@Override public void exitCallstmt(PdeasyParser.CallstmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -479,18 +467,6 @@ public class PdeasyBaseListener implements PdeasyListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitTestListAccess(PdeasyParser.TestListAccessContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterNoderef(PdeasyParser.NoderefContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitNoderef(PdeasyParser.NoderefContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

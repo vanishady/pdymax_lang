@@ -21,14 +21,13 @@ class NotFoundException(Exception):
     def __str__(self):
         return f'error at line: {self._lineno}\n <{self._varname}> does not exist in this scope'
 
-class CallSyntaxError(Exception):
+class CallError(Exception):
 
-    def __init__(self, lineno, name):
+    def __init__(self, lineno):
         self._lineno = lineno
-        self._name = name
 
     def __str__(self):
-        return f'error at line: {self._lineno}\n wrong syntax in calling block <{self._name}>' 
+        return f'error at line: {self._lineno}\n cannot use block call in normal expressions.>' 
 
 class InvalidParameterException(Exception):
 
@@ -68,3 +67,13 @@ class OutOfContextError(Exception):
 
     def __str__(self):
         return f'error at line: {self._lineno}\n {self._details}'
+
+
+class InvalidNameException(Exception):
+
+    def __init__(self, lineno, name):
+        self._lineno = lineno
+        self._name = name
+        
+    def __str__(self):
+        return f'error at line: {self._lineno}\n {self._name} is not valid. Use another name.'

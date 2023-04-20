@@ -1,21 +1,22 @@
 patch prova
 
 
-block prova (b:noderef) {
+block prova (b:floatn) {
 
 	a = 10
 	e = osc~()
-	b > d = bang(1)
-
 }
 
 s = delay(100)
 b = bang()
 
+2:s > b
 
 mynodelist = [spigot(), msg('collegami'), spigot()]
 
-for i in range 2:
+rangevar = 2 
+
+for i in range rangevar:
 	#a = mynodelist[i]
 	#nodevar= mynodelist[i]
 	mynodelist[i] > b > mynodelist[i+1]

@@ -1,7 +1,8 @@
 patch prova
 
-func provafunc(b:intn) {
+func provafunc(b:node) {
 
+	b > c = osc~(400)
 	return b
 
 }
@@ -11,21 +12,30 @@ block prova (b:intn) {
 	a = 10
 	e = osc~()
 	bang() > d = bang(1)
-	@provafunc(a)
-
+	call = @provafunc(e)
+	
 }
 
-s = delay(100)
-a = bang(434)
-b = osc~()
-b > a
-b = dac~()
-b > a
-
-@prova(30) as bloccoprova
+ciccio = [bang(), *(10), 100]
+ciccio1 = ciccio[0]
+ciccio2 = ciccio[1]
+cicio3 = ciccio[2]
+a = 'mar'
 
 f = dac~(100, 1)
-a:2>[1:s:2, f]>d=bang()
+ciccio1:2>[1:ciccio[1]:2, f]>d=bang()
 
+@prova(400)
+@provafunc(f)
+
+multipleblocks = []
+for i in range 3:
+	curr = @prova(100)
+	@append(multipleblocks, curr)
+end
+
+a = ciccio1
+a > f
+a = 100
 
 ;

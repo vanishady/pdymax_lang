@@ -1,0 +1,69 @@
+Python 3.8.10 (tags/v3.8.10:3d8993a, May  3 2021, 11:48:03) [MSC v.1928 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> 
+= RESTART: C:\Users\PC\Documents\GitHub\tezi\pdaw_eazy\py-eazy - newgrammar - Copia\main.py
+<class 'components.Node'> ('general', None, 0, 'bang', [])
+<class 'components.Node'> ('general', None, 1, 'obj', ['*', 10])
+<class 'components.SimpleVar'> ('general', 'ciccio', [<components.Node object at 0x0000025AB25D4760>, <components.Node object at 0x0000025AB25D47F0>, 100])
+<class 'components.SimpleVar'> ('general', 'ciccio1', <components.Node object at 0x0000025AB25D4760>)
+<class 'components.SimpleVar'> ('general', 'ciccio2', <components.Node object at 0x0000025AB25D47F0>)
+<class 'components.SimpleVar'> ('general', 'cicio3', 100)
+<class 'components.Node'> ('general', 'f', 2, 'dac~', [100, 1])
+<class 'components.Node'> ('general', 'd', 3, 'bang', [])
+<class 'components.Node'> ('general', 'prova0', 4, 'subpatch', [])
+<class 'components.SimpleVar'> ('general', 'multipleblocks', [<components.Node object at 0x0000025AB56AE100>, <components.Node object at 0x0000025AB56AE490>, <components.Node object at 0x0000025AB56AE4F0>])
+<class 'components.Iterator'> ('general', 'i', -1)
+<class 'components.Node'> ('general', 'prova1', 5, 'subpatch', [])
+<class 'components.Node'> ('general', 'prova2', 6, 'subpatch', [])
+<class 'components.Node'> ('general', 'prova3', 7, 'subpatch', [])
+<class 'components.SimpleVar'> ('general', 'curr', <components.Node object at 0x0000025AB56AE4F0>)
+<class 'components.SimpleVar'> ('general', 'a', 100)
+<class 'components.SimpleVar'> ('prova0', 'b', 400)
+<class 'components.SimpleVar'> ('prova0', 'a', 10)
+<class 'components.Node'> ('prova0', 'e', 0, 'osc~', [])
+<class 'components.Node'> ('prova0', None, 1, 'bang', [])
+<class 'components.Node'> ('prova0', 'd', 2, 'bang', [1])
+<class 'components.SimpleVar'> ('prova0', 'call', <components.Node object at 0x0000025AB25D42E0>)
+<class 'components.SimpleVar'> ('provafunc0', 'b', <components.Node object at 0x0000025AB25D42E0>)
+<class 'components.Node'> ('provafunc0', 'c', 3, 'osc~', [400])
+<class 'components.SimpleVar'> ('provafunc1', 'b', <components.Node object at 0x0000025AB25D40D0>)
+<class 'components.Node'> ('provafunc1', 'c', 5, 'osc~', [400])
+<class 'components.SimpleVar'> ('prova1', 'b', 100)
+<class 'components.SimpleVar'> ('prova1', 'a', 10)
+<class 'components.Node'> ('prova1', 'e', 0, 'osc~', [])
+<class 'components.Node'> ('prova1', None, 1, 'bang', [])
+<class 'components.Node'> ('prova1', 'd', 2, 'bang', [1])
+<class 'components.SimpleVar'> ('prova1', 'call', <components.Node object at 0x0000025AB56AE280>)
+<class 'components.SimpleVar'> ('provafunc2', 'b', <components.Node object at 0x0000025AB56AE280>)
+<class 'components.Node'> ('provafunc2', 'c', 3, 'osc~', [400])
+<class 'components.SimpleVar'> ('prova2', 'b', 100)
+<class 'components.SimpleVar'> ('prova2', 'a', 10)
+<class 'components.Node'> ('prova2', 'e', 0, 'osc~', [])
+<class 'components.Node'> ('prova2', None, 1, 'bang', [])
+<class 'components.Node'> ('prova2', 'd', 2, 'bang', [1])
+<class 'components.SimpleVar'> ('prova2', 'call', <components.Node object at 0x0000025AB56AE640>)
+<class 'components.SimpleVar'> ('provafunc3', 'b', <components.Node object at 0x0000025AB56AE640>)
+<class 'components.Node'> ('provafunc3', 'c', 3, 'osc~', [400])
+<class 'components.SimpleVar'> ('prova3', 'b', 100)
+<class 'components.SimpleVar'> ('prova3', 'a', 10)
+<class 'components.Node'> ('prova3', 'e', 0, 'osc~', [])
+<class 'components.Node'> ('prova3', None, 1, 'bang', [])
+<class 'components.Node'> ('prova3', 'd', 2, 'bang', [1])
+<class 'components.SimpleVar'> ('prova3', 'call', <components.Node object at 0x0000025AB56AE9D0>)
+<class 'components.SimpleVar'> ('provafunc4', 'b', <components.Node object at 0x0000025AB56AE9D0>)
+<class 'components.Node'> ('provafunc4', 'c', 3, 'osc~', [400])
+['general', 0, 2, 1, 1]
+['general', 0, 2, 2, 0]
+['general', 1, 2, 3, 0]
+['general', 2, 0, 3, 0]
+['prova0', 1, 0, 2, 0]
+['prova0', 0, 0, 3, 0]
+['general', 2, 0, 5, 0]
+['prova1', 1, 0, 2, 0]
+['prova1', 0, 0, 3, 0]
+['prova2', 1, 0, 2, 0]
+['prova2', 0, 0, 3, 0]
+['prova3', 1, 0, 2, 0]
+['prova3', 0, 0, 3, 0]
+['general', 0, 0, 2, 0]
+>>> 

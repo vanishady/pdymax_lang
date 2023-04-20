@@ -19,9 +19,9 @@ block adsr (attack:intn, decay:intn, sus_lev: floatn, sustain: intn, release:int
 	mess > bucket > outlet~()
 }
 
-@additivesynth(440, [3,5,7], [0.75, 0.55, 0.35]) as synth
-@adsr(1000, 1500, 0.5, 1500, 1000) as myadsr
-@adsr(1000, 1500, 0.5, 1500, 1000) as myadsr1
+synth = @additivesynth(440, [3,5,7], [0.75, 0.55, 0.35]) 
+myadsr = @adsr(1000, 1500, 0.5, 1500, 1000) 
+myadsr1 = @adsr(1000, 1500, 0.5, 1500, 1000) 
 
 bang() > [synth, 1:myadsr, 2:myadsr]
 

@@ -71,21 +71,12 @@ class PdeasyListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by PdeasyParser#func_callstmt.
-    def enterFunc_callstmt(self, ctx:PdeasyParser.Func_callstmtContext):
+    # Enter a parse tree produced by PdeasyParser#callstmt.
+    def enterCallstmt(self, ctx:PdeasyParser.CallstmtContext):
         pass
 
-    # Exit a parse tree produced by PdeasyParser#func_callstmt.
-    def exitFunc_callstmt(self, ctx:PdeasyParser.Func_callstmtContext):
-        pass
-
-
-    # Enter a parse tree produced by PdeasyParser#block_callstmt.
-    def enterBlock_callstmt(self, ctx:PdeasyParser.Block_callstmtContext):
-        pass
-
-    # Exit a parse tree produced by PdeasyParser#block_callstmt.
-    def exitBlock_callstmt(self, ctx:PdeasyParser.Block_callstmtContext):
+    # Exit a parse tree produced by PdeasyParser#callstmt.
+    def exitCallstmt(self, ctx:PdeasyParser.CallstmtContext):
         pass
 
 
