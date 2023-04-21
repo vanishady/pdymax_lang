@@ -119,7 +119,8 @@ class PdeasyVisitor(ParseTreeVisitor):
         else:
             block = Block()
             block.name = name
-            block.body = ctx.suite()
+            if ctx.suite():
+                block.body = ctx.suite()
             block.expargs = self.visit(ctx.typedparams())
             self.callables.append(block)
             
@@ -212,7 +213,8 @@ class PdeasyVisitor(ParseTreeVisitor):
             print(e)
 
         #execute body
-        self.visit(callee.body)
+        if callee.body != None:
+            self.visit(callee.body)
         self.leavesymtable()
 
         if type(callee)==Function:

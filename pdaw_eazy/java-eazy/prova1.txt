@@ -16,6 +16,10 @@ block prova (b:intn) {
 	
 }
 
+block other () {
+
+}
+
 ciccio = [bang(), *(10), 100]
 ciccio1 = ciccio[0]
 ciccio2 = ciccio[1]

@@ -26,7 +26,7 @@ stmt
  | returnstmt
  ; 
 
-blockstmt: BLOCK NAME typedparams '{' suite '}' ;
+blockstmt: BLOCK NAME typedparams '{' suite? '}' ;
 
 callstmt: '@' NAME parameters ;
 

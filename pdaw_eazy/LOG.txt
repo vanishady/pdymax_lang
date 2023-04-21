@@ -6,6 +6,8 @@ Modifiche apportate nell'ultima versione:
 	a = bang()		#a type: node		-> è creato un node sulla patch
 	b = a			#b type: simplevar	b value: <NodeObject 00x326t36747863> 
 
+- per fare la copia non per riferimento di un nodo, è necessario utilizzare la funzione @copy
+
 - la call dei blocchi non è più eseguita con la sintassi
 	@blocco(parametri) as nomeblocco
   ma normalmente come tutte le altre assegnazioni, ovvero
@@ -14,7 +16,7 @@ Modifiche apportate nell'ultima versione:
 
 - le funzioni possono prendere come argomento anche i nodi e restituire nodi. Le connessioni locali della funzione sono risolte nello scope del chiamante, a patto che il chiamante sia un blocco o lo scope generale (altrimenti, si ripercorre lo stack di chiamate finché non si trova un blocco o lo scope generale, e la connessione verrà risolta lì). 
 
-- integrazione delle funzioni @append e @len nel codice del Visitor
+- integrazione delle funzioni @append,@len e @copy nel codice del Visitor
 
 - lista dei punti rimanenti aggiornata nel documento <note.odt>
 
