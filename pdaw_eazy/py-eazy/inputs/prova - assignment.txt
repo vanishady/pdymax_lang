@@ -1,0 +1,28 @@
+patch assignment
+
+func funcprova () {
+	return 200
+}
+
+block bloccoprova() {
+	vuoto = 'vuoto'
+}
+
+#nodedecl
+a = osc~()
+b = /(10)
+dac~()
+-(100)
+
+#simpledecl
+c = 'symbol'
+d = 3.14
+e = 30
+f = [c, d, e]
+g = f[0]
+h = d
+i = @funcprova()
+j = @bloccoprova()
+k = 10*e+1
+
+;

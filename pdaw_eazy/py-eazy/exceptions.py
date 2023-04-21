@@ -63,7 +63,17 @@ class OutOfContextError(Exception):
     def __init__(self, lineno, details = None):
         self._lineno = lineno
         self._details = details
-        if details == None: self._details = 'seems like you used a statement out of its right context.'
+        if details == None: self._details = 'seems like you used a statement out of its proper context.'
+
+    def __str__(self):
+        return f'error at line: {self._lineno}\n {self._details}'
+
+class ConnectionError(Exception):
+
+    def __init__(self, lineno, details = None):
+        self._lineno = lineno
+        self._details = details
+        if details == None: self._details = 'all nodes in connection must belong to same block.'
 
     def __str__(self):
         return f'error at line: {self._lineno}\n {self._details}'

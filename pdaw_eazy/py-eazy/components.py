@@ -258,7 +258,10 @@ class SymbolTable():
         for elem in self._symtable:
             if elem.name == variable.name and elem.name != None and isinstance(elem, Node):
                 alreadyexistingvar = self.lookup(elem.name)
-                alreadyexistingvar.name = None
+                if variable.name.endswith('_copy'):
+                    variable.name += '_copy'
+                else:
+                    alreadyexistingvar.name = None
             if elem.name == variable.name and elem.name != None and isinstance(elem, SimpleVar):
                 self._symtable.remove(elem)
 

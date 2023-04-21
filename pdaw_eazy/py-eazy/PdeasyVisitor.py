@@ -138,20 +138,36 @@ class PdeasyVisitor(ParseTreeVisitor):
                     callee_name = callee_name+str(elem.callnum)
                     found = True
             if callee_name == 'len': return len(self.visit(ctx.parameters())[0])
-            if callee_name == 'append' :
+            if callee_name == 'append':
                 (self.visit(ctx.parameters())[0]).append(self.visit(ctx.parameters())[1])
                 return None
+            if callee_name == 'copy':
+                tocopy = self.visit(ctx.parameters())[0]
+                if type(tocopy) not in [Node, SimpleVar]: raise TypeException(ctx.start.line, type(tocopy), 'node')
+                if type(tocopy)==SimpleVar:
+                    if type(tocopy.value)!=Node: raise TypeException(ctx.start.line, type(tocopy.value), 'node')
+                    tocopy = tocopy.value
+                newnode = Node()
+                newnode.name = tocopy.name+'_copy'
+                newnode.nodetype = tocopy.nodetype
+                newnode.scope = self.symtable.name
+                self.symtable.bind(newnode)
+                return newnode
             if not found: raise NotFoundException(ctx.start.line, callee_name)
             if type(callee) == Block:
                 blocknode = Node()
                 blocknode.name = callee_name
-                self.symtable.bind(blocknode)
                 blocknode.nodetype = 'subpatch'
                 blocknode.scope = self.symtable.name
+                self.symtable.bind(blocknode)
                 
 
         except NotFoundException as e:
             print(e)
+            sys.exit(1)
+
+        except TypeException as e1:
+            print(e1)
             sys.exit(1)
 
         #check passed parameters and add to current symtable 
@@ -211,30 +227,30 @@ class PdeasyVisitor(ParseTreeVisitor):
         """add node to current symbol table"""
         node = Node()
         node.name = self.visit(ctx.varname())
-        self.symtable.bind(node)
         node.nodetype = ctx.NAME().getText()
         if ctx.parameters():
             node.args = self.visit(ctx.parameters())
         node.scope = self.symtable.name
+        self.symtable.bind(node)
 
     # Visit a parse tree produced by PdeasyParser#nodedecl2.
     def visitNodedecl2(self, ctx:PdeasyParser.Nodedecl2Context):
         """add node to current symbol table"""
         node = Node()
-        self.symtable.bind(node)
         node.nodetype = ctx.NAME().getText()
         if ctx.parameters():
             node.args = self.visit(ctx.parameters())
         node.scope = self.symtable.name
+        self.symtable.bind(node)
 
     # Visit a parse tree produced by PdeasyParser#nodedecl3.
     def visitNodedecl3(self, ctx:PdeasyParser.Nodedecl3Context):
         """add node to current symbol table"""
         node = Node()
-        self.symtable.bind(node)
         node.nodetype = 'obj'
         node.args = self.visit(ctx.operation())
         node.scope = self.symtable.name
+        self.symtable.bind(node)
 
 
     # Visit a parse tree produced by PdeasyParser#nodedecl4.
@@ -242,10 +258,10 @@ class PdeasyVisitor(ParseTreeVisitor):
         """add node to current symbol table"""
         node = Node()
         node.name = self.visit(ctx.varname())
-        self.symtable.bind(node)
         node.nodetype = 'obj'
         node.args = self.visit(ctx.operation())
         node.scope = self.symtable.name
+        self.symtable.bind(node)
 
 
     # Visit a parse tree produced by PdeasyParser#simpledecl.
@@ -287,17 +303,17 @@ class PdeasyVisitor(ParseTreeVisitor):
             else: return var.value
         elif ctx.NAME():
             node = Node()
-            self.symtable.bind(node)
             node.nodetype = ctx.NAME().getText()
             node.args = self.visit(ctx.parameters())
             node.scope = self.symtable.name
+            self.symtable.bind(node)
             return node
         elif ctx.operation():
             node = Node()
-            self.symtable.bind(node)
             node.nodetype = 'obj'
             node.args = self.visit(ctx.operation())
             node.scope = self.symtable.name
+            self.symtable.bind(node)
             return node
 
 
@@ -331,6 +347,7 @@ class PdeasyVisitor(ParseTreeVisitor):
     # Visit a parse tree produced by PdeasyParser#connectionstmt.
     def visitConnectionstmt(self, ctx:PdeasyParser.ConnectionstmtContext):
         self.full_text = {}
+        self.connscopes = []
         
         conn_scope = self.symtable.name
 
@@ -379,6 +396,7 @@ class PdeasyVisitor(ParseTreeVisitor):
         #gli inlet e outlet di default sono a 0
         nodeIn = 0
         nodeOut = 0
+        node = False
         vname = None
         nodeId = ''
         
@@ -408,6 +426,25 @@ class PdeasyVisitor(ParseTreeVisitor):
         elif ctx.list_access():
             node = self.visit(ctx.list_access())
             nodeId = node.index
+
+        #controllo che tutti i nodi nella connessione abbiano lo stesso scope
+        infunction = False
+        for f in self.callables:
+            if self.symtable.name.startswith(f.name) and type(f)==Function:
+                infunction = True
+                break
+        try:
+            if not infunction:
+                if node:
+                    if type(node)==SimpleVar: self.connscopes.append(node.value.scope)
+                    else: self.connscopes.append(node.scope) 
+                else:
+                    self.connscopes.append(self.symtable.name)
+            for i in range (len(self.connscopes)-1):
+                if self.connscopes[i]!=self.connscopes[i+1]: raise ConnectionError(ctx.start.line)        
+        except ConnectionError as e:
+            print(e)
+            sys.exit(1)
             
         if ctx.inlet(): nodeIn = self.visit(ctx.inlet())
         if ctx.outlet(): nodeOut = self.visit(ctx.outlet())
@@ -456,18 +493,18 @@ class PdeasyVisitor(ParseTreeVisitor):
         if ctx.expr(): return self.visit(ctx.expr()) #simplevar
         elif ctx.operation(): #new node: operation
             node = Node()
-            self.symtable.bind(node)
             node.nodetype = 'obj'
             node.args = self.visit(ctx.operation())
             node.scope = self.symtable.name
+            self.symtable.bind(node)
             return node
         elif ctx.NAME(): #new node: NAME parameters
             node = Node()
-            self.symtable.bind(node)
             node.nodetype = ctx.NAME().getText()
             if ctx.parameters():
                 node.args = self.visit(ctx.parameters())
             node.scope = self.symtable.name
+            self.symtable.bind(node)
             return node
         else: return self.visitChildren(ctx) #list
 
