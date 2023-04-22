@@ -64,7 +64,7 @@ connectionelem
  ;
 
 singlenode
- : (inlet ':')? (varname | nodedecl | list_access) (':' outlet)?
+ : (inlet ':')? (varname | nodedecl | list_access | callstmt) (':' outlet)?
  ;
 
 parameters

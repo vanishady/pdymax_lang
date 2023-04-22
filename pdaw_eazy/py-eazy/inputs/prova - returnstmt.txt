@@ -33,7 +33,7 @@ asafs=bang()
 sajfnfajk=osc()
 jaskfak=dac()
 e = @prova_node()
-#@prova_node() > e
+@provaret() > e
 e > bang()
 @prova_float()
 
