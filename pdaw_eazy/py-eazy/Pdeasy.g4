@@ -13,7 +13,7 @@ importstmt: IMPORT NAME ;
 
 funcdefstmt: FUNC NAME typedparams '{' suite '}' ; 
 
-returnstmt: RETURN arg? ;
+returnstmt: RETURN arg ;
 
 stmt
  : blockstmt 
@@ -160,7 +160,7 @@ NAME
 
 SYMBOL : '\'' SYMBOL_ADMITTED* '\'' ;
 NUMBER : INTEGER | FLOAT ;
-INTEGER : '-'? NON_ZERO_DIGIT DIGIT* | '0'+ ;
+INTEGER : NON_ZERO_DIGIT DIGIT* | '0'+ ;
 FLOAT : INTEGER? '.' INTEGER ;
 
 fragment LETTER : [a-zA-Z] ;

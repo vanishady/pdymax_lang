@@ -1,0 +1,13 @@
+patch connessioni
+
+func provafunc () {
+	return
+}
+
+block provablocco () {
+
+}
+
+
+
+;

@@ -22,6 +22,9 @@ for i in range rangevar:
 	mynodelist[i] > b > mynodelist[i+1]
 end
 
-
+blocks = []
+for j in range 3:
+	@append(blocks, @prova(0.1))
+end
 
 ;

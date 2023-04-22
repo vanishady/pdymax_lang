@@ -1,0 +1,20 @@
+patch costrutti
+
+block myblock () {
+}
+
+for i in range 3:
+	bang()
+end
+
+es = [1,2,3]
+b = 11
+a = 3-11
+blocks = []
+for j in range @len(es)-1:
+	@append(blocks, @myblock())
+end
+
+
+
+;

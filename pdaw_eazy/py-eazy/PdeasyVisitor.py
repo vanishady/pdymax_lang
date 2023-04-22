@@ -48,6 +48,13 @@ class PdeasyVisitor(ParseTreeVisitor):
                 self.symtable = st
         self.restore = self.restore[:-1]
 
+    def samename(self, name1, name2):
+        """check wether name1 and name2 have same prefix"""
+        if name2 in name1:
+            output = name1.replace(name2, '')
+            if output.isnumeric(): return True
+        return False
+
 
     # Visit a parse tree produced by PdeasyParser#prog.
     def visitProg(self, ctx:PdeasyParser.ProgContext):
@@ -90,7 +97,7 @@ class PdeasyVisitor(ParseTreeVisitor):
         found = False
         try:
             for elem in self.callables:
-                if (self.symtable.name).startswith(elem.name) and type(elem)==Function:
+                if self.samename(self.symtable.name, elem.name) and type(elem)==Function:
                     found = True
                     elem.returns = self.visit(ctx.arg())
 
@@ -140,7 +147,8 @@ class PdeasyVisitor(ParseTreeVisitor):
                     found = True
             if callee_name == 'len': return len(self.visit(ctx.parameters())[0])
             if callee_name == 'append':
-                (self.visit(ctx.parameters())[0]).append(self.visit(ctx.parameters())[1])
+                params = self.visit(ctx.parameters())
+                params[0].append(params[1])
                 return None
             if callee_name == 'copy':
                 tocopy = self.visit(ctx.parameters())[0]
@@ -170,6 +178,10 @@ class PdeasyVisitor(ParseTreeVisitor):
         except TypeException as e1:
             print(e1)
             sys.exit(1)
+
+        except TypeError as e2:
+            print(f'error at line: {ctx.start.line} \n you can only use @len function list or symbol variables.')
+            sys.exit()
 
         #check passed parameters and add to current symtable 
         try:
@@ -355,7 +367,7 @@ class PdeasyVisitor(ParseTreeVisitor):
 
         #if current scope is function local, resolve connection in previous non-function scope
         for f in self.callables:
-            if self.symtable.name.startswith(f.name) and type(f)==Function:
+            if self.samename(self.symtable.name, f.name) and type(f)==Function:
                 for scope in reversed(self.restore):
                     if type(scope)==Block or scope.name == 'general':
                         conn_scope = self.restore[-1].name
@@ -432,7 +444,7 @@ class PdeasyVisitor(ParseTreeVisitor):
         #controllo che tutti i nodi nella connessione abbiano lo stesso scope
         infunction = False
         for f in self.callables:
-            if self.symtable.name.startswith(f.name) and type(f)==Function:
+            if self.samename(self.symtable.name,f.name) and type(f)==Function:
                 infunction = True
                 break
         try:
