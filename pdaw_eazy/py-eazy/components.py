@@ -48,6 +48,7 @@ class Function():
         self._expargs = None #lista di tuple (vname, vtype)
         self._returns = None
         self._callnum = -1
+        self._caller = None
 
     def spec(self):
         return self.name, self.expargs
@@ -83,6 +84,14 @@ class Function():
     @callnum.setter
     def callnum(self, num):
         self._callnum = num
+
+    @property
+    def caller(self):
+        return self._caller
+
+    @caller.setter
+    def caller(self, name):
+        self._caller = name
     
 
 class Block():

@@ -169,7 +169,8 @@ class PdeasyVisitor(ParseTreeVisitor):
                 blocknode.nodetype = 'subpatch'
                 blocknode.scope = self.symtable.name
                 self.symtable.bind(blocknode)
-                
+            elif type(callee) == Function:
+                callee.caller = self.symtable.name
 
         except NotFoundException as e:
             print(e)
@@ -188,7 +189,7 @@ class PdeasyVisitor(ParseTreeVisitor):
             vardecl = False
             params = self.visit(ctx.parameters())
             self.enter(callee_name) #change the scope!
-            if type(callee)==Function: self.symtable.index = self.restore[-1].index #l'index nella funzione non deve azzerarsi
+            if type(callee)==Function: self.symtable.index = self.restore[-1].index+1 #l'index nella funzione non deve azzerarsi
             if len(params)!=len(callee.expargs): raise MissingParameterException(ctx.start.line)
             for i in range (len(params)):
                 if callee.expargs[i][1]=='intn':
@@ -368,11 +369,7 @@ class PdeasyVisitor(ParseTreeVisitor):
         #if current scope is function local, resolve connection in previous non-function scope
         for f in self.callables:
             if self.samename(self.symtable.name, f.name) and type(f)==Function:
-                for scope in reversed(self.restore):
-                    if type(scope)==Block or scope.name == 'general':
-                        conn_scope = self.restore[-1].name
-                        break
-        
+                conn_scope = f.caller
         
         for i in range(len(ctx.connectionelem())-1):
             sourcelist = self.visit(ctx.connectionelem(i)) 
@@ -441,24 +438,27 @@ class PdeasyVisitor(ParseTreeVisitor):
             node = self.visit(ctx.list_access())
             nodeId = node.index
 
-        #controllo che tutti i nodi nella connessione abbiano lo stesso scope
-        infunction = False
-        for f in self.callables:
-            if self.samename(self.symtable.name,f.name) and type(f)==Function:
-                infunction = True
-                break
+
+        #if node scope is a function, change the scope to f.caller. check for every node to be in same scope
         try:
-            if not infunction:
-                if node:
-                    if type(node)==SimpleVar: self.connscopes.append(node.value.scope)
-                    else: self.connscopes.append(node.scope) 
-                else:
-                    self.connscopes.append(self.symtable.name)
+            if node:
+                if type(node)==SimpleVar: nodescope = node.value.scope
+                else: nodescope = node.scope
+            else:
+                nodescope = self.symtable.name
+                
+            for f in self.callables:
+                if self.samename(nodescope, f.name) and type(f)==Function:
+                    nodescope = f.caller
+            self.connscopes.append(nodescope)
+                    
             for i in range (len(self.connscopes)-1):
-                if self.connscopes[i]!=self.connscopes[i+1]: raise ConnectionError(ctx.start.line)        
+                if self.connscopes[i]!=self.connscopes[i+1]: raise ConnectionError(ctx.start.line)
+
         except ConnectionError as e:
             print(e)
-            sys.exit(1)
+            sys.exit(1)         
+        
             
         if ctx.inlet(): nodeIn = self.visit(ctx.inlet())
         if ctx.outlet(): nodeOut = self.visit(ctx.outlet())

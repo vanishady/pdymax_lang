@@ -1,0 +1,40 @@
+patch returns
+
+func prova_int() {
+	return 12
+}
+
+func prova_float() {
+	return 12.122431
+}
+
+func prova_sym() {
+	return '12'
+}
+
+func prova_list() {
+	return [12, 1, 2]
+}
+
+func prova_node() {
+	bah = obj(34)
+	return num(12)
+}
+
+block provaret() {
+
+}
+
+a = @prova_int()
+b = @prova_float()
+c = @prova_sym()
+d = @prova_list()
+asafs=bang()
+sajfnfajk=osc()
+jaskfak=dac()
+e = @prova_node()
+#@prova_node() > e
+e > bang()
+@prova_float()
+
+;

@@ -13,6 +13,7 @@ block prova (b:intn) {
 	e = osc~()
 	bang() > d = bang(1)
 	call = @provafunc(e)
+	d > e
 	
 }
 
