@@ -203,6 +203,14 @@ class Node():
     def index(self, nodeId):
         self._index = nodeId
 
+    @property
+    def nodetype(self):
+        return self._nodetype
+
+    @nodetype.setter
+    def nodetype(self, nt):
+        self._nodetype = nt
+
 
 class SimpleVar():
 

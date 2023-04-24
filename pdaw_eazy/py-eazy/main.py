@@ -11,6 +11,7 @@ from antlr4.tree.Tree import ParseTreeWalker
 from ImportListener import ImportListener
 from exceptions import *
 from components import *
+from formatter import *
 
 
 #choose input file 
@@ -63,6 +64,7 @@ for st in v.memory:
 
 
 #rearrange data
+"""
 print(f'\n')
 for st in v.memory:
     infunction = False
@@ -75,3 +77,8 @@ for st in v.memory:
 
 for c in v.connections:
     print(c)
+"""
+
+
+to_pd = pdformatter(v.memory, v.connections, v.callables)
+#to_max = maxformatter(v.memory, v.connections)
