@@ -75,36 +75,29 @@ class PdeasyVisitor(ParseTreeVisitor):
     def visitFuncdefstmt(self, ctx:PdeasyParser.FuncdefstmtContext):
         """add function body and details to self.callables"""
         name = ctx.NAME().getText()
-        try:
-            for fb in self.callables:
-                if fb.name == name:
-                    raise AlreadyExistsException(ctx.start.line, name)
-                
-        except AlreadyExistsException as e:
-            print(e)
-
-        else:
-            func = Function()
-            func.name = name
-            func.body = ctx.suite()
-            func.expargs = self.visit(ctx.typedparams())
-            self.callables.append(func)
+        for fb in self.callables:
+            if fb.name == name:
+                raise AlreadyExistsException(ctx.start.line, name)
+            
+        func = Function()
+        func.name = name
+        func.body = ctx.suite()
+        func.expargs = self.visit(ctx.typedparams())
+        self.callables.append(func)
+        
 
 
     # Visit a parse tree produced by PdeasyParser#returnstmt.
     def visitReturnstmt(self, ctx:PdeasyParser.ReturnstmtContext):
         """updates 'returns' field of called function. return in blocks is not handled yet"""
         found = False
-        try:
-            for elem in self.callables:
-                if self.samename(self.symtable.name, elem.name) and type(elem)==Function:
-                    found = True
-                    elem.returns = self.visit(ctx.arg())
+        for elem in self.callables:
+            if self.samename(self.symtable.name, elem.name) and type(elem)==Function:
+                found = True
+                elem.returns = self.visit(ctx.arg())
 
-            if not found: raise OutOfContextError(ctx.start.line, 'returnstmt only makes sense into a function.')
+        if not found: raise OutOfContextError(ctx.start.line, 'returnstmt only makes sense into a function.')
 
-        except OutOfContextError as e:
-            print(e)
             
 
     # Visit a parse tree produced by PdeasyParser#stmt.
@@ -115,21 +108,17 @@ class PdeasyVisitor(ParseTreeVisitor):
         """add block body and details to self.callables"""
         #check if block name is avaiable (two blocks in same patch cannot have same name)
         name = ctx.NAME().getText()
-        try:
-            for fb in self.callables:
-                if fb.name == name:
-                    raise AlreadyExistsException(ctx.start.line, name)
-                
-        except AlreadyExistsException as e:
-            print(e)
 
-        else:
-            block = Block()
-            block.name = name
-            if ctx.suite():
-                block.body = ctx.suite()
-            block.expargs = self.visit(ctx.typedparams())
-            self.callables.append(block)
+        for fb in self.callables:
+            if fb.name == name:
+                raise AlreadyExistsException(ctx.start.line, name)
+            
+        block = Block()
+        block.name = name
+        if ctx.suite():
+            block.body = ctx.suite()
+        block.expargs = self.visit(ctx.typedparams())
+        self.callables.append(block)
             
 
     def visitCallstmt(self, ctx:PdeasyParser.CallstmtContext):
@@ -137,93 +126,76 @@ class PdeasyVisitor(ParseTreeVisitor):
         callee_name = ctx.NAME().getText()
 
         #check if callee exists
-        try:
-            found = False
-            for elem in self.callables:
-                if elem.name == callee_name:
-                    elem.callnum += 1
-                    callee = elem
-                    callee_name = callee_name+str(elem.callnum)
-                    found = True
-            if callee_name == 'len': return len(self.visit(ctx.parameters())[0])
-            if callee_name == 'append':
-                params = self.visit(ctx.parameters())
-                params[0].append(params[1])
-                return None
-            if callee_name == 'copy':
-                tocopy = self.visit(ctx.parameters())[0]
-                if type(tocopy) not in [Node, SimpleVar]: raise TypeException(ctx.start.line, type(tocopy), 'node')
-                if type(tocopy)==SimpleVar:
-                    if type(tocopy.value)!=Node: raise TypeException(ctx.start.line, type(tocopy.value), 'node')
-                    tocopy = tocopy.value
-                newnode = Node()
-                newnode.name = tocopy.name+'_copy'
-                newnode.nodetype = tocopy.nodetype
-                newnode.scope = self.symtable.name
-                self.symtable.bind(newnode)
-                return newnode
-            if not found: raise NotFoundException(ctx.start.line, callee_name)
-            if type(callee) == Block:
-                blocknode = Node()
-                blocknode.name = callee_name
-                blocknode.nodetype = 'subpatch'
-                blocknode.scope = self.symtable.name
-                self.symtable.bind(blocknode)
-            elif type(callee) == Function:
-                callee.caller = self.symtable
-
-        except NotFoundException as e:
-            print(e)
-            sys.exit(1)
-
-        except TypeException as e1:
-            print(e1)
-            sys.exit(1)
-
-        except TypeError as e2:
-            print(f'error at line: {ctx.start.line} \n you can only use @len function list or symbol variables.')
-            sys.exit()
+        found = False
+        for elem in self.callables:
+            if elem.name == callee_name:
+                elem.callnum += 1
+                callee = elem
+                callee_name = callee_name+str(elem.callnum)
+                found = True
+        if callee_name == 'len': return len(self.visit(ctx.parameters())[0])
+        if callee_name == 'append':
+            params = self.visit(ctx.parameters())
+            params[0].append(params[1])
+            return None
+        if callee_name == 'copy':
+            tocopy = self.visit(ctx.parameters())[0]
+            if type(tocopy) not in [Node, SimpleVar]: raise TypeException(ctx.start.line, type(tocopy), 'node')
+            if type(tocopy)==SimpleVar:
+                if type(tocopy.value)!=Node: raise TypeException(ctx.start.line, type(tocopy.value), 'node')
+                tocopy = tocopy.value
+            newnode = Node()
+            newnode.name = tocopy.name+'_copy'
+            newnode.nodetype = tocopy.nodetype
+            newnode.scope = self.symtable.name
+            self.symtable.bind(newnode)
+            return newnode
+        if not found: raise NotFoundException(ctx.start.line, callee_name)
+        if type(callee) == Block:
+            blocknode = Node()
+            blocknode.name = callee_name
+            blocknode.nodetype = 'subpatch'
+            blocknode.scope = self.symtable.name
+            self.symtable.bind(blocknode)
+        elif type(callee) == Function:
+            callee.caller = self.symtable
 
         #check passed parameters and add to current symtable 
-        try:
-            vardecl = False
-            params = self.visit(ctx.parameters())
-            self.enter(callee_name) #change the scope!
-            if type(callee)==Function: self.symtable.index = callee.caller.index #l'index nella funzione non deve azzerarsi
-            if len(params)!=len(callee.expargs): raise MissingParameterException(ctx.start.line)
-            for i in range (len(params)):
-                if callee.expargs[i][1]=='intn':
-                    if isinstance(params[i], int): vardecl = True
-                    else: raise InvalidParameterException(ctx.start.line, type(params[i]), 'intn')
-                elif callee.expargs[i][1]=='floatn':
-                    if isinstance(params[i], float): vardecl = True
-                    else: raise InvalidParameterException(ctx.start.line, type(params[i]), 'floatn')
-                elif callee.expargs[i][1]=='symbol':
-                    if isinstance(params[i], str): vardecl = True
-                    else: raise InvalidParameterException(ctx.start.line, type(params[i]), 'symbol')
-                elif callee.expargs[i][1]=='list':
-                    if isinstance(params[i], list): vardecl = True
-                    else: raise InvalidParameterException(ctx.start.line, type(params[i]), 'list')
-                elif callee.expargs[i][1]=='node':
-                    if type(params[i])==Node: vardecl = True
-                    elif (type(params[i])==SimpleVar and type(params[i].value)==Node):
-                        params[i] = params[i].value
-                        vardecl = True
-                    else: raise InvalidParameterException(ctx.start.line, type(params[i]), 'node')
+        vardecl = False
+        params = self.visit(ctx.parameters())
+        self.enter(callee_name) #change the scope!
+        if type(callee)==Function:
+            self.symtable.index = callee.caller.index #l'index nella funzione non deve azzerarsi
+            self.symtable.caller = callee.caller.name
+        if len(params)!=len(callee.expargs): raise MissingParameterException(ctx.start.line)
+        for i in range (len(params)):
+            if callee.expargs[i][1]=='intn':
+                if isinstance(params[i], int): vardecl = True
+                else: raise InvalidParameterException(ctx.start.line, type(params[i]), 'intn')
+            elif callee.expargs[i][1]=='floatn':
+                if isinstance(params[i], float): vardecl = True
+                else: raise InvalidParameterException(ctx.start.line, type(params[i]), 'floatn')
+            elif callee.expargs[i][1]=='symbol':
+                if isinstance(params[i], str): vardecl = True
+                else: raise InvalidParameterException(ctx.start.line, type(params[i]), 'symbol')
+            elif callee.expargs[i][1]=='list':
+                if isinstance(params[i], list): vardecl = True
+                else: raise InvalidParameterException(ctx.start.line, type(params[i]), 'list')
+            elif callee.expargs[i][1]=='node':
+                if type(params[i])==Node: vardecl = True
+                elif (type(params[i])==SimpleVar and type(params[i].value)==Node):
+                    params[i] = params[i].value
+                    vardecl = True
+                else: raise InvalidParameterException(ctx.start.line, type(params[i]), 'node')
 
-                if vardecl == True:
-                    var = SimpleVar()
-                    var.name = callee.expargs[i][0]
-                    self.symtable.bind(var)
-                    var.value = params[i]
-                    var.scope = self.symtable.name
-                    vardecl = False
+            if vardecl == True:
+                var = SimpleVar()
+                var.name = callee.expargs[i][0]
+                self.symtable.bind(var)
+                var.value = params[i]
+                var.scope = self.symtable.name
+                vardecl = False
                         
-        except InvalidParameterException as e:
-            print(e)
-
-        except MissingParameterException as e:
-            print(e)
 
         #execute body
         if callee.body != None:
@@ -341,24 +313,14 @@ class PdeasyVisitor(ParseTreeVisitor):
         """
         vname = self.visit(ctx.varname()) #list varibale name
 
-        try:
-            var = self.symtable.lookup(vname) #look for list variable
-            if var == False: raise NotFoundException(ctx.start.line, vname)
-            index = self.visit(ctx.expr())
-            if not isinstance(index, int): raise AttributeError
 
-        except AttributeError:
-            print(f'error at line: {ctx.start.line}\n cannot use non-integer variable as list index') 
-            sys.exit(1)
-        except NotFoundException as e:
-            print(e)
-            return None
+        var = self.symtable.lookup(vname) #look for list variable
+        if var == False: raise NotFoundException(ctx.start.line, vname)
+        index = self.visit(ctx.expr())
+        if not isinstance(index, int): raise AttributeError
 
-        try:
-            return var.value[index] #can be: node, int, float, symbol
-        except IndexError:
-            print(f'error at line: {ctx.start.line}\n index out of range accessing list <{vname}>')
-            sys.exit(1)
+
+        return var.value[index] #can be: node, int, float, symbol
 
     # Visit a parse tree produced by PdeasyParser#connectionstmt.
     def visitConnectionstmt(self, ctx:PdeasyParser.ConnectionstmtContext):
@@ -413,19 +375,14 @@ class PdeasyVisitor(ParseTreeVisitor):
         nodeId = ''
         
         if ctx.varname(): #riferimento a una variabile già esistente
-            try:
-                vname = self.visit(ctx.varname())
-                node = self.symtable.lookup(vname)
-                if node==False: raise NotFoundException(ctx.start.line, vname)
-                elif type(node)==SimpleVar:
-                    if type(node.value) == Node: nodeId = node.value.index
-                    else: raise TypeException(ctx.start.line, type(node), 'node')
-                elif type(node)not in [Node]: raise TypeException(ctx.start.line, type(node), 'node')
-                else: nodeId = node.index
-            except NotFoundException as e:
-                print(e)
-            except TypeException as e:
-                print(e, f'\n cannot use simple variable in connection.')
+            vname = self.visit(ctx.varname())
+            node = self.symtable.lookup(vname)
+            if node==False: raise NotFoundException(ctx.start.line, vname)
+            elif type(node)==SimpleVar:
+                if type(node.value) == Node: nodeId = node.value.index
+                else: raise TypeException(ctx.start.line, type(node), 'node', f'\n cannot use simple variable in connection.')
+            elif type(node)not in [Node]: raise TypeException(ctx.start.line, type(node), 'node', f'\n cannot use simple variable in connection.')
+            else: nodeId = node.index
                 
         elif ctx.nodedecl():
             if dont:
@@ -445,24 +402,19 @@ class PdeasyVisitor(ParseTreeVisitor):
             nodeId = node.index
 
         #if node scope is a function, change the scope to f.caller. check for every node to be in same scope
-        try:
-            if node:
-                if type(node)==SimpleVar: nodescope = node.value.scope
-                else: nodescope = node.scope
-            else:
-                nodescope = self.symtable.name
+        if node:
+            if type(node)==SimpleVar: nodescope = node.value.scope
+            else: nodescope = node.scope
+        else:
+            nodescope = self.symtable.name
+            
+        for f in self.callables:
+            if self.samename(nodescope, f.name) and type(f)==Function:
+                nodescope = f.caller.name
+        self.connscopes.append(nodescope)
                 
-            for f in self.callables:
-                if self.samename(nodescope, f.name) and type(f)==Function:
-                    nodescope = f.caller.name
-            self.connscopes.append(nodescope)
-                    
-            for i in range (len(self.connscopes)-1):
-                if self.connscopes[i]!=self.connscopes[i+1]: raise ConnectionError(ctx.start.line)
-
-        except ConnectionError as e:
-            print(e)
-            sys.exit(1)         
+        for i in range (len(self.connscopes)-1):
+            if self.connscopes[i]!=self.connscopes[i+1]: raise ConnectionError(ctx.start.line)     
         
             
         if ctx.inlet(): nodeIn = self.visit(ctx.inlet())
@@ -534,13 +486,9 @@ class PdeasyVisitor(ParseTreeVisitor):
         return tuple of (name_of_expected_var : type_of_expected_var)
         types can be: floatn (means float), intn (means int), symbol (means symbol), list
         """
-        try:
-            vname = self.visit(ctx.varname())
-            vtype = ctx.VARTYPE().getText()
-        except AttributeError as e:
-            print(f'error at line: {ctx.start.line}\n You used an unknown type. Expected intn, floatn, symbol, list.')
-        else:
-            return (vname, vtype)
+        vname = self.visit(ctx.varname())
+        vtype = ctx.VARTYPE().getText()
+        return (vname, vtype)
 
 
     # Visit a parse tree produced by PdeasyParser#suite.
@@ -556,17 +504,11 @@ class PdeasyVisitor(ParseTreeVisitor):
         """
         arglist = []
         arglist.append(ctx.op.text)
-        try:
-            val = self.visit(ctx.expr())
-            if not isinstance(val, (int, float)): raise AttributeError
-            arglist.append(val)
-            return arglist
 
-        except NotFoundException as e:
-            print(e)
-
-        except AttributeError:
-            print(f'error at line: {ctx.start.line}\n cannot use non-numeric variables in operation.')
+        val = self.visit(ctx.expr())
+        if not isinstance(val, (int, float)): raise AttributeError
+        arglist.append(val)
+        return arglist
 
 
     # Visit a parse tree produced by PdeasyParser#ifstmt.
@@ -615,14 +557,9 @@ class PdeasyVisitor(ParseTreeVisitor):
     # Visit a parse tree produced by PdeasyParser#TestCall.
     def visitTestCall(self, ctx:PdeasyParser.TestCallContext):
         """return value returned by function call. None if a block was called"""
-        try:
-            returns = self.visit(ctx.callstmt())
-            if returns == None: raise CallError(ctx.start.line)
-        except CallError as e:
-            print(e)
-            sys.exit()
-        else:
-            return returns
+        returns = self.visit(ctx.callstmt())
+        if returns == None: raise CallError(ctx.start.line)
+        return returns
 
 
     # Visit a parse tree produced by PdeasyParser#ParensExpr.
@@ -681,15 +618,11 @@ class PdeasyVisitor(ParseTreeVisitor):
     def visitTestVar(self, ctx:PdeasyParser.TestVarContext):
         """returns value of a simple variable. raise exception if given variable is node."""
         vname = self.visit(ctx.varname())
-        try:
-            var = self.symtable.lookup(vname)
-            if var==False: raise NotFoundException(ctx.start.line, vname)
-            elif type(var)==Node: return var
-            else: return var.value
 
-        except NotFoundException as e:
-            print(e)
-            sys.exit(1)
+        var = self.symtable.lookup(vname)
+        if var==False: raise NotFoundException(ctx.start.line, vname)
+        elif type(var)==Node: return var
+        else: return var.value
              
         
 
@@ -720,50 +653,34 @@ class PdeasyVisitor(ParseTreeVisitor):
         iterator.value = -1
 
         #get range len
-        try:
-            rangelen = self.visit(ctx.expr())
-            if not isinstance(rangelen, int): raise TypeException(ctx.start.line, type(rangelen), 'int')
-                
-        except TypeException as e1:
-            print(e1)
 
-        else:
-            for i in range(rangelen):
-                iterator.value+=1
-                self.visitSuite(ctx.suite())
-            iterator.value = -1
+        rangelen = self.visit(ctx.expr())
+        if not isinstance(rangelen, int): raise TypeException(ctx.start.line, type(rangelen), 'int')
+        for i in range(rangelen):
+            iterator.value+=1
+            self.visitSuite(ctx.suite())
+        iterator.value = -1
 
     # Visit a parse tree produced by PdeasyParser#varname.
     def visitVarname(self, ctx:PdeasyParser.VarnameContext):
         """return varname"""
         name = ctx.NAME().getText()
-        try:
-            if '~' in name: raise InvalidNameException(ctx.start.line, name)
-        except InvalidNameException as e:
-            print(e)
-        else:
-            return name
+        if '~' in name: raise InvalidNameException(ctx.start.line, name)
+        return name
     
 
     # Visit a parse tree produced by PdeasyParser#inlet.
     def visitInlet(self, ctx:PdeasyParser.InletContext):
-        try:
-            if '.' in ctx.getText(): raise TypeException(ctx.line.start, 'floatn', 'intn')
-        except TypeException as e:
-            print(e)
-        else:
-            return int(ctx.NUMBER().getText())
+        """return inlet number"""
+        if '.' in ctx.getText(): raise TypeException(ctx.line.start, 'floatn', 'intn')
+        return int(ctx.NUMBER().getText())
     
 
     # Visit a parse tree produced by PdeasyParser#outlet.
     def visitOutlet(self, ctx:PdeasyParser.OutletContext):
-        try:
-            if '.' in ctx.getText(): raise TypeException(ctx.line.start, 'floatn', 'intn')
-        except TypeException as e:
-            print(e)
-        else:
-            return int(ctx.NUMBER().getText())
-
+        """return outlet number"""
+        if '.' in ctx.getText(): raise TypeException(ctx.line.start, 'floatn', 'intn')
+        return int(ctx.NUMBER().getText())
 
 
 del PdeasyParser

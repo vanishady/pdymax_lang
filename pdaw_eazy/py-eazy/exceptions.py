@@ -2,7 +2,6 @@
 # exceptions
 ###############
 
-
 class AlreadyExistsException(Exception):
 
     def __init__(self, lineno, varname):
@@ -49,13 +48,14 @@ class MissingParameterException(Exception):
 
 class TypeException(Exception):
 
-    def __init__(self, lineno, used=None, expected=None):
+    def __init__(self, lineno, used=None, expected=None, details=''):
         self._lineno = lineno
         self._used = used
         self._expected = expected
+        self._details = details
 
     def __str__(self):
-        return f'error at line: {self._lineno}\n expected type {self._expected}, found type {self._used}'
+        return f'error at line: {self._lineno}\n expected type {self._expected}, found type {self._used} {self._details}\n'
 
     
 class OutOfContextError(Exception):

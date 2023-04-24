@@ -255,6 +255,7 @@ class SymbolTable():
         self._symtable = [] #list of nodes/simplevars
         self._name = stname #name of symtable is name of scope
         self._index = -1
+        self._caller = None
 
     def __iter__(self):
         return self._symtable.__iter__()
@@ -288,6 +289,14 @@ class SymbolTable():
             if var.name == name:
                 return var
         return False
+
+    @property
+    def caller(self):
+        return self._caller
+
+    @caller.setter
+    def caller(self, stcaller):
+        self._caller = stcaller
 
     @property
     def name(self):
