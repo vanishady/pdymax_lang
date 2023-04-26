@@ -132,6 +132,7 @@ class Pdformatter():
             else: f.write(self.connprinter(l))
             f.write('\n')
         f.close()
+        print(f'file {self.fn}.pd successfully created.')
 
                 
 
