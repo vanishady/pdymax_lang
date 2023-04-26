@@ -5,7 +5,11 @@ import pdawlib2
 synth = @additivesynth(440, [3,5,7], [0.75, 0.55, 0.35]) 
 myadsr = @adsr(1000, 1500, 0.5, 1500, 1000)
 
-bang() > [synth, 1:myadsr, 2:myadsr]
+bang() > [synth, 1:myadsr, 2:myadsr] 
+mul = *~()
+out = output~()
+synth > 1:mul > 1:out
+myadsr > 2:mul > 2:out
 
 #attach things
 #@ampmod(synth, myadsr)  #this synth follows this envelope

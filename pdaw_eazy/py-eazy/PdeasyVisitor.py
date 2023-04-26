@@ -63,7 +63,7 @@ class PdeasyVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by PdeasyParser#patchstmt.
     def visitPatchstmt(self, ctx:PdeasyParser.PatchstmtContext):
-        return self.visitChildren(ctx)
+        self.patchname = ctx.NAME().getText()
 
 
     # Visit a parse tree produced by PdeasyParser#importstmt.
@@ -505,9 +505,10 @@ class PdeasyVisitor(ParseTreeVisitor):
         arglist = []
         arglist.append(ctx.op.text)
 
-        val = self.visit(ctx.expr())
-        if not isinstance(val, (int, float)): raise AttributeError
-        arglist.append(val)
+        if ctx.expr():
+            val = self.visit(ctx.expr())
+            if not isinstance(val, (int, float)): raise AttributeError
+            arglist.append(val)
         return arglist
 
 
@@ -673,14 +674,14 @@ class PdeasyVisitor(ParseTreeVisitor):
     def visitInlet(self, ctx:PdeasyParser.InletContext):
         """return inlet number"""
         if '.' in ctx.getText(): raise TypeException(ctx.line.start, 'floatn', 'intn')
-        return int(ctx.NUMBER().getText())
+        return int(ctx.NUMBER().getText())-1
     
 
     # Visit a parse tree produced by PdeasyParser#outlet.
     def visitOutlet(self, ctx:PdeasyParser.OutletContext):
         """return outlet number"""
         if '.' in ctx.getText(): raise TypeException(ctx.line.start, 'floatn', 'intn')
-        return int(ctx.NUMBER().getText())
+        return int(ctx.NUMBER().getText())-1
 
 
 del PdeasyParser

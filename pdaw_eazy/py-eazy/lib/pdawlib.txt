@@ -2,7 +2,7 @@ patch nihil
 
 block additivesynth (freq: intn, armonics: list, volumes: list) {
 	inlet() > msg(freq) > freq_node = num()
-	freq_node > osc~() > finalvol = *~ (0) > outlet~()
+	freq_node > osc~() > finalvol = *~ (0.25) > outlet~()
 
 	for i in range @len(armonics):
 		freq_node > * (armonics[i]) > num() > osc~() > * (volumes[i]) > finalvol

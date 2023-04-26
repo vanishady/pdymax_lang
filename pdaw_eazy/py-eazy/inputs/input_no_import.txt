@@ -2,7 +2,7 @@ patch mysynth
 
 block additivesynth (freq: intn, armonics: list, volumes: list) {
 	inlet() > msg(freq) > freq_node = num()
-	freq_node > osc~() > finalvol = *~ (0) > outlet~()
+	freq_node > osc~() > finalvol = *~ (0.25) > outlet~()
 
 	for i in range @len(armonics):
 		freq_node > * (armonics[i]) > num() > osc~() > * (volumes[i]) > finalvol
@@ -21,9 +21,12 @@ block adsr (attack:intn, decay:intn, sus_lev: floatn, sustain: intn, release:int
 
 synth = @additivesynth(440, [3,5,7], [0.75, 0.55, 0.35]) 
 myadsr = @adsr(1000, 1500, 0.5, 1500, 1000) 
-myadsr1 = @adsr(1000, 1500, 0.5, 1500, 1000) 
 
 bang() > [synth, 1:myadsr, 2:myadsr]
+mul = *~()
+out = output~()
+synth > 1:mul > 1:out
+myadsr > 2:mul > 2:out
 
 
 ;

@@ -1,72 +1,138 @@
 from exceptions import *
 from components import *
 from formatter import *
+import random
+import os
+from tkinter import *
 
-class pdformatter():
+class Pdformatter():
 
-    def __init__(self, memory, conns, callables):
-        self.memory = self.formatmemory(memory, callables) #elenco di variabili node
-        self.conns = conns #elenco di connessioni
-        self.lines = [] #elenco di dict, un dict per ciascuna line della patch
+    """formats data to pd patch"""
+
+    def __init__(self, memory, conns, fn):
+        self.memory = memory
+        self.conns = conns
+        self.lines = []
+        self.fn = fn
+        
+        self.rebuildmemo()
         self.linebuilder()
+        self.patchbuilder()
 
-    def samename(self, name1, name2):
-        """check wether name1 and name2 have same prefix"""
-        if name2 in name1:
-            output = name1.replace(name2, '')
-            if output.isnumeric(): return True
-        return False
+    def connprinter(self, line):
+        return f'#X connect {line[1]} {line[2]} {line[3]} {line[4]};'
 
-    def formatmemory(self, memory, callables):
+    def nodeprinter(self, line):
+        if len(line['args'])==0:
+            line['args']=''
+        elif len(line['args'])>=1:
+            result = ''
+            for arg in line['args']:
+                result += str(arg)+' '
+            line['args']=result
+        return f"{line['chunk']} {line['x_pos']} {line['y_pos']} {line['ntype']} {line['args']};"
+
+    def rebuildmemo(self):
+        """returns a memory made only by nodes and connections, and adjusts scope in case of local function"""
         newmemory = []
-        for st in memory:
-            infunction = False
-            for c in callables:
-                if self.samename(st.name, c.name) and type(c)==Function:
-                    infunction = True
+        #adjust scope if local function
+        for st in self.memory:
             for var in st:
-                if infunction: var.scope = st.caller
+                if st.caller!=None: var.scope = st.caller
                 if type(var)==Node: newmemory.append(var)
-            if st.name!='general':
-                n = Node()
-                n.nodetype = 'restore'
-                n.name = st.name
-                newmemory.append(Node())
 
-        return newmemory
+        #devide memory per scopes
+        scopes = {} 
+        for node in newmemory:
+            if node.scope not in scopes:
+                scopes[node.scope] = [node]
+            else:
+                scopes[node.scope].append(node)
+        newmemory = scopes
+
+        #order elements in each scope by index
+        temp = {}
+        for scope in newmemory:
+            temp[scope] = []
+            for i in range(len(newmemory[scope])):
+                for var in newmemory[scope]:
+                    if var.index==i:
+                        temp[scope].append(var)
+        newmemory = temp
+
+        #add conns
+        for conn in self.conns:
+            temp[conn[0]].append(conn)
+
+        #order in pd-like style
+        temp = []
+        for node in newmemory['general']:
+            temp.append(node)
+            if type(node)==Node and node.nodetype == 'subpatch':
+                if node.name in newmemory:
+                    for var in newmemory[node.name]:
+                        temp.append(var)
+                restore = Node()
+                restore.name = node.name
+                restore.nodetype = 'restore'
+                restore.scope = node.name
+                temp.append(restore)
+        self.memory = temp
+                
 
     def linebuilder(self):
-        line = {'chunk':None, 'x_pos':None, 'y_pos':None, 'ntype':'', 'args':None}
+        """build lines"""
         for var in self.memory:
-            if var.nodetype == 'subpatch':          #block
-                line['chunk'] = '#N canvas'
-                line['args'] = [var.name, '0']
-            elif var.nodetype == 'restore':         #block end
-                line['chunk'] = '#X restore'        
-                line['args'] = ['pd', var.name]
-            elif var.nodetype == 'num':             #floatatom
-                line['chunk'] = '#X floatatom'
-                line['args'] = '5 0 0 0 - - - 0;'
-            elif var.nodetype == 'msg':             #message
-                line['chunk'] = '#X msg'
-                line['args'] = var.args
-            elif var.nodetype == 'obj':             #numeric objs (operation)
-                line['chunk'] = '#X obj'
-                line['args'] = var.args
-            elif var.nodetype == 'bang':            #bang
-                line['chunk'] = '#X obj'
-                line['ntype'] = 'bng'
-                line['args'] = '19 250 50 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000;'
-            elif var.nodetype == 'toggle':          #toggle
-                line['chunk'] = '#X obj'
-                line['ntype'] = 'tgl'
-            else:                                   #other
-                line['chunk'] = '#X obj'            
-                line['ntype'] = var.nodetype
-                line['args'] = var.args
+            if type(var)!=Node: #connection
+                line = var
+            else:
+                line = {'chunk':None, 'x_pos':random.randint(20,200), 'y_pos':random.randint(20,200), 'ntype':'', 'args':None}
+                if var.nodetype == 'subpatch':          #block
+                    line['chunk'] = '#N canvas'
+                    line['args'] = [var.name, '0']
+                elif var.nodetype == 'restore':         #block end
+                    line['chunk'] = '#X restore'        
+                    line['args'] = ['pd', var.name]
+                elif var.nodetype == 'num':             #floatatom
+                    line['chunk'] = '#X floatatom'
+                    line['args'] = ['5 0 0 0 - - - 0']
+                elif var.nodetype == 'msg':             #message
+                    line['chunk'] = '#X msg'
+                    line['args'] = var.args
+                elif var.nodetype == 'obj':             #numeric objs (operation)
+                    line['chunk'] = '#X obj'
+                    line['args'] = var.args
+                elif var.nodetype == 'bang':            #bang
+                    line['chunk'] = '#X obj'
+                    line['ntype'] = 'bng'
+                    line['args'] = ['19 250 50 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000']
+                elif var.nodetype == 'toggle':          #toggle
+                    line['chunk'] = '#X obj'
+                    line['ntype'] = 'tgl'
+                else:                                   #other
+                    line['chunk'] = '#X obj'            
+                    line['ntype'] = var.nodetype
+                    line['args'] = var.args
             self.lines.append(line)
-            print(line)
-            
+
+        """
+        for l in self.lines:
+            if type(l)==dict:self.nodeprinter(l)
+            else: self.connprinter(l)
+        """
+
+    def patchbuilder(self):
+        if not os.path.exists('outputs'):
+            os.makedirs('outputs')
+        f = open('outputs/'+self.fn+'.pd', "w")
+        f.write('#N canvas 688 19 681 716 12;')
+        f.write('\n')
+        for l in self.lines:
+            if type(l)==dict: f.write(self.nodeprinter(l))
+            else: f.write(self.connprinter(l))
+            f.write('\n')
+        f.close()
+
                 
 
         

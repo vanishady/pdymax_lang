@@ -62,7 +62,7 @@ for st in v.memory:
         #var.fullspec()
         #print(f'\t')
 
-
+print(f'\n')
 #rearrange data
 """
 print(f'\n')
@@ -79,6 +79,5 @@ for c in v.connections:
     print(c)
 """
 
+formatter = Pdformatter(v.memory, v.connections, v.patchname)
 
-to_pd = pdformatter(v.memory, v.connections, v.callables)
-#to_max = maxformatter(v.memory, v.connections)
