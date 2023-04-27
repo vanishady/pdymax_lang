@@ -6,7 +6,7 @@ def patchline(sink, inlet, source, outlet):
     sink = 'obj-'+str(sink)
     source = 'obj-'+str(source)
     patchline = {'destination':[sink, inlet], 'source':[source, outlet]}
-    return patchline
+    return {'patchline':patchline}
 
 #box
 def msgbox(index, rect, text):
@@ -21,31 +21,33 @@ def msgbox(index, rect, text):
         
     box = {'id':index,'maxclass':'message', 
            'patching_rect':rect, 'text':text}
-    return box
+    return {'box':box}
 
 def bangbox(index, rect):
     index = 'obj-'+str(index)
     box = {'id':index, 'maxclass':'button', 'numinlets':1,
        'numoutlets':1, 'parameter_enable':0, 'patching_rect':rect}
-    return box
+    return {'box':box}
 
-def objbox(index, rect, text):
+def objbox(index, rect, text, args):
     index = 'obj-'+str(index)
+    if text=='obj': text=''
+    for arg in args: text += ' '+str(arg)
 
     box = {'id':index, 'maxclass':'newobj',
            'patching_rect':rect, 'text':text}
-    return box
+    return {'box':box}
     
 def numbox(index, rect):
     index = 'obj-'+str(index)
     box = {'id':index, 'maxclass':'number',
            'parameter_enable':0, 'patching_rect':rect}
-    return box
+    return {'box':box}
 
 def box(index, maxclass, rect):
     index = 'obj-'+str(index)
     box = {'id':index, 'maxclass':maxclass, 'patching_rect':rect}
-    return box
+    return {'box':box}
 
 #appversion
 def appversion():
@@ -105,6 +107,7 @@ def savedattr():
 
 def subpatchbox(index, patcher, rect, savedattr, text):
     index = 'obj-'+str(index)
+    text = 'p '+text
     subpatchbox = {"id" : index,
                "maxclass" : "newobj",
                "patcher" : patcher,
@@ -112,7 +115,8 @@ def subpatchbox(index, patcher, rect, savedattr, text):
                "saved_object_attributes" : savedattr,
                "text" : text
                }
-    return subpatchbox
+    outersubpatch = {'box':subpatchbox}
+    return outersubpatch
     
 def mainpatch(appversion, boxes, lines):
     mainpatch = {"fileversion" : 1,

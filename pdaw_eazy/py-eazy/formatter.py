@@ -170,9 +170,9 @@ class MaxFormatter(Formatter):
         scopes_and_ids = {}
         subpatch_list = []
         for scope in self.memory:
+            line_list = []
+            box_list = []
             for var in self.memory[scope]:
-                line_list = []
-                box_list = []
                 if type(var)!=Node: #connection
                     patchline = tojson.patchline(var[3], var[4], var[1], var[2])
                     line_list.append(patchline)
@@ -180,34 +180,32 @@ class MaxFormatter(Formatter):
                     if var.nodetype=='subpatch':
                         scopes_and_ids.update({var.name:var.index})
                         box = False
-                    elif var.nodetype=='bng':
+                    elif var.nodetype in ['bng', 'bang']:
                         box=tojson.bangbox(var.index, [random.randint(20,200),
                                                    random.randint(20,200),
-                                                   random.randint(20,200),
-                                                   random.randint(20,200)])
+                                                   40, 40])
                     elif var.nodetype=='msg':
                         box=tojson.msgbox(var.index, [random.randint(20,200),
                                                   random.randint(20,200),
-                                                  random.randint(20,200),
-                                                  random.randint(20,200)],
+                                                  40, 40],
                                       var.args)
                     elif var.nodetype=='num':
                         box=tojson.numbox(var.index, [random.randint(20,200),
                                                   random.randint(20,200),
-                                                  random.randint(20,200),
-                                                  random.randint(20,200)])                
+                                                  40, 40])                
                     elif var.nodetype in ['ezdac~', 'outlet', 'inlet',
-                                          'inlet~', 'outlet~']:
+                                          'inlet~', 'outlet~', 'output~']:
+                        if var.nodetype=='output~': var.nodetype='ezdac~'
+                        elif var.nodetype in ['outlet~', 'inlet~']: var.nodetype= var.nodetype[:-1]
                         box=tojson.box(var.index, var.nodetype, [random.randint(20,200),
                                                                    random.randint(20,200),
-                                                                   random.randint(20,200),
-                                                                   random.randint(20,200)])
+                                                                   40, 40])
                     else:
+                        if var.nodetype == 'osc~': var.nodetype = 'cycle~'
                         box=tojson.objbox(var.index, [random.randint(20,200),
                                                   random.randint(20,200),
-                                                  random.randint(20,200),
-                                                  random.randint(20,200)],
-                                      var.nodetype)
+                                                  40, 40],
+                                      var.nodetype, var.args)
                     if box: box_list.append(box)
             if scope=='general':
                 general_box_list = box_list
@@ -219,8 +217,7 @@ class MaxFormatter(Formatter):
                 subpatch= tojson.subpatchbox(scopes_and_ids[scope], patcher,
                                              [random.randint(20,200),
                                               random.randint(20,200),
-                                              random.randint(20,200),
-                                              random.randint(20,200)],
+                                              40, 40],
                                              savedattr,
                                              scope)
                 subpatch_list.append(subpatch)

@@ -58,6 +58,7 @@ except AttributeError as e10:
     print(e10)
 
 #print data in intermediate form
+
 """
 for st in v.memory:
     for var in st:
@@ -65,6 +66,7 @@ for st in v.memory:
         #var.fullspec()
         #print(f'\t')
 """
+
 
 pdformatter = PdFormatter(v.memory, v.connections, v.patchname)
 maxformatter = MaxFormatter(v.memory, v.connections, v.patchname)
