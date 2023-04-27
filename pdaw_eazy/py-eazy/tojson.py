@@ -23,9 +23,9 @@ def msgbox(index, rect, text):
            'patching_rect':rect, 'text':text}
     return {'box':box}
 
-def bangbox(index, rect):
+def bangbox(index, maxclass, rect):
     index = 'obj-'+str(index)
-    box = {'id':index, 'maxclass':'button', 'numinlets':1,
+    box = {'id':index, 'maxclass':maxclass, 'numinlets':1,
        'numoutlets':1, 'parameter_enable':0, 'patching_rect':rect}
     return {'box':box}
 
@@ -40,7 +40,7 @@ def objbox(index, rect, text, args):
     
 def numbox(index, rect):
     index = 'obj-'+str(index)
-    box = {'id':index, 'maxclass':'number',
+    box = {'id':index, 'maxclass':'flonum',
            'parameter_enable':0, 'patching_rect':rect}
     return {'box':box}
 

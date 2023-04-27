@@ -1,0 +1,6 @@
+#N canvas -7 0 681 716 12;
+#N canvas 26 26 450 300 simpleargs0 0;
+#X msg 95 147 pippo;
+#X obj 171 108 outlet;
+#X msg 174 196 10 10;
+#X restore 26 93 pd simpleargs0;

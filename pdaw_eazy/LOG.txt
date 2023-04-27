@@ -1,24 +1,18 @@
 Modifiche apportate nell'ultima versione:
 
-- le variabili semplici possono essere assegnate anche a dei nodi, ovvero il loro valore sarà un riferimento all'oggetto a nodo cui si riferiscono.
-  Ad esempio:
-	a = 10		#a type: simplevar	a value: 10
-	a = bang()		#a type: node		-> è creato un node sulla patch
-	b = a			#b type: simplevar	b value: <NodeObject 00x326t36747863> 
+- algoritmo di posizionamento con graphviz: è molto lento, usa sottoprocesso. 
+(provvisorio)
 
-- per fare la copia non per riferimento di un nodo, è necessario utilizzare la funzione @copy
+- frontend verso json: utilizza il file 'utils/correspondances.json' per tradurre il tipo di nodo
+(file json da ampliare) e quando non esiste una traduzione diretta usa oggetti creati da me, Z.B. 'spigot_object',
+presenti nella cartella 'outputs'
+alternativa: si potrebbero aggiungere i nodi direttamente nella memoria. E' più lenta da scrivere, ma sarebbe la soluzione
+più adeguata
 
-- la call dei blocchi non è più eseguita con la sintassi
-	@blocco(parametri) as nomeblocco
-  ma normalmente come tutte le altre assegnazioni, ovvero
-	nomeblocco = @blocco(parametri)
-  nomeblocco sarà in questo caso una variabile SimpleVar con valore che punta al blocknode, creato automaticamente nella call. 
+- frontend verso pd: non utilizza il file correspondances perché presuppone l'installazione della libreria Cyclone per
+la compatibilità da max verso pd
 
-- le funzioni possono prendere come argomento anche i nodi e restituire nodi. Le connessioni locali della funzione sono risolte nello scope del chiamante, a patto che il chiamante sia un blocco o lo scope generale (altrimenti, si ripercorre lo stack di chiamate finché non si trova un blocco o lo scope generale, e la connessione verrà risolta lì). 
-
-- integrazione delle funzioni @append,@len e @copy nel codice del Visitor
-
-- lista dei punti rimanenti aggiornata nel documento <note.odt>
+- controllo dei nodetypes: commentato (non funziona)
 
 
 

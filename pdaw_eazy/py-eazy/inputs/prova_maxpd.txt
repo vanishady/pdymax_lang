@@ -1,0 +1,8 @@
+patch prova_maxpd
+
+out = dac~()
+num() > o = osc~() > [1:out, 2:out]
+
+tbf()
+mtof()
+;

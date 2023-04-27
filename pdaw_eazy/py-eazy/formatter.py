@@ -7,6 +7,7 @@ from tkinter import *
 import tojson
 import random
 import json
+from graphvizpos import *
 
 class Formatter():
 
@@ -17,7 +18,7 @@ class Formatter():
 
         self.lines = []
 
-    def formatmemory(self):
+    def formatmemory(self, max_or_pd):
         """returns a memory made only by nodes and connections, and adjusts scope in case of local function"""
         newmemory = []
         #adjust scope if local function
@@ -25,6 +26,8 @@ class Formatter():
             for var in st:
                 if st.caller!=None: var.scope = st.caller
                 if type(var)==Node: newmemory.append(var)
+
+        self.uniform_nodetypes(newmemory, max_or_pd)
 
         #devide memory per scopes
         scopes = {} 
@@ -46,11 +49,35 @@ class Formatter():
         newmemory = temp
 
         #add conns
-        for conn in self.conns:
+        for conn in self.connections:
             newmemory[conn[0]].append(conn)
         self.memory = newmemory
+
+        #set positions
+        for scope in self.memory:
+            graphpos = GraphPos(self.memory[scope])
+            self.memory[scope] = graphpos.scope
+
         return self.memory
-        
+
+    def uniform_nodetypes(self, memory, max_or_pd):
+        """uniform node types which are different in max-pd"""
+        """
+        supportedtypes = open('utils/supportedtypes.txt', "r")
+        for node in memory:
+            if node.nodetype not in supportedtypes.read():
+                raise InvalidNodeError('???', node.nodetype)
+        supportedtypes.close()
+        """
+                
+        if max_or_pd == 'pd':
+            pass #tanto c'è cyclone, quindi qualsiasi nodo valido in max è valido in pd
+        else: #max
+            with open('utils/correspondances.json', 'r') as openfile:
+                json_object = json.load(openfile)
+            for node in memory:
+                if node.nodetype in json_object:
+                    node.nodetype = json_object[node.nodetype]
 
 class PdFormatter(Formatter):
 
@@ -61,7 +88,7 @@ class PdFormatter(Formatter):
         self.conns = conns
         self.fn = fn
         super().__init__(self.memory, self.conns, self.fn)
-        self.memory = super().formatmemory()
+        self.memory = super().formatmemory('pd')
         
         self.pd_stylememo()
         self.linebuilder()
@@ -93,6 +120,8 @@ class PdFormatter(Formatter):
                 restore.name = node.name
                 restore.nodetype = 'restore'
                 restore.scope = node.name
+                restore.xpos = node.xpos
+                restore.ypos = node.ypos
                 temp.append(restore)
         self.memory = temp
 
@@ -102,7 +131,7 @@ class PdFormatter(Formatter):
             if type(var)!=Node: #connection
                 line = var
             else:
-                line = {'chunk':None, 'x_pos':random.randint(20,200), 'y_pos':random.randint(20,200), 'ntype':'', 'args':None}
+                line = {'chunk':None, 'x_pos':var.xpos, 'y_pos':var.ypos, 'ntype':'', 'args':None}
                 if var.nodetype == 'subpatch':          #block
                     line['chunk'] = '#N canvas'
                     line['args'] = [var.name, '0']
@@ -125,6 +154,10 @@ class PdFormatter(Formatter):
                 elif var.nodetype == 'toggle':          #toggle
                     line['chunk'] = '#X obj'
                     line['ntype'] = 'tgl'
+                    line['args'] = ['19 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000 0 1']
+                elif var.nodetype == "tbf":
+                    line['chunk'] = '#X obj'
+                    line['args'] = ['t', 'b', 'f']
                 else:                                   #other
                     line['chunk'] = '#X obj'            
                     line['ntype'] = var.nodetype
@@ -152,7 +185,7 @@ class MaxFormatter(Formatter):
         self.conns = conns
         self.fn = fn
         super().__init__(self.memory, self.conns, self.fn)
-        self.memory = super().formatmemory()
+        self.memory = super().formatmemory('max')
 
         self.linebuilder()
         self.patchbuilder()
@@ -178,46 +211,37 @@ class MaxFormatter(Formatter):
                     line_list.append(patchline)
                 else:
                     if var.nodetype=='subpatch':
-                        scopes_and_ids.update({var.name:var.index})
+                        scopes_and_ids.update({var.name:[var.index, var.xpos, var.ypos]})
                         box = False
-                    elif var.nodetype in ['bng', 'bang']:
-                        box=tojson.bangbox(var.index, [random.randint(20,200),
-                                                   random.randint(20,200),
-                                                   40, 40])
-                    elif var.nodetype=='msg':
-                        box=tojson.msgbox(var.index, [random.randint(20,200),
-                                                  random.randint(20,200),
-                                                  40, 40],
+                    elif var.nodetype in ['button', 'toggle']:
+                        box=tojson.bangbox(var.index, var.nodetype, [var.xpos, var.ypos,
+                                                                     40, 40])
+                    elif var.nodetype=='message':
+                        box=tojson.msgbox(var.index, [var.xpos, var.ypos,
+                                                      40, 40],
                                       var.args)
-                    elif var.nodetype=='num':
-                        box=tojson.numbox(var.index, [random.randint(20,200),
-                                                  random.randint(20,200),
-                                                  40, 40])                
-                    elif var.nodetype in ['ezdac~', 'outlet', 'inlet',
-                                          'inlet~', 'outlet~', 'output~']:
-                        if var.nodetype=='output~': var.nodetype='ezdac~'
-                        elif var.nodetype in ['outlet~', 'inlet~']: var.nodetype= var.nodetype[:-1]
-                        box=tojson.box(var.index, var.nodetype, [random.randint(20,200),
-                                                                   random.randint(20,200),
-                                                                   40, 40])
+                    elif var.nodetype=='flonum': #e number?
+                        box=tojson.numbox(var.index, [var.xpos, var.ypos,
+                                                      40, 40])                
+                    elif var.nodetype in ['ezdac~', 'outlet', 'inlet']:
+                        box=tojson.box(var.index, var.nodetype, [var.xpos, var.ypos,
+                                                                 30, 30])
                     else:
-                        if var.nodetype == 'osc~': var.nodetype = 'cycle~'
-                        box=tojson.objbox(var.index, [random.randint(20,200),
-                                                  random.randint(20,200),
-                                                  40, 40],
+                        box=tojson.objbox(var.index, [var.xpos, var.ypos,
+                                                      40, 40],
                                       var.nodetype, var.args)
                     if box: box_list.append(box)
             if scope=='general':
                 general_box_list = box_list
                 general_line_list = line_list
+                appversion = tojson.appversion()
             else:
                 appversion = tojson.appversion()
                 patcher= tojson.patcher(appversion, box_list, line_list)
                 savedattr= tojson.savedattr()
-                subpatch= tojson.subpatchbox(scopes_and_ids[scope], patcher,
-                                             [random.randint(20,200),
-                                              random.randint(20,200),
-                                              40, 40],
+                subpatch= tojson.subpatchbox(scopes_and_ids[scope][0], patcher, [scopes_and_ids[scope][1],
+                                                                                 scopes_and_ids[scope][2],
+                                                                                 40, 40],
                                              savedattr,
                                              scope)
                 subpatch_list.append(subpatch)

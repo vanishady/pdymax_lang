@@ -3,7 +3,6 @@ patch blocchi
 block simpleargs (a:intn, b:floatn, c:symbol) {
 	msg(a,b)
 	c = msg(c)
-	o = outlet()
 }
 
 block otherargs (a:list, b:node) {
@@ -11,7 +10,7 @@ block otherargs (a:list, b:node) {
 	a1 = @copy(a[1])
 	#b > bang()
 	b = @copy(b)
-	a1 > b > bang()
+	a1 > b > bang(100)
 }
 
 a = 'pippo'

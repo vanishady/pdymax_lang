@@ -1,0 +1,6 @@
+patch prova_spigot
+
+s = spigot()
+bang() > s
+toggle() > 2:s > bang()
+;

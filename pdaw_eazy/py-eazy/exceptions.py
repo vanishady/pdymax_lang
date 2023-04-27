@@ -78,7 +78,15 @@ class ConnectionError(Exception):
     def __str__(self):
         return f'error at line: {self._lineno}\n {self._details}'
 
+class InvalidNodeError(Exception):
 
+    def __init__(self, lineno, nt):
+        self._lineno = lineno
+        self._nt = nt
+
+    def __str__(self):
+        return f'error at line: {self._lineno}\n {self._nt} is not a supported node type. Check pd/maxMSP doc.'
+    
 class InvalidNameException(Exception):
 
     def __init__(self, lineno, name):

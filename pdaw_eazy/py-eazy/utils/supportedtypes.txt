@@ -1,0 +1,77 @@
+bang bng num obj msg message subpatch restore tbf toggle tgl
+subpatch
+float symbol int
+send receive s r
+select sel route pack unpack trigger spigot moses until
+print makefilename
+change swap value
+delay metro line
+mtof ftom powtodb
+abs exp log sqrt atan2 atan tan cos sin div mod random max min
+clip notein bendin touchin polytouchin midiin sysexin ctlin pgmin
+ctlout
+pgmout
+bendout
+touchout
+polytouchout
+midiout
+mtof
+ftom
+dac
+adc
+sig
+line
+readsf
+writesf
+phasor
+vcf
+noise
+env
+hip
+lop
+bp
+biquad
+inlet
+outlet
+threshold
+rev1
+rev2
+rev3
+pd
+
+attrui  change  counter  dict  dict.deserialize  dict.group  dict.iter  dict.join  dict.pack  dict.print  dict.route  dict.serialize  dict.slice  dict.strip  dict.unpack  dict.view  filterdesign  filterdetail  forward  gate  getattr  grab  if  match  maximum  minimum  next  onebang  past  patcher  peak  pvar  route  routepass  router  select  split  switch  thispatcher  togedge  trigger  trough  universal  uzi 
+
+anal  autopattr  bag  bline  borax  bucket  capture  coll  combine  cycle  decode  float  funbuff  function  funnel  histo  int  line  nodes  pattr  pattrforward  pattrhub  pattrstorage  pattrmarker  preset  prob  pvar  qlist  spell  spray  table  text  value 
+
+hi  serial  udpreceive  udpsend  vdp 
+
+absolutepath  conformpath  filedate  filein  filepath  filewatch  folder  fontlist  onecopy  opendialog  relativepath  savedialog  strippath 
+
+dialog  key  keyup  modifiers  mousefilter  mousestate  numkey 
+
+js  mxj 
+
+atoi  funnel  iter  itoa  join  pack  pak  quickthresh  spray  thresh  unjoin  unpack  zl 
+
+!-  !/  !=  %  &  &&  *  +  -  /  <  <<  <=  ==  >  >=  >>  abs  accum  acos  acosh  asin  asinh  atan  atan2  atanh  atodb  cartopol  clip  cos  cosh  dbtoa  drunk  expr  ftom  if  linedrive  mean  mean  mtof  poltocar  pow  random  regexp  scale  sin  sinh  sqrt  tan  tanh  urn  vexpr  zmap  
+
+append  fromsymbol  loadmess  prepend  receive  send  sprintf  substitute  tosymbol 
+
+bendin  bendout  ctlin  ctlout  midiflush  midiin  midiinfo  midiout  notein  noteout  pgmin  pgmout  polyin  polyout  rtin  sysexin  sxformat  touchin  touchout  xbendin  xbendin2  xbendout  xbendout2  xnotein  xnoteout 
+
+flush  makenote  midiformat  midiparse  offer  poly  stripnote  sustain 
+
+bgcolor  closebang  freebang  loadbang  loadmess  patcher  patcherargs  pcontrol  thispatcher 
+
+bangbang  bondo  buddy  fswap  swap  trigger 
+
+detonate  follow  mtr  seq 
+
+active  colorpicker  date  error  fontlist  gestalt  menubar  print  screensize  suspend 
+
+bline  borax  clocker  cpuclock  defer  deferlow  delay  function  line  metro  pipe  speedlim  qlim  qmetro  quickthresh  tempo  thresh  timepoint  timer  translate  transport  when 
+
+button  comment  dial  dropfile  flonum  fpic  gswitch  gswitch2  hint  incdec  inlet  itable  jit.cellblock  kslider  lcd  led  matrixctrl  multislider  nodes  nslider  number  outlet  panel  pictctrl  pictslider  preset  radiogroup  rslider  slider  swatch  tab  textbutton  textedit  toggle  ubutton  umenu
+
+
+

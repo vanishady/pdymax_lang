@@ -211,6 +211,22 @@ class Node():
     def nodetype(self, nt):
         self._nodetype = nt
 
+    @property
+    def xpos(self):
+        return self._xpos
+
+    @xpos.setter
+    def xpos(self, x):
+        self._xpos = x
+
+    @property
+    def ypos(self):
+        return self._ypos
+
+    @ypos.setter
+    def ypos(self, y):
+        self._ypos = y
+
 
 class SimpleVar():
 
