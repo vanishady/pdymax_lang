@@ -54,6 +54,8 @@ except ConnectionError as e8:
     print(e8)
 except InvalidNameException as e9:
     print(e9)
+except AttributeError as e10:
+    print(e10)
 
 #print data in intermediate form
 """
@@ -64,5 +66,6 @@ for st in v.memory:
         #print(f'\t')
 """
 
-formatter = Pdformatter(v.memory, v.connections, v.patchname)
+pdformatter = PdFormatter(v.memory, v.connections, v.patchname)
+maxformatter = MaxFormatter(v.memory, v.connections, v.patchname)
 

@@ -317,8 +317,7 @@ class PdeasyVisitor(ParseTreeVisitor):
         var = self.symtable.lookup(vname) #look for list variable
         if var == False: raise NotFoundException(ctx.start.line, vname)
         index = self.visit(ctx.expr())
-        if not isinstance(index, int): raise AttributeError
-
+        if not isinstance(index, int): raise AttributeError(f'error at line: {ctx.start.line}\n cannot use non-integer variable as list index')
 
         return var.value[index] #can be: node, int, float, symbol
 
@@ -488,6 +487,7 @@ class PdeasyVisitor(ParseTreeVisitor):
         """
         vname = self.visit(ctx.varname())
         vtype = ctx.VARTYPE().getText()
+        
         return (vname, vtype)
 
 
@@ -507,7 +507,7 @@ class PdeasyVisitor(ParseTreeVisitor):
 
         if ctx.expr():
             val = self.visit(ctx.expr())
-            if not isinstance(val, (int, float)): raise AttributeError
+            if not isinstance(val, (int, float)): raise AttributeError(f'error at line: {ctx.start.line}\n cannot use non-numeric variables in operation.')
             arglist.append(val)
         return arglist
 
