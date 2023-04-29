@@ -1,82 +1,57 @@
-import re
-import sys
-import argparse
-import subprocess
 import graphviz
 from components import *
+import json
 
-DOT_CMD = 'dot'
-
-"""
-class Renderer():
-
-    def __init__(self):
-        self.f = graphviz.Digraph(filename='graph_out')
-
-
-    def dotfile(self, scope):
-        for elem in scope:
-            if type(elem)!=Node:
-                source = str(elem[1]) #source_id
-                sink = str(elem[3]) #sink_id
-                self.f.edge(source, sink)
-            else:
-                self.f.node(str(elem.index))
-
-        for l in self.f:
-            print(l)
-"""
                 
             
 class GraphPos():
 
-    def __init__(self, scope):
-        self._scope = scope
-        dot = self.dotfile()
-        p = subprocess.run(DOT_CMD, input=dot, capture_output=True, text=True)
-        positions = self.retrieve_pos(p.stdout)
-        self.apply_pos(positions)
+    def __init__(self, segment):
+        self._segment = segment
+        self._dot = graphviz.Graph(format='json')
 
-    def dotfile(self):
-        connections = []
-        out=['digraph _ {']
-        for elem in self.scope:
-            if type(elem)!=Node:
-                a = str(elem[1]) #source_id
-                b = str(elem[3]) #sink_id
-                connections.append((a, b))
-                out.append(f'{b} -> {a};')
-            else:
-                out.append(f'{elem.index};')
-        out.append('}')
-        return '\n'.join(out)
+        self.segment2dot()
+        self.retrievepos()
 
-    def retrieve_pos(self, dot):
-        positions = {}
-        dot = dot.replace(',\n', ', ')
-        for line in dot.splitlines():
-            m = re.match(r'\s*([0-9]+).*pos="([0-9.]+),([0-9.]+)"', line)
-            if m:
-                i = int(m.group(1))
-                x = float(m.group(2))
-                y = float(m.group(3))
-                positions[i] = x, y
-        return positions
-
-    def apply_pos(self, positions):
-        for elem in self.scope:
+    def segment2dot(self):
+        """add nodes and connections from the segment to dot file in json format"""
+        for elem in self.segment:
             if type(elem)==Node:
-                x, y = positions[elem.index]
-                elem.xpos = x
-                elem.ypos = y
+                if elem.nodetype=='subpatch': self.dot.node(f'{elem.index}', width='2')
+                else: self.dot.node(f'{elem.index}')
+            else:
+                self.dot.edge(f'{elem[3]}', f'{elem[1]}')
+        self.pipe = self.dot.pipe(encoding='utf-8')
+
+    def retrievepos(self):
+        """retrieve positions from json file"""
+        json_object = json.loads(self.pipe)
+        res = json_object['objects']
+        for elem in res:
+            name = elem['name']
+            pos = elem['pos'].split(',')
+            for node in self.segment:
+                if type(node)!=Node: continue
+                if node.index == int(name):
+                    node.xpos = pos[0]
+                    node.ypos = pos[1]
+                    break
 
     @property
-    def scope(self):
-        return self._scope
+    def segment(self):
+        return self._segment
 
-    @scope.setter
-    def scope(self, name):
-        self._scope = name
+    @segment.setter
+    def segment(self, name):
+        self._segment = name
+
+    @property
+    def dot(self):
+        return self._dot
+
+    @dot.setter
+    def dot(self, dotname):
+        self._dot = dotname
 
     
 

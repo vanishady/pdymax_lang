@@ -1,7 +1,6 @@
 Modifiche apportate nell'ultima versione:
 
-- algoritmo di posizionamento con graphviz: è molto lento, usa sottoprocesso. 
-(provvisorio)
+- algoritmo di posizionamento con graphviz
 
 - frontend verso json: utilizza il file 'utils/correspondances.json' per tradurre il tipo di nodo
 (file json da ampliare) e quando non esiste una traduzione diretta usa oggetti creati da me, Z.B. 'spigot_object',

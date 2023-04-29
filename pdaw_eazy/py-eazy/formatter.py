@@ -56,7 +56,7 @@ class Formatter():
         #set positions
         for scope in self.memory:
             graphpos = GraphPos(self.memory[scope])
-            self.memory[scope] = graphpos.scope
+            self.memory[scope] = graphpos.segment
 
         return self.memory
 

@@ -1,4 +1,6 @@
 .experiments
 .BASHAVVIO.txt
 .references
+.puredata_patches
+.maxmsp_patches
 pdaw/py-target/doc/.todo.txt
