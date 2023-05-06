@@ -61,10 +61,10 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            170,
-                            107,
-                            178,
-                            96
+                            126,
+                            75,
+                            66,
+                            120
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -144,7 +144,7 @@
                     },
                     "patching_rect": [
                         "90",
-                        "162",
+                        "234",
                         40,
                         40
                     ],
@@ -172,10 +172,10 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            123,
-                            27,
-                            92,
-                            117
+                            191,
+                            63,
+                            181,
+                            90
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -440,7 +440,7 @@
                     },
                     "patching_rect": [
                         "288",
-                        "162",
+                        "234",
                         40,
                         40
                     ],
@@ -468,10 +468,10 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            163,
-                            95,
-                            115,
-                            79
+                            120,
+                            170,
+                            36,
+                            103
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -2704,7 +2704,7 @@
                     },
                     "patching_rect": [
                         "486",
-                        "162",
+                        "234",
                         40,
                         40
                     ],
@@ -2732,10 +2732,10 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            179,
-                            143,
-                            74,
-                            183
+                            48,
+                            185,
+                            94,
+                            91
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -4059,7 +4059,7 @@
                     },
                     "patching_rect": [
                         "486",
-                        "90",
+                        "162",
                         40,
                         40
                     ],
@@ -4074,11 +4074,168 @@
             },
             {
                 "box": {
+                    "id": "obj-7",
+                    "maxclass": "newobj",
+                    "patcher": {
+                        "fileversion": 1,
+                        "appversion": {
+                            "major": 8,
+                            "minor": 3,
+                            "revision": 3,
+                            "architecture": "x64",
+                            "modernui": 1
+                        },
+                        "classnamespace": "box",
+                        "rect": [
+                            105,
+                            35,
+                            23,
+                            155
+                        ],
+                        "bglocked": 0,
+                        "openinpresentation": 0,
+                        "default_fontsize": 12.0,
+                        "default_fontface": 0,
+                        "default_fontname": "Arial",
+                        "gridonopen": 1,
+                        "gridsize": [
+                            15.0,
+                            15.0
+                        ],
+                        "gridsnaponopen": 1,
+                        "objectsnaponopen": 1,
+                        "statusbarvisible": 2,
+                        "toolbarvisible": 1,
+                        "lefttoolbarpinned": 0,
+                        "toptoolbarpinned": 0,
+                        "righttoolbarpinned": 0,
+                        "bottomtoolbarpinned": 0,
+                        "toolbars_unpinned_last_save": 0,
+                        "tallnewobj": 0,
+                        "boxanimatetime": 200,
+                        "enablehscroll": 1,
+                        "enablevscroll": 1,
+                        "devicewidth": 0.0,
+                        "description": "",
+                        "digest": "",
+                        "tags": "",
+                        "style": "",
+                        "subpatcher_template": "",
+                        "assistshowspatchername": 0,
+                        "visible": 1,
+                        "boxes": [
+                            {
+                                "box": {
+                                    "id": "obj-0",
+                                    "maxclass": "inlet",
+                                    "patching_rect": [
+                                        "27",
+                                        "18",
+                                        30,
+                                        30
+                                    ]
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-1",
+                                    "maxclass": "message",
+                                    "patching_rect": [
+                                        "27",
+                                        "90",
+                                        40,
+                                        40
+                                    ],
+                                    "text": " open kick.wav , 1 "
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-2",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "27",
+                                        "162",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "sfplay~"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-3",
+                                    "maxclass": "outlet",
+                                    "patching_rect": [
+                                        "27",
+                                        "234",
+                                        30,
+                                        30
+                                    ]
+                                }
+                            }
+                        ],
+                        "lines": [
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-1",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-0",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-2",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-1",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-3",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-2",
+                                        0
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "patching_rect": [
+                        "684",
+                        "162",
+                        40,
+                        40
+                    ],
+                    "saved_object_attributes": {
+                        "description": "",
+                        "digest": "",
+                        "globalpatchername": "",
+                        "tags": ""
+                    },
+                    "text": "p read0"
+                }
+            },
+            {
+                "box": {
                     "id": "obj-4",
                     "maxclass": "ezdac~",
                     "patching_rect": [
-                        "657",
-                        "162",
+                        "684",
+                        "234",
                         30,
                         30
                     ]
@@ -4087,53 +4244,29 @@
             {
                 "box": {
                     "id": "obj-5",
-                    "maxclass": "message",
+                    "maxclass": "newobj",
                     "patching_rect": [
-                        "621",
+                        "684",
                         "18",
                         40,
                         40
                     ],
-                    "text": " open kick.wav , 1 "
+                    "text": "receive kick"
                 }
             },
             {
                 "box": {
                     "id": "obj-6",
-                    "maxclass": "newobj",
+                    "maxclass": "button",
+                    "numinlets": 1,
+                    "numoutlets": 1,
+                    "parameter_enable": 0,
                     "patching_rect": [
-                        "621",
+                        "684",
                         "90",
                         40,
                         40
-                    ],
-                    "text": "sfplay~"
-                }
-            },
-            {
-                "box": {
-                    "id": "obj-7",
-                    "maxclass": "message",
-                    "patching_rect": [
-                        "693",
-                        "18",
-                        40,
-                        40
-                    ],
-                    "text": " open hat.wav , 1 "
-                }
-            },
-            {
-                "box": {
-                    "id": "obj-8",
-                    "maxclass": "newobj",
-                    "patching_rect": [
-                        "693",
-                        "90",
-                        40,
-                        40
-                    ],
-                    "text": "sfplay~"
+                    ]
                 }
             }
         ],
@@ -4345,7 +4478,19 @@
             {
                 "patchline": {
                     "destination": [
-                        "obj-8",
+                        "obj-7",
+                        0
+                    ],
+                    "source": [
+                        "obj-6",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-4",
                         0
                     ],
                     "source": [
@@ -4358,46 +4503,10 @@
                 "patchline": {
                     "destination": [
                         "obj-4",
-                        0
-                    ],
-                    "source": [
-                        "obj-6",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [
-                        "obj-4",
                         1
                     ],
                     "source": [
-                        "obj-6",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [
-                        "obj-4",
-                        0
-                    ],
-                    "source": [
-                        "obj-8",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [
-                        "obj-4",
-                        1
-                    ],
-                    "source": [
-                        "obj-8",
+                        "obj-7",
                         0
                     ]
                 }

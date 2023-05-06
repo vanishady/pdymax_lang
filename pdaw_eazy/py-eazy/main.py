@@ -69,7 +69,6 @@ for st in v.memory:
         #print(f'\t')
 """
 
-
 pdformatter = PdFormatter(v.memory, v.connections, v.patchname)
 maxformatter = MaxFormatter(v.memory, v.connections, v.patchname)
 

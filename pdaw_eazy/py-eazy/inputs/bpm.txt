@@ -2,6 +2,7 @@ patch bpm
 
 import pdawlib
 
+#function to bind every outlet of n1 to every inlet of n2
 func bind(n1:node, n2:node, iolets:intn) {
 
 	for i in range iolets:
@@ -79,6 +80,6 @@ drumclock = @clockdiv(16)
 
 #mixer
 final = dac~()
-[@read('../samples/kick.wav'), @read('../samples/hat.wav')]>[1:final, 2:final]
+receive('kick')>bang()>r=@read('../samples/kick.wav')>[1:final, 2:final]
 
 ;

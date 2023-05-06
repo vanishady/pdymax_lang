@@ -324,7 +324,7 @@ class PdeasyVisitor(ParseTreeVisitor):
     # Visit a parse tree produced by PdeasyParser#connectionstmt.
     def visitConnectionstmt(self, ctx:PdeasyParser.ConnectionstmtContext):
         self.full_text = {}
-        self.connscopes = []
+        self.symtable.connscopes = []
         
         conn_scope = self.symtable.name
 
@@ -372,7 +372,7 @@ class PdeasyVisitor(ParseTreeVisitor):
         node = False
         vname = None
         nodeId = ''
-        
+
         if ctx.varname(): #riferimento a una variabile già esistente
             vname = self.visit(ctx.varname())
             node = self.symtable.lookup(vname)
@@ -382,6 +382,35 @@ class PdeasyVisitor(ParseTreeVisitor):
                 else: raise TypeException(ctx.start.line, type(node), 'node', f'\n cannot use simple variable in connection.')
             elif type(node)not in [Node]: raise TypeException(ctx.start.line, type(node), 'node', f'\n cannot use simple variable in connection.')
             else: nodeId = node.index
+
+        elif ctx.list_access():
+            node = self.visit(ctx.list_access())
+            nodeId = node.index
+
+        elif ctx.callstmt():
+            if dont:
+                nodeId = self.full_text[(ctx_text, ctx.start)]
+            else:
+                node = self.visit(ctx.callstmt())
+                if type(node)not in [Node]: raise TypeException(ctx.start.line, type(node), 'node') 
+                nodeId = node.index
+                self.full_text.update({(ctx_text, ctx.start) : nodeId})
+
+        elif ctx.simpledecl():
+            if dont:
+                nodeId = self.full_text[(ctx_text, ctx.start)]
+            else:
+                self.visit(ctx.simpledecl())
+                vname=ctx.getText().split('=')
+                vname=vname[0]
+                node = self.symtable.lookup(vname)
+                if node==False: raise NotFoundException(ctx.start.line, vname)
+                elif type(node)==SimpleVar:
+                    if type(node.value) == Node: nodeId = node.value.index
+                    else: raise TypeException(ctx.start.line, type(node), 'node', f'\n cannot use simple variable in connection.')
+                elif type(node)not in [Node]: raise TypeException(ctx.start.line, type(node), 'node', f'\n cannot use simple variable in connection.')
+                else: nodeId = node.index
+                self.full_text.update({(ctx_text, ctx.start) : nodeId})
                 
         elif ctx.nodedecl():
             if dont:
@@ -390,15 +419,6 @@ class PdeasyVisitor(ParseTreeVisitor):
                 self.visit(ctx.nodedecl())
                 nodeId = self.symtable.index #l'index dell'ultimo nodo creato
                 self.full_text.update({(ctx_text, ctx.start) : nodeId})
-
-        elif ctx.list_access():
-            node = self.visit(ctx.list_access())
-            nodeId = node.index
-
-        elif ctx.callstmt():
-            node = self.visit(ctx.callstmt())
-            if type(node)not in [Node]: raise TypeException(ctx.start.line, type(node), 'node') 
-            nodeId = node.index
 
         #if node scope is a function, change the scope to f.caller. check for every node to be in same scope
         if node:
@@ -410,10 +430,10 @@ class PdeasyVisitor(ParseTreeVisitor):
         for f in self.callables:
             if self.samename(nodescope, f.name) and type(f)==Function:
                 nodescope = f.caller.name
-        self.connscopes.append(nodescope)
+        self.symtable.connscopes.append(nodescope)
                 
-        for i in range (len(self.connscopes)-1):
-            if self.connscopes[i]!=self.connscopes[i+1]: raise ConnectionError(ctx.start.line)     
+        for i in range (len(self.symtable.connscopes)-1):
+            if self.symtable.connscopes[i]!=self.symtable.connscopes[i+1]: raise ConnectionError(ctx.start.line)     
         
             
         if ctx.inlet(): nodeIn = self.visit(ctx.inlet())

@@ -1,9 +1,7 @@
 patch nihil
 
-func read (name:symbol) {
-	msg('open', name, '\,', 1) > r=readsf~()
-	return r
+block read (name:symbol) {
+	inlet() > msg('open', name, '\,', 1) > r=readsf~() > outlet~()
 }
-
 
 ;

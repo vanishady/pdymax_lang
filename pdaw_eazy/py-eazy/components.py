@@ -280,6 +280,7 @@ class SymbolTable():
         self._name = stname #name of symtable is name of scope
         self._index = -1
         self._caller = None
+        self._connscopes = []
 
     def __iter__(self):
         return self._symtable.__iter__()
@@ -337,6 +338,14 @@ class SymbolTable():
     @index.setter
     def index(self, nodeId):
         self._index = nodeId
+
+    @property
+    def connscopes(self):
+        return self._connscopes
+
+    @connscopes.setter
+    def connscopes(self, c):
+        self._connscopes = c
 
         
 
