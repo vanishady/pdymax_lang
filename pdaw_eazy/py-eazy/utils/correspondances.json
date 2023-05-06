@@ -11,5 +11,6 @@
 	"num":"flonum",
 	"floatatom":"flonum",
 	"tbf":"t b f",
-	"spigot":"spigot_conversion"
+	"spigot":"spigot_conversion",
+	"readsf~": "sfplay~"
 }   

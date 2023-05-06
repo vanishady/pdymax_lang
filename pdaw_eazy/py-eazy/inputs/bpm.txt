@@ -1,0 +1,84 @@
+patch bpm
+
+import pdawlib
+
+func bind(n1:node, n2:node, iolets:intn) {
+
+	for i in range iolets:
+		n1:(i+1) > (i+1):n2
+	end
+}
+
+block bpm (bpm:intn) {
+	div = /()
+	tbf = tbf()
+	loadbang() > msg(bpm) > num() > tbf:2 > 2:div
+	tbf > div 
+	loadbang() > msg(60000) > div > num() > s('4th_time')
+}
+
+block onoff() {
+	toggle() > s('ON')
+}
+
+block drums (seq:list, sample:symbol) {
+	#newseq = ['one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen']
+	sendto = send(sample)
+
+	for i in range @len(seq):
+		inlet() > bang() > s = spigot() > bang() > sendto
+		if seq[i]==1:
+			loadbang() > toggle() > 2:s
+		else:
+			toggle() > 2:s
+		end
+	end
+		
+}
+
+block clockdiv(time:intn) {
+	divtime = time / 4
+	metro = metro()
+
+	receive('4th_time') > /(divtime) > num() > 2:metro
+	r('ON')>t = toggle()>1:metro
+
+	t > s0 = sel(0)
+	[loadbang(), s0] > bang() > msg(-1) > int_node=int(1)
+
+	metro>bang()>int_node>num()>%(time)>+(1)>n = num()
+	int_node>plus_one=+(1)
+	plus_one>2:int_node
+
+	sel_list = []
+	for i in range time:
+		@append(sel_list, i+1)
+	end
+
+	n > finalsel = sel(sel_list)
+	
+	for i in range time:
+		finalsel:(i+1) > bang() > outlet()
+	end
+}
+
+#start/stop audio stream
+@onoff()
+
+#set bpm
+@bpm(140)
+
+#instruments
+drumseq = @drums([0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1], 'kick')
+
+#clock
+drumclock = @clockdiv(16)
+
+#connect intrument to clock
+@bind(drumclock,drumseq,16)
+
+#mixer
+final = dac~()
+[@read('../samples/kick.wav'), @read('../samples/hat.wav')]>[1:final, 2:final]
+
+;

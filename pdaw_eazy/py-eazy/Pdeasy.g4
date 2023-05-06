@@ -128,10 +128,12 @@ varname
 
 inlet
  : NUMBER 
+ | expr
  ;
 
 outlet
  : NUMBER 
+ | expr
  ;
 
 /*
@@ -160,7 +162,7 @@ NAME
 
 SYMBOL : '\'' SYMBOL_ADMITTED* '\'' ;
 NUMBER : INTEGER | FLOAT ;
-INTEGER : NON_ZERO_DIGIT DIGIT* | '0'+ ;
+INTEGER : '-'? NON_ZERO_DIGIT DIGIT* | '0'+ ;
 FLOAT : INTEGER? '.' INTEGER ;
 
 fragment LETTER : [a-zA-Z] ;

@@ -673,15 +673,25 @@ class PdeasyVisitor(ParseTreeVisitor):
     # Visit a parse tree produced by PdeasyParser#inlet.
     def visitInlet(self, ctx:PdeasyParser.InletContext):
         """return inlet number"""
-        if '.' in ctx.getText(): raise TypeException(ctx.line.start, 'floatn', 'intn')
-        return int(ctx.NUMBER().getText())-1
+        if ctx.NUMBER():
+            if '.' in ctx.getText(): raise TypeException(ctx.line.start, 'floatn', 'intn')
+            return int(ctx.NUMBER().getText())-1
+        else:
+            num = self.visit(ctx.expr())
+            if not isinstance(num, int): raise TypeException(ctx.line.start, type(num), 'intn')
+            return int(num)-1
     
 
     # Visit a parse tree produced by PdeasyParser#outlet.
     def visitOutlet(self, ctx:PdeasyParser.OutletContext):
         """return outlet number"""
-        if '.' in ctx.getText(): raise TypeException(ctx.line.start, 'floatn', 'intn')
-        return int(ctx.NUMBER().getText())-1
+        if ctx.NUMBER():
+            if '.' in ctx.getText(): raise TypeException(ctx.line.start, 'floatn', 'intn')
+            return int(ctx.NUMBER().getText())-1
+        else:
+            num = self.visit(ctx.expr())
+            if not isinstance(num, int): raise TypeException(ctx.line.start, type(num), 'intn')
+            return int(num)-1
 
 
 del PdeasyParser

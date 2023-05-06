@@ -5,3 +5,7 @@ PLUS:
 - shell personalizzata con documentazione di supporto
 - colors e font
 - preparare patch (da usare come oggetti nella main patch, facendo un import tipo)
+
+
+README
+- in Max, u have to set path preferences for sample and wrapped objs

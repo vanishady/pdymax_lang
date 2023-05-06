@@ -61,10 +61,10 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            155,
-                            58,
-                            182,
-                            35
+                            96,
+                            107,
+                            166,
+                            184
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -575,7 +575,7 @@
                         ]
                     },
                     "patching_rect": [
-                        "72",
+                        "90",
                         "90",
                         40,
                         40
@@ -604,10 +604,10 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            77,
-                            92,
-                            38,
-                            186
+                            21,
+                            138,
+                            66,
+                            84
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -895,7 +895,7 @@
                         ]
                     },
                     "patching_rect": [
-                        "234",
+                        "288",
                         "90",
                         40,
                         40
@@ -917,7 +917,7 @@
                     "numoutlets": 1,
                     "parameter_enable": 0,
                     "patching_rect": [
-                        "234",
+                        "288",
                         "18",
                         40,
                         40
@@ -929,7 +929,7 @@
                     "id": "obj-3",
                     "maxclass": "newobj",
                     "patching_rect": [
-                        "153",
+                        "189",
                         "162",
                         40,
                         40
@@ -942,7 +942,7 @@
                     "id": "obj-4",
                     "maxclass": "ezdac~",
                     "patching_rect": [
-                        "153",
+                        "189",
                         "234",
                         30,
                         30

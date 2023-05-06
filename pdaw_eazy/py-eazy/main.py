@@ -56,6 +56,8 @@ except InvalidNameException as e9:
     print(e9)
 except AttributeError as e10:
     print(e10)
+except ValueError as e11:
+    print(e11)
 
 #print data in intermediate form
 

@@ -14,9 +14,13 @@ def msgbox(index, rect, text):
     if len(text)==0:
         text=''
     elif len(text)>=1:
-        result = ''
+        result = ' '
         for arg in text:
-            result += str(arg)+' '
+            if type(arg)==list:
+                for a in arg:
+                    result+= str(a)+' '
+            else:
+                result += str(arg)+' '
         text=result
         
     box = {'id':index,'maxclass':'message', 
@@ -32,7 +36,12 @@ def bangbox(index, maxclass, rect):
 def objbox(index, rect, text, args):
     index = 'obj-'+str(index)
     if text=='obj': text=''
-    for arg in args: text += ' '+str(arg)
+    for arg in args:
+        if type(arg)==list:
+            for a in arg:
+                text+= ' '+str(a)
+        else:
+            text += ' '+str(arg)
 
     box = {'id':index, 'maxclass':'newobj',
            'patching_rect':rect, 'text':text}

@@ -103,7 +103,11 @@ class PdFormatter(Formatter):
         elif len(line['args'])>=1:
             result = ''
             for arg in line['args']:
-                result += str(arg)+' '
+                if type(arg)==list:
+                    for a in arg:
+                        result+= str(a)+' '
+                else:
+                    result += str(arg)+' '
             line['args']=result
         return f"{line['chunk']} {line['x_pos']} {line['y_pos']} {line['ntype']} {line['args']};"
 
@@ -217,6 +221,14 @@ class MaxFormatter(Formatter):
                         box=tojson.bangbox(var.index, var.nodetype, [var.xpos, var.ypos,
                                                                      40, 40])
                     elif var.nodetype=='message':
+                        if var.args[0]=='open':
+                            if '/' in var.args[1]:
+                                res = var.args[1].split('/')
+                                var.args[1] = res[-1]
+                            elif '\'' in var.args[1]:
+                                res = var.args[1].split('\'')
+                                var.args[1] = res[-1]
+                            var.args[2] = ','
                         box=tojson.msgbox(var.index, [var.xpos, var.ypos,
                                                       40, 40],
                                       var.args)
