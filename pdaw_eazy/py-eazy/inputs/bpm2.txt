@@ -1,4 +1,4 @@
-patch bpm
+patch bpm2
 
 import pdawlib
 
@@ -22,17 +22,20 @@ block onoff() {
 	toggle() > s('ON')
 }
 
-block drums (seq:list, sample:symbol) {
-	sendto = send(sample)
+block drums (seq:list, sample:symbol, name:symbol) {
+	commonbang = bang()
+	readsample = @read(sample)
 
 	for i in range @len(seq):
-		inlet() > bang() > s = spigot() > bang() > sendto
+		inlet() > bang() > s = spigot() > commonbang > readsample
 		if seq[i]==1:
 			loadbang() > toggle() > 2:s
 		else:
 			toggle() > 2:s
 		end
 	end
+
+	readsample > send~(name)
 		
 }
 
@@ -62,6 +65,16 @@ block clockdiv(time:intn) {
 	end
 }
 
+block basicmixer(names:list, vols:list) {
+	final = dac~()
+	hook = *~(1)
+	for i in range @len(vols):
+		receive~(names[i]) > *~(vols[i]) > hook
+	end
+	hook > [1:final, 2:final]
+
+}
+
 #start/stop audio stream
 @onoff()
 
@@ -69,7 +82,7 @@ block clockdiv(time:intn) {
 @bpm(140)
 
 #instruments
-drumseq = @drums([0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1], 'kick')
+drumseq = @drums([0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1], '../samples/kick.wav', 'kick')
 
 #clock
 drumclock = @clockdiv(16)
@@ -78,7 +91,6 @@ drumclock = @clockdiv(16)
 @bind(drumclock,drumseq,16)
 
 #mixer
-final = dac~()
-receive('kick')>bang()>r=@read('../samples/kick.wav')>[1:final, 2:final]
+mix = @basicmixer(['kick'], [0.4])
 
 ;

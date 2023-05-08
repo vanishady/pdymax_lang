@@ -90,9 +90,24 @@ class PdFormatter(Formatter):
         super().__init__(self.memory, self.conns, self.fn)
         self.memory = super().formatmemory('pd')
         
-        self.pd_stylememo()
+        self.memory = self.getstyledmemo(self.memory['general'], [])
         self.linebuilder()
         self.patchbuilder()
+
+    def getstyledmemo(self, nodes, styledmemo=[]):
+        for node in nodes:
+            styledmemo.append(node)
+            if isinstance(node, Node) and node.nodetype == 'subpatch':
+                if node.name in self.memory:
+                    self.getstyledmemo(self.memory[node.name], styledmemo)
+                restore = Node()
+                restore.name = node.name
+                restore.nodetype = 'restore'
+                restore.scope = node.name
+                restore.xpos = node.xpos
+                restore.ypos = node.ypos
+                styledmemo.append(restore)
+        return styledmemo
 
     def connprinter(self, line):
         return f'#X connect {line[1]} {line[2]} {line[3]} {line[4]};'
@@ -110,24 +125,6 @@ class PdFormatter(Formatter):
                     result += str(arg)+' '
             line['args']=result
         return f"{line['chunk']} {line['x_pos']} {line['y_pos']} {line['ntype']} {line['args']};"
-
-    def pd_stylememo(self):
-        #order in pd-like style
-        temp = []
-        for node in self.memory['general']:
-            temp.append(node)
-            if type(node)==Node and node.nodetype == 'subpatch':
-                if node.name in self.memory:
-                    for var in self.memory[node.name]:
-                        temp.append(var)
-                restore = Node()
-                restore.name = node.name
-                restore.nodetype = 'restore'
-                restore.scope = node.name
-                restore.xpos = node.xpos
-                restore.ypos = node.ypos
-                temp.append(restore)
-        self.memory = temp
 
     def linebuilder(self):
         """build lines"""
