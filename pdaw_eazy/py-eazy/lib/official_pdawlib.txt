@@ -1,0 +1,79 @@
+patch nihil
+
+func bind(n1:node, n2:node, iolets:intn) {
+
+	for i in range iolets:
+		n1:(i+1) > (i+1):n2
+	end
+}
+
+block read (name:symbol) {
+	inlet() > msg('open', name, '\,', 1) > r=readsf~() > outlet~()
+}
+
+block bpm (bpm:intn) {
+	div = /()
+	tbf = tbf()
+	loadbang() > msg(bpm) > num() > tbf:2 > 2:div
+	tbf > div 
+	loadbang() > msg(60000) > div > num() > s('4th_time')
+}
+
+block onoff() {
+	toggle() > s('ON')
+}
+
+block drums (seq:list, sample:symbol, name:symbol) {
+	commonbang = bang()
+	readsample = @read(sample)
+
+	for i in range @len(seq):
+		inlet() > bang() > s = spigot() > commonbang > readsample
+		if seq[i]==1:
+			loadbang() > toggle() > 2:s
+		else:
+			toggle() > 2:s
+		end
+	end
+
+	readsample > send~(name)
+		
+}
+
+block clockdiv(time:intn) {
+	divtime = time / 4
+	metro = metro()
+
+	receive('4th_time') > /(divtime) > num() > 2:metro
+	r('ON')>t = toggle()>1:metro
+
+	t > s0 = sel(0)
+	[loadbang(), s0] > bang() > msg(-1) > int_node=int(1)
+
+	metro>bang()>int_node>num()>%(time)>+(1)>n = num()
+	int_node>plus_one=+(1)
+	plus_one>2:int_node
+
+	sel_list = []
+	for i in range time:
+		@append(sel_list, i+1)
+	end
+
+	n > finalsel = sel(sel_list)
+	
+	for i in range time:
+		finalsel:(i+1) > bang() > outlet()
+	end
+}
+
+block basicmixer(names:list, vols:list) {
+	final = dac~()
+	hook = *~(1)
+	for i in range @len(vols):
+		receive~(names[i]) > *~(vols[i]) > hook
+	end
+	hook > [1:final, 2:final]
+
+}
+
+;

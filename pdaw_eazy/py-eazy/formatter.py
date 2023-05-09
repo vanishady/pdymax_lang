@@ -188,76 +188,71 @@ class MaxFormatter(Formatter):
         super().__init__(self.memory, self.conns, self.fn)
         self.memory = super().formatmemory('max')
 
-        self.linebuilder()
+        #self.subpatch_list = []
+        bl, ll = self.linebuilder(self.memory['general'])
+        appversion = tojson.appversion()
+        self.mainpatch= tojson.mainpatch(appversion, bl , ll)
         self.patchbuilder()
 
+    
     def patchbuilder(self):
-            outermainpatch = {'patcher':self.mainpatch}
-            json_mainpatch = json.dumps(outermainpatch, indent=4)
-            with open('outputs/'+self.fn+'.maxpat', 'w') as outfile:
-                outfile.write(json_mainpatch)
-            print(f'file {self.fn}.maxpat successfully created.')
-
-
-    def linebuilder(self):
-        """build lines"""
-        scopes_and_ids = {}
-        subpatch_list = []
-        for scope in self.memory:
-            line_list = []
-            box_list = []
-            for var in self.memory[scope]:
-                if type(var)!=Node: #connection
-                    patchline = tojson.patchline(var[3], var[4], var[1], var[2])
-                    line_list.append(patchline)
-                else:
-                    if var.nodetype=='subpatch':
-                        scopes_and_ids.update({var.name:[var.index, var.xpos, var.ypos]})
-                        box = False
-                    elif var.nodetype in ['button', 'toggle']:
-                        box=tojson.bangbox(var.index, var.nodetype, [var.xpos, var.ypos,
-                                                                     40, 40])
-                    elif var.nodetype=='message':
-                        if var.args[0]=='open':
-                            if '/' in var.args[1]:
-                                res = var.args[1].split('/')
-                                var.args[1] = res[-1]
-                            elif '\'' in var.args[1]:
-                                res = var.args[1].split('\'')
-                                var.args[1] = res[-1]
-                            var.args[2] = ','
-                        box=tojson.msgbox(var.index, [var.xpos, var.ypos,
-                                                      40, 40],
-                                      var.args)
-                    elif var.nodetype=='flonum': #e number?
-                        box=tojson.numbox(var.index, [var.xpos, var.ypos,
-                                                      40, 40])                
-                    elif var.nodetype in ['ezdac~', 'outlet', 'inlet']:
-                        box=tojson.box(var.index, var.nodetype, [var.xpos, var.ypos,
-                                                                 30, 30])
-                    else:
-                        box=tojson.objbox(var.index, [var.xpos, var.ypos,
-                                                      40, 40],
-                                      var.nodetype, var.args)
-                    if box: box_list.append(box)
-            if scope=='general':
-                general_box_list = box_list
-                general_line_list = line_list
-                appversion = tojson.appversion()
-            else:
-                appversion = tojson.appversion()
-                patcher= tojson.patcher(appversion, box_list, line_list)
-                savedattr= tojson.savedattr()
-                subpatch= tojson.subpatchbox(scopes_and_ids[scope][0], patcher, [scopes_and_ids[scope][1],
-                                                                                 scopes_and_ids[scope][2],
-                                                                                 40, 40],
-                                             savedattr,
-                                             scope)
-                subpatch_list.append(subpatch)
-
-        self.mainpatch= tojson.mainpatch(appversion, subpatch_list+general_box_list, general_line_list)
-
+        outermainpatch = {'patcher':self.mainpatch}
+        json_mainpatch = json.dumps(outermainpatch, indent=4)
+        with open('outputs/'+self.fn+'.maxpat', 'w') as outfile:
+            outfile.write(json_mainpatch)
+        print(f'file {self.fn}.maxpat successfully created.')
         
+
+    def linebuilder(self, scope):
+        box_list=[]
+        line_list=[]
+
+        for var in scope:
+
+            if isinstance(var, Node):
+
+                if var.nodetype=='subpatch':
+                    
+                    box_l, line_l = self.linebuilder(self.memory[var.name])
+                    appversion = tojson.appversion()
+                    patcher= tojson.patcher(appversion, box_l, line_l)
+                    savedattr= tojson.savedattr()
+                    box= tojson.subpatchbox(var.index, patcher, [var.xpos, var.ypos, 40, 40],
+                                            savedattr,
+                                            var.name)
+                        
+                elif var.nodetype in ['button', 'toggle']:
+                    box=tojson.bangbox(var.index, var.nodetype, [var.xpos, var.ypos,40, 40])
+                    
+                elif var.nodetype=='message':
+                    if var.args[0]=='open':
+                        if '/' in var.args[1]:
+                            res = var.args[1].split('/')
+                            var.args[1] = res[-1]
+                        elif '\'' in var.args[1]:
+                            res = var.args[1].split('\'')
+                            var.args[1] = res[-1]
+                        var.args[2] = ','
+                    box=tojson.msgbox(var.index, [var.xpos, var.ypos,40, 40],var.args)
+
+                elif var.nodetype=='flonum': #e number?
+                    box=tojson.numbox(var.index, [var.xpos, var.ypos,40, 40])                
+
+                elif var.nodetype in ['ezdac~', 'outlet', 'inlet']:
+                    box=tojson.box(var.index, var.nodetype, [var.xpos, var.ypos,30, 30])
+
+                else:
+                    box=tojson.objbox(var.index, [var.xpos, var.ypos,40, 40],
+                                      var.nodetype, var.args)
+
+                box_list.append(box)
+
+            else:
+                
+                patchline = tojson.patchline(var[3], var[4], var[1], var[2])
+                line_list.append(patchline)
+
+        return box_list, line_list  
             
 
         
