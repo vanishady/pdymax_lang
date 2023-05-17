@@ -1,0 +1,14 @@
+patch additive_synth
+
+freq = 432
+armonics =  [3,5,7,9]
+volumes = [0.85, 0.5, 0.35, 0.25]
+
+msg(freq) > freq_node = num()
+freq_node > osc~() > finalvol = *~ (0.25)
+
+for i in range @len(armonics):
+	freq_node > * (armonics[i]) > num() > osc~() > *~ (volumes[i]) > finalvol
+end
+
+;

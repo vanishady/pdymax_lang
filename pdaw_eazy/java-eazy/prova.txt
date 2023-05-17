@@ -1,0 +1,12 @@
+patch helloworld
+
+block hello (mymsg:symbol) {
+	msg(mymsg)
+}
+
+@hello('world')
+if 3>2:
+	msg(4523)
+end
+
+;

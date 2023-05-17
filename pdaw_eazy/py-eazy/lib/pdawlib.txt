@@ -1,14 +1,151 @@
 patch nihil
 
-block read (name:symbol) {
-	inlet() > msg('open', name, '\,', 1) > r=readsf~() > outlet~()
-}
-
 func bind(n1:node, n2:node, iolets:intn) {
 
 	for i in range iolets:
 		n1:(i+1) > (i+1):n2
 	end
+}
+
+func midikeys (start_note:intn, modo:symbol) {
+	if modo == 'dorian':
+		intervals = [2,1,2,2,2,1,2]
+	elif modo == 'phrygian':
+	     intervals = [1,2,2,2,1,2,2]
+	elif modo == 'lydian':
+		intervals = [2,2,2,1,2,2,1]
+	elif modo == 'mixolydian':
+		intervals = [2,2,1,2,2,1,2]
+	elif modo == 'aeolian':
+		intervals = [2,1,2,2,1,2,2]
+	elif modo == 'locrian':
+		intervals = [1,2,2,1,2,2,2]
+	elif modo == 'minor_pentatonic':
+		intervals = [3,2,2,3,2]
+	elif modo == 'major_pentatonic':
+		intervals = [2,2,3,2,3]
+	elif modo == 'minor_blues':
+		intervals = [3,2,1,1,3,2]
+	elif modo == 'major_blues':
+		intervals = [2,1,1,3,2,3]
+	elif modo=='melodic_minor':
+		intervals = [2, 1, 2, 2, 2, 2, 1]
+	elif modo=='harmonic_minor':
+		intervals = [2, 1, 2, 2, 1, 3, 1]
+	elif modo=='natural_minor':
+		intervals = [2, 1, 2, 2, 1, 2, 2]
+	elif modo=='natural_major':
+		intervals = [2,2,1,2,2,2,1]
+	end
+
+	res = []
+	for i in range @len(intervals):
+		@append(res, start_note+intervals[i])
+		start_note = start_note+intervals[i]
+	end
+	
+	return res
+}
+
+block read (name:symbol) {
+	inlet() > msg('open', name, '\,', 1) > r=readsf~() > outlet~()
+}
+
+block bpm (bpm:intn) {
+	div = /()
+	tbf = tbf()
+	loadbang() > msg(bpm) > num() > tbf:2 > 2:div
+	tbf > div 
+	loadbang() > msg(60000) > div > num() > s('4th_time')
+}
+
+block onoff() {
+	toggle() > s('ON')
+}
+
+block drums (seq:list, sample:symbol, name:symbol) {
+	commonbang = bang()
+	readsample = @read(sample)
+
+	for i in range @len(seq):
+		inlet() > bang() > s = spigot() > readsample
+		if seq[i]==1:
+			loadbang() > toggle() > 2:s
+		else:
+			toggle() > 2:s
+		end
+	end
+
+	readsample > send~(name)
+		
+}
+
+block clockdiv(time:intn) {
+	divtime = time / 4
+	metro = metro()
+
+	receive('4th_time') > /(divtime) > num() > 2:metro
+	r('ON')>t = toggle()>1:metro
+
+	t > s0 = sel(0)
+	[loadbang(), s0] > bang() > msg(-1) > int_node=int(1)
+
+	metro>bang()>int_node>num()>%(time)>+(1)>n = num()
+	int_node>plus_one=+(1)
+	plus_one>2:int_node
+
+	sel_list = []
+	for i in range time:
+		@append(sel_list, i+1)
+	end
+
+	n > finalsel = sel(sel_list)
+	
+	for i in range time:
+		finalsel:(i+1) > bang() > outlet()
+	end
+}
+
+block basicmixer(names:list, vols:list) {
+	final = dac~()
+	hook = *~(1)
+	for i in range @len(vols):
+		receive~(names[i]) > *~(vols[i]) > hook
+	end
+	hook > [1:final, 2:final]
+
+}
+
+block additivesynth (freq: intn, armonics: list, volumes: list) {
+
+	if freq == 0:
+		inlet() > freq_node = num()
+	else:
+		inlet() > msg(freq) > freq_node = num()
+	end
+	freq_node > osc~() > finalvol = *~ (0.25) > outlet~()
+
+	for i in range @len(armonics):
+		freq_node > * (armonics[i]) > num() > osc~() > *~ (volumes[i]) > 		finalvol
+	end
+}
+
+block adsr (attack:intn, decay:intn, sus_lev: floatn, sustain: intn, release:intn) {
+	bucket = line~()
+	inlet() > msg(1, 1000) > bucket
+	inlet() > delay(1000) > bang() > [mess = msg(0.5, 1500), del = delay(3000)]
+	del > msg(0, 1000) > bucket
+	mess > bucket > outlet~()
+}
+
+block scales(keys:list) {
+	numin = num()
+	numout = num()
+	inlet() > bang() > random(@len(keys)) > numin 
+	for i in range @len(keys):
+		numin > sel(i) > msg(keys[i]) > numout
+	end
+	numout > mtof() > outlet()
 }
 
 ;

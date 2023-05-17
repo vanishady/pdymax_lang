@@ -1,8 +1,0 @@
-#N canvas 688 19 681 716 12;
-#X obj 136 102 spigot ;
-#X obj 92 170 bng 19 250 50 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000 ;
-#X obj 20 74 tgl 19 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000 0 1 ;
-#X obj 76 21 bng 19 250 50 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000 ;
-#X connect 1 0 0 0;
-#X connect 2 0 0 1;
-#X connect 0 0 3 0;

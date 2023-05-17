@@ -1,11 +1,18 @@
 working dir: pdaw_eazy/py_eazy
 custom visitor: pdaw_eazy/py_eazy/PdeasyVisitor.py
 
-/* sheets */
-appunti e note sul progetto, idee di input. 
+----------------- struttura della cartella pdaw_eazy -----------------
 
-/*pdaw_eazy*/
-cartella di lavoro, con
-- esempi in maxmsp e puredata (piccoli esempi per comprendere la struttura di file .maxpat e .pd)
-- antlr4 verso java (utile per visualizzare l'AST)
-- antlr4 verso python (progetto principale)
+- /*java-eazy*/ antlr4 verso java (utile per visualizzare l'AST)
+
+- /*py-eazy*/ antlr4 verso python (progetto principale)
+
+-----------------  struttura della cartella py-eazy ----------------- 
+
+- /*doc*/ documentazione basilare sul progetto;
+- /*inputs*/ include esempi di input scritti nel DSL;
+- /*lib*/ in questa cartella vanno incluse tutte le librerie a supporto del DSL. Contiene già la libreria standard, 'pdawlib';
+- /*outputs*/ di default, il DSL salva gli output della transpilazione in questa cartella;
+- /*samples*/ contiene i campioni utilizzati in alcune delle patch di esempio;
+- /*utils*/ contiene file di supporto alla transpilazione;
+- /*wrapped*/ cartella che contiene gli oggetti pd convertiti in max, da inserire nel path di Max per avere compatibilità.

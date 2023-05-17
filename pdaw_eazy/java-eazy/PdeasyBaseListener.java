@@ -88,6 +88,18 @@ public class PdeasyBaseListener implements PdeasyListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterFlow_stmt(PdeasyParser.Flow_stmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFlow_stmt(PdeasyParser.Flow_stmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterBlockstmt(PdeasyParser.BlockstmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -412,18 +424,6 @@ public class PdeasyBaseListener implements PdeasyListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTestCompare(PdeasyParser.TestCompareContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitTestCompare(PdeasyParser.TestCompareContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterTestSym(PdeasyParser.TestSymContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -467,6 +467,18 @@ public class PdeasyBaseListener implements PdeasyListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitTestListAccess(PdeasyParser.TestListAccessContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterComparison(PdeasyParser.ComparisonContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitComparison(PdeasyParser.ComparisonContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

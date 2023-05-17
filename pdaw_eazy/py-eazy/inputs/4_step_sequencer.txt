@@ -1,0 +1,24 @@
+patch step_sequencer
+
+import pdawlib
+
+#start/stop audio stream
+@onoff()
+
+#set bpm
+@bpm(140)
+
+#instruments
+kickseq = @drums([0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1], '../samples/kick.wav', 'kick')
+hatseq = @drums([0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1], '../samples/clhat.wav', 'hat')
+
+#clock
+drumclock = @clockdiv(16)
+
+#connect intrument to clock
+@bind(drumclock,kickseq,16)
+@bind(drumclock,hatseq,16)
+
+#mixer
+mix = @basicmixer(['kick', 'hat'], [0.4, 0.4])
+;

@@ -62,6 +62,15 @@ class PdeasyListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by PdeasyParser#flow_stmt.
+    def enterFlow_stmt(self, ctx:PdeasyParser.Flow_stmtContext):
+        pass
+
+    # Exit a parse tree produced by PdeasyParser#flow_stmt.
+    def exitFlow_stmt(self, ctx:PdeasyParser.Flow_stmtContext):
+        pass
+
+
     # Enter a parse tree produced by PdeasyParser#blockstmt.
     def enterBlockstmt(self, ctx:PdeasyParser.BlockstmtContext):
         pass
@@ -305,15 +314,6 @@ class PdeasyListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by PdeasyParser#TestCompare.
-    def enterTestCompare(self, ctx:PdeasyParser.TestCompareContext):
-        pass
-
-    # Exit a parse tree produced by PdeasyParser#TestCompare.
-    def exitTestCompare(self, ctx:PdeasyParser.TestCompareContext):
-        pass
-
-
     # Enter a parse tree produced by PdeasyParser#TestSym.
     def enterTestSym(self, ctx:PdeasyParser.TestSymContext):
         pass
@@ -347,6 +347,15 @@ class PdeasyListener(ParseTreeListener):
 
     # Exit a parse tree produced by PdeasyParser#TestListAccess.
     def exitTestListAccess(self, ctx:PdeasyParser.TestListAccessContext):
+        pass
+
+
+    # Enter a parse tree produced by PdeasyParser#comparison.
+    def enterComparison(self, ctx:PdeasyParser.ComparisonContext):
+        pass
+
+    # Exit a parse tree produced by PdeasyParser#comparison.
+    def exitComparison(self, ctx:PdeasyParser.ComparisonContext):
         pass
 
 

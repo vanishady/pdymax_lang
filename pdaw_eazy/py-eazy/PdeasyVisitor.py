@@ -104,6 +104,12 @@ class PdeasyVisitor(ParseTreeVisitor):
     def visitStmt(self, ctx:PdeasyParser.StmtContext):
         return self.visitChildren(ctx)
 
+    # Visit a parse tree produced by PdeasyParser#flow_stmt.
+    def visitFlow_stmt(self, ctx:PdeasyParser.Flow_stmtContext):
+        if ctx.PASS(): return 'pass'
+        elif ctx.CONTINUE(): return 'continue'
+        elif ctx.BREAK(): return 'break'
+
     def visitBlockstmt(self, ctx:PdeasyParser.BlockstmtContext):
         """add block body and details to self.callables"""
         #check if block name is avaiable (two blocks in same patch cannot have same name)
@@ -535,11 +541,11 @@ class PdeasyVisitor(ParseTreeVisitor):
     # Visit a parse tree produced by PdeasyParser#ifstmt.
     def visitIfstmt(self, ctx:PdeasyParser.IfstmtContext):
         """implements if-elif-else construct """
-        if self.visit(ctx.expr(0))==True:
+        if self.visit(ctx.comparison(0))==True:
             return self.visitSuite(ctx.suite(0))
         if ctx.ELIF():
             for i in range (len(ctx.ELIF())):
-                if self.visit(ctx.expr(i+1))==True:
+                if self.visit(ctx.comparison(i+1))==True:
                     return self.visitSuite(ctx.suite(i+1))
         if ctx.ELSE():
             lastsuite = len(ctx.suite())-1
@@ -589,8 +595,8 @@ class PdeasyVisitor(ParseTreeVisitor):
         return self.visit(ctx.expr())
 
 
-    # Visit a parse tree produced by PdeasyParser#TestCompare.
-    def visitTestCompare(self, ctx:PdeasyParser.TestCompareContext):
+    # Visit a parse tree produced by PdeasyParser#comparison.
+    def visitComparison(self, ctx:PdeasyParser.ComparisonContext):
         """return True or False after comparing"""
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
@@ -679,7 +685,13 @@ class PdeasyVisitor(ParseTreeVisitor):
         if not isinstance(rangelen, int): raise TypeException(ctx.start.line, type(rangelen), 'int')
         for i in range(rangelen):
             iterator.value+=1
-            self.visitSuite(ctx.suite())
+            instr = self.visitSuite(ctx.suite())
+            if instr=='pass':
+                pass
+            elif instr=='break':
+                break
+            elif instr=='continue':
+                continue
         iterator.value = -1
 
     # Visit a parse tree produced by PdeasyParser#varname.

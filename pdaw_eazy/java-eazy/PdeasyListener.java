@@ -67,6 +67,16 @@ public interface PdeasyListener extends ParseTreeListener {
 	 */
 	void exitStmt(PdeasyParser.StmtContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link PdeasyParser#flow_stmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterFlow_stmt(PdeasyParser.Flow_stmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PdeasyParser#flow_stmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitFlow_stmt(PdeasyParser.Flow_stmtContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link PdeasyParser#blockstmt}.
 	 * @param ctx the parse tree
 	 */
@@ -357,18 +367,6 @@ public interface PdeasyListener extends ParseTreeListener {
 	 */
 	void exitParensExpr(PdeasyParser.ParensExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code TestCompare}
-	 * labeled alternative in {@link PdeasyParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterTestCompare(PdeasyParser.TestCompareContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code TestCompare}
-	 * labeled alternative in {@link PdeasyParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitTestCompare(PdeasyParser.TestCompareContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code TestSym}
 	 * labeled alternative in {@link PdeasyParser#expr}.
 	 * @param ctx the parse tree
@@ -416,6 +414,16 @@ public interface PdeasyListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitTestListAccess(PdeasyParser.TestListAccessContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PdeasyParser#comparison}.
+	 * @param ctx the parse tree
+	 */
+	void enterComparison(PdeasyParser.ComparisonContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PdeasyParser#comparison}.
+	 * @param ctx the parse tree
+	 */
+	void exitComparison(PdeasyParser.ComparisonContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link PdeasyParser#forstmt}.
 	 * @param ctx the parse tree

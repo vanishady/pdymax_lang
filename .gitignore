@@ -1,6 +1,7 @@
 .experiments
+.externals
 .BASHAVVIO.txt
 .references
-.puredata_patches
-.maxmsp_patches
+.sheets
 pdaw/py-target/doc/.todo.txt
+pdaw/py-target/doc/.node.odt

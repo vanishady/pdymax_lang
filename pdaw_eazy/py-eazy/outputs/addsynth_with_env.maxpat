@@ -61,10 +61,10 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            96,
-                            107,
-                            166,
-                            184
+                            146,
+                            59,
+                            121,
+                            120
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -103,7 +103,7 @@
                                     "id": "obj-0",
                                     "maxclass": "inlet",
                                     "patching_rect": [
-                                        "135",
+                                        "171",
                                         "18",
                                         30,
                                         30
@@ -115,12 +115,12 @@
                                     "id": "obj-1",
                                     "maxclass": "message",
                                     "patching_rect": [
-                                        "135",
+                                        "171",
                                         "90",
                                         40,
                                         40
                                     ],
-                                    "text": "440 "
+                                    "text": " 432 "
                                 }
                             },
                             {
@@ -129,7 +129,7 @@
                                     "maxclass": "flonum",
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "135",
+                                        "171",
                                         "162",
                                         40,
                                         40
@@ -154,7 +154,7 @@
                                     "id": "obj-4",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "135",
+                                        "171",
                                         "522",
                                         40,
                                         40
@@ -167,7 +167,7 @@
                                     "id": "obj-5",
                                     "maxclass": "outlet",
                                     "patching_rect": [
-                                        "135",
+                                        "171",
                                         "594",
                                         30,
                                         30
@@ -223,7 +223,7 @@
                                         40,
                                         40
                                     ],
-                                    "text": " *~ 0.75"
+                                    "text": " *~ 0.85"
                                 }
                             },
                             {
@@ -275,7 +275,7 @@
                                         40,
                                         40
                                     ],
-                                    "text": " *~ 0.55"
+                                    "text": " *~ 0.5"
                                 }
                             },
                             {
@@ -328,6 +328,58 @@
                                         40
                                     ],
                                     "text": " *~ 0.35"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-18",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "315",
+                                        "234",
+                                        40,
+                                        40
+                                    ],
+                                    "text": " * 9"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-19",
+                                    "maxclass": "flonum",
+                                    "parameter_enable": 0,
+                                    "patching_rect": [
+                                        "315",
+                                        "306",
+                                        40,
+                                        40
+                                    ]
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-20",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "315",
+                                        "378",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "cycle~"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-21",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "315",
+                                        "450",
+                                        40,
+                                        40
+                                    ],
+                                    "text": " *~ 0.25"
                                 }
                             }
                         ],
@@ -571,6 +623,66 @@
                                         0
                                     ]
                                 }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-18",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-2",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-19",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-18",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-20",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-19",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-21",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-20",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-4",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-21",
+                                        0
+                                    ]
+                                }
                             }
                         ]
                     },
@@ -604,10 +716,10 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            21,
-                            138,
-                            66,
-                            84
+                            198,
+                            183,
+                            173,
+                            28
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -676,7 +788,7 @@
                                         40,
                                         40
                                     ],
-                                    "text": "1 1000 "
+                                    "text": " 1 1000 "
                                 }
                             },
                             {
@@ -729,7 +841,7 @@
                                         40,
                                         40
                                     ],
-                                    "text": "0.5 1500 "
+                                    "text": " 0.5 1500 "
                                 }
                             },
                             {
@@ -755,7 +867,7 @@
                                         40,
                                         40
                                     ],
-                                    "text": "0 1000 "
+                                    "text": " 0 1000 "
                                 }
                             },
                             {

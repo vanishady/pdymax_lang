@@ -1,6 +1,5 @@
 PLUS:
 - positional alg con graphviz
-- pass, continue, break
 - supporto per nodetypes (generaltypes e objtypes)
 - shell personalizzata con documentazione di supporto
 - colors e font

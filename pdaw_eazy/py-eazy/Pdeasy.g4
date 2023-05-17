@@ -24,7 +24,14 @@ stmt
  | ifstmt 
  | forstmt 
  | returnstmt
+ | flow_stmt
  ; 
+
+flow_stmt
+ : BREAK
+ | CONTINUE
+ | PASS
+ ;
 
 blockstmt: BLOCK NAME typedparams '{' suite? '}' ;
 
@@ -103,19 +110,22 @@ operation
  ;
 
 ifstmt
- : IF expr ':' suite (ELIF expr ':' suite)* (ELSE ':' suite)? END
+ : IF comparison ':' suite (ELIF comparison ':' suite)* (ELSE ':' suite)? END
  ;
 
 expr
  : expr op=('*'|'/'|'%') expr						#MulDiv
  | expr op=('+'|'-') expr						#SubAdd
- | expr testop=('==' | '!=' | '>' | '>=' | '<' | '<=') expr	#TestCompare
  | NUMBER									#TestNum
  | SYMBOL									#TestSym
  | varname 									#TestVar
  | callstmt 								#TestCall
  | list_access 								#TestListAccess
  | '(' expr ')' 								#ParensExpr
+ ;
+
+comparison
+ : expr testop=('==' | '!=' | '>' | '>=' | '<' | '<=') expr	
  ;
 
 forstmt
@@ -152,6 +162,9 @@ ELIF : 'elif' ;
 ELSE : 'else' ;
 FOR : 'for' ;
 AS : 'as' ;
+BREAK : 'break' ;
+CONTINUE : 'continue' ;
+PASS : 'pass' ;
 
 
 VARTYPE : 'intn' | 'floatn' | 'symbol' | 'list' | 'node' ;
@@ -170,7 +183,7 @@ fragment DIGIT : [0-9] ;
 fragment NON_ZERO_DIGIT : [1-9] ;
 fragment ID_START : '_' | LETTER ;
 fragment ID_CONTINUE : LETTER | DIGIT | '_' ;
-fragment SYMBOL_ADMITTED : LETTER | DIGIT | '_' | '.' | ',' | '\\' | '/' ; 
+fragment SYMBOL_ADMITTED : LETTER | DIGIT | '_' | '.' | ',' | '\\' | '/' | '#' | '!' | '&' ; 
 
 WS : [ \t\r\n]+ -> skip ;
 COMMENT : '#' ~[\r\n]* -> skip ;
