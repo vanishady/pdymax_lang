@@ -1,5 +1,7 @@
-working dir: pdaw_eazy/py_eazy
-custom visitor: pdaw_eazy/py_eazy/PdeasyVisitor.py
+RUN: Per eseguire la transpilazione, aprire il terminale nella cartella py-eazy e digitare il seguente comando:
+> python3 main.py
+All'apertura del file manager, selezionare il sorgente desiderato per la transpilazione.
+
 
 ----------------- struttura della cartella pdaw_eazy -----------------
 

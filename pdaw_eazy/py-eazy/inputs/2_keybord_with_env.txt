@@ -19,7 +19,7 @@ block loneclock(time:intn) {
 
 }
 
-@onoff()
+toggle() > @onoff()
 @bpm(60)
 clock = @loneclock(4)
 res = @midikeys(60, 'melodic_minor') #melodic minor scale starting from C 

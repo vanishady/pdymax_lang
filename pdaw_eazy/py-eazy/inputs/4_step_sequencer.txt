@@ -3,7 +3,7 @@ patch step_sequencer
 import pdawlib
 
 #start/stop audio stream
-@onoff()
+toggle() > @onoff()
 
 #set bpm
 @bpm(140)

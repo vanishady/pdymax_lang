@@ -59,8 +59,12 @@ block bpm (bpm:intn) {
 	loadbang() > msg(60000) > div > num() > s('4th_time')
 }
 
-block onoff() {
+block on_off() {
 	toggle() > s('ON')
+}
+
+block onoff() {
+	inlet() > s('ON')
 }
 
 block drums (seq:list, sample:symbol, name:symbol) {
