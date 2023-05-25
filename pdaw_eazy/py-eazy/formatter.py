@@ -225,6 +225,7 @@ class MaxFormatter(Formatter):
                     box=tojson.bangbox(var.index, var.nodetype, [var.xpos, var.ypos,40, 40])
                     
                 elif var.nodetype=='message':
+                    if not var.args: var.args = ' '
                     if var.args[0]=='open':
                         if '/' in var.args[1]:
                             res = var.args[1].split('/')

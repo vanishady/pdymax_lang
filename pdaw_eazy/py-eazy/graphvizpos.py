@@ -1,6 +1,7 @@
 import graphviz
 from components import *
 import json
+import math
 
                 
             
@@ -17,11 +18,13 @@ class GraphPos():
         """add nodes and connections from the segment to dot file in json format"""
         for elem in self.segment:
             if type(elem)==Node:
-                #sistema width passando stringa nodo
-                if elem.nodetype in ['subpatch', 'send', 's', 'receive', 'r']:
-                    self.dot.node(f'{elem.index}', width='2.5')
+                if elem.nodetype=='subpatch':
+                    w=len(elem.name)
                 else:
-                    self.dot.node(f'{elem.index}')
+                    w=1
+                    for a in elem.args:
+                        w+=len(str(a))
+                self.dot.node(f'{elem.index}', width=f'{math.ceil(w/12)}')
             else:
                 self.dot.edge(f'{elem[3]}', f'{elem[1]}')
         self.pipe = self.dot.pipe(encoding='utf-8')

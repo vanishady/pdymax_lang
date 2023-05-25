@@ -183,7 +183,7 @@ fragment DIGIT : [0-9] ;
 fragment NON_ZERO_DIGIT : [1-9] ;
 fragment ID_START : '_' | LETTER ;
 fragment ID_CONTINUE : LETTER | DIGIT | '_' ;
-fragment SYMBOL_ADMITTED : LETTER | DIGIT | '_' | '.' | ',' | '\\' | '/' | '#' | '!' | '&' ; 
+fragment SYMBOL_ADMITTED : LETTER | DIGIT | '_' | '.' | ',' | '\\' | '/' | '#' | '!' | '&' | '<' | '$' ; 
 
 WS : [ \t\r\n]+ -> skip ;
 COMMENT : '#' ~[\r\n]* -> skip ;

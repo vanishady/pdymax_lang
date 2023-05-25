@@ -1,0 +1,70 @@
+patch breakbeat
+import pdawlib
+
+block ac_bass() {
+	inlet() > mtof() > outlet()
+}
+
+block readmore(samples:list) {
+	inlet() > initnum=num() 
+	finalout = outlet~()
+	for i in range @len(samples):
+		if i==@len(samples):
+			break
+		end
+		initnum>sel(i)>bang()>@read(samples[i])>finalout
+	end
+}
+
+block attachprobability(prob:intn) {
+	r('4bars_pattern')> bang()> random(100)> num()> obj('<',prob)> outlet()
+}
+
+block genbass(probs:list, startnote:intn, scale:symbol) {
+	common_num = num()
+	synth = @ac_bass()
+	common_num > synth > outlet~()
+
+	for i in range @len(probs):
+		inlet() > bang() > s = spigot() > bang() > note=num() > common_num
+		@attachprobability(probs[i]) > toggle() > 2:s
+		res = @midikeys(startnote, scale)
+		mel = @scales(res)
+		r('4bars_pattern') > mel > note
+	end
+}
+
+block gendrums(samples:list, seqlen:intn) {
+
+	common_num = num()
+
+	for i in range seqlen:
+		inlet()>bang()> curr=msg() >common_num
+		r('4bars_pattern')>bang()>random(@len(samples))>msg('set', '\$1')>curr
+	end
+	
+	common_num > @readmore(samples) >  outlet~()
+}
+
+
+#init and bpm
+toggle() > @onoff()
+@bpm(142)
+
+#clocks
+fourbars = @genpatternof(4) #generate new pattern each 4 bars
+onebar = @genpatternof(1) #generate new pattern each 1 bar 
+bassclock = @clockdiv(8) #clock for 8th notes
+drumclock = @clockdiv(16) #clock for 16th notes
+
+#instruments
+bass_seq = @genbass([100,90,85,75,90,85,75,90], 40,'phrygian') 
+@bind(bassclock, bass_seq, 8)
+
+drum_samples = ['../samples/kick.wav', '../samples/clhat.wav', '../samples/dnb.wav', '../samples/hihat_cch.wav', './samples/hihat_metal.wav']
+drum_seq = @gendrums(drum_samples, 16)
+@bind(drumclock, drum_seq, 16)
+
+;
+
+

@@ -7,6 +7,12 @@ func bind(n1:node, n2:node, iolets:intn) {
 	end
 }
 
+func onetoall (n1:node, n2:node, iolets:intn) {
+	for i in range iolets:
+		n1 > (i+1):n2
+	end
+}
+
 func midikeys (start_note:intn, modo:symbol) {
 	if modo == 'dorian':
 		intervals = [2,1,2,2,2,1,2]
@@ -55,6 +61,14 @@ block bpm (bpm:intn) {
 	div = /()
 	tbf = tbf()
 	loadbang() > msg(bpm) > num() > tbf:2 > 2:div
+	tbf > div 
+	loadbang() > msg(60000) > div > num() > s('4th_time')
+}
+
+block bpm_out() {
+	div = /()
+	tbf = tbf()
+	inlet() > num() > tbf:2 > 2:div
 	tbf > div 
 	loadbang() > msg(60000) > div > num() > s('4th_time')
 }
@@ -108,6 +122,30 @@ block clockdiv(time:intn) {
 	for i in range time:
 		finalsel:(i+1) > bang() > outlet()
 	end
+}
+
+#takes patternlength in bars. bangs out each <patlen> bars.
+block genpatternof(patlen:intn) {
+	metro = metro()
+
+	receive('4th_time') > num() > 2:metro
+	r('ON')>t = toggle()>1:metro
+
+	t > s0 = sel(0)
+	[loadbang(), s0] > bang() > msg(-1) > int_node=int(1)
+
+	metro>bang()>int_node>n=num()
+	int_node>plus_one=+(1)
+	plus_one>2:int_node
+
+	if patlen == 4: 
+		sendout = '4bars_pattern'
+	elif patlen == 2:
+		sendout = '2bars_pattern'
+	elif patlen == 1:
+		sendout = '1bar_pattern'
+	end
+	n>%(4*patlen)>+(1)>num()>sel(1)>bang()>send(sendout)
 }
 
 block basicmixer(names:list, vols:list) {
