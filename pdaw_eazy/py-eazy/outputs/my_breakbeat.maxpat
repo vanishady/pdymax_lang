@@ -55,7 +55,7 @@
                     "parameter_enable": 0,
                     "patching_rect": [
                         "36",
-                        "18",
+                        "306",
                         40,
                         40
                     ]
@@ -76,10 +76,10 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            90,
-                            131,
-                            50,
-                            81
+                            122,
+                            189,
+                            121,
+                            199
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -156,7 +156,7 @@
                     },
                     "patching_rect": [
                         "36",
-                        "90",
+                        "378",
                         40,
                         40
                     ],
@@ -173,6 +173,32 @@
                 "box": {
                     "id": "obj-2",
                     "maxclass": "newobj",
+                    "patching_rect": [
+                        "126",
+                        "234",
+                        40,
+                        40
+                    ],
+                    "text": "loadbang"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-3",
+                    "maxclass": "message",
+                    "patching_rect": [
+                        "126",
+                        "306",
+                        40,
+                        40
+                    ],
+                    "text": " 140 "
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-4",
+                    "maxclass": "newobj",
                     "patcher": {
                         "fileversion": 1,
                         "appversion": {
@@ -184,10 +210,10 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            199,
-                            145,
-                            176,
-                            145
+                            119,
+                            146,
+                            148,
+                            40
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -227,7 +253,7 @@
                                     "maxclass": "newobj",
                                     "patching_rect": [
                                         "36",
-                                        "306",
+                                        "234",
                                         40,
                                         40
                                     ],
@@ -240,7 +266,7 @@
                                     "maxclass": "newobj",
                                     "patching_rect": [
                                         "36",
-                                        "234",
+                                        "162",
                                         40,
                                         40
                                     ],
@@ -250,37 +276,23 @@
                             {
                                 "box": {
                                     "id": "obj-2",
-                                    "maxclass": "newobj",
+                                    "maxclass": "inlet",
                                     "patching_rect": [
                                         "36",
                                         "18",
-                                        40,
-                                        40
-                                    ],
-                                    "text": "loadbang"
+                                        30,
+                                        30
+                                    ]
                                 }
                             },
                             {
                                 "box": {
                                     "id": "obj-3",
-                                    "maxclass": "message",
-                                    "patching_rect": [
-                                        "36",
-                                        "90",
-                                        40,
-                                        40
-                                    ],
-                                    "text": " 142 "
-                                }
-                            },
-                            {
-                                "box": {
-                                    "id": "obj-4",
                                     "maxclass": "flonum",
                                     "parameter_enable": 0,
                                     "patching_rect": [
                                         "36",
-                                        "162",
+                                        "90",
                                         40,
                                         40
                                     ]
@@ -288,11 +300,11 @@
                             },
                             {
                                 "box": {
-                                    "id": "obj-5",
+                                    "id": "obj-4",
                                     "maxclass": "newobj",
                                     "patching_rect": [
                                         "126",
-                                        "162",
+                                        "90",
                                         40,
                                         40
                                     ],
@@ -301,11 +313,11 @@
                             },
                             {
                                 "box": {
-                                    "id": "obj-6",
+                                    "id": "obj-5",
                                     "maxclass": "message",
                                     "patching_rect": [
                                         "126",
-                                        "234",
+                                        "162",
                                         40,
                                         40
                                     ],
@@ -314,12 +326,12 @@
                             },
                             {
                                 "box": {
-                                    "id": "obj-7",
+                                    "id": "obj-6",
                                     "maxclass": "flonum",
                                     "parameter_enable": 0,
                                     "patching_rect": [
                                         "36",
-                                        "378",
+                                        "306",
                                         40,
                                         40
                                     ]
@@ -327,11 +339,11 @@
                             },
                             {
                                 "box": {
-                                    "id": "obj-8",
+                                    "id": "obj-7",
                                     "maxclass": "newobj",
                                     "patching_rect": [
                                         "36",
-                                        "450",
+                                        "378",
                                         40,
                                         40
                                     ],
@@ -355,7 +367,7 @@
                             {
                                 "patchline": {
                                     "destination": [
-                                        "obj-4",
+                                        "obj-1",
                                         0
                                     ],
                                     "source": [
@@ -367,7 +379,31 @@
                             {
                                 "patchline": {
                                     "destination": [
+                                        "obj-0",
+                                        1
+                                    ],
+                                    "source": [
                                         "obj-1",
+                                        1
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-0",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-1",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-5",
                                         0
                                     ],
                                     "source": [
@@ -380,30 +416,6 @@
                                 "patchline": {
                                     "destination": [
                                         "obj-0",
-                                        1
-                                    ],
-                                    "source": [
-                                        "obj-1",
-                                        1
-                                    ]
-                                }
-                            },
-                            {
-                                "patchline": {
-                                    "destination": [
-                                        "obj-0",
-                                        0
-                                    ],
-                                    "source": [
-                                        "obj-1",
-                                        0
-                                    ]
-                                }
-                            },
-                            {
-                                "patchline": {
-                                    "destination": [
-                                        "obj-6",
                                         0
                                     ],
                                     "source": [
@@ -415,35 +427,23 @@
                             {
                                 "patchline": {
                                     "destination": [
+                                        "obj-6",
+                                        0
+                                    ],
+                                    "source": [
                                         "obj-0",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-7",
                                         0
                                     ],
                                     "source": [
                                         "obj-6",
-                                        0
-                                    ]
-                                }
-                            },
-                            {
-                                "patchline": {
-                                    "destination": [
-                                        "obj-7",
-                                        0
-                                    ],
-                                    "source": [
-                                        "obj-0",
-                                        0
-                                    ]
-                                }
-                            },
-                            {
-                                "patchline": {
-                                    "destination": [
-                                        "obj-8",
-                                        0
-                                    ],
-                                    "source": [
-                                        "obj-7",
                                         0
                                     ]
                                 }
@@ -452,7 +452,7 @@
                     },
                     "patching_rect": [
                         "126",
-                        "90",
+                        "378",
                         40,
                         40
                     ],
@@ -462,12 +462,12 @@
                         "globalpatchername": "",
                         "tags": ""
                     },
-                    "text": "p bpm0"
+                    "text": "p bpm_out0"
                 }
             },
             {
                 "box": {
-                    "id": "obj-3",
+                    "id": "obj-5",
                     "maxclass": "newobj",
                     "patcher": {
                         "fileversion": 1,
@@ -480,10 +480,10 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            117,
-                            99,
-                            130,
-                            165
+                            26,
+                            160,
+                            24,
+                            161
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -561,7 +561,7 @@
                                     "id": "obj-3",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "100",
+                                        "82",
                                         "18",
                                         40,
                                         40
@@ -577,7 +577,7 @@
                                     "numoutlets": 1,
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "100",
+                                        "82",
                                         "90",
                                         40,
                                         40
@@ -1018,7 +1018,7 @@
                     },
                     "patching_rect": [
                         "252",
-                        "90",
+                        "378",
                         40,
                         40
                     ],
@@ -1033,7 +1033,7 @@
             },
             {
                 "box": {
-                    "id": "obj-4",
+                    "id": "obj-6",
                     "maxclass": "newobj",
                     "patcher": {
                         "fileversion": 1,
@@ -1046,10 +1046,10 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            58,
-                            48,
-                            143,
-                            44
+                            25,
+                            62,
+                            99,
+                            121
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -1088,46 +1088,7 @@
                                     "id": "obj-0",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "203",
-                                        "234",
-                                        40,
-                                        40
-                                    ],
-                                    "text": "metro"
-                                }
-                            },
-                            {
-                                "box": {
-                                    "id": "obj-1",
-                                    "maxclass": "newobj",
-                                    "patching_rect": [
-                                        "254",
-                                        "90",
-                                        40,
-                                        40
-                                    ],
-                                    "text": "receive 4th_time"
-                                }
-                            },
-                            {
-                                "box": {
-                                    "id": "obj-2",
-                                    "maxclass": "flonum",
-                                    "parameter_enable": 0,
-                                    "patching_rect": [
-                                        "254",
-                                        "162",
-                                        40,
-                                        40
-                                    ]
-                                }
-                            },
-                            {
-                                "box": {
-                                    "id": "obj-3",
-                                    "maxclass": "newobj",
-                                    "patching_rect": [
-                                        "100",
+                                        "36",
                                         "18",
                                         40,
                                         40
@@ -1137,13 +1098,13 @@
                             },
                             {
                                 "box": {
-                                    "id": "obj-4",
+                                    "id": "obj-1",
                                     "maxclass": "toggle",
                                     "numinlets": 1,
                                     "numoutlets": 1,
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "100",
+                                        "36",
                                         "90",
                                         40,
                                         40
@@ -1152,39 +1113,26 @@
                             },
                             {
                                 "box": {
-                                    "id": "obj-5",
+                                    "id": "obj-2",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "36",
+                                        "81",
                                         "162",
                                         40,
                                         40
                                     ],
-                                    "text": "sel 0"
+                                    "text": "metro"
                                 }
                             },
                             {
                                 "box": {
-                                    "id": "obj-6",
-                                    "maxclass": "newobj",
-                                    "patching_rect": [
-                                        "126",
-                                        "162",
-                                        40,
-                                        40
-                                    ],
-                                    "text": "loadbang"
-                                }
-                            },
-                            {
-                                "box": {
-                                    "id": "obj-7",
+                                    "id": "obj-3",
                                     "maxclass": "button",
                                     "numinlets": 1,
                                     "numoutlets": 1,
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "113",
+                                        "81",
                                         "234",
                                         40,
                                         40
@@ -1193,153 +1141,56 @@
                             },
                             {
                                 "box": {
-                                    "id": "obj-8",
-                                    "maxclass": "message",
+                                    "id": "obj-4",
+                                    "maxclass": "outlet",
                                     "patching_rect": [
-                                        "113",
+                                        "81",
                                         "306",
-                                        40,
-                                        40
-                                    ],
-                                    "text": " -1 "
-                                }
-                            },
-                            {
-                                "box": {
-                                    "id": "obj-9",
-                                    "maxclass": "newobj",
-                                    "patching_rect": [
-                                        "248",
-                                        "378",
-                                        40,
-                                        40
-                                    ],
-                                    "text": "int 1"
-                                }
-                            },
-                            {
-                                "box": {
-                                    "id": "obj-10",
-                                    "maxclass": "button",
-                                    "numinlets": 1,
-                                    "numoutlets": 1,
-                                    "parameter_enable": 0,
-                                    "patching_rect": [
-                                        "203",
-                                        "306",
-                                        40,
-                                        40
+                                        30,
+                                        30
                                     ]
                                 }
                             },
                             {
                                 "box": {
-                                    "id": "obj-11",
-                                    "maxclass": "flonum",
-                                    "parameter_enable": 0,
-                                    "patching_rect": [
-                                        "248",
-                                        "450",
-                                        40,
-                                        40
-                                    ]
-                                }
-                            },
-                            {
-                                "box": {
-                                    "id": "obj-12",
+                                    "id": "obj-5",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "293",
-                                        "306",
+                                        "126",
+                                        "18",
                                         40,
                                         40
                                     ],
-                                    "text": " + 1"
+                                    "text": "r 4th_time"
                                 }
                             },
                             {
                                 "box": {
-                                    "id": "obj-13",
+                                    "id": "obj-6",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "248",
-                                        "522",
+                                        "126",
+                                        "90",
                                         40,
                                         40
                                     ],
-                                    "text": " % 4"
-                                }
-                            },
-                            {
-                                "box": {
-                                    "id": "obj-14",
-                                    "maxclass": "newobj",
-                                    "patching_rect": [
-                                        "248",
-                                        "594",
-                                        40,
-                                        40
-                                    ],
-                                    "text": " + 1"
-                                }
-                            },
-                            {
-                                "box": {
-                                    "id": "obj-15",
-                                    "maxclass": "flonum",
-                                    "parameter_enable": 0,
-                                    "patching_rect": [
-                                        "248",
-                                        "666",
-                                        40,
-                                        40
-                                    ]
-                                }
-                            },
-                            {
-                                "box": {
-                                    "id": "obj-16",
-                                    "maxclass": "newobj",
-                                    "patching_rect": [
-                                        "248",
-                                        "738",
-                                        40,
-                                        40
-                                    ],
-                                    "text": "sel 1"
-                                }
-                            },
-                            {
-                                "box": {
-                                    "id": "obj-17",
-                                    "maxclass": "button",
-                                    "numinlets": 1,
-                                    "numoutlets": 1,
-                                    "parameter_enable": 0,
-                                    "patching_rect": [
-                                        "248",
-                                        "810",
-                                        40,
-                                        40
-                                    ]
-                                }
-                            },
-                            {
-                                "box": {
-                                    "id": "obj-18",
-                                    "maxclass": "newobj",
-                                    "patching_rect": [
-                                        "248",
-                                        "882",
-                                        40,
-                                        40
-                                    ],
-                                    "text": "send 1bar_pattern"
+                                    "text": " * 4"
                                 }
                             }
                         ],
                         "lines": [
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-1",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-0",
+                                        0
+                                    ]
+                                }
+                            },
                             {
                                 "patchline": {
                                     "destination": [
@@ -1355,8 +1206,8 @@
                             {
                                 "patchline": {
                                     "destination": [
-                                        "obj-0",
-                                        1
+                                        "obj-3",
+                                        0
                                     ],
                                     "source": [
                                         "obj-2",
@@ -1379,44 +1230,8 @@
                             {
                                 "patchline": {
                                     "destination": [
-                                        "obj-0",
-                                        0
-                                    ],
-                                    "source": [
-                                        "obj-4",
-                                        0
-                                    ]
-                                }
-                            },
-                            {
-                                "patchline": {
-                                    "destination": [
-                                        "obj-5",
-                                        0
-                                    ],
-                                    "source": [
-                                        "obj-4",
-                                        0
-                                    ]
-                                }
-                            },
-                            {
-                                "patchline": {
-                                    "destination": [
-                                        "obj-7",
-                                        0
-                                    ],
-                                    "source": [
                                         "obj-6",
                                         0
-                                    ]
-                                }
-                            },
-                            {
-                                "patchline": {
-                                    "destination": [
-                                        "obj-7",
-                                        0
                                     ],
                                     "source": [
                                         "obj-5",
@@ -1427,155 +1242,11 @@
                             {
                                 "patchline": {
                                     "destination": [
-                                        "obj-8",
-                                        0
-                                    ],
-                                    "source": [
-                                        "obj-7",
-                                        0
-                                    ]
-                                }
-                            },
-                            {
-                                "patchline": {
-                                    "destination": [
-                                        "obj-9",
-                                        0
-                                    ],
-                                    "source": [
-                                        "obj-8",
-                                        0
-                                    ]
-                                }
-                            },
-                            {
-                                "patchline": {
-                                    "destination": [
-                                        "obj-10",
-                                        0
-                                    ],
-                                    "source": [
-                                        "obj-0",
-                                        0
-                                    ]
-                                }
-                            },
-                            {
-                                "patchline": {
-                                    "destination": [
-                                        "obj-9",
-                                        0
-                                    ],
-                                    "source": [
-                                        "obj-10",
-                                        0
-                                    ]
-                                }
-                            },
-                            {
-                                "patchline": {
-                                    "destination": [
-                                        "obj-11",
-                                        0
-                                    ],
-                                    "source": [
-                                        "obj-9",
-                                        0
-                                    ]
-                                }
-                            },
-                            {
-                                "patchline": {
-                                    "destination": [
-                                        "obj-12",
-                                        0
-                                    ],
-                                    "source": [
-                                        "obj-9",
-                                        0
-                                    ]
-                                }
-                            },
-                            {
-                                "patchline": {
-                                    "destination": [
-                                        "obj-9",
+                                        "obj-2",
                                         1
                                     ],
                                     "source": [
-                                        "obj-12",
-                                        0
-                                    ]
-                                }
-                            },
-                            {
-                                "patchline": {
-                                    "destination": [
-                                        "obj-13",
-                                        0
-                                    ],
-                                    "source": [
-                                        "obj-11",
-                                        0
-                                    ]
-                                }
-                            },
-                            {
-                                "patchline": {
-                                    "destination": [
-                                        "obj-14",
-                                        0
-                                    ],
-                                    "source": [
-                                        "obj-13",
-                                        0
-                                    ]
-                                }
-                            },
-                            {
-                                "patchline": {
-                                    "destination": [
-                                        "obj-15",
-                                        0
-                                    ],
-                                    "source": [
-                                        "obj-14",
-                                        0
-                                    ]
-                                }
-                            },
-                            {
-                                "patchline": {
-                                    "destination": [
-                                        "obj-16",
-                                        0
-                                    ],
-                                    "source": [
-                                        "obj-15",
-                                        0
-                                    ]
-                                }
-                            },
-                            {
-                                "patchline": {
-                                    "destination": [
-                                        "obj-17",
-                                        0
-                                    ],
-                                    "source": [
-                                        "obj-16",
-                                        0
-                                    ]
-                                }
-                            },
-                            {
-                                "patchline": {
-                                    "destination": [
-                                        "obj-18",
-                                        0
-                                    ],
-                                    "source": [
-                                        "obj-17",
+                                        "obj-6",
                                         0
                                     ]
                                 }
@@ -1584,7 +1255,7 @@
                     },
                     "patching_rect": [
                         "414",
-                        "90",
+                        "306",
                         40,
                         40
                     ],
@@ -1594,12 +1265,12 @@
                         "globalpatchername": "",
                         "tags": ""
                     },
-                    "text": "p genpatternof1"
+                    "text": "p clockmul0"
                 }
             },
             {
                 "box": {
-                    "id": "obj-5",
+                    "id": "obj-7",
                     "maxclass": "newobj",
                     "patcher": {
                         "fileversion": 1,
@@ -1612,10 +1283,10 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            196,
-                            158,
-                            155,
-                            147
+                            180,
+                            74,
+                            106,
+                            191
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -1706,7 +1377,7 @@
                                     "id": "obj-4",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "203",
+                                        "185",
                                         "18",
                                         40,
                                         40
@@ -1722,7 +1393,7 @@
                                     "numoutlets": 1,
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "203",
+                                        "185",
                                         "90",
                                         40,
                                         40
@@ -2531,7 +2202,7 @@
                     },
                     "patching_rect": [
                         "540",
-                        "18",
+                        "306",
                         40,
                         40
                     ],
@@ -2546,7 +2217,7 @@
             },
             {
                 "box": {
-                    "id": "obj-6",
+                    "id": "obj-8",
                     "maxclass": "newobj",
                     "patcher": {
                         "fileversion": 1,
@@ -2559,10 +2230,10 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            61,
-                            198,
-                            158,
-                            44
+                            155,
+                            112,
+                            110,
+                            37
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -2653,7 +2324,7 @@
                                     "id": "obj-4",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "563",
+                                        "545",
                                         "18",
                                         40,
                                         40
@@ -2669,7 +2340,7 @@
                                     "numoutlets": 1,
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "563",
+                                        "545",
                                         "90",
                                         40,
                                         40
@@ -3886,7 +3557,7 @@
                     },
                     "patching_rect": [
                         "630",
-                        "18",
+                        "306",
                         40,
                         40
                     ],
@@ -3901,7 +3572,7 @@
             },
             {
                 "box": {
-                    "id": "obj-7",
+                    "id": "obj-9",
                     "maxclass": "newobj",
                     "patcher": {
                         "fileversion": 1,
@@ -3914,10 +3585,272 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            125,
-                            189,
-                            116,
-                            128
+                            52,
+                            135,
+                            61,
+                            133
+                        ],
+                        "bglocked": 0,
+                        "openinpresentation": 0,
+                        "default_fontsize": 12.0,
+                        "default_fontface": 0,
+                        "default_fontname": "Arial",
+                        "gridonopen": 1,
+                        "gridsize": [
+                            15.0,
+                            15.0
+                        ],
+                        "gridsnaponopen": 1,
+                        "objectsnaponopen": 1,
+                        "statusbarvisible": 2,
+                        "toolbarvisible": 1,
+                        "lefttoolbarpinned": 0,
+                        "toptoolbarpinned": 0,
+                        "righttoolbarpinned": 0,
+                        "bottomtoolbarpinned": 0,
+                        "toolbars_unpinned_last_save": 0,
+                        "tallnewobj": 0,
+                        "boxanimatetime": 200,
+                        "enablehscroll": 1,
+                        "enablevscroll": 1,
+                        "devicewidth": 0.0,
+                        "description": "",
+                        "digest": "",
+                        "tags": "",
+                        "style": "",
+                        "subpatcher_template": "",
+                        "assistshowspatchername": 0,
+                        "visible": 1,
+                        "boxes": [
+                            {
+                                "box": {
+                                    "id": "obj-0",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "198",
+                                        "18",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "r ON"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-1",
+                                    "maxclass": "toggle",
+                                    "numinlets": 1,
+                                    "numoutlets": 1,
+                                    "parameter_enable": 0,
+                                    "patching_rect": [
+                                        "198",
+                                        "90",
+                                        40,
+                                        40
+                                    ]
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-2",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "198",
+                                        "162",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "metro"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-3",
+                                    "maxclass": "button",
+                                    "numinlets": 1,
+                                    "numoutlets": 1,
+                                    "parameter_enable": 0,
+                                    "patching_rect": [
+                                        "198",
+                                        "234",
+                                        40,
+                                        40
+                                    ]
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-4",
+                                    "maxclass": "outlet",
+                                    "patching_rect": [
+                                        "198",
+                                        "306",
+                                        30,
+                                        30
+                                    ]
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-5",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "90",
+                                        "18",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "r 4th_time"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-6",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "90",
+                                        "90",
+                                        40,
+                                        40
+                                    ],
+                                    "text": " * 8"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-7",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "72",
+                                        "162",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "send 2_mes_time"
+                                }
+                            }
+                        ],
+                        "lines": [
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-1",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-0",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-2",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-1",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-3",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-2",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-4",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-3",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-6",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-5",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-2",
+                                        1
+                                    ],
+                                    "source": [
+                                        "obj-6",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-7",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-6",
+                                        0
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "patching_rect": [
+                        "720",
+                        "306",
+                        40,
+                        40
+                    ],
+                    "saved_object_attributes": {
+                        "description": "",
+                        "digest": "",
+                        "globalpatchername": "",
+                        "tags": ""
+                    },
+                    "text": "p clockmul1"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-10",
+                    "maxclass": "newobj",
+                    "patcher": {
+                        "fileversion": 1,
+                        "appversion": {
+                            "major": 8,
+                            "minor": 3,
+                            "revision": 3,
+                            "architecture": "x64",
+                            "modernui": 1
+                        },
+                        "classnamespace": "box",
+                        "rect": [
+                            153,
+                            28,
+                            181,
+                            28
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -3979,10 +3912,10 @@
                                         },
                                         "classnamespace": "box",
                                         "rect": [
-                                            169,
-                                            161,
-                                            196,
-                                            142
+                                            134,
+                                            148,
+                                            39,
+                                            151
                                         ],
                                         "bglocked": 0,
                                         "openinpresentation": 0,
@@ -4021,7 +3954,7 @@
                                                     "id": "obj-0",
                                                     "maxclass": "inlet",
                                                     "patching_rect": [
-                                                        "36",
+                                                        "243",
                                                         "18",
                                                         30,
                                                         30
@@ -4031,26 +3964,407 @@
                                             {
                                                 "box": {
                                                     "id": "obj-1",
-                                                    "maxclass": "newobj",
+                                                    "maxclass": "flonum",
+                                                    "parameter_enable": 0,
                                                     "patching_rect": [
-                                                        "36",
+                                                        "243",
                                                         "90",
                                                         40,
                                                         40
-                                                    ],
-                                                    "text": "mtof"
+                                                    ]
                                                 }
                                             },
                                             {
                                                 "box": {
                                                     "id": "obj-2",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "135",
+                                                        "162",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "phasor~"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-3",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "72",
+                                                        "234",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "send~ saw_bass"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-4",
+                                                    "maxclass": "button",
+                                                    "numinlets": 1,
+                                                    "numoutlets": 1,
+                                                    "parameter_enable": 0,
+                                                    "patching_rect": [
+                                                        "243",
+                                                        "162",
+                                                        40,
+                                                        40
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-5",
+                                                    "maxclass": "message",
+                                                    "patching_rect": [
+                                                        "198",
+                                                        "234",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " 1 10 "
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-6",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "230",
+                                                        "378",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "line"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-7",
+                                                    "maxclass": "flonum",
+                                                    "parameter_enable": 0,
+                                                    "patching_rect": [
+                                                        "230",
+                                                        "450",
+                                                        40,
+                                                        40
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-8",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "230",
+                                                        "522",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " * 4000"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-9",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "230",
+                                                        "594",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " + 500"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-10",
+                                                    "maxclass": "flonum",
+                                                    "parameter_enable": 0,
+                                                    "patching_rect": [
+                                                        "230",
+                                                        "666",
+                                                        40,
+                                                        40
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-11",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "230",
+                                                        "738",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "s filter_freq"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-12",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "288",
+                                                        "234",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "delay 10"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-13",
+                                                    "maxclass": "message",
+                                                    "patching_rect": [
+                                                        "262",
+                                                        "306",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " 0 250 "
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-14",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "876",
+                                                        "522",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " *~"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-15",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "543",
+                                                        "450",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "vcf~"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-16",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "352",
+                                                        "306",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "loadbang"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-17",
+                                                    "maxclass": "message",
+                                                    "patching_rect": [
+                                                        "336",
+                                                        "378",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " 9 "
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-18",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "462",
+                                                        "378",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "receive~ saw_bass"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-19",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "624",
+                                                        "378",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "r filter_freq"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-20",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "876",
+                                                        "450",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "vcf~"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-21",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "750",
+                                                        "306",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "loadbang"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-22",
+                                                    "maxclass": "message",
+                                                    "patching_rect": [
+                                                        "750",
+                                                        "378",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " 25 "
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-23",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "876",
+                                                        "378",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "receive~ saw_bass"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-24",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "1038",
+                                                        "378",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "r filter_freq"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-25",
+                                                    "maxclass": "button",
+                                                    "numinlets": 1,
+                                                    "numoutlets": 1,
+                                                    "parameter_enable": 0,
+                                                    "patching_rect": [
+                                                        "1074",
+                                                        "162",
+                                                        40,
+                                                        40
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-26",
+                                                    "maxclass": "message",
+                                                    "patching_rect": [
+                                                        "1074",
+                                                        "234",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " 1 10 "
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-27",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "1164",
+                                                        "378",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "line"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-28",
+                                                    "maxclass": "flonum",
+                                                    "parameter_enable": 0,
+                                                    "patching_rect": [
+                                                        "1065",
+                                                        "450",
+                                                        40,
+                                                        40
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-29",
                                                     "maxclass": "outlet",
                                                     "patching_rect": [
-                                                        "36",
-                                                        "162",
+                                                        "876",
+                                                        "594",
                                                         30,
                                                         30
                                                     ]
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-30",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "1164",
+                                                        "234",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "delay 10"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-31",
+                                                    "maxclass": "message",
+                                                    "patching_rect": [
+                                                        "1164",
+                                                        "306",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " 0 250 "
                                                 }
                                             }
                                         ],
@@ -4078,6 +4392,378 @@
                                                         0
                                                     ]
                                                 }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-3",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-2",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-4",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-1",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-5",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-4",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-6",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-5",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-7",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-6",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-8",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-7",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-9",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-8",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-10",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-9",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-11",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-10",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-12",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-4",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-13",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-12",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-6",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-13",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-17",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-16",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-15",
+                                                        2
+                                                    ],
+                                                    "source": [
+                                                        "obj-17",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-15",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-18",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-15",
+                                                        1
+                                                    ],
+                                                    "source": [
+                                                        "obj-19",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-14",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-15",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-22",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-21",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-20",
+                                                        2
+                                                    ],
+                                                    "source": [
+                                                        "obj-22",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-20",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-23",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-20",
+                                                        1
+                                                    ],
+                                                    "source": [
+                                                        "obj-24",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-14",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-20",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-25",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-1",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-26",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-25",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-27",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-26",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-28",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-27",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-14",
+                                                        1
+                                                    ],
+                                                    "source": [
+                                                        "obj-28",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-29",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-14",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-30",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-25",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-31",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-30",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-27",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-31",
+                                                        0
+                                                    ]
+                                                }
                                             }
                                         ]
                                     },
@@ -4099,13 +4785,14 @@
                             {
                                 "box": {
                                     "id": "obj-2",
-                                    "maxclass": "outlet",
+                                    "maxclass": "newobj",
                                     "patching_rect": [
                                         "1066",
                                         "522",
-                                        30,
-                                        30
-                                    ]
+                                        40,
+                                        40
+                                    ],
+                                    "text": "send~ bass"
                                 }
                             },
                             {
@@ -4191,10 +4878,10 @@
                                         },
                                         "classnamespace": "box",
                                         "rect": [
-                                            73,
-                                            127,
-                                            33,
-                                            89
+                                            186,
+                                            90,
+                                            23,
+                                            102
                                         ],
                                         "bglocked": 0,
                                         "openinpresentation": 0,
@@ -4416,10 +5103,10 @@
                                         },
                                         "classnamespace": "box",
                                         "rect": [
-                                            174,
-                                            114,
-                                            161,
-                                            191
+                                            115,
+                                            130,
+                                            46,
+                                            49
                                         ],
                                         "bglocked": 0,
                                         "openinpresentation": 0,
@@ -5153,10 +5840,10 @@
                                         },
                                         "classnamespace": "box",
                                         "rect": [
-                                            56,
-                                            42,
-                                            127,
-                                            194
+                                            70,
+                                            185,
+                                            69,
+                                            128
                                         ],
                                         "bglocked": 0,
                                         "openinpresentation": 0,
@@ -5378,10 +6065,10 @@
                                         },
                                         "classnamespace": "box",
                                         "rect": [
-                                            125,
-                                            147,
-                                            114,
-                                            170
+                                            42,
+                                            104,
+                                            116,
+                                            77
                                         ],
                                         "bglocked": 0,
                                         "openinpresentation": 0,
@@ -6115,10 +6802,10 @@
                                         },
                                         "classnamespace": "box",
                                         "rect": [
-                                            54,
-                                            61,
-                                            28,
-                                            92
+                                            184,
+                                            78,
+                                            170,
+                                            58
                                         ],
                                         "bglocked": 0,
                                         "openinpresentation": 0,
@@ -6340,10 +7027,10 @@
                                         },
                                         "classnamespace": "box",
                                         "rect": [
-                                            188,
-                                            37,
-                                            123,
-                                            41
+                                            162,
+                                            170,
+                                            101,
+                                            49
                                         ],
                                         "bglocked": 0,
                                         "openinpresentation": 0,
@@ -7077,10 +7764,10 @@
                                         },
                                         "classnamespace": "box",
                                         "rect": [
-                                            83,
-                                            65,
-                                            74,
-                                            176
+                                            35,
+                                            46,
+                                            142,
+                                            64
                                         ],
                                         "bglocked": 0,
                                         "openinpresentation": 0,
@@ -7302,10 +7989,10 @@
                                         },
                                         "classnamespace": "box",
                                         "rect": [
-                                            65,
-                                            127,
-                                            36,
-                                            139
+                                            131,
+                                            190,
+                                            147,
+                                            116
                                         ],
                                         "bglocked": 0,
                                         "openinpresentation": 0,
@@ -8039,10 +8726,10 @@
                                         },
                                         "classnamespace": "box",
                                         "rect": [
-                                            69,
-                                            52,
-                                            157,
-                                            79
+                                            129,
+                                            177,
+                                            172,
+                                            58
                                         ],
                                         "bglocked": 0,
                                         "openinpresentation": 0,
@@ -8264,10 +8951,10 @@
                                         },
                                         "classnamespace": "box",
                                         "rect": [
-                                            176,
-                                            45,
-                                            80,
-                                            198
+                                            200,
+                                            100,
+                                            75,
+                                            171
                                         ],
                                         "bglocked": 0,
                                         "openinpresentation": 0,
@@ -9001,10 +9688,10 @@
                                         },
                                         "classnamespace": "box",
                                         "rect": [
-                                            82,
-                                            87,
-                                            192,
-                                            181
+                                            39,
+                                            101,
+                                            115,
+                                            64
                                         ],
                                         "bglocked": 0,
                                         "openinpresentation": 0,
@@ -9226,10 +9913,10 @@
                                         },
                                         "classnamespace": "box",
                                         "rect": [
-                                            70,
-                                            140,
-                                            134,
-                                            38
+                                            21,
+                                            68,
+                                            32,
+                                            58
                                         ],
                                         "bglocked": 0,
                                         "openinpresentation": 0,
@@ -9963,10 +10650,10 @@
                                         },
                                         "classnamespace": "box",
                                         "rect": [
-                                            21,
-                                            196,
-                                            178,
-                                            145
+                                            122,
+                                            36,
+                                            62,
+                                            96
                                         ],
                                         "bglocked": 0,
                                         "openinpresentation": 0,
@@ -10188,10 +10875,10 @@
                                         },
                                         "classnamespace": "box",
                                         "rect": [
-                                            23,
-                                            105,
-                                            78,
-                                            151
+                                            179,
+                                            149,
+                                            47,
+                                            179
                                         ],
                                         "bglocked": 0,
                                         "openinpresentation": 0,
@@ -10925,10 +11612,10 @@
                                         },
                                         "classnamespace": "box",
                                         "rect": [
-                                            111,
-                                            73,
-                                            130,
-                                            182
+                                            152,
+                                            52,
+                                            119,
+                                            137
                                         ],
                                         "bglocked": 0,
                                         "openinpresentation": 0,
@@ -11150,10 +11837,10 @@
                                         },
                                         "classnamespace": "box",
                                         "rect": [
-                                            120,
-                                            59,
-                                            34,
-                                            190
+                                            41,
+                                            80,
+                                            163,
+                                            35
                                         ],
                                         "bglocked": 0,
                                         "openinpresentation": 0,
@@ -12698,7 +13385,7 @@
                     },
                     "patching_rect": [
                         "540",
-                        "90",
+                        "378",
                         40,
                         40
                     ],
@@ -12713,7 +13400,7 @@
             },
             {
                 "box": {
-                    "id": "obj-8",
+                    "id": "obj-11",
                     "maxclass": "newobj",
                     "patcher": {
                         "fileversion": 1,
@@ -12726,10 +13413,10 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            40,
-                            87,
-                            106,
-                            110
+                            108,
+                            158,
+                            164,
+                            64
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -14295,10 +14982,10 @@
                                         },
                                         "classnamespace": "box",
                                         "rect": [
-                                            200,
-                                            69,
-                                            166,
-                                            157
+                                            33,
+                                            32,
+                                            63,
+                                            45
                                         ],
                                         "bglocked": 0,
                                         "openinpresentation": 0,
@@ -14412,10 +15099,10 @@
                                                         },
                                                         "classnamespace": "box",
                                                         "rect": [
-                                                            127,
-                                                            123,
-                                                            71,
-                                                            86
+                                                            169,
+                                                            108,
+                                                            166,
+                                                            76
                                                         ],
                                                         "bglocked": 0,
                                                         "openinpresentation": 0,
@@ -14597,10 +15284,10 @@
                                                         },
                                                         "classnamespace": "box",
                                                         "rect": [
-                                                            194,
-                                                            52,
-                                                            106,
-                                                            139
+                                                            101,
+                                                            51,
+                                                            90,
+                                                            161
                                                         ],
                                                         "bglocked": 0,
                                                         "openinpresentation": 0,
@@ -14782,10 +15469,10 @@
                                                         },
                                                         "classnamespace": "box",
                                                         "rect": [
-                                                            198,
-                                                            141,
-                                                            175,
-                                                            82
+                                                            159,
+                                                            72,
+                                                            27,
+                                                            38
                                                         ],
                                                         "bglocked": 0,
                                                         "openinpresentation": 0,
@@ -14967,10 +15654,10 @@
                                                         },
                                                         "classnamespace": "box",
                                                         "rect": [
-                                                            68,
-                                                            55,
-                                                            28,
-                                                            146
+                                                            193,
+                                                            92,
+                                                            48,
+                                                            137
                                                         ],
                                                         "bglocked": 0,
                                                         "openinpresentation": 0,
@@ -15152,10 +15839,10 @@
                                                         },
                                                         "classnamespace": "box",
                                                         "rect": [
-                                                            90,
-                                                            97,
-                                                            132,
-                                                            87
+                                                            180,
+                                                            24,
+                                                            92,
+                                                            187
                                                         ],
                                                         "bglocked": 0,
                                                         "openinpresentation": 0,
@@ -15194,7 +15881,7 @@
                                                                     "id": "obj-0",
                                                                     "maxclass": "inlet",
                                                                     "patching_rect": [
-                                                                        "108",
+                                                                        "144",
                                                                         "18",
                                                                         30,
                                                                         30
@@ -15206,7 +15893,7 @@
                                                                     "id": "obj-1",
                                                                     "maxclass": "message",
                                                                     "patching_rect": [
-                                                                        "108",
+                                                                        "144",
                                                                         "90",
                                                                         40,
                                                                         40
@@ -15219,7 +15906,7 @@
                                                                     "id": "obj-2",
                                                                     "maxclass": "newobj",
                                                                     "patching_rect": [
-                                                                        "108",
+                                                                        "144",
                                                                         "162",
                                                                         40,
                                                                         40
@@ -15232,7 +15919,7 @@
                                                                     "id": "obj-3",
                                                                     "maxclass": "outlet",
                                                                     "patching_rect": [
-                                                                        "108",
+                                                                        "144",
                                                                         "234",
                                                                         30,
                                                                         30
@@ -15568,13 +16255,14 @@
                             {
                                 "box": {
                                     "id": "obj-114",
-                                    "maxclass": "outlet",
+                                    "maxclass": "newobj",
                                     "patching_rect": [
                                         "1431",
                                         "522",
-                                        30,
-                                        30
-                                    ]
+                                        40,
+                                        40
+                                    ],
+                                    "text": "send~ drums"
                                 }
                             }
                         ],
@@ -16951,7 +17639,7 @@
                     },
                     "patching_rect": [
                         "630",
-                        "90",
+                        "378",
                         40,
                         40
                     ],
@@ -16962,6 +17650,3530 @@
                         "tags": ""
                     },
                     "text": "p gendrums0"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-12",
+                    "maxclass": "newobj",
+                    "patcher": {
+                        "fileversion": 1,
+                        "appversion": {
+                            "major": 8,
+                            "minor": 3,
+                            "revision": 3,
+                            "architecture": "x64",
+                            "modernui": 1
+                        },
+                        "classnamespace": "box",
+                        "rect": [
+                            66,
+                            95,
+                            21,
+                            171
+                        ],
+                        "bglocked": 0,
+                        "openinpresentation": 0,
+                        "default_fontsize": 12.0,
+                        "default_fontface": 0,
+                        "default_fontname": "Arial",
+                        "gridonopen": 1,
+                        "gridsize": [
+                            15.0,
+                            15.0
+                        ],
+                        "gridsnaponopen": 1,
+                        "objectsnaponopen": 1,
+                        "statusbarvisible": 2,
+                        "toolbarvisible": 1,
+                        "lefttoolbarpinned": 0,
+                        "toptoolbarpinned": 0,
+                        "righttoolbarpinned": 0,
+                        "bottomtoolbarpinned": 0,
+                        "toolbars_unpinned_last_save": 0,
+                        "tallnewobj": 0,
+                        "boxanimatetime": 200,
+                        "enablehscroll": 1,
+                        "enablevscroll": 1,
+                        "devicewidth": 0.0,
+                        "description": "",
+                        "digest": "",
+                        "tags": "",
+                        "style": "",
+                        "subpatcher_template": "",
+                        "assistshowspatchername": 0,
+                        "visible": 1,
+                        "boxes": [
+                            {
+                                "box": {
+                                    "id": "obj-0",
+                                    "maxclass": "inlet",
+                                    "patching_rect": [
+                                        "192",
+                                        "18",
+                                        30,
+                                        30
+                                    ]
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-1",
+                                    "maxclass": "button",
+                                    "numinlets": 1,
+                                    "numoutlets": 1,
+                                    "parameter_enable": 0,
+                                    "patching_rect": [
+                                        "160",
+                                        "90",
+                                        40,
+                                        40
+                                    ]
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-2",
+                                    "maxclass": "button",
+                                    "numinlets": 1,
+                                    "numoutlets": 1,
+                                    "parameter_enable": 0,
+                                    "patching_rect": [
+                                        "280",
+                                        "306",
+                                        40,
+                                        40
+                                    ]
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-3",
+                                    "maxclass": "newobj",
+                                    "patcher": {
+                                        "fileversion": 1,
+                                        "appversion": {
+                                            "major": 8,
+                                            "minor": 3,
+                                            "revision": 3,
+                                            "architecture": "x64",
+                                            "modernui": 1
+                                        },
+                                        "classnamespace": "box",
+                                        "rect": [
+                                            39,
+                                            88,
+                                            173,
+                                            58
+                                        ],
+                                        "bglocked": 0,
+                                        "openinpresentation": 0,
+                                        "default_fontsize": 12.0,
+                                        "default_fontface": 0,
+                                        "default_fontname": "Arial",
+                                        "gridonopen": 1,
+                                        "gridsize": [
+                                            15.0,
+                                            15.0
+                                        ],
+                                        "gridsnaponopen": 1,
+                                        "objectsnaponopen": 1,
+                                        "statusbarvisible": 2,
+                                        "toolbarvisible": 1,
+                                        "lefttoolbarpinned": 0,
+                                        "toptoolbarpinned": 0,
+                                        "righttoolbarpinned": 0,
+                                        "bottomtoolbarpinned": 0,
+                                        "toolbars_unpinned_last_save": 0,
+                                        "tallnewobj": 0,
+                                        "boxanimatetime": 200,
+                                        "enablehscroll": 1,
+                                        "enablevscroll": 1,
+                                        "devicewidth": 0.0,
+                                        "description": "",
+                                        "digest": "",
+                                        "tags": "",
+                                        "style": "",
+                                        "subpatcher_template": "",
+                                        "assistshowspatchername": 0,
+                                        "visible": 1,
+                                        "boxes": [
+                                            {
+                                                "box": {
+                                                    "id": "obj-0",
+                                                    "maxclass": "flonum",
+                                                    "parameter_enable": 0,
+                                                    "patching_rect": [
+                                                        "306",
+                                                        "234",
+                                                        40,
+                                                        40
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-1",
+                                                    "maxclass": "flonum",
+                                                    "parameter_enable": 0,
+                                                    "patching_rect": [
+                                                        "306",
+                                                        "450",
+                                                        40,
+                                                        40
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-2",
+                                                    "maxclass": "inlet",
+                                                    "patching_rect": [
+                                                        "306",
+                                                        "18",
+                                                        30,
+                                                        30
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-3",
+                                                    "maxclass": "button",
+                                                    "numinlets": 1,
+                                                    "numoutlets": 1,
+                                                    "parameter_enable": 0,
+                                                    "patching_rect": [
+                                                        "306",
+                                                        "90",
+                                                        40,
+                                                        40
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-4",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "306",
+                                                        "162",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "random 7"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-5",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "36",
+                                                        "306",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "sel 0"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-6",
+                                                    "maxclass": "message",
+                                                    "patching_rect": [
+                                                        "36",
+                                                        "378",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " 65 "
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-7",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "126",
+                                                        "306",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "sel 1"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-8",
+                                                    "maxclass": "message",
+                                                    "patching_rect": [
+                                                        "126",
+                                                        "378",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " 67 "
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-9",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "216",
+                                                        "306",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "sel 2"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-10",
+                                                    "maxclass": "message",
+                                                    "patching_rect": [
+                                                        "216",
+                                                        "378",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " 69 "
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-11",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "306",
+                                                        "306",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "sel 3"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-12",
+                                                    "maxclass": "message",
+                                                    "patching_rect": [
+                                                        "306",
+                                                        "378",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " 71 "
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-13",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "396",
+                                                        "306",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "sel 4"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-14",
+                                                    "maxclass": "message",
+                                                    "patching_rect": [
+                                                        "396",
+                                                        "378",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " 72 "
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-15",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "486",
+                                                        "306",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "sel 5"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-16",
+                                                    "maxclass": "message",
+                                                    "patching_rect": [
+                                                        "486",
+                                                        "378",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " 74 "
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-17",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "576",
+                                                        "306",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "sel 6"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-18",
+                                                    "maxclass": "message",
+                                                    "patching_rect": [
+                                                        "576",
+                                                        "378",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " 76 "
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-19",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "306",
+                                                        "522",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "mtof"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-20",
+                                                    "maxclass": "outlet",
+                                                    "patching_rect": [
+                                                        "306",
+                                                        "594",
+                                                        30,
+                                                        30
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "lines": [
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-3",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-2",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-4",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-3",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-0",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-4",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-5",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-0",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-6",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-5",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-1",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-6",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-7",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-0",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-8",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-7",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-1",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-8",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-9",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-0",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-10",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-9",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-1",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-10",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-11",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-0",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-12",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-11",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-1",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-12",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-13",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-0",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-14",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-13",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-1",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-14",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-15",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-0",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-16",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-15",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-1",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-16",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-17",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-0",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-18",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-17",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-1",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-18",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-19",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-1",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-20",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-19",
+                                                        0
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "patching_rect": [
+                                        "138",
+                                        "162",
+                                        40,
+                                        40
+                                    ],
+                                    "saved_object_attributes": {
+                                        "description": "",
+                                        "digest": "",
+                                        "globalpatchername": "",
+                                        "tags": ""
+                                    },
+                                    "text": "p scales8"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-4",
+                                    "maxclass": "flonum",
+                                    "parameter_enable": 0,
+                                    "patching_rect": [
+                                        "132",
+                                        "234",
+                                        40,
+                                        40
+                                    ]
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-5",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "56",
+                                        "306",
+                                        40,
+                                        40
+                                    ],
+                                    "text": " / 2"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-6",
+                                    "maxclass": "flonum",
+                                    "parameter_enable": 0,
+                                    "patching_rect": [
+                                        "43",
+                                        "378",
+                                        40,
+                                        40
+                                    ]
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-7",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "36",
+                                        "450",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "phasor~"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-8",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "158",
+                                        "522",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "lop~ 100"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-9",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "126",
+                                        "450",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "phasor~"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-10",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "190",
+                                        "306",
+                                        40,
+                                        40
+                                    ],
+                                    "text": " * 1.001"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-11",
+                                    "maxclass": "flonum",
+                                    "parameter_enable": 0,
+                                    "patching_rect": [
+                                        "190",
+                                        "378",
+                                        40,
+                                        40
+                                    ]
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-12",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "216",
+                                        "450",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "phasor~"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-13",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "203",
+                                        "594",
+                                        40,
+                                        40
+                                    ],
+                                    "text": " *~"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-14",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "203",
+                                        "666",
+                                        40,
+                                        40
+                                    ],
+                                    "text": " *~ 0.5"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-15",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "203",
+                                        "738",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "send~ pad"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-16",
+                                    "maxclass": "message",
+                                    "patching_rect": [
+                                        "280",
+                                        "378",
+                                        40,
+                                        40
+                                    ],
+                                    "text": " 1 200 "
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-17",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "280",
+                                        "522",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "line"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-18",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "370",
+                                        "378",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "delay"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-19",
+                                    "maxclass": "message",
+                                    "patching_rect": [
+                                        "370",
+                                        "450",
+                                        40,
+                                        40
+                                    ],
+                                    "text": " 0 500 "
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-20",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "370",
+                                        "162",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "r 2_mes_time"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-21",
+                                    "maxclass": "flonum",
+                                    "parameter_enable": 0,
+                                    "patching_rect": [
+                                        "370",
+                                        "234",
+                                        40,
+                                        40
+                                    ]
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-22",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "370",
+                                        "306",
+                                        40,
+                                        40
+                                    ],
+                                    "text": " - 500"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-23",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "460",
+                                        "234",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "r ON"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-24",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "460",
+                                        "306",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "sel 0"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-25",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "460",
+                                        "378",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "delay 5"
+                                }
+                            }
+                        ],
+                        "lines": [
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-1",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-0",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-2",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-0",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-3",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-1",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-4",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-3",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-5",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-4",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-6",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-5",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-7",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-6",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-8",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-7",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-9",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-4",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-8",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-9",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-10",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-4",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-11",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-10",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-12",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-11",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-8",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-12",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-13",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-8",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-14",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-13",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-15",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-14",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-16",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-2",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-17",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-16",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-18",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-2",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-19",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-18",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-17",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-19",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-21",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-20",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-22",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-21",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-18",
+                                        1
+                                    ],
+                                    "source": [
+                                        "obj-22",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-24",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-23",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-25",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-24",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-19",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-25",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-13",
+                                        1
+                                    ],
+                                    "source": [
+                                        "obj-17",
+                                        0
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "patching_rect": [
+                        "720",
+                        "378",
+                        40,
+                        40
+                    ],
+                    "saved_object_attributes": {
+                        "description": "",
+                        "digest": "",
+                        "globalpatchername": "",
+                        "tags": ""
+                    },
+                    "text": "p ambient0"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-13",
+                    "maxclass": "newobj",
+                    "patcher": {
+                        "fileversion": 1,
+                        "appversion": {
+                            "major": 8,
+                            "minor": 3,
+                            "revision": 3,
+                            "architecture": "x64",
+                            "modernui": 1
+                        },
+                        "classnamespace": "box",
+                        "rect": [
+                            66,
+                            87,
+                            143,
+                            125
+                        ],
+                        "bglocked": 0,
+                        "openinpresentation": 0,
+                        "default_fontsize": 12.0,
+                        "default_fontface": 0,
+                        "default_fontname": "Arial",
+                        "gridonopen": 1,
+                        "gridsize": [
+                            15.0,
+                            15.0
+                        ],
+                        "gridsnaponopen": 1,
+                        "objectsnaponopen": 1,
+                        "statusbarvisible": 2,
+                        "toolbarvisible": 1,
+                        "lefttoolbarpinned": 0,
+                        "toptoolbarpinned": 0,
+                        "righttoolbarpinned": 0,
+                        "bottomtoolbarpinned": 0,
+                        "toolbars_unpinned_last_save": 0,
+                        "tallnewobj": 0,
+                        "boxanimatetime": 200,
+                        "enablehscroll": 1,
+                        "enablevscroll": 1,
+                        "devicewidth": 0.0,
+                        "description": "",
+                        "digest": "",
+                        "tags": "",
+                        "style": "",
+                        "subpatcher_template": "",
+                        "assistshowspatchername": 0,
+                        "visible": 1,
+                        "boxes": [
+                            {
+                                "box": {
+                                    "id": "obj-0",
+                                    "maxclass": "inlet",
+                                    "patching_rect": [
+                                        "36",
+                                        "18",
+                                        30,
+                                        30
+                                    ]
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-1",
+                                    "maxclass": "button",
+                                    "numinlets": 1,
+                                    "numoutlets": 1,
+                                    "parameter_enable": 0,
+                                    "patching_rect": [
+                                        "36",
+                                        "90",
+                                        40,
+                                        40
+                                    ]
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-2",
+                                    "maxclass": "newobj",
+                                    "patcher": {
+                                        "fileversion": 1,
+                                        "appversion": {
+                                            "major": 8,
+                                            "minor": 3,
+                                            "revision": 3,
+                                            "architecture": "x64",
+                                            "modernui": 1
+                                        },
+                                        "classnamespace": "box",
+                                        "rect": [
+                                            99,
+                                            70,
+                                            96,
+                                            27
+                                        ],
+                                        "bglocked": 0,
+                                        "openinpresentation": 0,
+                                        "default_fontsize": 12.0,
+                                        "default_fontface": 0,
+                                        "default_fontname": "Arial",
+                                        "gridonopen": 1,
+                                        "gridsize": [
+                                            15.0,
+                                            15.0
+                                        ],
+                                        "gridsnaponopen": 1,
+                                        "objectsnaponopen": 1,
+                                        "statusbarvisible": 2,
+                                        "toolbarvisible": 1,
+                                        "lefttoolbarpinned": 0,
+                                        "toptoolbarpinned": 0,
+                                        "righttoolbarpinned": 0,
+                                        "bottomtoolbarpinned": 0,
+                                        "toolbars_unpinned_last_save": 0,
+                                        "tallnewobj": 0,
+                                        "boxanimatetime": 200,
+                                        "enablehscroll": 1,
+                                        "enablevscroll": 1,
+                                        "devicewidth": 0.0,
+                                        "description": "",
+                                        "digest": "",
+                                        "tags": "",
+                                        "style": "",
+                                        "subpatcher_template": "",
+                                        "assistshowspatchername": 0,
+                                        "visible": 1,
+                                        "boxes": [
+                                            {
+                                                "box": {
+                                                    "id": "obj-0",
+                                                    "maxclass": "inlet",
+                                                    "patching_rect": [
+                                                        "144",
+                                                        "18",
+                                                        30,
+                                                        30
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-1",
+                                                    "maxclass": "message",
+                                                    "patching_rect": [
+                                                        "144",
+                                                        "90",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " open hihat_snake.wav , 1 "
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-2",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "144",
+                                                        "162",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "sfplay~"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-3",
+                                                    "maxclass": "outlet",
+                                                    "patching_rect": [
+                                                        "144",
+                                                        "234",
+                                                        30,
+                                                        30
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "lines": [
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-1",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-0",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-2",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-1",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-3",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-2",
+                                                        0
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "patching_rect": [
+                                        "36",
+                                        "162",
+                                        40,
+                                        40
+                                    ],
+                                    "saved_object_attributes": {
+                                        "description": "",
+                                        "digest": "",
+                                        "globalpatchername": "",
+                                        "tags": ""
+                                    },
+                                    "text": "p read5"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-3",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "36",
+                                        "234",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "send~ crash"
+                                }
+                            }
+                        ],
+                        "lines": [
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-1",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-0",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-2",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-1",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-3",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-2",
+                                        0
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "patching_rect": [
+                        "414",
+                        "378",
+                        40,
+                        40
+                    ],
+                    "saved_object_attributes": {
+                        "description": "",
+                        "digest": "",
+                        "globalpatchername": "",
+                        "tags": ""
+                    },
+                    "text": "p sampleread0"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-14",
+                    "maxclass": "newobj",
+                    "patching_rect": [
+                        "801",
+                        "18",
+                        40,
+                        40
+                    ],
+                    "text": "key"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-15",
+                    "maxclass": "flonum",
+                    "parameter_enable": 0,
+                    "patching_rect": [
+                        "801",
+                        "90",
+                        40,
+                        40
+                    ]
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-16",
+                    "maxclass": "newobj",
+                    "patching_rect": [
+                        "801",
+                        "162",
+                        40,
+                        40
+                    ],
+                    "text": "sel 103"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-17",
+                    "maxclass": "button",
+                    "numinlets": 1,
+                    "numoutlets": 1,
+                    "parameter_enable": 0,
+                    "patching_rect": [
+                        "801",
+                        "234",
+                        40,
+                        40
+                    ]
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-18",
+                    "maxclass": "toggle",
+                    "numinlets": 1,
+                    "numoutlets": 1,
+                    "parameter_enable": 0,
+                    "patching_rect": [
+                        "846",
+                        "306",
+                        40,
+                        40
+                    ]
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-19",
+                    "maxclass": "newobj",
+                    "patching_rect": [
+                        "891",
+                        "162",
+                        40,
+                        40
+                    ],
+                    "text": "loadbang"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-20",
+                    "maxclass": "newobj",
+                    "patching_rect": [
+                        "981",
+                        "162",
+                        40,
+                        40
+                    ],
+                    "text": "r ON"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-21",
+                    "maxclass": "message",
+                    "patching_rect": [
+                        "891",
+                        "234",
+                        40,
+                        40
+                    ],
+                    "text": " 0 "
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-22",
+                    "maxclass": "newobj",
+                    "patching_rect": [
+                        "846",
+                        "378",
+                        40,
+                        40
+                    ],
+                    "text": "s glitch_onoff"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-23",
+                    "maxclass": "newobj",
+                    "patcher": {
+                        "fileversion": 1,
+                        "appversion": {
+                            "major": 8,
+                            "minor": 3,
+                            "revision": 3,
+                            "architecture": "x64",
+                            "modernui": 1
+                        },
+                        "classnamespace": "box",
+                        "rect": [
+                            112,
+                            47,
+                            53,
+                            110
+                        ],
+                        "bglocked": 0,
+                        "openinpresentation": 0,
+                        "default_fontsize": 12.0,
+                        "default_fontface": 0,
+                        "default_fontname": "Arial",
+                        "gridonopen": 1,
+                        "gridsize": [
+                            15.0,
+                            15.0
+                        ],
+                        "gridsnaponopen": 1,
+                        "objectsnaponopen": 1,
+                        "statusbarvisible": 2,
+                        "toolbarvisible": 1,
+                        "lefttoolbarpinned": 0,
+                        "toptoolbarpinned": 0,
+                        "righttoolbarpinned": 0,
+                        "bottomtoolbarpinned": 0,
+                        "toolbars_unpinned_last_save": 0,
+                        "tallnewobj": 0,
+                        "boxanimatetime": 200,
+                        "enablehscroll": 1,
+                        "enablevscroll": 1,
+                        "devicewidth": 0.0,
+                        "description": "",
+                        "digest": "",
+                        "tags": "",
+                        "style": "",
+                        "subpatcher_template": "",
+                        "assistshowspatchername": 0,
+                        "visible": 1,
+                        "boxes": [
+                            {
+                                "box": {
+                                    "id": "obj-0",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "162",
+                                        "378",
+                                        40,
+                                        40
+                                    ],
+                                    "text": " *~ 0.75"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-1",
+                                    "maxclass": "button",
+                                    "numinlets": 1,
+                                    "numoutlets": 1,
+                                    "parameter_enable": 0,
+                                    "patching_rect": [
+                                        "36",
+                                        "234",
+                                        40,
+                                        40
+                                    ]
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-2",
+                                    "maxclass": "newobj",
+                                    "patcher": {
+                                        "fileversion": 1,
+                                        "appversion": {
+                                            "major": 8,
+                                            "minor": 3,
+                                            "revision": 3,
+                                            "architecture": "x64",
+                                            "modernui": 1
+                                        },
+                                        "classnamespace": "box",
+                                        "rect": [
+                                            139,
+                                            30,
+                                            37,
+                                            140
+                                        ],
+                                        "bglocked": 0,
+                                        "openinpresentation": 0,
+                                        "default_fontsize": 12.0,
+                                        "default_fontface": 0,
+                                        "default_fontname": "Arial",
+                                        "gridonopen": 1,
+                                        "gridsize": [
+                                            15.0,
+                                            15.0
+                                        ],
+                                        "gridsnaponopen": 1,
+                                        "objectsnaponopen": 1,
+                                        "statusbarvisible": 2,
+                                        "toolbarvisible": 1,
+                                        "lefttoolbarpinned": 0,
+                                        "toptoolbarpinned": 0,
+                                        "righttoolbarpinned": 0,
+                                        "bottomtoolbarpinned": 0,
+                                        "toolbars_unpinned_last_save": 0,
+                                        "tallnewobj": 0,
+                                        "boxanimatetime": 200,
+                                        "enablehscroll": 1,
+                                        "enablevscroll": 1,
+                                        "devicewidth": 0.0,
+                                        "description": "",
+                                        "digest": "",
+                                        "tags": "",
+                                        "style": "",
+                                        "subpatcher_template": "",
+                                        "assistshowspatchername": 0,
+                                        "visible": 1,
+                                        "boxes": [
+                                            {
+                                                "box": {
+                                                    "id": "obj-0",
+                                                    "maxclass": "inlet",
+                                                    "patching_rect": [
+                                                        "108",
+                                                        "18",
+                                                        30,
+                                                        30
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-1",
+                                                    "maxclass": "message",
+                                                    "patching_rect": [
+                                                        "108",
+                                                        "90",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " open kick.wav , 1 "
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-2",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "108",
+                                                        "162",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "sfplay~"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-3",
+                                                    "maxclass": "outlet",
+                                                    "patching_rect": [
+                                                        "108",
+                                                        "234",
+                                                        30,
+                                                        30
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "lines": [
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-1",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-0",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-2",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-1",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-3",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-2",
+                                                        0
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "patching_rect": [
+                                        "36",
+                                        "306",
+                                        40,
+                                        40
+                                    ],
+                                    "saved_object_attributes": {
+                                        "description": "",
+                                        "digest": "",
+                                        "globalpatchername": "",
+                                        "tags": ""
+                                    },
+                                    "text": "p read6"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-3",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "162",
+                                        "306",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "receive~ drums"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-4",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "324",
+                                        "306",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "receive~ crash"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-5",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "324",
+                                        "450",
+                                        40,
+                                        40
+                                    ],
+                                    "text": " *~ 0.25"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-6",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "517",
+                                        "522",
+                                        40,
+                                        40
+                                    ],
+                                    "text": " *~ 1"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-7",
+                                    "maxclass": "newobj",
+                                    "patcher": {
+                                        "fileversion": 1,
+                                        "appversion": {
+                                            "major": 8,
+                                            "minor": 3,
+                                            "revision": 3,
+                                            "architecture": "x64",
+                                            "modernui": 1
+                                        },
+                                        "classnamespace": "box",
+                                        "rect": [
+                                            131,
+                                            25,
+                                            165,
+                                            135
+                                        ],
+                                        "bglocked": 0,
+                                        "openinpresentation": 0,
+                                        "default_fontsize": 12.0,
+                                        "default_fontface": 0,
+                                        "default_fontname": "Arial",
+                                        "gridonopen": 1,
+                                        "gridsize": [
+                                            15.0,
+                                            15.0
+                                        ],
+                                        "gridsnaponopen": 1,
+                                        "objectsnaponopen": 1,
+                                        "statusbarvisible": 2,
+                                        "toolbarvisible": 1,
+                                        "lefttoolbarpinned": 0,
+                                        "toptoolbarpinned": 0,
+                                        "righttoolbarpinned": 0,
+                                        "bottomtoolbarpinned": 0,
+                                        "toolbars_unpinned_last_save": 0,
+                                        "tallnewobj": 0,
+                                        "boxanimatetime": 200,
+                                        "enablehscroll": 1,
+                                        "enablevscroll": 1,
+                                        "devicewidth": 0.0,
+                                        "description": "",
+                                        "digest": "",
+                                        "tags": "",
+                                        "style": "",
+                                        "subpatcher_template": "",
+                                        "assistshowspatchername": 0,
+                                        "visible": 1,
+                                        "boxes": [
+                                            {
+                                                "box": {
+                                                    "id": "obj-0",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "81",
+                                                        "18",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "r glitch_onoff"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-1",
+                                                    "maxclass": "toggle",
+                                                    "numinlets": 1,
+                                                    "numoutlets": 1,
+                                                    "parameter_enable": 0,
+                                                    "patching_rect": [
+                                                        "81",
+                                                        "90",
+                                                        40,
+                                                        40
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-2",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "81",
+                                                        "162",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "sel 1"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-3",
+                                                    "maxclass": "message",
+                                                    "patching_rect": [
+                                                        "36",
+                                                        "234",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " 0 50 "
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-4",
+                                                    "maxclass": "message",
+                                                    "patching_rect": [
+                                                        "126",
+                                                        "234",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " 1 50 "
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-5",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "81",
+                                                        "306",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "line"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-6",
+                                                    "maxclass": "flonum",
+                                                    "parameter_enable": 0,
+                                                    "patching_rect": [
+                                                        "81",
+                                                        "378",
+                                                        40,
+                                                        40
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-7",
+                                                    "maxclass": "outlet",
+                                                    "patching_rect": [
+                                                        "81",
+                                                        "450",
+                                                        30,
+                                                        30
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "lines": [
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-1",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-0",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-2",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-1",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-3",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-2",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-4",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-2",
+                                                        1
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-5",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-3",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-5",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-4",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-6",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-5",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-7",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-6",
+                                                        0
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "patching_rect": [
+                                        "288",
+                                        "378",
+                                        40,
+                                        40
+                                    ],
+                                    "saved_object_attributes": {
+                                        "description": "",
+                                        "digest": "",
+                                        "globalpatchername": "",
+                                        "tags": ""
+                                    },
+                                    "text": "p glitchonoff0"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-8",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "450",
+                                        "450",
+                                        40,
+                                        40
+                                    ],
+                                    "text": " *~ 1"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-9",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "369",
+                                        "522",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "delwrite~ glitch 500"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-10",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "576",
+                                        "234",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "r glitch_value"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-11",
+                                    "maxclass": "flonum",
+                                    "parameter_enable": 0,
+                                    "patching_rect": [
+                                        "576",
+                                        "306",
+                                        40,
+                                        40
+                                    ]
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-12",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "576",
+                                        "378",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "delread~ glitch 50"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-13",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "576",
+                                        "450",
+                                        40,
+                                        40
+                                    ],
+                                    "text": " *~ 0.25"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-14",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "517",
+                                        "594",
+                                        40,
+                                        40
+                                    ],
+                                    "text": " *~ 0.6"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-15",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "643",
+                                        "666",
+                                        40,
+                                        40
+                                    ],
+                                    "text": " *~ 1"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-16",
+                                    "maxclass": "newobj",
+                                    "patcher": {
+                                        "fileversion": 1,
+                                        "appversion": {
+                                            "major": 8,
+                                            "minor": 3,
+                                            "revision": 3,
+                                            "architecture": "x64",
+                                            "modernui": 1
+                                        },
+                                        "classnamespace": "box",
+                                        "rect": [
+                                            65,
+                                            173,
+                                            57,
+                                            133
+                                        ],
+                                        "bglocked": 0,
+                                        "openinpresentation": 0,
+                                        "default_fontsize": 12.0,
+                                        "default_fontface": 0,
+                                        "default_fontname": "Arial",
+                                        "gridonopen": 1,
+                                        "gridsize": [
+                                            15.0,
+                                            15.0
+                                        ],
+                                        "gridsnaponopen": 1,
+                                        "objectsnaponopen": 1,
+                                        "statusbarvisible": 2,
+                                        "toolbarvisible": 1,
+                                        "lefttoolbarpinned": 0,
+                                        "toptoolbarpinned": 0,
+                                        "righttoolbarpinned": 0,
+                                        "bottomtoolbarpinned": 0,
+                                        "toolbars_unpinned_last_save": 0,
+                                        "tallnewobj": 0,
+                                        "boxanimatetime": 200,
+                                        "enablehscroll": 1,
+                                        "enablevscroll": 1,
+                                        "devicewidth": 0.0,
+                                        "description": "",
+                                        "digest": "",
+                                        "tags": "",
+                                        "style": "",
+                                        "subpatcher_template": "",
+                                        "assistshowspatchername": 0,
+                                        "visible": 1,
+                                        "boxes": [
+                                            {
+                                                "box": {
+                                                    "id": "obj-0",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "81",
+                                                        "18",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "r glitch_onoff"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-1",
+                                                    "maxclass": "toggle",
+                                                    "numinlets": 1,
+                                                    "numoutlets": 1,
+                                                    "parameter_enable": 0,
+                                                    "patching_rect": [
+                                                        "81",
+                                                        "90",
+                                                        40,
+                                                        40
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-2",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "81",
+                                                        "162",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "sel 0"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-3",
+                                                    "maxclass": "message",
+                                                    "patching_rect": [
+                                                        "36",
+                                                        "234",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " 0 50 "
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-4",
+                                                    "maxclass": "message",
+                                                    "patching_rect": [
+                                                        "126",
+                                                        "234",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " 1 50 "
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-5",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "81",
+                                                        "306",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "line"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-6",
+                                                    "maxclass": "flonum",
+                                                    "parameter_enable": 0,
+                                                    "patching_rect": [
+                                                        "81",
+                                                        "378",
+                                                        40,
+                                                        40
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-7",
+                                                    "maxclass": "outlet",
+                                                    "patching_rect": [
+                                                        "81",
+                                                        "450",
+                                                        30,
+                                                        30
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "lines": [
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-1",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-0",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-2",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-1",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-3",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-2",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-4",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-2",
+                                                        1
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-5",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-3",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-5",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-4",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-6",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-5",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-7",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-6",
+                                                        0
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "patching_rect": [
+                                        "450",
+                                        "378",
+                                        40,
+                                        40
+                                    ],
+                                    "saved_object_attributes": {
+                                        "description": "",
+                                        "digest": "",
+                                        "globalpatchername": "",
+                                        "tags": ""
+                                    },
+                                    "text": "p glitchonoff1"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-17",
+                                    "maxclass": "newobj",
+                                    "patcher": {
+                                        "fileversion": 1,
+                                        "appversion": {
+                                            "major": 8,
+                                            "minor": 3,
+                                            "revision": 3,
+                                            "architecture": "x64",
+                                            "modernui": 1
+                                        },
+                                        "classnamespace": "box",
+                                        "rect": [
+                                            174,
+                                            106,
+                                            20,
+                                            66
+                                        ],
+                                        "bglocked": 0,
+                                        "openinpresentation": 0,
+                                        "default_fontsize": 12.0,
+                                        "default_fontface": 0,
+                                        "default_fontname": "Arial",
+                                        "gridonopen": 1,
+                                        "gridsize": [
+                                            15.0,
+                                            15.0
+                                        ],
+                                        "gridsnaponopen": 1,
+                                        "objectsnaponopen": 1,
+                                        "statusbarvisible": 2,
+                                        "toolbarvisible": 1,
+                                        "lefttoolbarpinned": 0,
+                                        "toptoolbarpinned": 0,
+                                        "righttoolbarpinned": 0,
+                                        "bottomtoolbarpinned": 0,
+                                        "toolbars_unpinned_last_save": 0,
+                                        "tallnewobj": 0,
+                                        "boxanimatetime": 200,
+                                        "enablehscroll": 1,
+                                        "enablevscroll": 1,
+                                        "devicewidth": 0.0,
+                                        "description": "",
+                                        "digest": "",
+                                        "tags": "",
+                                        "style": "",
+                                        "subpatcher_template": "",
+                                        "assistshowspatchername": 0,
+                                        "visible": 1,
+                                        "boxes": [
+                                            {
+                                                "box": {
+                                                    "id": "obj-0",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "81",
+                                                        "18",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "r glitch_onoff"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-1",
+                                                    "maxclass": "toggle",
+                                                    "numinlets": 1,
+                                                    "numoutlets": 1,
+                                                    "parameter_enable": 0,
+                                                    "patching_rect": [
+                                                        "81",
+                                                        "90",
+                                                        40,
+                                                        40
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-2",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "81",
+                                                        "162",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "sel 1"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-3",
+                                                    "maxclass": "message",
+                                                    "patching_rect": [
+                                                        "36",
+                                                        "234",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " 1 50 "
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-4",
+                                                    "maxclass": "message",
+                                                    "patching_rect": [
+                                                        "126",
+                                                        "234",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": " 0 50 "
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-5",
+                                                    "maxclass": "newobj",
+                                                    "patching_rect": [
+                                                        "81",
+                                                        "306",
+                                                        40,
+                                                        40
+                                                    ],
+                                                    "text": "line"
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-6",
+                                                    "maxclass": "flonum",
+                                                    "parameter_enable": 0,
+                                                    "patching_rect": [
+                                                        "81",
+                                                        "378",
+                                                        40,
+                                                        40
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "box": {
+                                                    "id": "obj-7",
+                                                    "maxclass": "outlet",
+                                                    "patching_rect": [
+                                                        "81",
+                                                        "450",
+                                                        30,
+                                                        30
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "lines": [
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-1",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-0",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-2",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-1",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-3",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-2",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-4",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-2",
+                                                        1
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-5",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-3",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-5",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-4",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-6",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-5",
+                                                        0
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "patchline": {
+                                                    "destination": [
+                                                        "obj-7",
+                                                        0
+                                                    ],
+                                                    "source": [
+                                                        "obj-6",
+                                                        0
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "patching_rect": [
+                                        "702",
+                                        "378",
+                                        40,
+                                        40
+                                    ],
+                                    "saved_object_attributes": {
+                                        "description": "",
+                                        "digest": "",
+                                        "globalpatchername": "",
+                                        "tags": ""
+                                    },
+                                    "text": "p glitchonoff2"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-18",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "702",
+                                        "18",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "r glitch_onoff"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-19",
+                                    "maxclass": "button",
+                                    "numinlets": 1,
+                                    "numoutlets": 1,
+                                    "parameter_enable": 0,
+                                    "patching_rect": [
+                                        "702",
+                                        "90",
+                                        40,
+                                        40
+                                    ]
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-20",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "702",
+                                        "162",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "random 100"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-21",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "702",
+                                        "234",
+                                        40,
+                                        40
+                                    ],
+                                    "text": " + 10"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-22",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "702",
+                                        "306",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "s random_glitch"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-23",
+                                    "maxclass": "ezdac~",
+                                    "patching_rect": [
+                                        "643",
+                                        "738",
+                                        30,
+                                        30
+                                    ]
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-24",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "643",
+                                        "594",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "receive~ bass"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "id": "obj-25",
+                                    "maxclass": "newobj",
+                                    "patching_rect": [
+                                        "769",
+                                        "594",
+                                        40,
+                                        40
+                                    ],
+                                    "text": "receive~ pad"
+                                }
+                            }
+                        ],
+                        "lines": [
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-2",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-1",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-0",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-2",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-0",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-3",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-0",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-4",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-5",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-0",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-6",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-5",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-5",
+                                        1
+                                    ],
+                                    "source": [
+                                        "obj-7",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-9",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-5",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-9",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-8",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-11",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-10",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-12",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-11",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-13",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-12",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-6",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-13",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-14",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-6",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-15",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-14",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-8",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-12",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-8",
+                                        1
+                                    ],
+                                    "source": [
+                                        "obj-16",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-13",
+                                        1
+                                    ],
+                                    "source": [
+                                        "obj-17",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-19",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-18",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-20",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-19",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-21",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-20",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-22",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-21",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-11",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-21",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-15",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-24",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-15",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-25",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-23",
+                                        0
+                                    ],
+                                    "source": [
+                                        "obj-15",
+                                        0
+                                    ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [
+                                        "obj-23",
+                                        1
+                                    ],
+                                    "source": [
+                                        "obj-15",
+                                        0
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "patching_rect": [
+                        "1008",
+                        "378",
+                        40,
+                        40
+                    ],
+                    "saved_object_attributes": {
+                        "description": "",
+                        "digest": "",
+                        "globalpatchername": "",
+                        "tags": ""
+                    },
+                    "text": "p glitchmix0"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-24",
+                    "maxclass": "newobj",
+                    "patching_rect": [
+                        "1170",
+                        "234",
+                        40,
+                        40
+                    ],
+                    "text": "r random_glitch"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-25",
+                    "maxclass": "newobj",
+                    "patching_rect": [
+                        "1170",
+                        "306",
+                        40,
+                        40
+                    ],
+                    "text": "vsl"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-26",
+                    "maxclass": "newobj",
+                    "patching_rect": [
+                        "1170",
+                        "378",
+                        40,
+                        40
+                    ],
+                    "text": "s glitch_value"
                 }
             }
         ],
@@ -16981,107 +21193,11 @@
             {
                 "patchline": {
                     "destination": [
-                        "obj-7",
+                        "obj-3",
                         0
                     ],
                     "source": [
-                        "obj-5",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [
-                        "obj-7",
-                        1
-                    ],
-                    "source": [
-                        "obj-5",
-                        1
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [
-                        "obj-7",
-                        2
-                    ],
-                    "source": [
-                        "obj-5",
-                        2
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [
-                        "obj-7",
-                        3
-                    ],
-                    "source": [
-                        "obj-5",
-                        3
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [
-                        "obj-7",
-                        4
-                    ],
-                    "source": [
-                        "obj-5",
-                        4
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [
-                        "obj-7",
-                        5
-                    ],
-                    "source": [
-                        "obj-5",
-                        5
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [
-                        "obj-7",
-                        6
-                    ],
-                    "source": [
-                        "obj-5",
-                        6
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [
-                        "obj-7",
-                        7
-                    ],
-                    "source": [
-                        "obj-5",
-                        7
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [
-                        "obj-8",
-                        0
-                    ],
-                    "source": [
-                        "obj-6",
+                        "obj-2",
                         0
                     ]
                 }
@@ -17089,11 +21205,35 @@
             {
                 "patchline": {
                     "destination": [
-                        "obj-8",
+                        "obj-4",
+                        0
+                    ],
+                    "source": [
+                        "obj-3",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-10",
+                        0
+                    ],
+                    "source": [
+                        "obj-7",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-10",
                         1
                     ],
                     "source": [
-                        "obj-6",
+                        "obj-7",
                         1
                     ]
                 }
@@ -17101,11 +21241,11 @@
             {
                 "patchline": {
                     "destination": [
-                        "obj-8",
+                        "obj-10",
                         2
                     ],
                     "source": [
-                        "obj-6",
+                        "obj-7",
                         2
                     ]
                 }
@@ -17113,11 +21253,11 @@
             {
                 "patchline": {
                     "destination": [
-                        "obj-8",
+                        "obj-10",
                         3
                     ],
                     "source": [
-                        "obj-6",
+                        "obj-7",
                         3
                     ]
                 }
@@ -17125,11 +21265,11 @@
             {
                 "patchline": {
                     "destination": [
-                        "obj-8",
+                        "obj-10",
                         4
                     ],
                     "source": [
-                        "obj-6",
+                        "obj-7",
                         4
                     ]
                 }
@@ -17137,11 +21277,11 @@
             {
                 "patchline": {
                     "destination": [
-                        "obj-8",
+                        "obj-10",
                         5
                     ],
                     "source": [
-                        "obj-6",
+                        "obj-7",
                         5
                     ]
                 }
@@ -17149,11 +21289,11 @@
             {
                 "patchline": {
                     "destination": [
-                        "obj-8",
+                        "obj-10",
                         6
                     ],
                     "source": [
-                        "obj-6",
+                        "obj-7",
                         6
                     ]
                 }
@@ -17161,11 +21301,11 @@
             {
                 "patchline": {
                     "destination": [
-                        "obj-8",
+                        "obj-10",
                         7
                     ],
                     "source": [
-                        "obj-6",
+                        "obj-7",
                         7
                     ]
                 }
@@ -17173,11 +21313,107 @@
             {
                 "patchline": {
                     "destination": [
+                        "obj-11",
+                        0
+                    ],
+                    "source": [
                         "obj-8",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-11",
+                        1
+                    ],
+                    "source": [
+                        "obj-8",
+                        1
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-11",
+                        2
+                    ],
+                    "source": [
+                        "obj-8",
+                        2
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-11",
+                        3
+                    ],
+                    "source": [
+                        "obj-8",
+                        3
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-11",
+                        4
+                    ],
+                    "source": [
+                        "obj-8",
+                        4
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-11",
+                        5
+                    ],
+                    "source": [
+                        "obj-8",
+                        5
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-11",
+                        6
+                    ],
+                    "source": [
+                        "obj-8",
+                        6
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-11",
+                        7
+                    ],
+                    "source": [
+                        "obj-8",
+                        7
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-11",
                         8
                     ],
                     "source": [
-                        "obj-6",
+                        "obj-8",
                         8
                     ]
                 }
@@ -17185,11 +21421,11 @@
             {
                 "patchline": {
                     "destination": [
-                        "obj-8",
+                        "obj-11",
                         9
                     ],
                     "source": [
-                        "obj-6",
+                        "obj-8",
                         9
                     ]
                 }
@@ -17197,11 +21433,11 @@
             {
                 "patchline": {
                     "destination": [
-                        "obj-8",
+                        "obj-11",
                         10
                     ],
                     "source": [
-                        "obj-6",
+                        "obj-8",
                         10
                     ]
                 }
@@ -17209,11 +21445,11 @@
             {
                 "patchline": {
                     "destination": [
-                        "obj-8",
+                        "obj-11",
                         11
                     ],
                     "source": [
-                        "obj-6",
+                        "obj-8",
                         11
                     ]
                 }
@@ -17221,11 +21457,11 @@
             {
                 "patchline": {
                     "destination": [
-                        "obj-8",
+                        "obj-11",
                         12
                     ],
                     "source": [
-                        "obj-6",
+                        "obj-8",
                         12
                     ]
                 }
@@ -17233,11 +21469,11 @@
             {
                 "patchline": {
                     "destination": [
-                        "obj-8",
+                        "obj-11",
                         13
                     ],
                     "source": [
-                        "obj-6",
+                        "obj-8",
                         13
                     ]
                 }
@@ -17245,11 +21481,11 @@
             {
                 "patchline": {
                     "destination": [
-                        "obj-8",
+                        "obj-11",
                         14
                     ],
                     "source": [
-                        "obj-6",
+                        "obj-8",
                         14
                     ]
                 }
@@ -17257,12 +21493,156 @@
             {
                 "patchline": {
                     "destination": [
-                        "obj-8",
+                        "obj-11",
                         15
                     ],
                     "source": [
-                        "obj-6",
+                        "obj-8",
                         15
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-12",
+                        0
+                    ],
+                    "source": [
+                        "obj-9",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-13",
+                        0
+                    ],
+                    "source": [
+                        "obj-6",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-15",
+                        0
+                    ],
+                    "source": [
+                        "obj-14",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-16",
+                        0
+                    ],
+                    "source": [
+                        "obj-15",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-17",
+                        0
+                    ],
+                    "source": [
+                        "obj-16",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-18",
+                        0
+                    ],
+                    "source": [
+                        "obj-17",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-21",
+                        0
+                    ],
+                    "source": [
+                        "obj-19",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-21",
+                        0
+                    ],
+                    "source": [
+                        "obj-20",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-18",
+                        0
+                    ],
+                    "source": [
+                        "obj-21",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-22",
+                        0
+                    ],
+                    "source": [
+                        "obj-18",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-25",
+                        0
+                    ],
+                    "source": [
+                        "obj-24",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [
+                        "obj-26",
+                        0
+                    ],
+                    "source": [
+                        "obj-25",
+                        0
                     ]
                 }
             }

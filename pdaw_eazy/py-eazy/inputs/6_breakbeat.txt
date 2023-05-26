@@ -1,8 +1,24 @@
-patch breakbeat
+patch my_breakbeat
 import pdawlib
 
 block ac_bass() {
-	inlet() > mtof() > outlet()
+	inlet() > mtof=num()
+	mtof> phasor~() > send~('saw_bass')
+	mtof>b1=bang()>msg('1','10')>l1=line()>num()>*(4000)>+(500)>num()>s('filter_freq')
+	b1>delay(10)>msg('0','250')>l1
+
+	ff=[9,25]
+	mul=*~()
+	for i in range 2:
+		vcf = vcf~()
+		loadbang()>msg(ff[i])>3:vcf
+		receive~('saw_bass')>1:vcf
+		r('filter_freq')>2:vcf
+		vcf>mul
+	end
+
+	mtof>b1=bang()>msg('1','10')>l1=line()>num()>2:mul>outlet~()
+	b1>delay(10)>msg('0','250')>l1	
 }
 
 block readmore(samples:list) {
@@ -20,10 +36,10 @@ block attachprobability(prob:intn) {
 	r('4bars_pattern')> bang()> random(100)> num()> obj('<',prob)> outlet()
 }
 
-block genbass(probs:list, startnote:intn, scale:symbol) {
+block genbass(probs:list, startnote:intn, scale:symbol, name:symbol) {
 	common_num = num()
 	synth = @ac_bass()
-	common_num > synth > outlet~()
+	common_num > synth > send~(name)
 
 	for i in range @len(probs):
 		inlet() > bang() > s = spigot() > bang() > note=num() > common_num
@@ -34,7 +50,7 @@ block genbass(probs:list, startnote:intn, scale:symbol) {
 	end
 }
 
-block gendrums(samples:list, seqlen:intn) {
+block gendrums(samples:list, seqlen:intn, name:symbol) {
 
 	common_num = num()
 
@@ -43,28 +59,103 @@ block gendrums(samples:list, seqlen:intn) {
 		r('4bars_pattern')>bang()>random(@len(samples))>msg('set', '\$1')>curr
 	end
 	
-	common_num > @readmore(samples) >  outlet~()
+	common_num > @readmore(samples) >  send~(name)
 }
+
+block clockmul (time:intn, sendto:symbol) {
+	r('ON')>toggle()>m=metro()>bang()>outlet()
+	r('4th_time')>mul=*(time*4)>2:m
+	if sendto!='none':
+		mul>send(sendto)
+	end
+}
+
+block ambient (startnote:intn, scale:symbol, name:symbol) {
+	inlet() > [b1=bang(), b2=bang()]
+
+	res = @midikeys(startnote, scale)
+	mel = @scales(res)
+	b1 > mel > n=num()
+	n > /(2)>num()>phasor~()>lop=lop~(100)
+	n > phasor~() >lop
+	n > *(1.001) > num() > phasor~() >lop
+	lop > mul=*~() > *~(0.5) > send~(name)
+
+	b2 > msg('1','200') > line=line()
+	b2 > del=delay() > temp=msg('0','500') > line
+	r('2_mes_time')>num()>-(500)>2:del
+	r('ON')>sel(0)>delay(5)>temp
+	line > 2:mul
+}
+
+block sampleread (sample:symbol, name:symbol) {
+	inlet() > bang() > @read(sample) > send~(name)
+}
+
+block glitchonoff(selwhat:intn, sx:symbol, dx:symbol) {
+	r('glitch_onoff')>toggle()>s = sel(selwhat)> m1=msg(sx,'50')
+	s:2 > m2=msg(dx,'50')
+	[m1, m2] > line() > num() > outlet()
+}
+
+block glitchmix (toglitch:list, notglitch:list, glitchsample:symbol) {
+
+	mul75=*~(0.75)
+
+	bang()>@read(glitchsample)>mul75
+	for i in range @len(toglitch):
+		receive~(toglitch[i])>mul75
+	end
+	mul75 > mul=*~(0.25) > mul1_1=*~(1)
+	@glitchonoff(1,'0','1')>2:mul
+
+	[mul, mul1=*~(1)]>delwrite~('glitch', 500)
+	r('glitch_value')>nn=num()>delread=delread~('glitch', 50)>mul25=*~(0.25)>mul1_1>*~(0.6)>mul111=*~(1)
+	delread>mul1
+	@glitchonoff(0,'0','1')>2:mul1
+	@glitchonoff(1,'1','0')>2:mul25
+	r('glitch_onoff')>bang()>random(100)>+(10)>[s('random_glitch'),nn]
+	out=dac~()
+	for i in range @len(notglitch):
+		receive~(notglitch[i])>mul111
+	end
+	mul111>[1:out, 2:out]
+}
+
 
 
 #init and bpm
 toggle() > @onoff()
-@bpm(142)
+loadbang()>msg(140)>@bpm_out()
 
 #clocks
 fourbars = @genpatternof(4) #generate new pattern each 4 bars
-onebar = @genpatternof(1) #generate new pattern each 1 bar 
+crashclock = @clockmul(1, 'none') #clock for whole note 
 bassclock = @clockdiv(8) #clock for 8th notes
 drumclock = @clockdiv(16) #clock for 16th notes
+ambientclock = @clockmul(2, '2_mes_time') #clock for note of 2 bars
 
 #instruments
-bass_seq = @genbass([100,90,85,75,90,85,75,90], 40,'phrygian') 
+bass_seq = @genbass([100,90,85,75,90,85,75,90], 40,'phrygian','bass') 
 @bind(bassclock, bass_seq, 8)
 
-drum_samples = ['../samples/kick.wav', '../samples/clhat.wav', '../samples/dnb.wav', '../samples/hihat_cch.wav', './samples/hihat_metal.wav']
-drum_seq = @gendrums(drum_samples, 16)
+drum_samples = ['../samples/kick.wav', '../samples/clhat.wav', '../samples/dnb.wav', '../samples/hihat_cch.wav', '../samples/hihat_metal.wav']
+drum_seq = @gendrums(drum_samples, 16, 'drums')
 @bind(drumclock, drum_seq, 16)
 
+ambient_pad = @ambient(64, 'phrygian', 'pad')
+@bind(ambientclock, ambient_pad, 1)
+
+crash = @sampleread('../samples/hihat_snake.wav','crash')
+@bind(crashclock, crash, 1)
+
+#out = dac~()
+#[drum_seq, bass_seq, ambient_pad, crash] > [1:out, 2:out]
+
+key()>num()>sel(103)>bang()>t=toggle()
+[loadbang(), r('ON')] > msg('0') > t > s('glitch_onoff')
+@glitchmix(['drums','crash'], ['bass','pad'], '../samples/kick.wav')
+r('random_glitch')>vsl()>s('glitch_value')
 ;
 
 

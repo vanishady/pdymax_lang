@@ -19,11 +19,14 @@ class GraphPos():
         for elem in self.segment:
             if type(elem)==Node:
                 if elem.nodetype=='subpatch':
-                    w=len(elem.name)
+                    w=len(elem.name)+3
                 else:
-                    w=1
+                    if elem.nodetype in ['receive','send','receive~','send~']:
+                        w=len(elem.nodetype)
+                    else:
+                        w=1
                     for a in elem.args:
-                        w+=len(str(a))
+                        w+=len(str(a))+1
                 self.dot.node(f'{elem.index}', width=f'{math.ceil(w/12)}')
             else:
                 self.dot.edge(f'{elem[3]}', f'{elem[1]}')

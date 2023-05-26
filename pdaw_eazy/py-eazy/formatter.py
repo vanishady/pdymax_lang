@@ -159,6 +159,10 @@ class PdFormatter(Formatter):
                 elif var.nodetype == "tbf":
                     line['chunk'] = '#X obj'
                     line['args'] = ['t', 'b', 'f']
+                elif var.nodetype in ['vslider','vsl']:
+                    line['chunk'] = '#X obj'
+                    line['ntype']='vsl'
+                    line['args']=['19 162 0 127 0 0 empty empty empty 0 -9 0 12 #fcfcfc #000000 #000000 0 1']
                 else:                                   #other
                     line['chunk'] = '#X obj'            
                     line['ntype'] = var.nodetype

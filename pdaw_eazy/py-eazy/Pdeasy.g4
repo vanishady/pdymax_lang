@@ -176,7 +176,7 @@ NAME
 SYMBOL : '\'' SYMBOL_ADMITTED* '\'' ;
 NUMBER : INTEGER | FLOAT ;
 INTEGER : '-'? NON_ZERO_DIGIT DIGIT* | '0'+ ;
-FLOAT : INTEGER? '.' INTEGER ;
+FLOAT : INTEGER? '.' DIGIT* ;
 
 fragment LETTER : [a-zA-Z] ;
 fragment DIGIT : [0-9] ;
