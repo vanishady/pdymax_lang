@@ -1,7 +1,7 @@
 .experiments
-.externals
+.externals/
 .BASHAVVIO.txt
 .references
 .sheets
-pdaw_eazy\py-eazy\doc\.todo
-pdaw_eazy\py-eazy\doc\.note
+pdaw_eazy/py-eazy/doc/.todo.txt
+pdaw_eazy/py-eazy/doc/.note.odt
