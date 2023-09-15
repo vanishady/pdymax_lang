@@ -23,6 +23,9 @@ class GraphPos():
                 else:
                     if elem.nodetype in ['receive','send','receive~','send~']:
                         w=len(elem.nodetype)
+                    elif elem.nodetype in ['vslider','vsl']:
+                        self.dot.node(f'{elem.index}', height='4', width=f'{math.ceil(w/12)}')
+                        continue
                     else:
                         w=1
                     for a in elem.args:

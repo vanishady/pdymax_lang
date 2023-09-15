@@ -54,7 +54,7 @@
                     "numoutlets": 1,
                     "parameter_enable": 0,
                     "patching_rect": [
-                        "126",
+                        "36",
                         "306",
                         40,
                         40
@@ -76,10 +76,10 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            26,
-                            73,
-                            182,
-                            191
+                            165,
+                            176,
+                            76,
+                            26
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -118,7 +118,7 @@
                                     "id": "obj-0",
                                     "maxclass": "inlet",
                                     "patching_rect": [
-                                        "126",
+                                        "36",
                                         "18",
                                         30,
                                         30
@@ -130,7 +130,7 @@
                                     "id": "obj-1",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "126",
+                                        "36",
                                         "90",
                                         40,
                                         40
@@ -155,7 +155,7 @@
                         ]
                     },
                     "patching_rect": [
-                        "126",
+                        "36",
                         "378",
                         40,
                         40
@@ -184,10 +184,10 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            57,
-                            94,
-                            90,
-                            70
+                            68,
+                            54,
+                            52,
+                            40
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -226,7 +226,7 @@
                                     "id": "obj-0",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "126",
+                                        "36",
                                         "306",
                                         40,
                                         40
@@ -239,7 +239,7 @@
                                     "id": "obj-1",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "126",
+                                        "36",
                                         "234",
                                         40,
                                         40
@@ -252,7 +252,7 @@
                                     "id": "obj-2",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "126",
+                                        "36",
                                         "18",
                                         40,
                                         40
@@ -265,7 +265,7 @@
                                     "id": "obj-3",
                                     "maxclass": "message",
                                     "patching_rect": [
-                                        "126",
+                                        "36",
                                         "90",
                                         40,
                                         40
@@ -279,7 +279,7 @@
                                     "maxclass": "flonum",
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "126",
+                                        "36",
                                         "162",
                                         40,
                                         40
@@ -291,7 +291,7 @@
                                     "id": "obj-5",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "198",
+                                        "126",
                                         "162",
                                         40,
                                         40
@@ -304,7 +304,7 @@
                                     "id": "obj-6",
                                     "maxclass": "message",
                                     "patching_rect": [
-                                        "198",
+                                        "126",
                                         "234",
                                         40,
                                         40
@@ -318,7 +318,7 @@
                                     "maxclass": "flonum",
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "126",
+                                        "36",
                                         "378",
                                         40,
                                         40
@@ -330,7 +330,7 @@
                                     "id": "obj-8",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "126",
+                                        "36",
                                         "450",
                                         40,
                                         40
@@ -451,7 +451,7 @@
                         ]
                     },
                     "patching_rect": [
-                        "396",
+                        "126",
                         "378",
                         40,
                         40
@@ -480,10 +480,10 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            125,
-                            189,
-                            163,
-                            120
+                            173,
+                            83,
+                            178,
+                            24
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -522,7 +522,7 @@
                                     "id": "obj-0",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "309",
+                                        "203",
                                         "234",
                                         40,
                                         40
@@ -535,7 +535,7 @@
                                     "id": "obj-1",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "396",
+                                        "254",
                                         "18",
                                         40,
                                         40
@@ -548,7 +548,7 @@
                                     "id": "obj-2",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "389",
+                                        "254",
                                         "90",
                                         40,
                                         40
@@ -562,7 +562,7 @@
                                     "maxclass": "flonum",
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "367",
+                                        "254",
                                         "162",
                                         40,
                                         40
@@ -574,7 +574,7 @@
                                     "id": "obj-4",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "126",
+                                        "82",
                                         "18",
                                         40,
                                         40
@@ -590,7 +590,7 @@
                                     "numoutlets": 1,
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "170",
+                                        "82",
                                         "90",
                                         40,
                                         40
@@ -602,7 +602,7 @@
                                     "id": "obj-6",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "170",
+                                        "36",
                                         "162",
                                         40,
                                         40
@@ -615,7 +615,7 @@
                                     "id": "obj-7",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "242",
+                                        "126",
                                         "162",
                                         40,
                                         40
@@ -631,7 +631,7 @@
                                     "numoutlets": 1,
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "237",
+                                        "113",
                                         "234",
                                         40,
                                         40
@@ -643,7 +643,7 @@
                                     "id": "obj-9",
                                     "maxclass": "message",
                                     "patching_rect": [
-                                        "237",
+                                        "113",
                                         "306",
                                         40,
                                         40
@@ -656,7 +656,7 @@
                                     "id": "obj-10",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "345",
+                                        "248",
                                         "378",
                                         40,
                                         40
@@ -672,7 +672,7 @@
                                     "numoutlets": 1,
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "309",
+                                        "203",
                                         "306",
                                         40,
                                         40
@@ -685,7 +685,7 @@
                                     "maxclass": "flonum",
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "345",
+                                        "248",
                                         "450",
                                         40,
                                         40
@@ -697,7 +697,7 @@
                                     "id": "obj-13",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "345",
+                                        "248",
                                         "522",
                                         40,
                                         40
@@ -710,7 +710,7 @@
                                     "id": "obj-14",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "345",
+                                        "248",
                                         "594",
                                         40,
                                         40
@@ -724,7 +724,7 @@
                                     "maxclass": "flonum",
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "345",
+                                        "248",
                                         "666",
                                         40,
                                         40
@@ -736,7 +736,7 @@
                                     "id": "obj-16",
                                     "maxclass": "outlet",
                                     "patching_rect": [
-                                        "345",
+                                        "248",
                                         "738",
                                         30,
                                         30
@@ -748,7 +748,7 @@
                                     "id": "obj-17",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "381",
+                                        "293",
                                         "306",
                                         40,
                                         40
@@ -989,7 +989,7 @@
                         ]
                     },
                     "patching_rect": [
-                        "562",
+                        "200",
                         "18",
                         40,
                         40
@@ -1018,10 +1018,10 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            144,
-                            60,
-                            22,
-                            123
+                            158,
+                            161,
+                            33,
+                            172
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -1061,7 +1061,7 @@
                                     "maxclass": "flonum",
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "243",
+                                        "306",
                                         "234",
                                         40,
                                         40
@@ -1074,7 +1074,7 @@
                                     "maxclass": "flonum",
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "243",
+                                        "306",
                                         "450",
                                         40,
                                         40
@@ -1086,7 +1086,7 @@
                                     "id": "obj-2",
                                     "maxclass": "inlet",
                                     "patching_rect": [
-                                        "243",
+                                        "306",
                                         "18",
                                         30,
                                         30
@@ -1101,7 +1101,7 @@
                                     "numoutlets": 1,
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "243",
+                                        "306",
                                         "90",
                                         40,
                                         40
@@ -1113,7 +1113,7 @@
                                     "id": "obj-4",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "243",
+                                        "306",
                                         "162",
                                         40,
                                         40
@@ -1126,7 +1126,7 @@
                                     "id": "obj-5",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "27",
+                                        "36",
                                         "306",
                                         40,
                                         40
@@ -1139,7 +1139,7 @@
                                     "id": "obj-6",
                                     "maxclass": "message",
                                     "patching_rect": [
-                                        "27",
+                                        "36",
                                         "378",
                                         40,
                                         40
@@ -1152,7 +1152,7 @@
                                     "id": "obj-7",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "99",
+                                        "126",
                                         "306",
                                         40,
                                         40
@@ -1165,7 +1165,7 @@
                                     "id": "obj-8",
                                     "maxclass": "message",
                                     "patching_rect": [
-                                        "99",
+                                        "126",
                                         "378",
                                         40,
                                         40
@@ -1178,7 +1178,7 @@
                                     "id": "obj-9",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "171",
+                                        "216",
                                         "306",
                                         40,
                                         40
@@ -1191,7 +1191,7 @@
                                     "id": "obj-10",
                                     "maxclass": "message",
                                     "patching_rect": [
-                                        "171",
+                                        "216",
                                         "378",
                                         40,
                                         40
@@ -1204,7 +1204,7 @@
                                     "id": "obj-11",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "243",
+                                        "306",
                                         "306",
                                         40,
                                         40
@@ -1217,7 +1217,7 @@
                                     "id": "obj-12",
                                     "maxclass": "message",
                                     "patching_rect": [
-                                        "243",
+                                        "306",
                                         "378",
                                         40,
                                         40
@@ -1230,7 +1230,7 @@
                                     "id": "obj-13",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "315",
+                                        "396",
                                         "306",
                                         40,
                                         40
@@ -1243,7 +1243,7 @@
                                     "id": "obj-14",
                                     "maxclass": "message",
                                     "patching_rect": [
-                                        "315",
+                                        "396",
                                         "378",
                                         40,
                                         40
@@ -1256,7 +1256,7 @@
                                     "id": "obj-15",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "387",
+                                        "486",
                                         "306",
                                         40,
                                         40
@@ -1269,7 +1269,7 @@
                                     "id": "obj-16",
                                     "maxclass": "message",
                                     "patching_rect": [
-                                        "387",
+                                        "486",
                                         "378",
                                         40,
                                         40
@@ -1282,7 +1282,7 @@
                                     "id": "obj-17",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "459",
+                                        "576",
                                         "306",
                                         40,
                                         40
@@ -1295,7 +1295,7 @@
                                     "id": "obj-18",
                                     "maxclass": "message",
                                     "patching_rect": [
-                                        "459",
+                                        "576",
                                         "378",
                                         40,
                                         40
@@ -1308,7 +1308,7 @@
                                     "id": "obj-19",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "243",
+                                        "306",
                                         "522",
                                         40,
                                         40
@@ -1321,7 +1321,7 @@
                                     "id": "obj-20",
                                     "maxclass": "outlet",
                                     "patching_rect": [
-                                        "243",
+                                        "306",
                                         "594",
                                         30,
                                         30
@@ -1645,7 +1645,7 @@
                         ]
                     },
                     "patching_rect": [
-                        "562",
+                        "200",
                         "90",
                         40,
                         40
@@ -1674,10 +1674,10 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            131,
-                            110,
-                            91,
-                            26
+                            52,
+                            109,
+                            103,
+                            75
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -1716,7 +1716,7 @@
                                     "id": "obj-0",
                                     "maxclass": "inlet",
                                     "patching_rect": [
-                                        "171",
+                                        "216",
                                         "18",
                                         30,
                                         30
@@ -1729,7 +1729,7 @@
                                     "maxclass": "flonum",
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "171",
+                                        "216",
                                         "90",
                                         40,
                                         40
@@ -1741,7 +1741,7 @@
                                     "id": "obj-2",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "27",
+                                        "36",
                                         "306",
                                         40,
                                         40
@@ -1754,7 +1754,7 @@
                                     "id": "obj-3",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "171",
+                                        "216",
                                         "450",
                                         40,
                                         40
@@ -1767,7 +1767,7 @@
                                     "id": "obj-4",
                                     "maxclass": "outlet",
                                     "patching_rect": [
-                                        "171",
+                                        "216",
                                         "522",
                                         30,
                                         30
@@ -1779,7 +1779,7 @@
                                     "id": "obj-5",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "99",
+                                        "126",
                                         "162",
                                         40,
                                         40
@@ -1793,7 +1793,7 @@
                                     "maxclass": "flonum",
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "99",
+                                        "126",
                                         "234",
                                         40,
                                         40
@@ -1805,7 +1805,7 @@
                                     "id": "obj-7",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "99",
+                                        "126",
                                         "306",
                                         40,
                                         40
@@ -1818,7 +1818,7 @@
                                     "id": "obj-8",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "99",
+                                        "126",
                                         "378",
                                         40,
                                         40
@@ -1831,7 +1831,7 @@
                                     "id": "obj-9",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "171",
+                                        "216",
                                         "162",
                                         40,
                                         40
@@ -1845,7 +1845,7 @@
                                     "maxclass": "flonum",
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "171",
+                                        "216",
                                         "234",
                                         40,
                                         40
@@ -1857,7 +1857,7 @@
                                     "id": "obj-11",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "171",
+                                        "216",
                                         "306",
                                         40,
                                         40
@@ -1870,7 +1870,7 @@
                                     "id": "obj-12",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "171",
+                                        "216",
                                         "378",
                                         40,
                                         40
@@ -1883,7 +1883,7 @@
                                     "id": "obj-13",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "243",
+                                        "306",
                                         "162",
                                         40,
                                         40
@@ -1897,7 +1897,7 @@
                                     "maxclass": "flonum",
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "243",
+                                        "306",
                                         "234",
                                         40,
                                         40
@@ -1909,7 +1909,7 @@
                                     "id": "obj-15",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "243",
+                                        "306",
                                         "306",
                                         40,
                                         40
@@ -1922,7 +1922,7 @@
                                     "id": "obj-16",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "243",
+                                        "306",
                                         "378",
                                         40,
                                         40
@@ -1935,7 +1935,7 @@
                                     "id": "obj-17",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "315",
+                                        "396",
                                         "162",
                                         40,
                                         40
@@ -1949,7 +1949,7 @@
                                     "maxclass": "flonum",
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "315",
+                                        "396",
                                         "234",
                                         40,
                                         40
@@ -1961,7 +1961,7 @@
                                     "id": "obj-19",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "315",
+                                        "396",
                                         "306",
                                         40,
                                         40
@@ -1974,7 +1974,7 @@
                                     "id": "obj-20",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "315",
+                                        "396",
                                         "378",
                                         40,
                                         40
@@ -2275,7 +2275,7 @@
                         ]
                     },
                     "patching_rect": [
-                        "477",
+                        "137",
                         "162",
                         40,
                         40
@@ -2304,10 +2304,10 @@
                         },
                         "classnamespace": "box",
                         "rect": [
-                            49,
-                            139,
-                            67,
-                            37
+                            134,
+                            165,
+                            102,
+                            108
                         ],
                         "bglocked": 0,
                         "openinpresentation": 0,
@@ -2346,7 +2346,7 @@
                                     "id": "obj-0",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "99",
+                                        "126",
                                         "378",
                                         40,
                                         40
@@ -2359,7 +2359,7 @@
                                     "id": "obj-1",
                                     "maxclass": "inlet",
                                     "patching_rect": [
-                                        "27",
+                                        "36",
                                         "234",
                                         30,
                                         30
@@ -2371,7 +2371,7 @@
                                     "id": "obj-2",
                                     "maxclass": "message",
                                     "patching_rect": [
-                                        "36",
+                                        "49",
                                         "306",
                                         40,
                                         40
@@ -2384,7 +2384,7 @@
                                     "id": "obj-3",
                                     "maxclass": "inlet",
                                     "patching_rect": [
-                                        "135",
+                                        "171",
                                         "18",
                                         30,
                                         30
@@ -2396,7 +2396,7 @@
                                     "id": "obj-4",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "135",
+                                        "171",
                                         "90",
                                         40,
                                         40
@@ -2412,7 +2412,7 @@
                                     "numoutlets": 1,
                                     "parameter_enable": 0,
                                     "patching_rect": [
-                                        "135",
+                                        "171",
                                         "162",
                                         40,
                                         40
@@ -2424,7 +2424,7 @@
                                     "id": "obj-6",
                                     "maxclass": "message",
                                     "patching_rect": [
-                                        "99",
+                                        "126",
                                         "234",
                                         40,
                                         40
@@ -2437,7 +2437,7 @@
                                     "id": "obj-7",
                                     "maxclass": "newobj",
                                     "patching_rect": [
-                                        "171",
+                                        "216",
                                         "234",
                                         40,
                                         40
@@ -2450,7 +2450,7 @@
                                     "id": "obj-8",
                                     "maxclass": "message",
                                     "patching_rect": [
-                                        "162",
+                                        "203",
                                         "306",
                                         40,
                                         40
@@ -2463,7 +2463,7 @@
                                     "id": "obj-9",
                                     "maxclass": "outlet",
                                     "patching_rect": [
-                                        "99",
+                                        "126",
                                         "450",
                                         30,
                                         30
@@ -2595,7 +2595,7 @@
                         ]
                     },
                     "patching_rect": [
-                        "648",
+                        "263",
                         "234",
                         40,
                         40
@@ -2617,7 +2617,7 @@
                     "numoutlets": 1,
                     "parameter_enable": 0,
                     "patching_rect": [
-                        "648",
+                        "263",
                         "162",
                         40,
                         40
@@ -2629,7 +2629,7 @@
                     "id": "obj-8",
                     "maxclass": "ezdac~",
                     "patching_rect": [
-                        "567",
+                        "216",
                         "378",
                         30,
                         30
@@ -2641,7 +2641,7 @@
                     "id": "obj-9",
                     "maxclass": "newobj",
                     "patching_rect": [
-                        "567",
+                        "216",
                         "306",
                         40,
                         40

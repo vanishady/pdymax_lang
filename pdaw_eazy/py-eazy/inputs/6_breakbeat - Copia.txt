@@ -1,7 +1,6 @@
 patch my_breakbeat
 import pdawlib
 
-
 #init and bpm
 @dsp_on()
 @dsp_off()
@@ -19,7 +18,8 @@ ambientclock = @clockmul(2, '2_mes_time') #clock for note of 2 bars
 bass_seq = @genbass([100,90,85,75,90,85,75,90], 40,'phrygian','bass') 
 @bind(bassclock, bass_seq, 8)
 
-drum_samples = ['../samples/kick.wav', '../samples/clhat.wav', '../samples/dnb.wav', '../samples/hihat_cch.wav', '../samples/hihat_metal.wav']
+#drum_samples = ['./samples/kick.wav', './samples/clhat.wav', './samples/dnb.wav', './samples/hihat_cch.wav', './samples/hihat_metal.wav']
+drum_samples = ['./samples/HouseGen-Snare30.wav', './samples/Collider-Fifth-CHat-02.wav', './samples/HouseGen-Kick-25.wav', './samples/Attack-Hat-12.wav', './samples/05.wav']
 drum_seq = @gendrums(drum_samples, 16, 'drums')
 @bind(drumclock, drum_seq, 16)
 
@@ -34,7 +34,7 @@ crash = @sampleread('../samples/hihat_snake.wav','crash')
 
 key()>num()>sel(103)>bang()>t=toggle()
 [loadbang(), r('ON')] > msg('0') > t > s('glitch_onoff')
-@glitchmix(['drums','crash'], ['bass','pad'], '../samples/kick.wav')
+@glitchmix(['drums','crash'], ['bass','pad'], './samples/05.wav')
 r('random_glitch')>vsl()>s('glitch_value')
 ;
 

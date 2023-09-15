@@ -238,10 +238,25 @@ class MaxFormatter(Formatter):
                             res = var.args[1].split('\'')
                             var.args[1] = res[-1]
                         var.args[2] = ','
+                    elif var.args[0] == 'set':
+                        if var.args[1].startswith('\$'):
+                            var.args[1] = var.args[1][1:]
+                    elif var.args[0] == '\;' and var.args[1]=='pd':
+                        var.args = var.args[2:]
+                        var.args = [';']+var.args
+                        if var.args[-1] == 1:
+                            var.args[-1] = 'start'
+                        else:
+                            var.args[-1] = 'stop'
                     box=tojson.msgbox(var.index, [var.xpos, var.ypos,40, 40],var.args)
 
                 elif var.nodetype=='flonum': #e number?
-                    box=tojson.numbox(var.index, [var.xpos, var.ypos,40, 40])                
+                    box=tojson.numbox(var.index, [var.xpos, var.ypos,40, 40])
+
+                elif var.nodetype in ['tapin~', 'tapout~']:
+                    var.args = var.args[1:]
+                    box=tojson.objbox(var.index, [var.xpos, var.ypos,40, 40],
+                                      var.nodetype, var.args)
 
                 elif var.nodetype in ['ezdac~', 'outlet', 'inlet']:
                     box=tojson.box(var.index, var.nodetype, [var.xpos, var.ypos,30, 30])
