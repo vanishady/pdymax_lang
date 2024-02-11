@@ -2,6 +2,10 @@
 
 This project is meant to provide a *Domain Specific Language* which transpiles through Python to Max and PureData simultaneously. It already comes with a standard library, providing functional blocks to create multifacted nodes and structures in both Max and Pd.
 
+## Presentation
+
+I made a presentation on canva and you can find it [here](https://www.canva.com/design/DAFlO0Pjayg/H06Z9bRk37ybau4ke225Ag/view?utm_content=DAFlO0Pjayg&utm_campaign=designshare&utm_medium=link&utm_source=editor)
+
 ## Requirements
 
 To run the transpilation, the following tools are necessary:
